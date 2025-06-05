@@ -1,0 +1,127 @@
+/* Estilos generales para el documento de la clase, compartidos con el index */
+body {
+    font-family: 'Inter', sans-serif; /* Fuente Inter */
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    background-color: #f3f4f6; /* Similar a bg-gray-100 de Tailwind en index.html */
+    color: #333;
+}
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px; /* Esquinas redondeadas */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+h1, h2, h3, h4 {
+    color: #2c3e50; /* Base color, will be overridden by specific h1, h2, h3 */
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+h1 {
+    font-size: 2.5em;
+    text-align: center;
+    color: #1D4ED8; /* Similar a text-blue-700 en index.html */
+    margin-bottom: 30px;
+}
+h2 {
+    font-size: 1.8em;
+    border-bottom: 2px solid #0056b3; /* Similar al azul de h2 en index.html */
+    padding-bottom: 5px;
+    color: #0056b3; /* Usar el mismo color para h2 */
+}
+h3 {
+    font-size: 1.4em;
+    color: #1E40AF; /* Similar a text-blue-800 en index.html */
+}
+h4 {
+    font-size: 1.2em;
+    color: #555;
+}
+p {
+    margin-bottom: 10px;
+}
+a {
+    color: #2563EB; /* Similar a text-blue-600 en index.html */
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+ol {
+    list-style-type: decimal;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+code {
+    font-family: 'Courier New', monospace;
+    background-color: #e9ecef;
+    padding: 2px 4px;
+    border-radius: 4px;
+    color: #c7254e; /* Keep original code color */
+}
+pre {
+    background-color: #282c34; /* Keep original pre background */
+    color: #abb2bf; /* Keep original pre text color */
+    padding: 15px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: 'Fira Code', 'Consolas', monospace;
+    font-size: 0.9em;
+    margin-bottom: 20px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+pre code {
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+    color: inherit;
+}
+hr {
+    border: 0;
+    height: 1px;
+    background: #eee;
+    margin: 40px 0;
+}
+.note {
+    background-color: #e6f7ff; /* Keep original note color */
+    border-left: 5px solid #3498db; /* Keep original note border */
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 8px;
+    color: #2c3e50;
+}
+.exercise-section {
+    background-color: #f8f9fa; /* Keep original exercise section background */
+    border: 1px solid #dee2e6;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 30px;
+}
+.exercise-section h3 {
+    color: #2563EB; /* Similar to general links color */
+    margin-top: 0;
+}
+.file-content {
+    margin-top: 20px;
+    border: 1px dashed #ccc;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #fdfdfd;
+}
+.instructions {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 30px;
+}

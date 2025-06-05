@@ -1,0 +1,109 @@
+/* Estilos específicos para la sección de ejercicios y sus soluciones */
+.exercise-solution {
+    background-color: #f0f8ff; /* Fondo más claro para la solución */
+    border-left: 5px solid #007bff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+    display: none; /* <--- MUY IMPORTANTE: OCULTO POR DEFECTO */
+    color: #333; /* Color de texto para las soluciones */
+}
+.reveal-button {
+    background-color: #007bff; /* Color azul original del botón */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+.reveal-button:hover {
+    background-color: #0056b3; /* Azul más oscuro al pasar el ratón */
+}
+.exercise-item {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed #eee;
+}
+.exercise-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+/* Estilos para el quiz */
+.quiz-question {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+.quiz-question p {
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+.quiz-options label {
+    display: block;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.quiz-options input[type="radio"] {
+    margin-right: 10px;
+}
+.quiz-results {
+    margin-top: 30px;
+    padding: 20px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    display: none; /* Oculto por defecto */
+    background-color: #e9f5ff;
+}
+.quiz-results p {
+    font-size: 1.1em;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+}
+.quiz-results ol {
+    list-style-type: decimal;
+    margin-left: 25px;
+}
+.quiz-results li {
+    margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 5px;
+}
+.correct {
+    color: #28a745; /* Verde para respuestas correctas */
+    font-weight: bold;
+}
+.incorrect {
+    color: #dc3545; /* Rojo para respuestas incorrectas */
+    font-weight: bold;
+}
+.correct-answer-info {
+    font-weight: normal;
+    font-style: italic;
+    color: #555;
+    margin-left: 10px;
+}
+.submit-quiz-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+    display: block; /* Para que ocupe todo el ancho si es necesario */
+    width: fit-content;
+    margin: 20px auto 0 auto; /* Centrar el botón */
+}
+.submit-quiz-button:hover {
+    background-color: #218838;
+}

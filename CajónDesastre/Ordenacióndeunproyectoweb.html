@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organización de un Proyecto Web HTML</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 15px;
+            background-color: #f4f4f4;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        h2 {
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        strong {
+            color: #e67e22;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        pre {
+            background-color: #eee;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap; /* Mantiene el formato y respeta saltos de línea */
+            word-wrap: break-word; /* Rompe palabras largas si es necesario */
+        }
+        code {
+            font-family: "Courier New", Courier, monospace;
+            background-color: #e9e9e9;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Organización de un Proyecto Web</h1>
+
+    <p>¡Excelente pregunta! <strong>Sí, es una práctica muy aconsejable y estándar en el desarrollo web organizar tus archivos en carpetas separadas</strong>. Esto mejora enormemente la <strong>estructura del proyecto, la legibilidad, el mantenimiento y la escalabilidad</strong>.</p>
+
+    <h2>¿Debo tener los HTML hijos en una carpeta separada?</h2>
+    <p>Generalmente, <strong>no es necesario crear una carpeta específica solo para los "HTML hijos"</strong> a menos que tu proyecto tenga una jerarquía de páginas muy profunda y específica que lo justifique.</p>
+    <p>Lo más común es mantener los archivos HTML principales (como <code>index.html</code>, <code>about.html</code>, <code>contact.html</code>) en la <strong>raíz del proyecto o en una subcarpeta si el sitio es muy grande y complejo</strong>. Los archivos HTML "hijos" (por ejemplo, páginas de productos dentro de una categoría, o artículos de blog) a menudo se gestionan mediante <strong>rutas claras</strong> dentro de la misma estructura de la raíz o una subcarpeta lógica.</p>
+
+    <h2>¿Por qué se aconseja esta organización?</h2>
+    <ul>
+        <li><strong>Claridad y legibilidad:</strong> Es mucho más fácil encontrar lo que buscas. Cuando miras la estructura de carpetas, sabes exactamente dónde encontrar los estilos, los scripts o las imágenes.</li>
+        <li><strong>Mantenimiento:</strong> Si necesitas actualizar un archivo CSS, sabes que está en la carpeta <code>css</code>. Esto evita tener que buscar entre cientos de archivos mezclados.</li>
+        <li><strong>Colaboración:</strong> Si trabajas en equipo, todos los desarrolladores entenderán rápidamente la estructura del proyecto.</li>
+        <li><strong>Escalabilidad:</strong> A medida que tu proyecto crece, una estructura organizada te permite añadir nuevos archivos y funcionalidades sin que el proyecto se convierta en un caos inmanejable.</li>
+        <li><strong>Caché del navegador:</strong> Los navegadores pueden almacenar en caché los diferentes tipos de archivos de manera más eficiente cuando están bien organizados.</li>
+        <li><strong>Despliegue (Deployment):</strong> Al subir tu proyecto a un servidor, una estructura lógica facilita la configuración y el despliegue.</li>
+    </ul>
+
+    <hr>
+
+    <h2>¿Cómo ordeno mi proyecto web?</h2>
+    <p>Aquí te propongo una <strong>estructura de carpetas común y altamente recomendable</strong> para un proyecto web. Los nombres pueden variar ligeramente, pero la lógica es la misma:</p>
+
+<pre><code>mi-proyecto-web/
+├── index.html                  &lt;-- Tu página principal (o punto de entrada)
+├── about.html                  &lt;-- Otra página principal (ej. "Acerca de")
+├── contact.html                &lt;-- Otra página principal (ej. "Contacto")
+│
+├── css/                        &lt;-- Contiene todos tus archivos de hojas de estilo
+│   ├── style.css               &lt;-- Estilos generales del sitio
+│   ├── components.css          &lt;-- Estilos para componentes específicos
+│   └── layout.css              &lt;-- Estilos para la estructura del diseño
+│
+├── js/                         &lt;-- Contiene todos tus archivos JavaScript
+│   ├── script.js               &lt;-- Scripts generales
+│   ├── form-validation.js      &lt;-- Scripts para validación de formularios
+│   └── animations.js           &lt;-- Scripts para animaciones
+│
+├── images/                     &lt;-- Contiene todas tus imágenes
+│   ├── hero-background.jpg     &lt;-- Imágenes grandes de fondo
+│   ├── icons/                  &lt;-- Subcarpeta para íconos pequeños
+│   │   ├── logo.png
+│   │   └── social-media.svg
+│   └── products/               &lt;-- Subcarpeta para imágenes de productos (si aplica)
+│       ├── product-a.jpg
+│       └── product-b.png
+│
+├── assets/ (opcional)          &lt;-- Para recursos diversos no clasificados arriba
+│   ├── fonts/                  &lt;-- Fuentes personalizadas
+│   │   ├── custom-font.woff
+│   │   └── custom-font.ttf
+│   ├── video/                  &lt;-- Archivos de video
+│   │   └── intro-video.mp4
+│   └── audio/                  &lt;-- Archivos de audio
+│       └── background-music.mp3
+│
+└── pages/ (opcional, para sitios grandes) &lt;-- Si tienes muchas páginas HTML que no son "principales"
+    ├── products/
+    │   ├── product-detail-1.html
+    │   └── product-detail-2.html
+    └── blog/
+        ├── article-1.html
+        └── article-2.html
+</code></pre>
+
+    <p><strong>Explicación de la estructura:</strong></p>
+    <ul>
+        <li><strong><code>mi-proyecto-web/</code></strong>: Es la carpeta raíz de todo tu proyecto.</li>
+        <li><strong>Archivos HTML en la raíz</strong>: <code>index.html</code>, <code>about.html</code>, <code>contact.html</code>, etc., son las páginas principales de tu sitio. Es el lugar más común para ellas.</li>
+        <li><strong><code>css/</code></strong>: Aquí van todos tus archivos CSS. Es buena idea dividirlos si el proyecto es grande para manejar diferentes secciones o funcionalidades (ej. <code>style.css</code> para estilos generales, <code>forms.css</code> para estilos de formularios, etc.).</li>
+        <li><strong><code>js/</code></strong>: Contiene todos tus archivos JavaScript. Al igual que con CSS, puedes tener múltiples archivos para diferentes propósitos.</li>
+        <li><strong><code>images/</code></strong>: Para todas tus imágenes. Dentro de <code>images/</code>, puedes crear subcarpetas para categorías de imágenes (ej. <code>icons/</code>, <code>products/</code>, <code>backgrounds/</code>) si el volumen de imágenes lo requiere.</li>
+        <li><strong><code>assets/</code> (opcional)</strong>: Una carpeta genérica para otros recursos multimedia como fuentes (<code>fonts/</code>), videos (<code>video/</code>), audios (<code>audio/</code>), etc. Úsala si tienes estos recursos.</li>
+        <li><strong><code>pages/</code> (opcional)</strong>: Esta carpeta sería una excepción para los archivos HTML. Si tienes un sitio web extremadamente grande con cientos de páginas HTML (por ejemplo, un blog con muchos artículos, o una tienda con muchas páginas de productos detalladas), podrías considerar una carpeta <code>pages/</code> (o <code>views/</code> en algunos contextos) con subcarpetas para organizar estos archivos HTML específicos. Sin embargo, para la mayoría de los proyectos pequeños y medianos, mantener los HTML en la raíz es suficiente y más simple.</li>
+    </ul>
+
+    <p>Al seguir esta organización, tu proyecto será mucho más fácil de entender y manejar, tanto para ti como para cualquier otra persona que trabaje en él.</p>
+
+    <p><a href="/index.html">Vuelve a la página principal</a></p>
+</body>
+</html>

@@ -1,0 +1,52 @@
+Un Uniform Resource Locator (URL), o Localizador Uniforme de Recursos en español, es una dirección única que se utiliza para identificar y localizar recursos en internet, como páginas web, imágenes, videos o documentos.
+
+¿Cómo funciona un URL?
+Piensa en un URL como la dirección postal de una casa en la web. Cada "casa" (recurso) tiene una dirección específica para que los navegadores (como Chrome, Firefox o Safari) sepan dónde encontrarla.
+
+Un URL se compone de varias partes, que generalmente incluyen:
+
+- Protocolo: Indica cómo debe comunicarse el navegador con el servidor web. Los más comunes son http:// (Hypertext Transfer Protocol) o https:// (Hypertext Transfer Protocol Secure), que es una versión más segura.
+- Dominio (o nombre de host): Es el nombre identificable de la página web (por ejemplo, google.com, wikipedia.org). A menudo incluye un subdominio, como www.
+- Puerto (opcional): Un número que indica un punto de conexión específico en el servidor. Si no se especifica, se usan los puertos predeterminados (80 para HTTP, 443 para HTTPS).
+- Ruta (path): Especifica la ubicación exacta del recurso dentro del servidor web (por ejemplo, /images/logo.png, /about/contact.html).
+- Parámetros de consulta (query parameters) (opcional): Proporcionan información adicional al servidor, a menudo se utilizan para búsquedas o filtros y van después de un signo de interrogación ? (por ejemplo, ?search=ejemplo).
+- Fragmento (fragment) (opcional): Se utiliza para saltar a una sección específica dentro de un documento y va después de un signo de numeral # (por ejemplo, #seccion2).
+
+Ejemplo de un URL:
+Considera el siguiente URL:
+
+https://www.ejemplo.com:8080/blog/articulo.html?id=123#comentarios
+
+Aquí te detallo sus partes:
+
+https://: El protocolo.
+www.ejemplo.com: El dominio.
+:8080: El puerto.
+/blog/articulo.html: La ruta.
+?id=123: Un parámetro de consulta.
+#comentarios: El fragmento.
+En resumen, el URL es la forma estándar de nombrar y localizar cualquier recurso en la World Wide Web, permitiendo que los usuarios y las aplicaciones accedan a la información de manera eficiente y organizada.
+Para que un navegador pueda encontrar la dirección IP de una página web a partir de su URL (por ejemplo, www.ejemplo.com), utiliza un sistema llamado Sistema de Nombres de Dominio (DNS). Piensa en el DNS como la "agenda telefónica" de Internet. En lugar de números de teléfono, traduce nombres de dominio legibles por humanos (como google.com) a direcciones IP numéricas (como 172.217.160.142) que las computadoras entienden.
+
+Aquí te explico el proceso paso a paso:
+
+El usuario escribe la URL en el navegador: Cuando tú escribes www.ejemplo.com en la barra de direcciones y presionas Enter, tu navegador inicia el proceso.
+
+Verificación de la caché del navegador: Primero, el navegador verifica si ya tiene la dirección IP de www.ejemplo.com en su caché local (una memoria temporal). Si la encuentra, puede ir directamente al paso 7.
+
+Verificación de la caché del sistema operativo (OS): Si el navegador no la encuentra en su caché, le pregunta al sistema operativo de tu computadora. El sistema operativo también tiene una caché DNS propia. Si la encuentra, salta al paso 7.
+
+Consulta al servidor DNS recursivo (o "resolutor DNS"): Si ni el navegador ni el sistema operativo tienen la IP en caché, el sistema operativo envía una solicitud a un servidor DNS recursivo. Este servidor DNS suele ser proporcionado por tu proveedor de servicios de Internet (ISP) o puedes configurarlo manualmente (por ejemplo, los DNS públicos de Google o Cloudflare). Este servidor recursivo es el encargado de encontrar la IP por ti.
+
+Proceso de resolución DNS (la "cascada" de servidores DNS):
+
+Servidor raíz (Root Server): El servidor DNS recursivo, si no tiene la información en su propia caché, envía la consulta a un servidor raíz DNS. Estos son los "maestros" de Internet, pero no tienen la IP de ejemplo.com directamente. Lo que hacen es indicar al servidor recursivo dónde encontrar los servidores DNS responsables de los dominios de nivel superior (TLD, como .com, .org, .es). En este caso, el servidor raíz le dirá dónde están los servidores para el .com.
+Servidor TLD (Top-Level Domain Server): El servidor DNS recursivo ahora contacta con el servidor TLD para .com. Este servidor sabe qué servidores son los responsables de los dominios registrados bajo .com. Le indicará la dirección del servidor DNS autoritativo para ejemplo.com.
+Servidor DNS autoritativo: Finalmente, el servidor DNS recursivo contacta con el servidor DNS autoritativo para ejemplo.com. Este es el servidor que tiene la información "oficial" del dominio ejemplo.com, incluyendo la dirección IP del servidor donde está alojada la página web (www.ejemplo.com). El servidor autoritativo le proporciona la dirección IP (por ejemplo, 192.0.2.42).
+El servidor DNS recursivo devuelve la IP: Una vez que el servidor DNS recursivo obtiene la dirección IP del servidor DNS autoritativo, la envía de vuelta a tu computadora y la guarda en su propia caché (para futuras solicitudes).
+
+El navegador se conecta a la IP: Tu computadora recibe la dirección IP, la envía al navegador, y este utiliza esa dirección IP para establecer una conexión directa con el servidor web donde se aloja www.ejemplo.com.
+
+El servidor web envía la página: Una vez establecida la conexión, el navegador solicita la página web, y el servidor web la envía de vuelta al navegador, que la renderiza para que tú la veas.
+
+Todo este proceso ocurre en cuestión de milisegundos, gracias a la eficiencia y la distribución global de los servidores DNS. Es un sistema fundamental para que la navegación por Internet sea intuitiva, ya que no tendríamos que recordar complejas cadenas numéricas para acceder a nuestros sitios web favoritos.

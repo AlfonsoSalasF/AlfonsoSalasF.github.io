@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 6: Enlaces (Hyperlinks) - Curso HTML</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/CSS/common_styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Clase 6: Enlaces (Hyperlinks) - Curso HTML Completo</h1>
+
+        <p>Hoy retomamos nuestro curso de HTML y, continuando con la emocionante aventura de construir páginas web interactivas, nos sumergiremos en uno de los pilares fundamentales de la web: <strong>los enlaces, o hipervínculos</strong>. Sin ellos, la web sería una colección de documentos aislados. Gracias a los enlaces, podemos navegar sin esfuerzo entre diferentes páginas, tanto dentro de un mismo sitio como a través de la vasta red global.</p>
+
+        <hr>
+
+        <h2>Clase 6: Enlaces (Hyperlinks): Navegación entre Páginas</h2>
+        <p>Desvelamos el poder de la navegación en la web. Aprendemos cómo conectar tus páginas, llevar a tus usuarios a otros sitios, e incluso permitirles iniciar correos electrónicos o llamadas telefónicas directamente desde tu sitio web. Prepárense para tejer la telaraña de su propio contenido.</p>
+
+        <h3>6.1. La Etiqueta <code>&lt;a&gt;</code> y el Atributo <code>href</code></h3>
+        <p>El corazón de todo enlace en HTML reside en la etiqueta <code>&lt;a&gt;</code>, que significa "anchor" (ancla). Esta etiqueta por sí sola no hace nada especial; necesita un atributo crucial para funcionar como un enlace: el atributo <code>href</code>.</p>
+        <p><strong><code>href</code> (Hypertext Reference):</strong> Este atributo es donde especificamos la <strong>URL (Uniform Resource Locator)</strong> a la que queremos que el enlace apunte. En otras palabras, es la dirección del destino al que el usuario será llevado al hacer clic en el enlace.</p>
+        <p>La estructura básica de un enlace es la siguiente:</p>
+        <pre><code>&lt;a href="URL_DEL_DESTINO"&gt;Texto del enlace&lt;/a&gt;</code></pre>
+        <ul>
+            <li><strong><code>URL_DEL_DESTINO</code></strong>: Aquí colocamos la dirección de la página o recurso al que queremos enlazar.</li>
+            <li><strong><code>Texto del enlace</code></strong>: Este es el texto visible en la página web sobre el que el usuario hará clic. Es fundamental que este texto sea descriptivo y claro, indicando al usuario qué esperar al seguir el enlace.</li>
+        </ul>
+        <p><strong>Ejemplo:</strong></p>
+        <pre><code>&lt;p&gt;Visita la &lt;a href="https://www.google.com"&gt;página principal de Google&lt;/a&gt; para buscar información.&lt;/p&gt;</code></pre>
+        <p>En este ejemplo, "página principal de Google" es el texto que se mostrará como un enlace, y al hacer clic en él, el navegador llevará al usuario a <code>https://www.google.com</code>.</p>
+
+        <h3>6.2. Enlaces Internos (Dentro del Mismo Sitio)</h3>
+        <p>Los enlaces internos son aquellos que conectan diferentes páginas o secciones <strong>dentro de tu propio sitio web</strong>. Son esenciales para la navegación de tu sitio, permitiendo a los usuarios moverse fluidamente entre tus contenidos.</p>
+        <p>Cuando creamos enlaces internos, podemos usar dos tipos de rutas en el atributo <code>href</code>:</p>
+
+        <h4>6.2.1. Rutas Relativas</h4>
+        <p>Las rutas relativas son las más comunes y recomendadas para enlaces internos. Son "relativas" a la ubicación del archivo HTML actual. Esto significa que no necesitas especificar la URL completa del sitio web, solo la ruta desde la página actual hasta el archivo de destino.</p>
+        <p><strong>Ventajas de las rutas relativas:</strong></p>
+        <ul>
+            <li><strong>Portabilidad:</strong> Si mueves tu sitio web a un servidor diferente o a una carpeta distinta, los enlaces seguirán funcionando siempre y cuando la estructura de directorios interna se mantenga. No tendrás que actualizar todas las URLs.</li>
+            <li><strong>Facilidad de mantenimiento:</strong> Si cambias el nombre de tu dominio o la URL base de tu sitio, no tendrás que modificar cada enlace interno.</li>
+        </ul>
+        <p><strong>Ejemplos de rutas relativas:</strong></p>
+        <ul>
+            <li><strong>Enlace a un archivo en el mismo directorio:</strong>
+                Si <code>index.html</code> y <code>sobre_nosotros.html</code> están en la misma carpeta:
+                <pre><code>&lt;a href="sobre_nosotros.html"&gt;Conoce más sobre nosotros&lt;/a&gt;</code></pre>
+            </li>
+            <li><strong>Enlace a un archivo en un subdirectorio:</strong>
+                Si <code>productos.html</code> está dentro de una carpeta llamada <code>seccion_productos</code> que está en el mismo nivel que tu archivo actual:
+                <pre><code>&lt;a href="seccion_productos/productos.html"&gt;Nuestros productos&lt;/a&gt;</code></pre>
+            </li>
+            <li><strong>Enlace a un archivo en un directorio superior (o subir de nivel):</strong>
+                Si tu archivo actual está en <code>blog/articulo1.html</code> y quieres enlazar a <code>contacto.html</code> que está en la carpeta raíz (un nivel superior):
+                <pre><code>&lt;a href="../contacto.html"&gt;Contáctanos&lt;/a&gt;</code></pre>
+                El <code>../</code> indica "subir un nivel en la estructura de directorios". Puedes usar <code>../../</code> para subir dos niveles, y así sucesivamente.
+            </li>
+            <li><strong>Enlace a la página principal (índice) desde un subdirectorio:</strong>
+                Si estás en <code>seccion_productos/productos.html</code> y quieres ir a <code>index.html</code> en la raíz:
+                <pre><code>&lt;a href="../index.html"&gt;Ir a la página principal&lt;/a&gt;</code></pre>
+                Puedes tambien acceder directamente a index.html con <code>href="/"</code> y el intérprete ya sabe que vas a la página principal.
+            </li>
+        </ul>
+
+        <h4>6.2.2. Rutas Absolutas (Dentro del Mismo Sitio)</h4>
+        <p>Aunque menos comunes para enlaces internos a archivos dentro del mismo sitio, también puedes usar rutas absolutas. Estas rutas especifican la URL completa desde la raíz de tu dominio.</p>
+        <p><strong>Ejemplo:</strong></p>
+        <p>Si tu dominio es <code>midominio.com</code> y quieres enlazar a la página <code>acerca.html</code> que está en la raíz:</p>
+        <pre><code>&lt;a href="/acerca.html"&gt;Acerca de nosotros&lt;/a&gt;</code></pre>
+        <p>Observa que la ruta comienza con <code>/</code>, lo que indica la raíz del dominio. Si tu sitio está en un subdirectorio como <code>midominio.com/mi_sitio/</code>, entonces la ruta absoluta sería <code>/mi_sitio/acerca.html</code>.</p>
+        <p><strong>Consideraciones:</strong></p>
+        <ul>
+            <li>Para sitios pequeños o en desarrollo local, las rutas relativas son generalmente más convenientes.</li>
+            <li>Las rutas absolutas pueden ser útiles en ciertos sistemas de gestión de contenido (CMS) o si necesitas referenciar recursos de forma consistente desde cualquier parte de tu sitio, independientemente de la ubicación del archivo actual.</li>
+        </ul>
+
+        <h3>6.3. Enlaces Externos (A Otros Sitios Web)</h3>
+        <p>Los enlaces externos, como su nombre indica, dirigen a los usuarios a páginas o recursos ubicados en <strong>otros dominios web</strong>. Son cruciales para citar fuentes, recomendar recursos, o simplemente conectar tu sitio con el resto de la web.</p>
+        <p>Para crear un enlace externo, el atributo <code>href</code> debe contener la <strong>URL completa y absoluta</strong> del destino, incluyendo el protocolo (<code>http://</code> o <code>https://</code>).</p>
+        <p><strong>Ejemplo:</strong></p>
+        <pre><code>&lt;p&gt;Puedes encontrar más información sobre desarrollo web en &lt;a href="https://developer.mozilla.org/es/docs/Web"&gt;MDN Web Docs&lt;/a&gt;.&lt;/p&gt;</code></pre>
+        <p class="note"><strong>Importante:</strong> Siempre incluye <code>https://</code> (o <code>http://</code> si el sitio no tiene SSL, aunque esto es cada vez menos común y no recomendado) al inicio de la URL para enlaces externos. De lo contrario, el navegador podría intentar interpretar la URL como una ruta relativa dentro de tu propio sitio, lo que resultaría en un enlace roto.</p>
+
+        <h3>6.4. Abrir Enlaces en una Nueva Pestaña: <code>target="_blank"</code></h3>
+        <p>Por defecto, cuando un usuario hace clic en un enlace, la página actual del navegador se reemplaza por la página de destino. Sin embargo, a menudo querrás que los enlaces externos (o incluso algunos internos) se abran en una <strong>nueva pestaña o ventana del navegador</strong>, manteniendo tu sitio web original abierto en la pestaña anterior. Esto mejora la experiencia del usuario, ya que no "pierden" tu sitio al seguir un enlace.</p>
+        <p>Para lograr esto, utilizamos el atributo <code>target</code> con el valor <code>_blank</code>.</p>
+        <p><strong>Sintaxis:</strong></p>
+        <pre><code>&lt;a href="URL_DEL_DESTINO" target="_blank"&gt;Texto del enlace&lt;/a&gt;</code></pre>
+        <p><strong>Ejemplo:</strong></p>
+        <pre><code>&lt;p&gt;Para ver un ejemplo de un sitio responsivo, visita &lt;a href="https://getbootstrap.com/" target="_blank"&gt;Bootstrap (se abrirá en una nueva pestaña)&lt;/a&gt;.&lt;/p&gt;</code></pre>
+        <p><strong>Consideraciones de seguridad y rendimiento al usar <code>target="_blank"</code>:</strong></p>
+        <p>Aunque <code>target="_blank"</code> es muy útil, tiene implicaciones de seguridad y rendimiento que debes conocer:</p>
+        <ol>
+            <li><strong><code>rel="noopener noreferrer"</code>:</strong> Cuando usas <code>target="_blank"</code>, la página que se abre en la nueva pestaña puede tener acceso limitado al objeto <code>window.opener</code> de la página original. Esto puede ser explotado por sitios maliciosos para realizar ataques de phishing (engañar al usuario para que piense que está en tu sitio) o para consumir recursos de tu página.
+                Para mitigar este riesgo, es una <strong>práctica recomendada y casi obligatoria</strong> añadir los atributos <code>rel="noopener noreferrer"</code> (o al menos <code>rel="noopener"</code>) al mismo tiempo que <code>target="_blank"</code>.</li>
+        </ol>
+        <ul>
+            <li><strong><code>noopener</code></strong>: Evita que la nueva página pueda acceder a la propiedad <code>window.opener</code>.</li>
+            <li><strong><code>noreferrer</code></strong>: Además de <code>noopener</code>, evita que el navegador envíe el <code>Referer</code> HTTP header, lo que significa que la página de destino no sabrá desde qué página llegó el usuario. Esto puede ser útil para la privacidad del usuario, aunque algunos servicios de análisis podrían no registrar la fuente del tráfico.</li>
+        </ul>
+        <p><strong>Sintaxis recomendada para enlaces externos que abren en una nueva pestaña:</strong></p>
+        <pre><code>&lt;a href="URL_DEL_DESTINO" target="_blank" rel="noopener noreferrer"&gt;Texto del enlace&lt;/a&gt;</code></pre>
+        <p><strong>Ejemplo con seguridad:</strong></p>
+        <pre><code>&lt;p&gt;Consulta la documentación oficial de &lt;a href="https://developer.mozilla.org/es/docs/Web/HTML" target="_blank" rel="noopener noreferrer"&gt;HTML en MDN (nueva pestaña segura)&lt;/a&gt;.&lt;/p&gt;</code></pre>
+        <p>Es una buena práctica implementar <code>rel="noopener noreferrer"</code> cada vez que uses <code>target="_blank"</code> para proteger a tus usuarios y tu propio sitio.</p>
+
+        <h3>6.5. Enlaces de Correo Electrónico y Teléfono</h3>
+        <p>Además de enlazar a otras páginas web, la etiqueta <code>&lt;a&gt;</code> también puede utilizarse para iniciar acciones específicas en el sistema del usuario, como abrir su cliente de correo electrónico o iniciar una llamada telefónica.</p>
+
+        <h4>6.5.1. Enlaces de Correo Electrónico (<code>mailto:</code>)</h4>
+        <p>Puedes crear un enlace que, al hacer clic, abra el cliente de correo electrónico predeterminado del usuario (como Outlook, Thunderbird o Gmail en el navegador) y pre-rellene la dirección del destinatario.</p>
+        <p>Para esto, el valor del atributo <code>href</code> comienza con <code>mailto:</code> seguido de la dirección de correo electrónico.</p>
+        <p><strong>Sintaxis:</strong></p>
+        <pre><code>&lt;a href="mailto:DIRECCION_DE_CORREO"&gt;Texto del enlace&lt;/a&gt;</code></pre>
+        <p><strong>Ejemplo:</strong></p>
+        <pre><code>&lt;p&gt;¿Tienes preguntas? &lt;a href="mailto:info@tudominio.com"&gt;Envíanos un correo electrónico&lt;/a&gt;.&lt;/p&gt;</code></pre>
+        <p><strong>Opciones adicionales con <code>mailto:</code>:</strong></p>
+        <p>Puedes añadir parámetros a la URL <code>mailto:</code> para pre-rellenar otros campos del correo electrónico, como el asunto, el cuerpo del mensaje o incluso destinatarios en copia (CC) o copia oculta (BCC). Los parámetros se añaden después de la dirección de correo electrónico, comenzando con <code>?</code> para el primer parámetro y <code>&amp;</code> para los subsiguientes.</p>
+        <ul>
+            <li><strong><code>subject</code> (Asunto):</strong>
+                <pre><code>&lt;a href="mailto:info@tudominio.com?subject=Consulta%20desde%20la%20web"&gt;Enviar consulta con asunto&lt;/a&gt;</code></pre>
+                (Nota: Los espacios se representan con <code>%20</code> o un <code>+</code> en las URLs, aunque el navegador suele manejarlos bien, es una buena práctica codificarlos).
+            </li>
+            <li><strong><code>body</code> (Cuerpo del mensaje):</strong>
+                <pre><code>&lt;a href="mailto:info@tudominio.com?body=Me%20gustaria%20saber%20mas%20sobre..."&gt;Enviar con cuerpo predefinido&lt;/a&gt;</code></pre>
+            </li>
+            <li><strong><code>cc</code> (Copia de carbón):</strong>
+                <pre><code>&lt;a href="mailto:info@tudominio.com?cc=ventas@tudominio.com"&gt;Enviar a info y ventas&lt;/a&gt;</code></pre>
+            </li>
+            <li><strong><code>bcc</code> (Copia de carbón oculta):</strong>
+                <pre><code>&lt;a href="mailto:info@tudominio.com?bcc=privado@tudominio.com"&gt;Enviar con copia oculta&lt;/a&gt;</code></pre>
+            </li>
+            <li><strong>Combinando varios parámetros:</strong>
+                <pre><code>&lt;a href="mailto:info@tudominio.com?subject=Contacto%20web&amp;body=Hola,%20me%20pon%20en%20contacto%20desde%20su%20sitio%20web."&gt;Contactar con asunto y cuerpo&lt;/a&gt;</code></pre>
+            </li>
+        </ul>
+
+        <h4>6.5.2. Enlaces de Teléfono (<code>tel:</code>)</h4>
+        <p>En dispositivos móviles, puedes crear enlaces que, al hacer clic, inicien una llamada telefónica al número especificado.</p>
+        <p>Para esto, el valor del atributo <code>href</code> comienza con <code>tel:</code> seguido del número de teléfono.</p>
+        <p><strong>Sintaxis:</strong></p>
+        <pre><code>&lt;a href="tel:NUMERO_DE_TELEFONO"&gt;Texto del enlace&lt;/a&gt;</code></pre>
+        <p><strong>Ejemplo:</strong></p>
+        <pre><code>&lt;p&gt;Llámanos ahora: &lt;a href="tel:+34912345678"&gt;Teléfono: +34 912 34 56 78&lt;/a&gt;&lt;/p&gt;</code></pre>
+        <p><strong>Recomendaciones para números de teléfono:</strong></p>
+        <ul>
+            <li>Incluye el código de país (ej., <code>+34</code> para España) para asegurarte de que funcione globalmente.</li>
+            <li>Evita espacios, guiones o paréntesis en el número dentro del <code>href</code> para una mayor compatibilidad, aunque los navegadores modernos suelen ser flexibles. Sin embargo, en el texto visible del enlace, puedes formatearlo para que sea más legible para los usuarios.</li>
+        </ul>
+
+        <h3>6.6. Enlaces a Secciones Específicas (Anclas con ID)</h3>
+        <p>Aunque esto es más avanzado, es fundamental para una buena navegación interna. Puedes enlazar a una sección específica dentro de la misma página HTML o en otra página, utilizando el atributo <code>id</code>.</p>
+        <ol>
+            <li><strong>Definir un ancla:</strong> Asigna un <code>id</code> único a cualquier elemento HTML al que quieras enlazar.
+                <pre><code>&lt;h2 id="seccion-contacto"&gt;Contacto&lt;/h2&gt;
+&lt;p&gt;Puedes rellenar el formulario de contacto...&lt;/p&gt;</code></pre>
+            </li>
+            <li><strong>Crear el enlace:</strong> En el <code>href</code>, usa <code>#</code> seguido del <code>id</code> del elemento.
+                <ul>
+                    <li><strong>Dentro de la misma página:</strong>
+                        <pre><code>&lt;p&gt;&lt;a href="#seccion-contacto"&gt;Ir a la sección de Contacto&lt;/a&gt;&lt;/p&gt;</code></pre>
+                        Al hacer clic, la página se desplazará suavemente hasta el encabezado "Contacto".
+                    </li>
+                    <li><strong>A una sección en otra página:</strong>
+                        <pre><code>&lt;a href="sobre_nosotros.html#mision"&gt;Ver nuestra misión en la página "Sobre Nosotros"&lt;/a&gt;</code></pre>
+                        Esto cargará <code>sobre_nosotros.html</code> y luego se desplazará a la sección con <code>id="mision"</code>.
+                    </li>
+                </ul>
+            </li>
+        </ol>
+
+        <hr>
+        <p>¡Excelente trabajo! Has cubierto uno de los aspectos más vitales del desarrollo web. Los enlaces son la columna vertebral de la navegación, y dominarlos te permite crear sitios web cohesivos y fáciles de usar.</p>
+        <p>Para practicar lo aprendido, dirígete a la página de <a href="Ejercicios06.html">Ejercicios de la Clase 6</a>.</p>
+        <p>En la próxima clase, profundizaremos en la <a href= "./07ImagenesInsertandoContenidoVisual.html">inserción de contenido visual</a> en nuestra página web. ¡Hasta entonces, practica con tus enlaces!</p>
+    </div>
+</body>
+</html>

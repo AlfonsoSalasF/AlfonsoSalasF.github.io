@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 6: Ejercicios de Enlaces</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/common_styles.css">
+    <link rel="stylesheet" href="/css/ejecicios_styles.css"> </head>
+<body>
+    <div class="container">
+        <h1>Clase 6: Ejercicios de Enlaces (Hyperlinks)</h1>
+
+        <div class="exercise-section">
+            <h3>Ejercicios Prácticos de la Clase 6</h3>
+            <p>Para consolidar tus conocimientos sobre enlaces, te propongo los siguientes ejercicios. Haz clic en "Resolver" para ver la solución de cada uno.</p>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 1: Navegación entre páginas</h4>
+                <p>Crea una página de "Inicio" (<code>index.html</code>) y una de "Servicios" (<code>servicios.html</code>).</p>
+                <ul>
+                    <li>En <code>index.html</code>, crea un enlace que lleve a <code>servicios.html</code>.</li>
+                    <li>En <code>servicios.html</code>, crea un enlace que lleve de vuelta a <code>index.html</code>. Utiliza rutas relativas.</li>
+                </ul>
+                <button class="reveal-button" onclick="toggleSolution('solution1')">Resolver Ejercicio 1</button>
+                <div id="solution1" class="exercise-solution">
+                    <p><strong>Solución Ejercicio 1:</strong></p>
+                    <p><strong>Contenido de <code>index.html</code>:</strong></p>
+                    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Inicio&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Página de Inicio&lt;/h1&gt;
+    &lt;p&gt;Ir a &lt;a href="servicios.html"&gt;Nuestros Servicios&lt;/a&gt;.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    <p><strong>Contenido de <code>servicios.html</code>:</strong></p>
+                    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Servicios&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Nuestros Servicios&lt;/h1&gt;
+    &lt;p&gt;Volver a la &lt;a href="index.html"&gt;Página de Inicio&lt;/a&gt;.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 2: Enlace externo con nueva pestaña y seguridad</h4>
+                <p>Añade un enlace externo en tu página de "Inicio".</p>
+                <ul>
+                    <li>Enlaza a un sitio web de noticias o una enciclopedia (ej. Wikipedia) que se abra en una <strong>nueva pestaña</strong> y asegúrate de incluir las medidas de seguridad recomendadas (<code>rel="noopener noreferrer"</code>).</li>
+                </ul>
+                <button class="reveal-button" onclick="toggleSolution('solution2')">Resolver Ejercicio 2</button>
+                <div id="solution2" class="exercise-solution">
+                    <p><strong>Solución Ejercicio 2 (ejemplo en <code>index.html</code>):</strong></p>
+                    <pre><code>&lt;p&gt;Visita la &lt;a href="https://es.wikipedia.org/wiki/HTML" target="_blank" rel="noopener noreferrer"&gt;página de HTML en Wikipedia&lt;/a&gt; (se abrirá en una nueva pestaña de forma segura).&lt;/p&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 3: Implementar enlaces de contacto</h4>
+                <p>Implementa enlaces de contacto en tu página de "Servicios".</p>
+                <ul>
+                    <li>En tu página de "Servicios", añade un enlace de correo electrónico para "Preguntas" que pre-rellene el asunto como "Consulta sobre servicios".</li>
+                    <li>Añade un enlace de teléfono (con un número ficticio) para dispositivos móviles, visiblemente formateado.</li>
+                </ul>
+                <button class="reveal-button" onclick="toggleSolution('solution3')">Resolver Ejercicio 3</button>
+                <div id="solution3" class="exercise-solution">
+                    <p><strong>Solución Ejercicio 3 (ejemplo en <code>servicios.html</code>):</strong></p>
+                    <pre><code>&lt;p&gt;¿Preguntas? &lt;a href="mailto:info@tudominio.com?subject=Consulta%20sobre%20servicios"&gt;Envíanos un correo&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Llámanos: &lt;a href="tel:+34912345678"&gt;+34 912 34 56 78&lt;/a&gt;.&lt;/p&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 4: Crear un menú de navegación básico</h4>
+                <p>En tu <code>index.html</code>, crea una lista desordenada (<code>&lt;ul&gt;</code>) con elementos de lista (<code>&lt;li&gt;</code>). Dentro de cada <code>&lt;li&gt;</code>, coloca enlaces a:</p>
+                <ul>
+                    <li>"Inicio" (a <code>index.html</code> mismo)</li>
+                    <li>"Servicios" (a <code>servicios.html</code>)</li>
+                    <li>"Contacto" (un enlace <code>mailto:</code> o un enlace a una sección <code>#contacto</code> si la añades).</li>
+                </ul>
+                <button class="reveal-button" onclick="toggleSolution('solution4')">Resolver Ejercicio 4</button>
+                <div id="solution4" class="exercise-solution">
+                    <p><strong>Solución Ejercicio 4 (ejemplo en <code>index.html</code>):</strong></p>
+                    <pre><code>&lt;nav&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="index.html"&gt;Inicio&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="servicios.html"&gt;Servicios&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="mailto:info@tudominio.com"&gt;Contacto&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 5: Enlaces a secciones en la misma página (Desafío)</h4>
+                <p>En tu <code>index.html</code>, crea al menos tres secciones (por ejemplo, "Acerca de", "Nuestros Valores", "Testimonios") y dales un <code>id</code> único a cada una. En la parte superior de <code>index.html</code>, crea un pequeño menú de navegación con enlaces que te permitan saltar a cada una de estas secciones dentro de la misma página.</p>
+                <button class="reveal-button" onclick="toggleSolution('solution5')">Resolver Ejercicio 5</button>
+                <div id="solution5" class="exercise-solution">
+                    <p><strong>Solución Ejercicio 5 (ejemplo en <code>index.html</code>):</strong></p>
+                    <pre><code>&lt;!-- Menú de navegación --&gt;
+&lt;nav&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#acerca-de"&gt;Acerca de&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#valores"&gt;Nuestros Valores&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#testimonios"&gt;Testimonios&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;!-- Secciones con IDs --&gt;
+&lt;section id="acerca-de"&gt;
+    &lt;h2&gt;Acerca de Nosotros&lt;/h2&gt;
+    &lt;p&gt;Contenido sobre la empresa...&lt;/p&gt;
+&lt;/section&gt;
+
+&lt;section id="valores"&gt;
+    &lt;h2&gt;Nuestros Valores&lt;/h2&gt;
+    &lt;p&gt;Contenido sobre los valores...&lt;/p&gt;
+&lt;/section&gt;
+
+&lt;section id="testimonios"&gt;
+    &lt;h2&gt;Testimonios&lt;/h2&gt;
+    &lt;p&gt;Contenido de testimonios...&lt;/p&gt;
+&lt;/section&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="quiz-section exercise-section">
+            <h3>Preguntas Tipo Test</h3>
+            <p>Pon a prueba tus conocimientos sobre enlaces HTML con estas preguntas de opción múltiple.</p>
+
+            <form id="quizForm">
+                <div class="quiz-question">
+                    <p>1. ¿Cuál es el atributo principal de la etiqueta <code>&lt;a&gt;</code> para especificar el destino del enlace?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="a"> a) <code>src</code></label>
+                        <label><input type="radio" name="q1" value="b"> b) <code>link</code></label>
+                        <label><input type="radio" name="q1" value="c"> c) <code>href</code></label>
+                        <label><input type="radio" name="q1" value="d"> d) <code>url</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>2. Para abrir un enlace en una nueva pestaña del navegador, ¿qué atributo y valor debes añadir?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="a"> a) <code>target="_newtab"</code></label>
+                        <label><input type="radio" name="q2" value="b"> b) <code>newtab="true"</code></label>
+                        <label><input type="radio" name="q2" value="c"> c) <code>target="_blank"</code></label>
+                        <label><input type="radio" name="q2" value="d"> d) <code>open="_tab"</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>3. ¿Qué se recomienda añadir siempre junto con <code>target="_blank"</code> por motivos de seguridad y rendimiento?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="a"> a) <code>rel="follow"</code></label>
+                        <label><input type="radio" name="q3" value="b"> b) <code>rel="noopener noreferrer"</code></label>
+                        <label><input type="radio" name="q3" value="c"> c) <code>data-security="true"</code></label>
+                        <label><input type="radio" name="q3" value="d"> d) <code>type="external"</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>4. ¿Cómo se crea un enlace para enviar un correo electrónico?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="a"> a) <code>&lt;a email="ejemplo@correo.com"&gt;</code></label>
+                        <label><input type="radio" name="q4" value="b"> b) <code>&lt;a href="sendto:ejemplo@correo.com"&gt;</code></label>
+                        <label><input type="radio" name="q4" value="c"> c) <code>&lt;a href="mailto:ejemplo@correo.com"&gt;</code></label>
+                        <label><input type="radio" name="q4" value="d"> d) <code>&lt;mail href="ejemplo@correo.com"&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>5. ¿Cuál es el formato correcto para un enlace telefónico que un dispositivo móvil pueda reconocer?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="a"> a) <code>&lt;a href="call:123456789"&gt;</code></label>
+                        <label><input type="radio" name="q5" value="b"> b) <code>&lt;a href="phone:123456789"&gt;</code></label>
+                        <label><input type="radio" name="q5" value="c"> c) <code>&lt;a href="tel:123456789"&gt;</code></label>
+                        <label><input type="radio" name="q5" value="d"> d) <code>&lt;a href="dial:123456789"&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>6. Si quieres enlazar a un archivo llamado <code>pagina2.html</code> que está en el mismo directorio que tu archivo actual, ¿cuál es la ruta correcta?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q6" value="a"> a) <code>href="/pagina2.html"</code></label>
+                        <label><input type="radio" name="q6" value="b"> b) <code>href="pagina2.html"</code></label>
+                        <label><input type="radio" name="q6" value="c"> c) <code>href="../pagina2.html"</code></label>
+                        <label><input type="radio" name="q6" value="d"> d) <code>href="./pagina2.html"</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>7. Para enlazar a una sección específica dentro de la misma página, ¿qué se usa en el atributo <code>href</code>?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q7" value="a"> a) El nombre de la etiqueta</label>
+                        <label><input type="radio" name="q7" value="b"> b) El atributo <code>class</code> del elemento</label>
+                        <label><input type="radio" name="q7" value="c"> c) El atributo <code>id</code> del elemento, precedido de <code>#</code></label>
+                        <label><input type="radio" name="q7" value="d"> d) El atributo <code>name</code> del elemento</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>8. ¿Qué tipo de ruta es <code>/carpeta/archivo.html</code>?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q8" value="a"> a) Ruta relativa</label>
+                        <label><input type="radio" name="q8" value="b"> b) Ruta de red</label>
+                        <label><input type="radio" name="q8" value="c"> c) Ruta absoluta (desde la raíz del dominio)</label>
+                        <label><input type="radio" name="q8" value="d"> d) Ruta de documento</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>9. ¿Cuál de las siguientes URL apunta a un enlace externo?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q9" value="a"> a) <code>contacto.html</code></label>
+                        <label><input type="radio" name="q9" value="b"> b) <code>../imagenes/logo.png</code></label>
+                        <label><input type="radio" name="q9" value="c"> c) <code>https://www.ejemplo.com/pagina.html</code></label>
+                        <label><input type="radio" name="q9" value="d"> d) <code>/assets/documento.pdf</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>10. Si un enlace tiene <code>href="documento.pdf"</code>, ¿qué tipo de recurso esperaría el navegador?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q10" value="a"> a) Una página HTML</label>
+                        <label><input type="radio" name="q10" value="b"> b) Una imagen</label>
+                        <label><input type="radio" name="q10" value="c"> c) Un archivo PDF</label>
+                        <label><input type="radio" name="q10" value="d"> d) Un video</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>11. ¿Para qué sirve el atributo <code>rel="noreferrer"</code>?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q11" value="a"> a) Para evitar que el navegador envíe el encabezado HTTP <code>Referer</code> a la página de destino.</label>
+                        <label><input type="radio" name="q11" value="b"> b) Para indicar que el enlace es irrelevante para los motores de búsqueda.</label>
+                        <label><input type="radio" name="q11" value="c"> c) Para forzar al navegador a recargar la página de destino.</label>
+                        <label><input type="radio" name="q11" value="d"> d) Para que el enlace no sea rastreado por JavaScript.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>12. ¿Qué caracteres se utilizan para separar parámetros en una URL <code>mailto:</code> (después del primero)?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q12" value="a"> a) <code>?</code></label>
+                        <label><input type="radio" name="q12" value="b"> b) <code>;</code></label>
+                        <label><input type="radio" name="q12" value="c"> c) <code>&amp;</code></label>
+                        <label><input type="radio" name="q12" value="d"> d) <code>#</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>13. Si estás en <code>blog/articulo.html</code> y quieres enlazar a <code>index.html</code> en la raíz del sitio, ¿cuál es la ruta relativa correcta?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q13" value="a"> a) <code>href="index.html"</code></label>
+                        <label><input type="radio" name="q13" value="b"> b) <code>href="../index.html"</code></label>
+                        <label><input type="radio" name="q13" value="c"> c) <code>href="/index.html"</code></label>
+                        <label><input type="radio" name="q13" value="d"> d) <code>href="root/index.html"</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>14. ¿Qué es un "ancla" en el contexto de los enlaces HTML?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q14" value="a"> a) Una forma de incrustar videos.</label>
+                        <label><input type="radio" name="q14" value="b"> b) Un marcador dentro de una página para enlazar a una sección específica.</label>
+                        <label><input type="radio" name="q14" value="c"> c) Un tipo de enlace que solo funciona en el pie de página.</label>
+                        <label><input type="radio" name="q14" value="d"> d) Una forma de agrupar varios enlaces.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>15. ¿Es necesario incluir <code>http://</code> o <code>https://</code> para un enlace interno si se usan rutas relativas?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q15" value="a"> a) Sí, siempre es necesario.</label>
+                        <label><input type="radio" name="q15" value="b"> b) No, solo para enlaces a archivos PDF.</label>
+                        <label><input type="radio" name="q15" value="c"> c) No, solo para enlaces externos.</label>
+                        <label><input type="radio" name="q15" value="d"> d) Sí, para mejorar la seguridad.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>16. ¿Qué atributo permite pre-rellenar el asunto de un correo electrónico en un enlace <code>mailto:</code>?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q16" value="a"> a) <code>subject</code></label>
+                        <label><input type="radio" name="q16" value="b"> b) <code>topic</code></label>
+                        <label><input type="radio" name="q16" value="c"> c) <code>mailtitle</code></label>
+                        <label><input type="radio" name="q16" value="d"> d) <code>header</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>17. ¿Cuál es la ventaja principal de usar rutas relativas para enlaces internos?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q17" value="a"> a) Son más rápidas de cargar.</label>
+                        <label><input type="radio" name="q17" value="b"> b) Mejoran el SEO automáticamente.</label>
+                        <label><input type="radio" name="q17" value="c"> c) Hacen el sitio más portátil (fácil de mover) y mantenible.</label>
+                        <label><input type="radio" name="q17" value="d"> d) Permiten enlazar a recursos en otros dominios.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>18. ¿Qué significa el texto entre las etiquetas <code>&lt;a&gt;</code> y <code>&lt;/a&gt;</code>?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q18" value="a"> a) La URL de destino.</label>
+                        <label><input type="radio" name="q18" value="b"> b) El título del enlace.</label>
+                        <label><input type="radio" name="q18" value="c"> c) El texto visible sobre el que el usuario hará clic.</label>
+                        <label><input type="radio" name="q18" value="d"> d) Una descripción del contenido de la página de destino.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>19. Si quieres que un enlace <code>mailto:</code> incluya un destinatario en copia oculta (BCC), ¿qué parámetro usarías?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q19" value="a"> a) <code>cc</code></label>
+                        <label><input type="radio" name="q19" value="b"> b) <code>copy</code></label>
+                        <label><input type="radio" name="q19" value="c"> c) <code>bcc</code></label>
+                        <label><input type="radio" name="q19" value="d"> d) <code>hidden_copy</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>20. ¿Qué se utiliza para indicar "subir un nivel en la estructura de directorios" en una ruta relativa?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q20" value="a"> a) <code>./</code></label>
+                        <label><input type="radio" name="q20" value="b"> b) <code>//</code></label>
+                        <label><input type="radio" name="q20" value="c"> c) <code>../</code></label>
+                        <label><input type="radio" name="q20" value="d"> d) <code>../../</code></label>
+                    </div>
+                </div>
+
+                <button type="button" class="submit-quiz-button" onclick="checkQuiz()">Ver Resultados</button>
+            </form>
+
+            <div id="quizResults" class="quiz-results">
+                <p>Resultados del Test:</p>
+                <ol id="resultsList"></ol>
+                <p id="scoreSummary"></p>
+                <button type="button" class="reveal-button" onclick="resetQuiz()">Volver a Intentar</button>
+            </div>
+        </div>
+
+        <hr>
+
+        <p>
+            <a href="06EnlacesHyperlinksNavegacionEntrePaginas.html">Volver a la Clase 6: Enlaces</a>
+        </p>
+    </div>
+
+    <script>
+        function toggleSolution(id) {
+            const solutionDiv = document.getElementById(id);
+            if (solutionDiv.style.display === 'none' || solutionDiv.style.display === '') {
+                solutionDiv.style.display = 'block';
+            } else {
+                solutionDiv.style.display = 'none';
+            }
+        }
+
+        const correctAnswers = {
+            q1: 'c',
+            q2: 'c',
+            q3: 'b',
+            q4: 'c',
+            q5: 'c',
+            q6: 'b',
+            q7: 'c',
+            q8: 'c',
+            q9: 'c',
+            q10: 'c',
+            q11: 'a',
+            q12: 'c',
+            q13: 'b',
+            q14: 'b',
+            q15: 'c',
+            q16: 'a',
+            q17: 'c',
+            q18: 'c',
+            q19: 'c',
+            q20: 'c'
+        };
+
+        function checkQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const resultsList = document.getElementById('resultsList');
+            const quizResultsDiv = document.getElementById('quizResults');
+            const scoreSummary = document.getElementById('scoreSummary');
+            let score = 0;
+
+            resultsList.innerHTML = ''; // Limpiar resultados anteriores
+
+            for (let i = 1; i <= 20; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = quizForm.elements[questionName].value;
+                const correctAnswer = correctAnswers[questionName];
+                const listItem = document.createElement('li');
+                
+                if (selectedOption === correctAnswer) {
+                    listItem.classList.add('correct');
+                    listItem.textContent = `Pregunta ${i}: Correcta.`;
+                    score++;
+                } else {
+                    listItem.classList.add('incorrect');
+                    // Find the text of the selected (incorrect) option
+                    let selectedAnswerText = 'No respondida';
+                    if (selectedOption) {
+                        const selectedLabel = quizForm.querySelector(`input[name="${questionName}"][value="${selectedOption}"]`).closest('label');
+                        selectedAnswerText = selectedLabel ? selectedLabel.textContent.trim() : selectedAnswerText;
+                    }
+                    
+                    // Find the text of the correct option
+                    const correctLabel = quizForm.querySelector(`input[name="${questionName}"][value="${correctAnswer}"]`).closest('label');
+                    const correctAnswerText = correctLabel ? correctLabel.textContent.trim() : 'N/A';
+
+                    listItem.innerHTML = `Pregunta ${i}: Incorrecta. <br> Tu respuesta: "${selectedAnswerText}". <span class="correct-answer-info">Respuesta correcta: "${correctAnswerText}".</span>`;
+                }
+                resultsList.appendChild(listItem);
+            }
+
+            scoreSummary.textContent = `Tu puntuación es: ${score} de 20 preguntas correctas.`;
+            quizResultsDiv.style.display = 'block'; // Mostrar la sección de resultados
+            quizResultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Desplazarse a los resultados
+        }
+
+        function resetQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            quizForm.reset(); // Reinicia todos los radio buttons
+            document.getElementById('quizResults').style.display = 'none'; // Oculta los resultados
+            document.getElementById('resultsList').innerHTML = ''; // Limpia la lista de resultados
+            document.getElementById('scoreSummary').textContent = ''; // Limpia el resumen de puntuación
+        }
+    </script>
+</body>
+</html>
