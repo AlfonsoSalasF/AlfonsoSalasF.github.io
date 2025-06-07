@@ -19,7 +19,7 @@
         <main>
             <section>
                 <h2>5.1. Listas Desordenadas (&lt;ul&gt; y &lt;li&gt;)</h2>
-                <p>Las listas desordenadas, representadas por la etiqueta **<code>&lt;ul&gt;</code>** (de "unordered list"), se utilizan para agrupar elementos que no tienen un orden secuencial o específico. Esto significa que el orden en que aparecen los elementos no altera el significado o la información que se transmite. Cada elemento individual dentro de la lista se define con la etiqueta **<code>&lt;li&gt;</code>** (de "list item"), que por defecto se mostrará con un marcador, usualmente un punto o círculo, aunque este estilo puede ser personalizado completamente con CSS.</p>
+                <p>Las listas desordenadas, representadas por la etiqueta <code>&lt;ul&gt;</code> (de "unordered list"), se utilizan para agrupar elementos que no tienen un orden secuencial o específico. Esto significa que el orden en que aparecen los elementos no altera el significado o la información que se transmite. Cada elemento individual dentro de la lista se define con la etiqueta <code>&lt;li&gt;</code> (de "list item"), que por defecto se mostrará con un marcador, usualmente un punto o círculo, aunque este estilo puede ser personalizado completamente con CSS.</p>
                 <p>Son ideales para:</p>
                 <ul>
                     <li>Menús de navegación donde el orden de los ítems no es crucial.</li>
@@ -49,7 +49,7 @@
 
             <section>
                 <h2>5.2. Listas Ordenadas (&lt;ol&gt; y &lt;li&gt;)</h2>
-                <p>Cuando la secuencia o el orden de los elementos es fundamental, recurrimos a las listas ordenadas, que se definen con la etiqueta **<code>&lt;ol&gt;</code>** (de "ordered list"). Cada elemento sigue siendo una etiqueta **<code>&lt;li&gt;</code>**. Por defecto, los navegadores numeran estos elementos con dígitos arábigos (1, 2, 3...), pero HTML proporciona atributos para personalizar este comportamiento.</p>
+                <p>Cuando la secuencia o el orden de los elementos es fundamental, recurrimos a las listas ordenadas, que se definen con la etiqueta <code>&lt;ol&gt;</code> (de "ordered list"). Cada elemento sigue siendo una etiqueta <code>&lt;li&gt;</code>. Por defecto, los navegadores numeran estos elementos con dígitos arábigos (1, 2, 3...), pero HTML proporciona atributos para personalizar este comportamiento.</p>
                 <p>Son perfectas para:</p>
                 <ul>
                     <li>Instrucciones paso a paso.</li>
@@ -64,11 +64,11 @@
                     <dt><code>type</code></dt>
                     <dd>Define el tipo de marcador que se usará para los elementos de la lista. Ofrece varias opciones para la numeración:</dd>
                     <ul>
-                        <li>**<code>1</code>**: Números arábigos (1, 2, 3, ...) - es el valor por defecto.</li>
-                        <li>**<code>a</code>**: Letras minúsculas (a, b, c, ...)</li>
-                        <li>**<code>A</code>**: Letras mayúsculas (A, B, C, ...)</li>
-                        <li>**<code>i</code>**: Números romanos en minúscula (i, ii, iii, ...)</li>
-                        <li>**<code>I</code>**: Números romanos en mayúscula (I, II, III, ...)</li>
+                        <li><code>1</code>: Números arábigos (1, 2, 3, ...) - es el valor por defecto.</li>
+                        <li><code>a</code>: Letras minúsculas (a, b, c, ...)</li>
+                        <li><code>A</code>: Letras mayúsculas (A, B, C, ...)</li>
+                        <li><code>i</code>: Números romanos en minúscula (i, ii, iii, ...)</li>
+                        <li><code>I</code>: Números romanos en mayúscula (I, II, III, ...)</li>
                     </ul>
                     <dt><code>reversed</code></dt>
                     <dd>Este atributo booleano (no requiere valor) hace que la lista se numere en orden descendente, desde el valor inicial hasta 1 (o lo que corresponda si se usa 'start').</dd>
@@ -91,14 +91,14 @@
 
                     <h4>b. Lista Ordenada con <code>start</code> y <code>type</code>:</h4>
                     <pre><code>
-                        &lt;ol type="A" start="3"&gt;
+                        &lt;ol type="A" start="C"&gt;
                             &lt;li&gt;Tercer punto de la secuencia.&lt;/li&gt;
                             &lt;li&gt;Cuarto punto a considerar.&lt;/li&gt;
                             &lt;li&gt;Quinto y último punto.&lt;/li&gt;
                         &lt;/ol&gt;</code>
                     </pre>
-                <ol type="A" start="3">
-                    <li>Tercer punto de la secuencia.</li>
+                <ol type="A">
+                    <li value="3">Tercer punto de la secuencia.</li>
                     <li>Cuarto punto a considerar.</li>
                     <li>Quinto y último punto.</li>
                 </ol>
@@ -125,9 +125,9 @@
                 <p>Las listas de definición son ideales para presentar pares de término-descripción, como un glosario, un diccionario, o una lista de preguntas frecuentes con sus respuestas. A diferencia de las listas ordenadas y desordenadas, no utilizan marcadores ni números por defecto, sino que estructuran el contenido visualmente por indentación.</p>
                 <p>Este tipo de lista se construye con tres etiquetas principales:</p>
                 <ul>
-                    <li>**<code>&lt;dl&gt;</code>** (de "description list" o "definition list"): Es el contenedor principal de toda la lista de definición.</li>
-                    <li>**<code>&lt;dt&gt;</code>** (de "description term" o "definition term"): Define un término que va a ser descrito. Puede haber uno o más términos por cada descripción.</li>
-                    <li>**<code>&lt;dd&gt;</code>** (de "description details" o "definition description"): Proporciona la descripción o definición del término(s) inmediatamente anterior(es).</li>
+                    <li><code>&lt;dl&gt;</code> (de "description list" o "definition list"): Es el contenedor principal de toda la lista de definición.</li>
+                    <li><code>&lt;dt&gt;</code> (de "description term" o "definition term"): Define un término que va a ser descrito. Puede haber uno o más términos por cada descripción.</li>
+                    <li><code>&lt;dd&gt;</code> (de "description details" o "definition description"): Proporciona la descripción o definición del término(s) inmediatamente anterior(es).</li>
                 </ul>
                 <p>Las listas de definición ofrecen una excelente estructura semántica para contenido que implica una relación directa entre un concepto y su explicación.</p>
 
