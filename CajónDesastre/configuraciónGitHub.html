@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resumen: Configuración de Proyecto Local con GitHub</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 900px;
+        }
+        pre {
+            background-color: #e2e8f0; /* bg-gray-200 */
+            color: #2d3748; /* text-gray-800 */
+            padding: 1rem;
+            border-radius: 0.375rem; /* rounded-md */
+            overflow-x: auto;
+            margin-top: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+        code {
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+        }
+        .step-heading {
+            border-bottom: 2px solid #3b82f6; /* border-blue-500 */
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .note {
+            background-color: #dbeafe; /* bg-blue-100 */
+            border-left: 4px solid #3b82f6; /* border-blue-500 */
+            padding: 1rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #1e40af; /* text-blue-800 */
+        }
+        .warning {
+            background-color: #fef2f2; /* bg-red-100 */
+            border-left: 4px solid #ef4444; /* border-red-500 */
+            padding: 1rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #991b1b; /* text-red-800 */
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 p-6">
+    <div class="container mx-auto bg-white shadow-xl rounded-lg p-8 md:p-10 lg:p-12 mt-8">
+        <h1 class="text-4xl font-extrabold text-blue-700 text-center mb-10">
+            Guía: Configuración y Sincronización de Proyecto Local con GitHub
+        </h1>
+
+        <p class="text-lg text-gray-700 mb-8">
+            Esta guía resume el proceso paso a paso para configurar tu proyecto local (organizado con las carpetas: <code>CajónDesastre</code>, <code>CSS</code>, <code>Ejercicios</code>, <code>Images</code>, <code>Pages</code> y <code>index.html</code> en la raíz) con un repositorio existente en GitHub, asegurando una sincronización efectiva.
+        </p>
+
+        <div class="note">
+            <strong>Consideración importante:</strong> Este proceso asume que estás de acuerdo en que el contenido de tu repositorio en GitHub (<code>AlfonsoSalasF.github.io</code>) será sobrescrito por el contenido de tu carpeta local.
+        </div>
+
+        <h2 class="text-2xl font-bold text-gray-800 step-heading">Preparación Inicial (en tu máquina local)</h2>
+        <ul class="list-disc pl-5 mb-6 text-gray-700">
+            <li>
+                Asegúrate de que la estructura de tu proyecto local sea exactamente como la deseas en la raíz de tu carpeta principal:
+                <pre><code>
+tu_proyecto_local/
+├── CajónDesastre/
+├── CSS/
+│   └── tu_estilo.css  (ejemplo)
+├── Ejercicios/
+├── Images/
+│   └── LogoHTML5.png  (ejemplo)
+├── Pages/
+│   └── 01IntroduccionAlDesarrolloWebYHtml.html (ejemplo)
+└── index.html
+                </code></pre>
+            </li>
+            <li>
+                Abre tu carpeta <code>tu_proyecto_local</code> en Visual Studio Code.
+            </li>
+        </ul>
+
+        <h2 class="text-2xl font-bold text-gray-800 step-heading">Paso 1: Inicializar Git en tu Proyecto Local</h2>
+        <p class="text-gray-700 mb-4">
+            Abre la terminal integrada en VS Code (<code>Terminal > New Terminal</code> o <code>Ctrl+Ñ</code>).
+        </p>
+        <ul class="list-decimal pl-5 mb-6 text-gray-700">
+            <li>
+                **Verifica si Git ya está inicializado:**
+                <pre><code>git status</code></pre>
+                Si la respuesta es "not a git repository", continúa con el siguiente punto. Si ya es un repositorio, asegúrate de que no haya cambios pendientes o que sean irrelevantes para este proceso.
+            </li>
+            <li>
+                **Inicializa el repositorio Git (si es necesario):**
+                <pre><code>git init</code></pre>
+                Esto crea la carpeta oculta <code>.git</code> para el seguimiento de versiones.
+            </li>
+        </ul>
+
+        <h2 class="text-2xl font-bold text-gray-800 step-heading">Paso 2: Realizar el Primer Commit Local</h2>
+        <ul class="list-decimal pl-5 mb-6 text-gray-700">
+            <li>
+                **Crea o actualiza tu archivo <code>.gitignore</code> (Opcional pero Recomendado):**
+                <p class="mb-2">Crea un archivo llamado <code>.gitignore</code> (sin extensión, solo <code>.gitignore</code>) en la raíz de tu proyecto local.</p>
+                <p class="mb-2">Puedes crearlo así:</p>
+                <ul class="list-disc pl-5 mb-2">
+                    <li>**Desde VS Code:** Clic derecho en el explorador de archivos (en la raíz del proyecto) > "New File..." > Escribe <code>.gitignore</code>.</li>
+                    <li>**Desde la Terminal:** Asegúrate de estar en la raíz de tu proyecto y ejecuta: <pre><code>touch .gitignore</code></pre></li>
+                </ul>
+                <p>Este archivo le dice a Git qué archivos y carpetas debe ignorar (no rastrear ni incluir en los commits), como archivos temporales o de configuración local.</p>
+            </li>
+            <li>
+                **Añadir todos tus archivos al "Staging Area":**
+                <p class="mb-2">El "staging area" es un área intermedia donde preparas los cambios que quieres incluir en tu próximo commit. No guarda los cambios directamente, sino que los selecciona.</p>
+                <pre><code>git add .</code></pre>
+                Esto prepara todos los archivos y carpetas de tu proyecto local para el commit. En VS Code, verás los archivos listados en el panel de "Control de Código Fuente", listos para ser confirmados.
+            </li>
+            <li>
+                **Realizar el commit local:**
+                <p class="mb-2">Un commit es una "instantánea" de tu proyecto en un momento dado, guardada en tu historial de Git local.</p>
+                <pre><code>git commit -m "Initial project setup and structure"</code></pre>
+                El mensaje entre comillas es descriptivo de los cambios.
+            </li>
+        </ul>
+
+        <h2 class="text-2xl font-bold text-gray-800 step-heading">Paso 3: Conectar tu Repositorio Local con GitHub</h2>
+        <ul class="list-decimal pl-5 mb-6 text-gray-700">
+            <li>
+                **Quitar la conexión remota existente (si la hay):**
+                <p class="mb-2">Esto previene conflictos si tu repositorio local estaba conectado a una URL antigua o incorrecta.</p>
+                <pre><code>git remote remove origin</code></pre>
+                (Si obtienes un error como "No such remote", ignóralo, significa que no había ninguna conexión remota configurada).
+            </li>
+            <li>
+                **Añadir la conexión a tu repositorio existente en GitHub:**
+                <p class="mb-2">Necesitas la URL HTTPS de tu repositorio <code>AlfonsoSalasF.github.io</code>. Haz clic en el botón verde "Code" en tu repositorio de GitHub para copiarla.</p>
+                <pre><code>git remote add origin https://github.com/AlfonsoSalasF/AlfonsoSalasF.github.io.git</code></pre>
+                <div class="note">
+                    <strong>¡Importante!:</strong> Siempre añade <code>.git</code> al final de la URL al usar <code>git remote add</code>.
+                </div>
+            </li>
+            <li>
+                **Establecer la rama principal y forzar la subida a GitHub:**
+                <p class="mb-2">Estos comandos renombran tu rama principal local a <code>main</code> (el estándar actual de GitHub) y luego fuerzan la subida de todo tu contenido local al repositorio remoto, sobrescribiendo lo que haya allí.</p>
+                <pre><code>git branch -M main</code></pre>
+                <pre><code>git push -u origin main --force</code></pre>
+                <div class="warning">
+                    <strong>¡ADVERTENCIA CRÍTICA del <code>--force</code>!</strong>
+                    Este comando reescribirá completamente el historial y el contenido de tu rama <code>main</code> en GitHub con lo que tienes localmente. Cualquier archivo que estuviera en GitHub y no en tu copia local se perderá. Úsalo solo si estás seguro de que el contenido local es el que deseas que sea la "verdad".
+                </div>
+                <p class="mb-2">Cuando ejecutes el <code>git push</code>, es probable que te pida autenticación:</p>
+                <ul class="list-disc pl-5 mb-2">
+                    <li>
+                        **"Connect to GitHub Browser" (Recomendado):** Es la opción más fácil y segura. Se abrirá tu navegador para que inicies sesión y autorices la conexión.
+                    </li>
+                    <li>
+                        **"Token":** Requiere que generes un "Personal Access Token" (PAT) en la configuración de tu cuenta de GitHub y lo pegues en la terminal. Más pasos, pero útil para automatización.
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2 class="text-2xl font-bold text-gray-800 step-heading">Paso 4: Flujo de Trabajo para Sincronización Continua</h2>
+        <p class="text-gray-700 mb-4">
+            Una vez configurado, este es el proceso diario para mantener tu proyecto local y GitHub sincronizados.
+        </p>
+
+        <h3 class="text-xl font-semibold text-gray-700 mb-3">Cuando haces cambios en VS Code (localmente):</h3>
+        <ol class="list-decimal pl-5 mb-6 text-gray-700">
+            <li>**Guarda tus archivos.**</li>
+            <li>**Prepara los cambios (Stage Changes):**
+                <ul>
+                    <li>Desde el panel de "Control de Código Fuente" en VS Code: Haz clic en el <code>+</code> junto a los archivos modificados o en "Stage All Changes".</li>
+                    <li>Desde la Terminal: <pre><code>git add .</code></pre></li>
+                </ul>
+            </li>
+            <li>**Confirma los cambios (Commit Changes):**
+                <ul>
+                    <li>Desde el panel de "Control de Código Fuente": Escribe un mensaje descriptivo en el cuadro de texto y haz clic en "Commit".</li>
+                    <li>Desde la Terminal: <pre><code>git commit -m "Tu mensaje descriptivo aquí"</code></pre></li>
+                </ul>
+            </li>
+            <li>**Descarga y Sube los cambios (Pull antes de Push):**
+                <p>Es buena práctica descargar cambios del remoto (pull) antes de subir los tuyos (push) para evitar conflictos, incluso si eres el único trabajando.</p>
+                <ul>
+                    <li>Desde VS Code: Haz clic en el botón "Sync Changes" en la barra de estado inferior, que realiza un <code>pull</code> y luego un <code>push</code>. O clic en <code>...</code> en "Control de Código Fuente" y selecciona "Pull" y luego "Push".</li>
+                    <li>Desde la Terminal: Primero <pre><code>git pull origin main</code></pre> y luego <pre><code>git push origin main</code></pre></li>
+                </ul>
+            </li>
+        </ol>
+
+        <h3 class="text-xl font-semibold text-gray-700 mb-3">Cuando haces cambios directamente en GitHub.com:</h3>
+        <ol class="list-decimal pl-5 mb-6 text-gray-700">
+            <li>Edita los archivos directamente en la interfaz web de GitHub.</li>
+            <li>Confirma los cambios ("Commit changes") en GitHub.</li>
+            <li>**Descarga los cambios en tu VS Code (Pull Changes):**
+                <p>Cuando vuelvas a tu proyecto local, actualiza tu copia:</p>
+                <ul>
+                    <li>Desde VS Code: Haz clic en el botón "Sync Changes" en la barra de estado, o en <code>...</code> en "Control de Código Fuente" y selecciona "Pull".</li>
+                    <li>Desde la Terminal: <pre><code>git pull origin main</code></pre></li>
+                </ul>
+            </li>
+        </ol>
+
+        <h2 class="text-2xl font-bold text-gray-800 step-heading">Conceptos Clave y Consideraciones</h2>
+        <ul class="list-disc pl-5 mb-6 text-gray-700">
+            <li>
+                **<code>.gitignore</code>:** Archivo en la raíz de tu proyecto (<code>.gitignore</code> sin extensión) que lista archivos/carpetas a ignorar por Git (no rastrear ni subir).
+            </li>
+            <li>
+                **Staging Area:** Área intermedia donde preparas los cambios para el próximo commit. <code>git add .</code> los mueve aquí.
+            </li>
+            <li>
+                **Commit:** "Guardar" una instantánea de los cambios preparados en el historial de tu repositorio local.
+            </li>
+            <li>
+                **Push:** Enviar los commits de tu repositorio local al repositorio remoto en GitHub.
+            </li>
+            <li>
+                **Pull:** Descargar los commits del repositorio remoto (GitHub) a tu repositorio local.
+            </li>
+            <li>
+                **Eliminar archivos:** Borrar un archivo localmente no lo elimina de GitHub hasta que lo <code>git add</code>, <code>git commit</code> y <code>git push</code>. Git te da control explícito sobre las eliminaciones.
+            </li>
+        </ul>
+
+        <div class="note">
+            Este documento está diseñado para ser tu referencia. Si tienes futuras dudas o necesitas explorar temas más avanzados (como el uso de ramas para nuevas funcionalidades), no dudes en preguntar.
+        </div>
+
+    </div>
+</body>
+</html>
