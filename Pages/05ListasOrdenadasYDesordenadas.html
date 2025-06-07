@@ -1,17 +1,174 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listas: Ordenadas y Desordenadas</title>
+    <title>Tipos de Listas en HTML: Ordenadas, Desordenadas y de Definición</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/CSS/common_styles.css">
 </head>
 <body>
-    <H1>Clase 5: Listas: Ordenadas y Desordenadas.</H1>
-    <UL>
-        <li>Listas desordenadas: &lt;ul&gt; y &lt;li&gt;.</li>
-        <li>Listas ordenadas: &lt;ol&gt; y &lt;li&gt; (atributos start y type).</li>
-        <li>Listas de definición: &lt;dl&gt;, &lt;dt&gt;, &lt;dd&gt;.</li>
-    </UL>
-    <p><a href="/index.html">Vuelve a la página principal</a></p>
+    <div class="container">
+        <header>
+            <h1><p>Curso HTML Completo</p><p></p>Clase 5: Tipos de Listas en HTML</h1></h1>
+            <p>Las listas son elementos fundamentales para organizar y presentar información de manera clara y estructurada en la web. HTML nos ofrece diferentes tipos de listas para adaptarse a diversas necesidades, mejorando la legibilidad y la semántica de tu contenido.</p>
+        </header>
+
+        <hr>
+
+        <main>
+            <section>
+                <h2>5.1. Listas Desordenadas (&lt;ul&gt; y &lt;li&gt;)</h2>
+                <p>Las listas desordenadas, representadas por la etiqueta **<code>&lt;ul&gt;</code>** (de "unordered list"), se utilizan para agrupar elementos que no tienen un orden secuencial o específico. Esto significa que el orden en que aparecen los elementos no altera el significado o la información que se transmite. Cada elemento individual dentro de la lista se define con la etiqueta **<code>&lt;li&gt;</code>** (de "list item"), que por defecto se mostrará con un marcador, usualmente un punto o círculo, aunque este estilo puede ser personalizado completamente con CSS.</p>
+                <p>Son ideales para:</p>
+                <ul>
+                    <li>Menús de navegación donde el orden de los ítems no es crucial.</li>
+                    <li>Listas de características de un producto o servicio.</li>
+                    <li>Enumerar elementos sin una jerarquía temporal o lógica estricta.</li>
+                </ul>
+
+                <strong>Ejemplo de Lista Desordenada:</strong>
+                <pre>
+                    <code>
+                        &lt;ul&gt;
+                            &lt;li&gt;Manzanas&lt;/li&gt;
+                            &lt;li&gt;Plátanos&lt;/li&gt;
+                            &lt;li&gt;Naranjas&lt;/li&gt;
+                        &lt;/ul&gt;</code>
+                </pre>
+
+                <strong>Resultado:</strong>
+                <ul>
+                    <li>Manzanas</li>
+                    <li>Plátanos</li>
+                    <li>Naranjas</li>
+                </ul>
+            </section>
+
+            <hr>
+
+            <section>
+                <h2>5.2. Listas Ordenadas (&lt;ol&gt; y &lt;li&gt;)</h2>
+                <p>Cuando la secuencia o el orden de los elementos es fundamental, recurrimos a las listas ordenadas, que se definen con la etiqueta **<code>&lt;ol&gt;</code>** (de "ordered list"). Cada elemento sigue siendo una etiqueta **<code>&lt;li&gt;</code>**. Por defecto, los navegadores numeran estos elementos con dígitos arábigos (1, 2, 3...), pero HTML proporciona atributos para personalizar este comportamiento.</p>
+                <p>Son perfectas para:</p>
+                <ul>
+                    <li>Instrucciones paso a paso.</li>
+                    <li>Recetas o procedimientos donde el orden es vital.</li>
+                    <li>Clasificaciones o rankings.</li>
+                </ul>
+
+                <h3>5.2.1. Atributos Clave de &lt;ol&gt;:</h3>
+                <dl>
+                    <dt><code>start</code></dt>
+                    <dd>Este atributo opcional permite especificar el valor numérico con el que debe comenzar la lista. Es especialmente útil si necesitas continuar una numeración que se inició en otro lugar o si quieres empezar desde un número diferente a 1.</dd>
+                    <dt><code>type</code></dt>
+                    <dd>Define el tipo de marcador que se usará para los elementos de la lista. Ofrece varias opciones para la numeración:</dd>
+                    <ul>
+                        <li>**<code>1</code>**: Números arábigos (1, 2, 3, ...) - es el valor por defecto.</li>
+                        <li>**<code>a</code>**: Letras minúsculas (a, b, c, ...)</li>
+                        <li>**<code>A</code>**: Letras mayúsculas (A, B, C, ...)</li>
+                        <li>**<code>i</code>**: Números romanos en minúscula (i, ii, iii, ...)</li>
+                        <li>**<code>I</code>**: Números romanos en mayúscula (I, II, III, ...)</li>
+                    </ul>
+                    <dt><code>reversed</code></dt>
+                    <dd>Este atributo booleano (no requiere valor) hace que la lista se numere en orden descendente, desde el valor inicial hasta 1 (o lo que corresponda si se usa 'start').</dd>
+                </dl>
+
+                <h3>5.2.2. Ejemplos de Listas Ordenadas:</h3>
+                <h4>a. Lista Ordenada Básica:</h4>
+                <pre><code>
+                    &lt;ol&gt;
+                        &lt;li&gt;Paso uno: Abrir la aplicación.&lt;/li&gt;
+                        &lt;li&gt;Paso dos: Iniciar sesión con tus credenciales.&lt;/li&gt;
+                        &lt;li&gt;Paso tres: Navegar al menú principal.&lt;/li&gt;
+                    &lt;/ol&gt;</code>
+                </pre>
+                <ol>
+                    <li>Paso uno: Abrir la aplicación.</li>
+                    <li>Paso dos: Iniciar sesión con tus credenciales.</li>
+                    <li>Paso tres: Navegar al menú principal.</li>
+                </ol>
+
+                    <h4>b. Lista Ordenada con <code>start</code> y <code>type</code>:</h4>
+                    <pre><code>
+                        &lt;ol type="A" start="3"&gt;
+                            &lt;li&gt;Tercer punto de la secuencia.&lt;/li&gt;
+                            &lt;li&gt;Cuarto punto a considerar.&lt;/li&gt;
+                            &lt;li&gt;Quinto y último punto.&lt;/li&gt;
+                        &lt;/ol&gt;</code>
+                    </pre>
+                <ol type="A" start="3">
+                    <li>Tercer punto de la secuencia.</li>
+                    <li>Cuarto punto a considerar.</li>
+                    <li>Quinto y último punto.</li>
+                </ol>
+
+                <h4>c. Lista Ordenada con <code>reversed</code>:</h4>
+                <pre><code>
+                    &lt;ol reversed&gt;
+                        &lt;li&gt;Último lugar en la carrera.&lt;/li&gt;
+                        &lt;li&gt;Penúltimo lugar.&lt;/li&gt;
+                        &lt;li&gt;Tercer lugar.&lt;/li&gt;
+                    &lt;/ol&gt;</code>
+                </pre>
+                <ol reversed>
+                    <li>Último lugar en la carrera.</li>
+                    <li>Penúltimo lugar.</li>
+                    <li>Tercer lugar.</li>
+                </ol>
+            </section>
+
+            <hr>
+
+            <section>
+                <h2>5.3. Listas de Definición (&lt;dl&gt;, &lt;dt&gt;, &lt;dd&gt;)</h2>
+                <p>Las listas de definición son ideales para presentar pares de término-descripción, como un glosario, un diccionario, o una lista de preguntas frecuentes con sus respuestas. A diferencia de las listas ordenadas y desordenadas, no utilizan marcadores ni números por defecto, sino que estructuran el contenido visualmente por indentación.</p>
+                <p>Este tipo de lista se construye con tres etiquetas principales:</p>
+                <ul>
+                    <li>**<code>&lt;dl&gt;</code>** (de "description list" o "definition list"): Es el contenedor principal de toda la lista de definición.</li>
+                    <li>**<code>&lt;dt&gt;</code>** (de "description term" o "definition term"): Define un término que va a ser descrito. Puede haber uno o más términos por cada descripción.</li>
+                    <li>**<code>&lt;dd&gt;</code>** (de "description details" o "definition description"): Proporciona la descripción o definición del término(s) inmediatamente anterior(es).</li>
+                </ul>
+                <p>Las listas de definición ofrecen una excelente estructura semántica para contenido que implica una relación directa entre un concepto y su explicación.</p>
+
+                <strong>Ejemplo de Lista de Definición:</strong>
+                <pre><code>
+&lt;dl&gt;
+&lt;dt&gt;HTML&lt;/dt&gt;
+&lt;dd&gt;Lenguaje de Marcado de Hipertexto, un lenguaje estándar para la creación de páginas web.&lt;/dd&gt;
+
+&lt;dt&gt;CSS&lt;/dt&gt;
+&lt;dd&gt;Hojas de Estilo en Cascada, un lenguaje de hojas de estilo usado para describir la presentación de un documento escrito en HTML.&lt;/dd&gt;
+
+&lt;dt&gt;JavaScript&lt;/dt&gt;
+&lt;dd&gt;Lenguaje de programación ligero, interpretado o compilado 'just-in-time' con funciones de primera clase. Es el lenguaje de programación de la web.&lt;/dd&gt;
+&lt;/dl&gt;</code>
+                </pre>
+
+                <strong>Resultado:</strong>
+                <dl>
+                    <dt>HTML</dt>
+                    <dd>Lenguaje de Marcado de Hipertexto, un lenguaje estándar para la creación de páginas web.</dd>
+
+                    <dt>CSS</dt>
+                    <dd>Hojas de Estilo en Cascada, un lenguaje de hojas de estilo usado para describir la presentación de un documento escrito en HTML.</dd>
+
+                    <dt>JavaScript</dt>
+                    <dd>Lenguaje de programación ligero, interpretado o compilado 'just-in-time' con funciones de primera clase. Es el lenguaje de programación de la web.</dd>
+                </dl>
+            </section>
+        </main>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="./06EnlacesHyperlinksNavegacionEntrePaginas.html">Capítulo Siguiente: Imágenes y Contenido Visual</a></li>
+                <li><a href="/index.html">Volver a la Página Principal</a></li>
+                <li><a href="./Ejercicios05.html">Ejercicios sobre Listas</a></li>
+            </ul>
+        </footer>
+    </div>
 </body>
 </html>
