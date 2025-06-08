@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 5: Ejercicios de Listas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/CSS/common_styles.css">
+    <link rel="stylesheet" href="/CSS/ejecicios_styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Clase 5: Ejercicios de Listas (Ordenadas, Desordenadas y de Definición)</h1>
+
+        <div class="exercise-section">
+            <h3>Ejercicios Prácticos de la Clase 5</h3>
+            <p>Para consolidar tus conocimientos sobre listas en HTML, te propongo los siguientes ejercicios. Haz clic en "Resolver" para ver la solución de cada uno.</p>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 1: Crear una Lista Desordenada de Ingredientes</h4>
+                <p>Crea una lista desordenada que represente una lista de ingredientes para una receta simple. No importa el orden.</p>
+                <ul>
+                    <li>Harina</li>
+                    <li>Huevos</li>
+                    <li>Azúcar</li>
+                    <li>Leche</li>
+                </ul>
+                <button class="reveal-button" onclick="toggleSolution('solution1')">Resolver Ejercicio 1</button>
+                <div id="solution1" class="exercise-solution">
+                    <p><strong>Solución Ejercicio 1:</strong></p>
+                    <pre><code>&lt;ul&gt;
+    &lt;li&gt;Harina&lt;/li&gt;
+    &lt;li&gt;Huevos&lt;/li&gt;
+    &lt;li&gt;Azúcar&lt;/li&gt;
+    &lt;li&gt;Leche&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 2: Crear una Lista Ordenada de Pasos</h4>
+                <p>Crea una lista ordenada que muestre los pasos para encender un ordenador. El orden es importante.</p>
+                <ul>
+                    <li>Pulsar el botón de encendido del ordenador.</li>
+                    <li>Esperar a que cargue el sistema operativo.</li>
+                    <li>Introducir la contraseña (si aplica).</li>
+                    <li>Abrir tu navegador web favorito.</li>
+                </ul>
+                <button class="reveal-button" onclick="toggleSolution('solution2')">Resolver Ejercicio 2</button>
+                <div id="solution2" class="exercise-solution">
+                    <p><strong>Solución Ejercicio 2:</strong></p>
+                    <pre><code>&lt;ol&gt;
+    &lt;li&gt;Pulsar el botón de encendido del ordenador.&lt;/li&gt;
+    &lt;li&gt;Esperar a que cargue el sistema operativo.&lt;/li&gt;
+    &lt;li&gt;Introducir la contraseña (si aplica).&lt;/li&gt;
+    &lt;li&gt;Abrir tu navegador web favorito.&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 3: Lista Ordenada Personalizada</h4>
+                <p>Crea una lista ordenada que comience desde el número 5 y utilice letras mayúsculas como marcador.</p>
+                <ol type="A" start="5">
+                    <li>Quinto elemento.</li>
+                    <li>Sexto elemento.</li>
+                    <li>Séptimo elemento.</li>
+                </ol>
+                <button class="reveal-button" onclick="toggleSolution('solution3')">Resolver Ejercicio 3</button>
+                <div id="solution3" class="exercise-solution">
+                    <p><strong>Solución Ejercicio 3:</strong></p>
+                    <pre><code>&lt;ol type="A" start="5"&gt;
+    &lt;li&gt;Quinto elemento.&lt;/li&gt;
+    &lt;li&gt;Sexto elemento.&lt;/li&gt;
+    &lt;li&gt;Séptimo elemento.&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 4: Lista Ordenada Invertida</h4>
+                <p>Crea una lista ordenada que muestre los números en orden descendente, comenzando desde el 3.</p>
+                <ol reversed>
+                    <li>Tercer puesto.</li>
+                    <li>Segundo puesto.</li>
+                    <li>Primer puesto.</li>
+                </ol>
+                <button class="reveal-button" onclick="toggleSolution('solution4')">Resolver Ejercicio 4</button>
+                <div id="solution4" class="exercise-solution">
+                    <p><strong>Solución Ejercicio 4:</strong></p>
+                    <pre><code>&lt;ol reversed&gt;
+    &lt;li&gt;Tercer puesto.&lt;/li&gt>
+    &lt;li&gt;Segundo puesto.&lt;/li&gt;
+    &lt;li&gt;Primer puesto.&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 5: Crear una Lista de Definición</h4>
+                <p>Crea una lista de definición para los siguientes términos y sus descripciones:</p>
+                <ul>
+                    <li><strong>CPU:</strong> Unidad Central de Procesamiento, el "cerebro" del ordenador.</li>
+                    <li><strong>RAM:</strong> Memoria de Acceso Aleatorio, memoria volátil para datos temporales.</li>
+                    <li><strong>SSD:</strong> Unidad de Estado Sólido, dispositivo de almacenamiento más rápido que los HDD.</li>
+                </ul>
+                <button class="reveal-button" onclick="toggleSolution('solution5')">Resolver Ejercicio 5</button>
+                <div id="solution5" class="exercise-solution">
+                    <p><strong>Solución Ejercicio 5:</strong></p>
+                    <pre><code>&lt;dl&gt;
+    &lt;dt&gt;CPU&lt;/dt&gt;
+    &lt;dd&gt;Unidad Central de Procesamiento, el "cerebro" del ordenador.&lt;/dd&gt;
+    &lt;dt&gt;RAM&lt;/dt&gt;
+    &lt;dd&gt;Memoria de Acceso Aleatorio, memoria volátil para datos temporales.&lt;/dd&gt;
+    &lt;dt&gt;SSD&lt;/dt&gt;
+    &lt;dd&gt;Unidad de Estado Sólido, dispositivo de almacenamiento más rápido que los HDD.&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="quiz-section exercise-section">
+            <h3>Preguntas Tipo Test</h3>
+            <p>Pon a prueba tus conocimientos sobre los tipos de listas HTML con estas preguntas de opción múltiple.</p>
+
+            <form id="quizForm">
+                <div class="quiz-question">
+                    <p>1. ¿Qué etiqueta se utiliza para crear una lista desordenada?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="a"> a) <code>&lt;ol&gt;</code></label>
+                        <label><input type="radio" name="q1" value="b"> b) <code>&lt;li&gt;</code></label>
+                        <label><input type="radio" name="q1" value="c"> c) <code>&lt;ul&gt;</code></label>
+                        <label><input type="radio" name="q1" value="d"> d) <code>&lt;dl&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>2. ¿Cuál es la etiqueta para un elemento de lista individual, tanto en listas ordenadas como desordenadas?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="a"> a) <code>&lt;item&gt;</code></label>
+                        <label><input type="radio" name="q2" value="b"> b) <code>&lt;elem&gt;</code></label>
+                        <label><input type="radio" name="q2" value="c"> c) <code>&lt;li&gt;</code></label>
+                        <label><input type="radio" name="q2" value="d"> d) <code>&lt;data&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>3. ¿Qué atributo de la etiqueta <code>&lt;ol&gt;</code> permite especificar el valor numérico con el que debe comenzar la lista?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="a"> a) <code>begin</code></label>
+                        <label><input type="radio" name="q3" value="b"> b) <code>start</code></label>
+                        <label><input type="radio" name="q3" value="c"> c) <code>initial</code></label>
+                        <label><input type="radio" name="q3" value="d"> d) <code>value</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>4. Si quieres que una lista ordenada utilice letras minúsculas (a, b, c, ...), ¿qué valor usarías en el atributo <code>type</code> de <code>&lt;ol&gt;</code>?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="a"> a) <code>"letter"</code></label>
+                        <label><input type="radio" name="q4" value="b"> b) <code>"alpha"</code></label>
+                        <label><input type="radio" name="q4" value="c"> c) <code>"a"</code></label>
+                        <label><input type="radio" name="q4" value="d"> d) <code>"A"</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>5. ¿Para qué tipo de información son ideales las listas desordenadas?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="a"> a) Instrucciones paso a paso.</label>
+                        <label><input type="radio" name="q5" value="b"> b) Recetas donde el orden es vital.</label>
+                        <label><input type="radio" name="q5" value="c"> c) Menús de navegación donde el orden no es crucial.</label>
+                        <label><input type="radio" name="q5" value="d"> d) Clasificaciones o rankings.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>6. ¿Qué etiqueta define el contenedor principal de una lista de definición?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q6" value="a"> a) <code>&lt;def&gt;</code></label>
+                        <label><input type="radio" name="q6" value="b"> b) <code>&lt;dl&gt;</code></label>
+                        <label><input type="radio" name="q6" value="c"> c) <code>&lt;dt&gt;</code></label>
+                        <label><input type="radio" name="q6" value="d"> d) <code>&lt;dd&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>7. Dentro de una lista de definición, ¿qué etiqueta define el término que va a ser descrito?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q7" value="a"> a) <code>&lt;description&gt;</code></label>
+                        <label><input type="radio" name="q7" value="b"> b) <code>&lt;term&gt;</code></label>
+                        <label><input type="radio" name="q7" value="c"> c) <code>&lt;dt&gt;</code></label>
+                        <label><input type="radio" name="q7" value="d"> d) <code>&lt;dd&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>8. ¿Qué atributo booleano de <code>&lt;ol&gt;</code> hace que la lista se numere en orden descendente?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q8" value="a"> a) <code>descending</code></label>
+                        <label><input type="radio" name="q8" value="b"> b) <code>reversed</code></label>
+                        <label><input type="radio" name="q8" value="c"> c) <code>reverse-order</code></label>
+                        <label><input type="radio" name="q8" value="d"> d) <code>down</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>9. ¿Cuál de los siguientes es un uso apropiado para una lista de definición?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q9" value="a"> a) Una lista de la compra.</label>
+                        <label><input type="radio" name="q9" value="b"> b) Un glosario de términos y sus explicaciones.</label>
+                        <label><input type="radio" name="q9" value="c"> c) Los pasos para ensamblar un mueble.</label>
+                        <label><input type="radio" name="q9" value="d"> d) Una lista de elementos destacados en una página.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>10. Por defecto, ¿cómo se muestran los elementos de una lista desordenada en los navegadores?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q10" value="a"> a) Con números arábigos.</label>
+                        <label><input type="radio" name="q10" value="b"> b) Con letras mayúsculas.</label>
+                        <label><input type="radio" name="q10" value="c"> c) Con un marcador (punto o círculo).</label>
+                        <label><input type="radio" name="q10" value="d"> d) Sin ningún marcador.</label>
+                    </div>
+                </div>
+
+                <button type="button" class="submit-quiz-button" onclick="checkQuiz()">Ver Resultados</button>
+            </form>
+
+            <div id="quizResults" class="quiz-results">
+                <p>Resultados del Test:</p>
+                <ol id="resultsList"></ol>
+                <p id="scoreSummary"></p>
+                <button type="button" class="reveal-button" onclick="resetQuiz()">Volver a Intentar</button>
+            </div>
+        </div>
+
+        <hr>
+
+        <p>
+            <a href="05ListasOrdenadasYDesordenadas.html">Volver a la Clase 5: Tipos de Listas en HTML</a>
+        </p>
+    </div>
+
+    <script>
+        function toggleSolution(id) {
+            const solutionDiv = document.getElementById(id);
+            if (solutionDiv.style.display === 'none' || solutionDiv.style.display === '') {
+                solutionDiv.style.display = 'block';
+            } else {
+                solutionDiv.style.display = 'none';
+            }
+        }
+
+        const correctAnswers = {
+            q1: 'c',
+            q2: 'c',
+            q3: 'b',
+            q4: 'c',
+            q5: 'c',
+            q6: 'b',
+            q7: 'c',
+            q8: 'b',
+            q9: 'b',
+            q10: 'c'
+        };
+
+        function checkQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const resultsList = document.getElementById('resultsList');
+            const quizResultsDiv = document.getElementById('quizResults');
+            const scoreSummary = document.getElementById('scoreSummary');
+            let score = 0;
+
+            resultsList.innerHTML = ''; // Limpiar resultados anteriores
+
+            for (let i = 1; i <= 10; i++) { // Changed to 10 questions
+                const questionName = `q${i}`;
+                const selectedOption = quizForm.elements[questionName] ? quizForm.elements[questionName].value : undefined;
+                const correctAnswer = correctAnswers[questionName];
+                const listItem = document.createElement('li');
+                
+                if (selectedOption === correctAnswer) {
+                    listItem.classList.add('correct');
+                    listItem.textContent = `Pregunta ${i}: Correcta.`;
+                    score++;
+                } else {
+                    listItem.classList.add('incorrect');
+                    let selectedAnswerText = 'No respondida';
+                    if (selectedOption) {
+                        const selectedLabel = quizForm.querySelector(`input[name="${questionName}"][value="${selectedOption}"]`).closest('label');
+                        selectedAnswerText = selectedLabel ? selectedLabel.textContent.trim() : selectedAnswerText;
+                    }
+                    
+                    const correctLabel = quizForm.querySelector(`input[name="${questionName}"][value="${correctAnswer}"]`).closest('label');
+                    const correctAnswerText = correctLabel ? correctLabel.textContent.trim() : 'N/A';
+
+                    listItem.innerHTML = `Pregunta ${i}: Incorrecta. <br> Tu respuesta: "${selectedAnswerText}". <span class="correct-answer-info">Respuesta correcta: "${correctAnswerText}".</span>`;
+                }
+                resultsList.appendChild(listItem);
+            }
+
+            scoreSummary.textContent = `Tu puntuación es: ${score} de 10 preguntas correctas.`;
+            quizResultsDiv.style.display = 'block';
+            quizResultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function resetQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            quizForm.reset();
+            document.getElementById('quizResults').style.display = 'none';
+            document.getElementById('resultsList').innerHTML = '';
+            document.getElementById('scoreSummary').textContent = '';
+        }
+    </script>
+</body>
+</html>
