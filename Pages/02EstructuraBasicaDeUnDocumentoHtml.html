@@ -1,18 +1,136 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estructura Básica de un Documento HTML</title>
+    <title>Estructura Básica de un Documento HTML - Curso HTML</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
 </head>
 <body>
-    <H1>Clase 2: Estructura Básica de un Documento HTML</H1>
-    <UL>
-        <li>La declaración &lt;!DOCTYPE html.&gt;.</li>
-        <li>Las etiquetas &lt;html&gt;, &lt;head&gt; y &lt;body&gt;.</li>
-        <li>Metadatos importantes en &lt;head&gt;: &lt;title&gt;, &lt;meta charset&gt, &lt;meta name="viewport"&gt.</li>
-        <li>Guardar y abrir un archivo HTML en el navegador.</li>
-    </UL>
-    <p><a href="/index.html">Vuelve a la página principal</a></p>
+    <div class="container">
+        <h1><p>CURSO DE INICIACIÓN A HTML</p><p>Clase 2: Estructura Básica de un Documento HTML.</p></h1>
+
+        <p>¡Bienvenido a la segunda clase de nuestro curso de HTML! Hoy vamos a sentar las bases de todo lo que construiremos en el futuro: la estructura fundamental de un documento HTML. Comprender estos elementos básicos es crucial, ya que cada página web que crees tendrá este esqueleto. Veremos cómo se organiza un archivo HTML y la importancia de cada una de sus partes para que el navegador y los motores de búsqueda interpreten correctamente tu contenido.</p>
+
+        <hr>
+
+        <h2>2.1. La declaración <code>&lt;!DOCTYPE html&gt;</code></h2>
+        <p>Toda página HTML moderna debe comenzar con la declaración <code>&lt;!DOCTYPE html&gt;</code>. Aunque a primera vista pueda parecer una etiqueta HTML, no lo es; es una <strong>instrucción para el navegador web</strong>. Su propósito es decirle al navegador qué versión de HTML se está utilizando para renderizar la página.</p>
+        <p>En el caso de <code>&lt;!DOCTYPE html&gt;</code>, estamos indicando que el documento es una página web escrita en **HTML5**, la última y más extendida versión de HTML. Esta declaración es muy importante porque asegura que los navegadores rendericen la página en "modo estándar" (standards mode), lo que significa que seguirán las especificaciones CSS y HTML de manera consistente, evitando comportamientos erráticos conocidos como "modo quirks" (quirks mode).</p>
+        <p><strong>Ejemplo de uso:</strong></p>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Mi primera página HTML&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;p&gt;Hola, mundo.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <p class="note"><strong>Importancia:</strong> Sin esta declaración, los navegadores podrían intentar interpretar tu código de formas inesperadas, llevando a problemas de diseño o funcionalidad que son difíciles de depurar.</p>
+
+        <h2>2.2. Las etiquetas <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code> y <code>&lt;body&gt;</code></h2>
+        <p>Una vez que el navegador sabe que es un documento HTML5, la estructura principal se define con tres etiquetas fundamentales que encapsulan todo el contenido de tu página:</p>
+
+        <h3>2.2.1. La Etiqueta <code>&lt;html&gt;</code> (Elemento Raíz)</h3>
+        <p>La etiqueta <code>&lt;html&gt;</code> es el <strong>elemento raíz</strong> de toda página web. Contiene absolutamente todo el contenido de la página, a excepción de la declaración <code>&lt;!DOCTYPE html&gt;</code>. Es el contenedor principal que le indica al navegador dónde empieza y dónde termina el documento HTML.</p>
+        <p>Es una buena práctica incluir el atributo <code>lang</code> en la etiqueta <code>&lt;html&gt;</code> para especificar el idioma principal del contenido de la página (por ejemplo, <code>lang="es"</code> para español). Esto ayuda a los motores de búsqueda, a los lectores de pantalla y a los navegadores a presentar el contenido de manera más adecuada.</p>
+        <p><strong>Ejemplo:</strong></p>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+    &lt;!-- Aquí irá todo el contenido de la página --&gt;
+&lt;/html&gt;</code></pre>
+
+        <h3>2.2.2. La Etiqueta <code>&lt;head&gt;</code> (Metadatos)</h3>
+        <p>La etiqueta <code>&lt;head&gt;</code> es un contenedor para los <strong>metadatos</strong> de la página HTML. Los metadatos son información sobre la página, pero que <strong>no se muestra directamente en el navegador</strong> al usuario. Incluye elementos como el título de la página (que aparece en la pestaña del navegador), enlaces a hojas de estilo CSS, scripts JavaScript, información sobre el autor, descripción para motores de búsqueda, etc.</p>
+        <p>Es crucial para la SEO (Optimización para Motores de Búsqueda) y para la forma en que el navegador maneja la página.</p>
+        <p><strong>Ejemplo:</strong></p>
+        <pre><code>&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Mi Página Asombrosa&lt;/title&gt;
+    &lt;link rel="stylesheet" href="estilos.css"&gt;
+&lt;/head&gt;</code></pre>
+
+        <h3>2.2.3. La Etiqueta <code>&lt;body&gt;</code> (Contenido Visible)</h3>
+        <p>La etiqueta <code>&lt;body&gt;</code> es donde resides todo el <strong>contenido visible</strong> de tu página web. Todo lo que el usuario ve y con lo que interactúa (texto, imágenes, videos, enlaces, botones, formularios, etc.) se coloca dentro de esta etiqueta.</p>
+        <p>Es el "cuerpo" de tu documento y el área donde la mayor parte de tu trabajo de construcción de la página se llevará a cabo.</p>
+        <p><strong>Ejemplo:</strong></p>
+        <pre><code>&lt;body&gt;
+    &lt;h1&gt;Bienvenido a mi sitio web&lt;/h1&gt;
+    &lt;p&gt;Este es el contenido principal de mi página.&lt;/p&gt;
+&lt;/body&gt;</code></pre>
+
+        <h2>2.3. Metadatos Importantes en <code>&lt;head&gt;</code></h2>
+        <p>Dentro de la etiqueta <code>&lt;head&gt;</code>, hay varios elementos <code>&lt;meta&gt;</code> y <code>&lt;title&gt;</code> que son especialmente importantes:</p>
+
+        <h3>2.3.1. La Etiqueta <code>&lt;title&gt;</code></h3>
+        <p>La etiqueta <code>&lt;title&gt;</code> define el <strong>título de la página web</strong>. Este título aparece en la barra de título del navegador o en la pestaña de la ventana. Es fundamental para la usabilidad y para la SEO.</p>
+        <ul>
+            <li>Es lo primero que los usuarios ven en los resultados de búsqueda.</li>
+            <li>Es el nombre que se usa cuando los usuarios guardan tu página en favoritos o marcadores.</li>
+            <li>Debe ser conciso, descriptivo y relevante para el contenido de la página.</li>
+        </ul>
+        <p><strong>Ejemplo:</strong></p>
+        <pre><code>&lt;head&gt;
+    &lt;title&gt;Página Principal - Mi Blog de Viajes&lt;/title&gt;
+&lt;/head&gt;</code></pre>
+
+        <h3>2.3.2. <code>&lt;meta charset="UTF-8"&gt;</code></h3>
+        <p>Esta etiqueta <code>&lt;meta&gt;</code> es de suma importancia. Especifica la <strong>codificación de caracteres</strong> del documento. <code>"UTF-8"</code> es la codificación de caracteres universalmente recomendada y más utilizada. Asegura que todos los caracteres, incluyendo tildes, eñes y otros caracteres especiales de diferentes idiomas, se muestren correctamente en el navegador, evitando problemas de visualización (los famosos "caracteres extraños" o "mojibake").</p>
+        <p>Debe ser el primer elemento dentro de <code>&lt;head&gt;</code>, justo después de <code>&lt;head&gt;</code>, para que el navegador sepa cómo interpretar el resto del documento desde el principio.</p>
+        <p><strong>Ejemplo:</strong></p>
+        <pre><code>&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Mi Página con UTF-8&lt;/title&gt;
+&lt;/head&gt;</code></pre>
+
+        <h3>2.3.3. <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></h3>
+        <p>Esta es otra etiqueta <code>&lt;meta&gt;</code> crucial para el <strong>diseño web responsivo</strong>, que asegura que tu página se vea bien en diferentes dispositivos (ordenadores de escritorio, tabletas, teléfonos móviles).</p>
+        <ul>
+            <li><code>width=device-width</code>: Establece el ancho del viewport (la ventana visible del navegador) al ancho del dispositivo.</li>
+            <li><code>initial-scale=1.0</code>: Establece el nivel de zoom inicial cuando la página se carga por primera vez.</li>
+        </ul>
+        <p>Sin esta etiqueta, los dispositivos móviles a menudo intentarían renderizar la página como si fuera una pantalla de escritorio grande y luego la encogerían, lo que resultaría en texto pequeño y elementos difíciles de tocar.</p>
+        <p><strong>Ejemplo:</strong></p>
+        <pre><code>&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Página Adaptable&lt;/title&gt;
+&lt;/head&gt;</code></pre>
+
+        <h2>2.4. Guardar y Abrir un Archivo HTML en el Navegador</h2>
+        <p>Una vez que hayas escrito tu código HTML, el siguiente paso es verlo en acción en un navegador web. El proceso es sencillo:</p>
+        <ol>
+            <li><strong>Guardar el archivo:</strong>
+                <ul>
+                    <li>Abre tu editor de texto (como VS Code, Sublime Text, Notepad++).</li>
+                    <li>Crea un nuevo archivo y pega tu código HTML.</li>
+                    <li>Guarda el archivo con la extensión <code>.html</code> o <code>.htm</code> (<code>.html</code> es más común). Por ejemplo: <code>mi_primera_pagina.html</code> o <code>index.html</code> (<code>index.html</code> es el nombre por defecto para la página principal de un sitio web).</li>
+                    <li>Elige una ubicación en tu ordenador donde puedas encontrarlo fácilmente.</li>
+                </ul>
+            </li>
+            <li><strong>Abrir en el navegador:</strong>
+                <ul>
+                    <li>Navega hasta la ubicación donde guardaste el archivo.</li>
+                    <li>Haz doble clic en el archivo <code>.html</code>. Tu sistema operativo lo abrirá automáticamente con tu navegador web predeterminado (Chrome, Firefox, Edge, Safari, etc.).</li>
+                    <li>Alternativamente, puedes arrastrar y soltar el archivo <code>.html</code> directamente en la ventana de tu navegador web.</li>
+                    <li>También puedes hacer clic derecho sobre el archivo y seleccionar "Abrir con..." y elegir tu navegador preferido.</li>
+                </ul>
+            </li>
+        </ol>
+        <p>¡Felicidades! Ahora estás viendo tu primera página web en un navegador. Cada vez que realices cambios en tu archivo HTML, deberás guardar el archivo en tu editor y luego refrescar la página en el navegador (generalmente presionando F5 o el icono de recargar) para ver los cambios.</p>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="01IntroduccionAHTML.html">Capítulo 1: Introducción a HTML (Anterior)</a></li>
+                <li><a href="03ElementosDeTextoIEncabezadosYParrafos.html">Capítulo 3: Elementos de Texto I (Siguiente)</a></li>
+                <li><a href="../index.html">Volver a la Página Principal</a></li>
+            </ul>
+        </footer>
+    </div>
 </body>
 </html>

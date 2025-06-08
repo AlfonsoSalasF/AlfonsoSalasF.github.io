@@ -1,19 +1,94 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elementos de Texto II: Formato y Énfasis.</title>
+    <title>Elementos de Texto II: Formato y Énfasis - Curso HTML</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
 </head>
 <body>
-    <H1>Clase 4: Elementos de Texto II: Formato y Énfasis.</H1>
-    <UL>
-        <li>Énfasis de texto: &lt;strong&gt;, &lt;em&gt;.</li>
-        <li>Texto más pequeño: &lt;small&gt;.</li>
-        <li>Subíndice y superíndice: &lt;sub&gt;, &lt;sup&gt;.</li>
-        <li>Texto marcado: &lt;mark&gt;.</li>
-        <li>Citas en bloque: &lt;blockquote&gt;.</li>
-    </UL>
-    <p><a href="/index.html">Vuelve a la página principal</a></p>
+    <div class="container">
+        <h1><p>CURSO DE INICIACIÓN A HTML</p><p>Clase 4: Elementos de Texto II: Formato y Énfasis.</p></h1>
+
+        <p>En esta cuarta clase de nuestro curso de HTML, profundizaremos en cómo dar formato y énfasis al texto dentro de nuestras páginas web. Más allá de los encabezados y párrafos básicos, HTML nos ofrece una variedad de etiquetas semánticas y de presentación que nos permiten destacar información, indicar su importancia o su naturaleza especial, y mejorar la legibilidad y la accesibilidad de nuestro contenido. Comprender y aplicar estas etiquetas correctamente es fundamental para crear documentos web bien estructurados y significativos.</p>
+
+        <hr>
+
+        <h2>4.1. Énfasis de Texto: <code>&lt;strong&gt;</code> y <code>&lt;em&gt;</code></h2>
+        <p>HTML proporciona dos etiquetas principales para enfatizar el texto, cada una con un significado semántico distinto:</p>
+
+        <h3>4.1.1. La Etiqueta <code>&lt;strong&gt;</code> (Importancia)</h3>
+        <p>La etiqueta <code>&lt;strong&gt;</code> se utiliza para indicar que un fragmento de texto tiene <strong>gran importancia, seriedad o urgencia</strong>. Los navegadores suelen renderizar el texto dentro de <code>&lt;strong&gt;</code> en negrita, pero su propósito principal es comunicar el significado semántico a los agentes de usuario (como los lectores de pantalla) y a los motores de búsqueda.</p>
+        <p><strong>Uso semántico:</strong> No uses <code>&lt;strong&gt;</code> simplemente para poner texto en negrita (para eso se usaría CSS). Úsala cuando el contenido dentro de ella sea críticamente importante o urgente.</p>
+        <p><strong>Ejemplo:</strong></p>
+        <pre><code>&lt;p&gt;Este es un &lt;strong&gt;aviso importante&lt;/strong&gt;: la fecha límite es mañana.&lt;/p&gt;</code></pre>
+        <p>En este ejemplo, "aviso importante" no solo se verá en negrita, sino que se le dará un peso semántico que un lector de pantalla, por ejemplo, podría anunciar con una entonación diferente.</p>
+
+        <h3>4.1.2. La Etiqueta <code>&lt;em&gt;</code> (Énfasis Tonal)</h3>
+        <p>La etiqueta <code>&lt;em&gt;</code> se utiliza para indicar un <strong>énfasis tonal o de voz</strong>, como si estuvieras leyendo el texto en voz alta y quisieras destacar ciertas palabras. Los navegadores suelen renderizar el texto dentro de <code>&lt;em&gt;</code> en cursiva.</p>
+        <p><strong>Uso semántico:</strong> Usa <code>&lt;em&gt;</code> cuando quieras cambiar el significado de una oración al enfatizar una palabra específica, similar a cómo lo harías al hablar.</p>
+        <p><strong>Ejemplo:</strong></p>
+        <pre><code>&lt;p&gt;Me &lt;em&gt;encanta&lt;/em&gt; el HTML.&lt;/p&gt;
+&lt;p&gt;Me encanta el &lt;em&gt;HTML&lt;/em&gt;.&lt;/p&gt;</code></pre>
+        <p>En el primer caso, el énfasis está en la acción de "encantar". En el segundo, el énfasis está en el "HTML" como el objeto del afecto. Ambos se verán en cursiva, pero semánticamente son diferentes.</p>
+        <p class="note"><strong>Diferencia clave:</strong> <code>&lt;strong&gt;</code> indica importancia (el contenido es significativo por sí mismo), mientras que <code>&lt;em&gt;</code> indica énfasis (cómo se diría el contenido para alterar su significado o matiz).</p>
+
+        <h2>4.2. Texto Más Pequeño: <code>&lt;small&gt;</code></h2>
+        <p>La etiqueta <code>&lt;small&gt;</code> se utiliza para representar comentarios al margen y letra pequeña, incluyendo derechos de autor, cláusulas legales y atribuciones. Semánticamente, indica que el contenido tiene una importancia secundaria.</p>
+        <p>Los navegadores suelen mostrar el texto dentro de <code>&lt;small&gt;</code> con un tamaño de fuente ligeramente más pequeño que el texto circundante.</p>
+        <p><strong>Ejemplo:</strong></p>
+        <pre><code>&lt;footer&gt;
+    &lt;p&gt;&lt;small&gt;&amp;copy; 2025 Mi Sitio Web. Todos los derechos reservados.&lt;/small&gt;&lt;/p&gt;
+&lt;/footer&gt;</code></pre>
+        <p>Es ideal para la información de derechos de autor, notas a pie de página o descargos de responsabilidad que no son parte del contenido principal pero son relevantes.</p>
+
+        <h2>4.3. Subíndice y Superíndice: <code>&lt;sub&gt;</code>, <code>&lt;sup&gt;</code></h2>
+        <p>Estas dos etiquetas son esenciales para la notación científica, matemática y para ciertos formatos de texto específicos.</p>
+
+        <h3>4.3.1. La Etiqueta <code>&lt;sub&gt;</code> (Subíndice)</h3>
+        <p>La etiqueta <code>&lt;sub&gt;</code> se utiliza para mostrar texto como un subíndice, es decir, ligeramente por debajo de la línea normal de texto y con un tamaño de fuente reducido. Es comúnmente utilizada en fórmulas químicas.</p>
+        <p><strong>Ejemplo:</strong></p>
+        <pre><code>&lt;p&gt;La fórmula del agua es H&lt;sub&gt;2&lt;/sub&gt;O.&lt;/p&gt;</code></pre>
+        <p>Esto se renderizará como "H₂O".</p>
+
+        <h3>4.3.2. La Etiqueta <code>&lt;sup&gt;</code> (Superíndice)</h3>
+        <p>La etiqueta <code>&lt;sup&gt;</code> se utiliza para mostrar texto como un superíndice, es decir, ligeramente por encima de la línea normal de texto y con un tamaño de fuente reducido. Se usa frecuentemente en notación matemática (exponentes), para ordinales o para referencias de notas a pie de página.</p>
+        <p><strong>Ejemplo:</strong></p>
+        <pre><code>&lt;p&gt;Einstein es famoso por su ecuación E=mc&lt;sup&gt;2&lt;/sup&gt;.&lt;/p&gt;
+&lt;p&gt;El 1&lt;sup&gt;er&lt;/sup&gt; premio fue para John Doe.&lt;/p&gt;
+&lt;p&gt;Esta es una nota al pie&lt;sup&gt;[1]&lt;/sup&gt;.&lt;/p&gt;</code></pre>
+        <p>Esto se renderizará como "E=mc²", "1ᵉʳ" y "nota al pie¹".</p>
+
+        <h2>4.4. Texto Marcado o Resaltado: <code>&lt;mark&gt;</code></h2>
+        <p>La etiqueta <code>&lt;mark&gt;</code> se utiliza para resaltar o "marcar" texto, indicando que es relevante en un contexto particular o para fines de referencia. Es similar a usar un marcador fluorescente en un texto impreso.</p>
+        <p>Los navegadores suelen mostrar el texto dentro de <code>&lt;mark&gt;</code> con un color de fondo resaltado (a menudo amarillo).</p>
+        <p><strong>Uso semántico:</strong> La etiqueta <code>&lt;mark&gt;</code> es adecuada para cuando el texto está siendo citado o referenciado en el contexto actual, y se desea llamar la atención sobre él.</p>
+        <p><strong>Ejemplo:</strong></p>
+        <pre><code>&lt;p&gt;Busca la palabra &lt;mark&gt;importante&lt;/mark&gt; en el párrafo.&lt;/p&gt;</code></pre>
+        <p>Esto es útil en resultados de búsqueda para resaltar las palabras clave encontradas, o para destacar información crucial en un documento.</p>
+
+        <h2>4.5. Citas en Bloque: <code>&lt;blockquote&gt;</code></h2>
+        <p>La etiqueta <code>&lt;blockquote&gt;</code> se utiliza para indicar que el texto contenido dentro de ella es una <strong>cita de otra fuente</strong>, y que esta cita debe ser presentada como un bloque de texto separado, a menudo con sangría o un formato visual distinto para distinguirla del contenido principal.</p>
+        <p><strong>Atributo <code>cite</code>:</strong> Opcionalmente, puedes usar el atributo <code>cite</code> para proporcionar la URL de la fuente de la cita. Este atributo no es visible para el usuario, pero puede ser útil para los motores de búsqueda y herramientas de accesibilidad.</p>
+        <p><strong>Ejemplo:</strong></p>
+        <pre><code>&lt;blockquote cite="https://es.wikipedia.org/wiki/Tim_Berners-Lee"&gt;
+    &lt;p&gt;La Web es más una creación social que una creación técnica. La diseñé para un efecto social: ayudar a la gente a colaborar, y no como una herramienta tecnológica para acciones aisladas.&lt;/p&gt;
+    &lt;footer&gt;— Tim Berners-Lee&lt;/footer&gt;
+&lt;/blockquote&gt;</code></pre>
+        <p>Los navegadores suelen aplicar sangría al contenido dentro de <code>&lt;blockquote&gt;</code> por defecto. Es una buena práctica incluir la atribución del autor dentro de la misma cita, a menudo dentro de un elemento <code>&lt;footer&gt;</code> o <code>&lt;cite&gt;</code> si es el título de la obra.</p>
+        <p class="note"><strong>Diferencia con <code>&lt;q&gt;</code>:</strong> Mientras <code>&lt;blockquote&gt;</code> es para citas en bloque (que ocupan su propio párrafo o más), la etiqueta <code>&lt;q&gt;</code> es para citas cortas en línea que no requieren un salto de párrafo (por ejemplo, "El profesor dijo: <q>Estudien mucho</q>").</p>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="./Ejercicios04.html">Ejercicios sobre formato y énfasis.</a></li>
+                <li><a href="./05ListasOrdenadasYDesordenadas.html">Capítulo 5: Tipos de listas.</a></li>
+                <li><a href="/index.html">Volver a la Página Principal</a></li>
+            </ul>
+        </footer>
+    </div>
 </body>
 </html>
