@@ -1,18 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elementos de Texto I: Encabezados y Párrafos.</title>
+    <title>Elementos de Texto: Encabezados y Párrafos - Curso HTML</title>
+    <link rel="stylesheet" href="/css/common_styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <H1>Clase 3: Elementos de Texto I: Encabezados y Párrafos.</H1>
-    <UL>
-        <li>Encabezados: &lt;h1&gt; a &lt;h6&gt; y su importancia semántica</li>
-        <li>Párrafos: &lt;p&gt;.</li>
-        <li>Saltos de línea: &lt;br&gt;.</li>
-        <li>Líneas horizontales: &lt;hr&gt;.</li>
-    </UL>
-    <p><a href="/index.html">Vuelve a la página principal</a></p>
+    <div class="container">
+        <h1><p>CURSO DE INICIACIÓN A HTML</p><p>Clase 3: Elementos de Texto I: Encabezados y Párrafos.</p></h1>
+
+        <p>Los elementos de texto en HTML son fundamentales para estructurar y presentar el contenido de una página web de manera semántica y legible. En esta sección, repasaremos los encabezados, párrafos, saltos de línea y líneas horizontales.</p>
+
+        <h2>3.1. Encabezados <code>&lt;h1&gt;</code> a <code>&lt;h6&gt;</code> y su Importancia Semántica.</h2>
+        <p>Los encabezados <code>&lt;h1&gt;</code>, <code>&lt;h2&gt;</code>, <code>&lt;h3&gt;</code>, <code>&lt;h4&gt;</code>, <code>&lt;h5&gt;</code>, <code>&lt;h6&gt;</code> son cruciales para organizar el contenido y tienen una gran importancia semántica. No solo afectan la apariencia visual del texto, sino que también definen la estructura jerárquica del contenido.</p>
+
+        <h3>3.1.1. Jerarquía y Estructura</h3>
+        <p>El encabezado <code>&lt;h1&gt;</code> debe usarse para el título principal de la página o la sección más importante. Los encabezados subsiguientes (<code>&lt;h2&gt;</code> a <code>&lt;h6&gt;</code>) se utilizan para subtítulos y sub-subtítulos, estableciendo una jerarquía clara en el documento.</p>
+
+        <h3>3.1.2. Importancia para SEO y Accesibilidad</h3>
+        <p>Los motores de búsqueda utilizan los encabezados para entender la estructura y el tema de tu página, lo que puede mejorar tu posicionamiento. Para los usuarios de lectores de pantalla, los encabezados actúan como puntos de navegación, permitiéndoles comprender rápidamente la estructura del documento.</p>
+
+        <strong>Ejemplo de Encabezados:</strong>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;es&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Mi Página&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Título Principal de la Página&lt;/h1&gt;
+    &lt;h2&gt;Sección Importante&lt;/h2&gt;
+    &lt;h3&gt;Subsección del Tema&lt;/h3&gt;
+    &lt;h4&gt;Detalle Específico&lt;/h4&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+        <div class="note">
+            <p><strong>Recuerda:</strong> Evita usar los encabezados solo para dar estilo visual. Su propósito principal es definir la estructura semántica de tu contenido. Tampoco saltes niveles de encabezado (por ejemplo, de <code>&lt;h1&gt;</code> a <code>&lt;h3&gt;</code> directamente) para mantener una jerarquía lógica.</p>
+        </div>
+
+        <h2>3.2. Párrafos <code>&lt;p&gt;</code></h2>
+        <p>El elemento <code>&lt;p&gt;</code> se utiliza para agrupar texto en párrafos. Es el elemento de bloque más común para el contenido textual principal y representa un bloque de texto coherente, una unidad de pensamiento.</p>
+
+        <strong>Ejemplo de Párrafos:</strong>
+        <pre><code>&lt;p&gt;Este es el primer párrafo de mi documento HTML. Aquí puedo escribir sobre cualquier tema que me interese y necesite.&lt;/p&gt;
+&lt;p&gt;Este es el segundo párrafo. Los párrafos nos ayudan a organizar el texto en bloques legibles, mejorando la experiencia del usuario.&lt;/p&gt;</code></pre>
+
+        <h2>3.3. Saltos de Línea <code>&lt;br&gt;</code></h2>
+        <p>El elemento <code>&lt;br&gt;</code> (break) se utiliza para insertar un salto de línea dentro de un bloque de texto. Es un elemento de línea vacío, lo que significa que no tiene contenido ni etiqueta de cierre.</p>
+
+        <div class="note">
+            <p><strong>Importante:</strong> El <code>&lt;br&gt;</code> debe usarse solo cuando un salto de línea es parte intrínseca del contenido, como en una dirección postal o un poema. No lo uses para crear espacio entre párrafos; para eso, se debe utilizar CSS.</p>
+        </div>
+
+        <strong>Ejemplo de Uso Correcto de <code>&lt;br&gt;</code>:</strong>
+        <pre><code>&lt;p&gt;
+    Calle Mayor, 123&lt;br&gt;
+    Piso 4, Puerta B&lt;br&gt;
+    28001 Madrid&lt;br&gt;
+    España
+&lt;/p&gt;</code></pre>
+
+        <h2>3.4. Líneas Horizontales <code>&lt;hr&gt;</code>.</h2>
+        <p>El elemento <code>&lt;hr&gt;</code> (horizontal rule) representa un cambio temático en el contenido a nivel de párrafo. A menudo, se muestra como una línea horizontal.</p>
+
+        <div class="note">
+            <p><strong>Semántica:</strong> El <code>&lt;hr&gt;</code> indica una separación temática significativa, como el final de una sección importante o un cambio de escena en una narrativa. No debe usarse solo para dibujar una línea decorativa; para eso, es preferible usar CSS.</p>
+        </div>
+
+        <strong>Ejemplo de <code>&lt;hr&gt;</code>:</strong>
+        <pre><code>&lt;p&gt;Aquí termina la introducción a los elementos básicos de HTML.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Ahora, vamos a profundizar en otros elementos de texto, como énfasis del texto, texto pequeño, subíndices...&lt;/p&gt;</code></pre>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="Ejercicios04.html">Ejercicios sobre Vínculos</a></li>
+                <li><a href="./04ElementosDeTextoIIFormatoYEnfasis.html">Capítulo 4: Elementos de Texto: Formato y énfasis.</a></li>
+                <li><a href="/index.html">Volver a la Página Principal</a></li>
+            </ul>
+        </footer>    
+    </div>
 </body>
 </html>
