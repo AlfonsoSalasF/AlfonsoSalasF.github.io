@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 2: Ejercicios de Estructura HTML</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/ejecicios_styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Clase 2: Ejercicios de Estructura Básica de un Documento HTML</h1>
+
+        <div class="exercise-section">
+            <h3>Ejercicios Prácticos</h3>
+            <p>Aplica tus conocimientos sobre la estructura básica de HTML resolviendo los siguientes ejercicios.</p>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 1: Tu Primera Página HTML</h4>
+                <p>Crea un archivo HTML con la estructura básica aprendida en la Clase 2. El título de la página debe ser "Mi Primera Página Web" y en el cuerpo de la página debe aparecer el texto "¡Hola, mundo!".</p>
+                <button class="reveal-button" onclick="toggleSolution('solution1')">Resolver</button>
+                <div id="solution1" class="exercise-solution">
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Mi Primera Página Web&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;p&gt;¡Hola, mundo!&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 2: Configurando el Idioma y los Metadatos</h4>
+                <p>Modifica la estructura básica de un documento HTML para que el idioma principal del documento sea el inglés (<code>en</code>) y añade una etiqueta <code>&lt;meta&gt;</code> con la descripción "Página de ejemplo para el curso de HTML" (<code>name="description"</code>).</p>
+                <button class="reveal-button" onclick="toggleSolution('solution2')">Resolver</button>
+                <div id="solution2" class="exercise-solution">
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;meta name="description" content="Página de ejemplo para el curso de HTML"&gt;
+    &lt;title&gt;English Example Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;p&gt;Hello, world! This page is in English.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="quiz-section exercise-section">
+            <h3>Preguntas Tipo Test</h3>
+            <p>Evalúa tus conocimientos sobre la estructura básica de HTML con estas preguntas de opción múltiple.</p>
+
+            <form id="quizForm">
+                <div class="quiz-question">
+                    <p>1. ¿Cuál es la primera línea que debe aparecer en un documento HTML5?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="a"> a) <code>&lt;html&gt;</code></label>
+                        <label><input type="radio" name="q1" value="b"> b) <code>&lt;head&gt;</code></label>
+                        <label><input type="radio" name="q1" value="c"> c) <code>&lt;!DOCTYPE html&gt;</code></label>
+                        <label><input type="radio" name="q1" value="d"> d) <code>&lt;body&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>2. ¿Qué etiqueta HTML actúa como el elemento raíz de todo el documento?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="a"> a) <code>&lt;body&gt;</code></label>
+                        <label><input type="radio" name="q2" value="b"> b) <code>&lt;head&gt;</code></label>
+                        <label><input type="radio" name="q2" value="c"> c) <code>&lt;html&gt;</code></label>
+                        <label><input type="radio" name="q2" value="d"> d) <code>&lt;!DOCTYPE html&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>3. ¿Dónde se encuentra la información sobre la página que no es visible para el usuario (metadatos)?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="a"> a) Dentro de la etiqueta <code>&lt;body&gt;</code></label>
+                        <label><input type="radio" name="q3" value="b"> b) Dentro de la etiqueta <code>&lt;head&gt;</code></label>
+                        <label><input type="radio" name="q3" value="c"> c) En un archivo CSS externo</label>
+                        <label><input type="radio" name="q3" value="d"> d) Directamente después de <code>&lt;!DOCTYPE html&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>4. ¿Qué etiqueta define el título de la página que aparece en la pestaña del navegador?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="a"> a) <code>&lt;h1&gt;</code></label>
+                        <label><input type="radio" name="q4" value="b"> b) <code>&lt;meta name="title"&gt;</code></label>
+                        <label><input type="radio" name="q4" value="c"> c) <code>&lt;header&gt;</code></label>
+                        <label><input type="radio" name="q4" value="d"> d) <code>&lt;title&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>5. ¿Cuál es el propósito principal de <code>&lt;meta charset="UTF-8"&gt;</code>?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="a"> a) Definir el idioma de la página.</label>
+                        <label><input type="radio" name="q5" value="b"> b) Especificar la codificación de caracteres para mostrar correctamente los símbolos.</label>
+                        <label><input type="radio" name="q5" value="c"> c) Establecer el tamaño de fuente predeterminado.</label>
+                        <label><input type="radio" name="q5" value="d"> d) Indicar al navegador que la página es compatible con CSS.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>6. ¿Qué atributo se utiliza en la etiqueta <code>&lt;html&gt;</code> para especificar el idioma principal del contenido?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q6" value="a"> a) <code>charset</code></label>
+                        <label><input type="radio" name="q6" value="b"> b) <code>type</code></label>
+                        <label><input type="radio" name="q6" value="c"> c) <code>lang</code></label>
+                        <label><input type="radio" name="q6" value="d"> d) <code>language</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>7. Todo el contenido visible de una página web se encuentra dentro de la etiqueta:</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q7" value="a"> a) <code>&lt;html&gt;</code></label>
+                        <label><input type="radio" name="q7" value="b"> b) <code>&lt;head&gt;</code></label>
+                        <label><input type="radio" name="q7" value="c"> c) <code>&lt;body&gt;</code></label>
+                        <label><input type="radio" name="q7" value="d"> d) <code>&lt;main&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>8. ¿Qué hace la etiqueta <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code>?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q8" value="a"> a) Define el tamaño máximo de la ventana del navegador.</label>
+                        <label><input type="radio" name="q8" value="b"> b) Ayuda a que la página se adapte correctamente a diferentes tamaños de pantalla (diseño responsivo).</label>
+                        <label><input type="radio" name="q8" value="c"> c) Carga imágenes de alta resolución en dispositivos móviles.</label>
+                        <label><input type="radio" name="q8" value="d"> d) Controla la velocidad de carga de la página.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>9. Si guardas tu archivo HTML, ¿qué extensión de archivo deberías usar?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q9" value="a"> a) <code>.txt</code></label>
+                        <label><input type="radio" name="q9" value="b"> b) <code>.css</code></label>
+                        <label><input type="radio" name="q9" value="c"> c) <code>.js</code></label>
+                        <label><input type="radio" name="q9" value="d"> d) <code>.html</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>10. Para ver tu archivo HTML en un navegador después de guardarlo, ¿qué acción es la más común?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q10" value="a"> a) Subirlo a un servidor web.</label>
+                        <label><input type="radio" name="q10" value="b"> b) Abrirlo con un programa de edición de imágenes.</label>
+                        <label><input type="radio" name="q10" value="c"> c) Hacer doble clic en el archivo o arrastrarlo al navegador.</label>
+                        <label><input type="radio" name="q10" value="d"> d) Ejecutarlo desde la línea de comandos.</label>
+                    </div>
+                </div>
+
+                <button type="button" class="submit-quiz-button" onclick="checkQuiz()">Ver Resultados</button>
+            </form>
+
+            <div id="quizResults" class="quiz-results">
+                <p>Resultados del Test:</p>
+                <ol id="resultsList"></ol>
+                <p id="scoreSummary"></p>
+                <button type="button" class="reveal-button" onclick="resetQuiz()">Volver a Intentar</button>
+            </div>
+        </div>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="02EstructuraBasicaDeUnDocumentoHtml.html">Volver a la Clase 2: Estructura Básica de un Documento HTML</a></li>
+                <li><a href="../index.html">Volver a la Página Principal</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script>
+        const correctAnswers = {
+            q1: 'c',
+            q2: 'c',
+            q3: 'b',
+            q4: 'd',
+            q5: 'b',
+            q6: 'c',
+            q7: 'c',
+            q8: 'b',
+            q9: 'd',
+            q10: 'c'
+        };
+
+        function toggleSolution(id) {
+            const solutionDiv = document.getElementById(id);
+            if (solutionDiv.style.display === 'block') {
+                solutionDiv.style.display = 'none';
+            } else {
+                solutionDiv.style.display = 'block';
+            }
+        }
+
+        function checkQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const resultsList = document.getElementById('resultsList');
+            const quizResultsDiv = document.getElementById('quizResults');
+            const scoreSummary = document.getElementById('scoreSummary');
+            let score = 0;
+            const totalQuestions = Object.keys(correctAnswers).length;
+
+            resultsList.innerHTML = ''; // Limpiar resultados anteriores
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = quizForm.elements[questionName].value;
+                const correctAnswer = correctAnswers[questionName];
+                const listItem = document.createElement('li');
+                
+                if (selectedOption === correctAnswer) {
+                    listItem.classList.add('correct');
+                    listItem.textContent = `Pregunta ${i}: Correcta.`;
+                    score++;
+                } else {
+                    listItem.classList.add('incorrect');
+                    let selectedAnswerText = 'No respondida';
+                    if (selectedOption) {
+                        const selectedLabel = quizForm.querySelector(`input[name="${questionName}"][value="${selectedOption}"]`).closest('label');
+                        selectedAnswerText = selectedLabel ? selectedLabel.textContent.trim() : selectedAnswerText;
+                    }
+                    
+                    const correctLabel = quizForm.querySelector(`input[name="${questionName}"][value="${correctAnswer}"]`).closest('label');
+                    const correctAnswerText = correctLabel ? correctLabel.textContent.trim() : 'N/A';
+
+                    listItem.innerHTML = `Pregunta ${i}: Incorrecta. <br> Tu respuesta: "${selectedAnswerText}". <span class="correct-answer-info">Respuesta correcta: "${correctAnswerText}".</span>`;
+                }
+                resultsList.appendChild(listItem);
+            }
+
+            scoreSummary.textContent = `Tu puntuación es: ${score} de ${totalQuestions} preguntas correctas.`;
+            quizResultsDiv.style.display = 'block';
+            quizResultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function resetQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            quizForm.reset();
+            document.getElementById('quizResults').style.display = 'none';
+            document.getElementById('resultsList').innerHTML = '';
+            document.getElementById('scoreSummary').textContent = '';
+        }
+    </script>
+</body>
+</html>

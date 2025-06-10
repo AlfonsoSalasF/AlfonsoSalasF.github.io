@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 4: Ejercicios de Formato y Énfasis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/ejecicios_styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Clase 4: Ejercicios de Elementos de Texto II: Formato y Énfasis</h1>
+
+        <div class="exercise-section">
+            <h3>Ejercicios Prácticos</h3>
+            <p>Aplica tus conocimientos sobre cómo enfatizar, marcar y organizar texto en HTML.</p>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 1: Énfasis y Texto Pequeño</h4>
+                <p>Crea un párrafo que contenga una frase. Dentro de esa frase, haz que una palabra sea de <strong>importancia fuerte</strong> y otra palabra tenga un <em>énfasis tonal</em>. Al final del párrafo, añade un pequeño texto de "Copyright" usando la etiqueta adecuada.</p>
+                <button class="reveal-button" onclick="toggleSolution('solution1')">Resolver</button>
+                <div id="solution1" class="exercise-solution">
+<pre><code>&lt;p&gt;Este es un &lt;strong&gt;ejercicio fundamental&lt;/strong&gt; para comprender el &lt;em&gt;énfasis&lt;/em&gt; en HTML.&lt;br&gt;
+&lt;small&gt;&amp;copy; 2025 Mis Ejercicios.&lt;/small&gt;&lt;/p&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 2: Subíndice, Superíndice y Marcado</h4>
+                <p>En un nuevo párrafo, escribe la fórmula química del dióxido de carbono (CO2) usando la etiqueta de subíndice. Luego, escribe una expresión matemática como E=mc² utilizando la etiqueta de superíndice. Finalmente, en la misma línea, marca la palabra "fórmula" con la etiqueta correspondiente.</p>
+                <button class="reveal-button" onclick="toggleSolution('solution2')">Resolver</button>
+                <div id="solution2" class="exercise-solution">
+<pre><code>&lt;p&gt;La fórmula del dióxido de carbono es CO&lt;sub&gt;2&lt;/sub&gt;. La &lt;mark&gt;fórmula&lt;/mark&gt; de Einstein es E=mc&lt;sup&gt;2&lt;/sup&gt;.&lt;/p&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="quiz-section exercise-section">
+            <h3>Preguntas Tipo Test</h3>
+            <p>Evalúa tus conocimientos sobre los elementos de formato y énfasis en HTML.</p>
+
+            <form id="quizForm">
+                <div class="quiz-question">
+                    <p>1. ¿Qué etiqueta se usa para indicar que un texto tiene "gran importancia, seriedad o urgencia"?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="a"> a) <code>&lt;em&gt;</code></label>
+                        <label><input type="radio" name="q1" value="b"> b) <code>&lt;b&gt;</code></label>
+                        <label><input type="radio" name="q1" value="c"> c) <code>&lt;strong&gt;</code></label>
+                        <label><input type="radio" name="q1" value="d"> d) <code>&lt;bold&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>2. ¿Qué etiqueta se utiliza para indicar un "énfasis tonal o de voz"?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="a"> a) <code>&lt;strong&gt;</code></label>
+                        <label><input type="radio" name="q2" value="b"> b) <code>&lt;i&gt;</code></label>
+                        <label><input type="radio" name="q2" value="c"> c) <code>&lt;em&gt;</code></label>
+                        <label><input type="radio" name="q2" value="d"> d) <code>&lt;italic&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>3. ¿Qué etiqueta se utiliza para el texto que debe aparecer como un subíndice (por ejemplo, en fórmulas químicas)?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="a"> a) <code>&lt;sup&gt;</code></label>
+                        <label><input type="radio" name="q3" value="b"> b) <code>&lt;sub&gt;</code></label>
+                        <label><input type="radio" name="q3" value="c"> c) <code>&lt;down&gt;</code></label>
+                        <label><input type="radio" name="q3" value="d"> d) <code>&lt;index&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>4. ¿Qué etiqueta se utiliza para el texto que debe aparecer como un superíndice (por ejemplo, exponentes)?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="a"> a) <code>&lt;sub&gt;</code></label>
+                        <label><input type="radio" name="q4" value="b"> b) <code>&lt;sup&gt;</code></label>
+                        <label><input type="radio" name="q4" value="c"> c) <code>&lt;up&gt;</code></label>
+                        <label><input type="radio" name="q4" value="d"> d) <code>&lt;exponent&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>5. La etiqueta <code>&lt;small&gt;</code> se utiliza semánticamente para:</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="a"> a) Reducir el tamaño de fuente visualmente sin otro significado.</label>
+                        <label><input type="radio" name="q5" value="b"> b) Indicar que el contenido tiene una importancia secundaria (e.g., derechos de autor, letra pequeña).</label>
+                        <label><input type="radio" name="q5" value="c"> c) Crear un encabezado menos importante que h6.</label>
+                        <label><input type="radio" name="q5" value="d"> d) Marcar texto que ha sido editado.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>6. ¿Qué etiqueta se utiliza para resaltar o "marcar" texto como relevante en un contexto particular?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q6" value="a"> a) <code>&lt;highlight&gt;</code></label>
+                        <label><input type="radio" name="q6" value="b"> b) <code>&lt;mark&gt;</code></label>
+                        <label><input type="radio" name="q6" value="c"> c) <code>&lt;yellow&gt;</code></label>
+                        <label><input type="radio" name="q6" value="d"> d) <code>&lt;emphasis&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>7. Para una cita larga que debe presentarse como un bloque de texto separado, ¿qué etiqueta HTML usarías?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q7" value="a"> a) <code>&lt;q&gt;</code></label>
+                        <label><input type="radio" name="q7" value="b"> b) <code>&lt;quote&gt;</code></label>
+                        <label><input type="radio" name="q7" value="c"> c) <code>&lt;blockquote&gt;</code></label>
+                        <label><input type="radio" name="q7" value="d"> d) <code>&lt;cite&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>8. ¿Cuál es el atributo opcional que se puede usar con <code>&lt;blockquote&gt;</code> para proporcionar la URL de la fuente de la cita?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q8" value="a"> a) <code>source</code></label>
+                        <label><input type="radio" name="q8" value="b"> b) <code>url</code></label>
+                        <label><input type="radio" name="q8" value="c"> c) <code>link</code></label>
+                        <label><input type="radio" name="q8" value="d"> d) <code>cite</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>9. ¿Cuál es la diferencia semántica entre <code>&lt;strong&gt;</code> y <code>&lt;em&gt;</code>?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q9" value="a"> a) <code>&lt;strong&gt;</code> es para negrita y <code>&lt;em&gt;</code> para cursiva.</label>
+                        <label><input type="radio" name="q9" value="b"> b) <code>&lt;strong&gt;</code> indica importancia y <code>&lt;em&gt;</code> indica énfasis tonal.</label>
+                        <label><input type="radio" name="q9" value="c"> c) <code>&lt;strong&gt;</code> es para títulos y <code>&lt;em&gt;</code> para subtítulos.</label>
+                        <label><input type="radio" name="q9" value="d"> d) No hay diferencia semántica, solo visual.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>10. Si quisieras citar una frase corta dentro de un párrafo, como "El autor dijo: 'Esto es una gran idea'", ¿qué etiqueta usarías para la frase citada?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q10" value="a"> a) <code>&lt;blockquote&gt;</code></label>
+                        <label><input type="radio" name="q10" value="b"> b) <code>&lt;p&gt;</code></label>
+                        <label><input type="radio" name="q10" value="c"> c) <code>&lt;cite&gt;</code></label>
+                        <label><input type="radio" name="q10" value="d"> d) <code>&lt;q&gt;</code></label>
+                    </div>
+                </div>
+
+                <button type="button" class="submit-quiz-button" onclick="checkQuiz()">Ver Resultados</button>
+            </form>
+
+            <div id="quizResults" class="quiz-results">
+                <p>Resultados del Test:</p>
+                <ol id="resultsList"></ol>
+                <p id="scoreSummary"></p>
+                <button type="button" class="reveal-button" onclick="resetQuiz()">Volver a Intentar</button>
+            </div>
+        </div>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="04ElementosDeTextoIIFormatoYEnfasis.html">Volver a la Clase 4: Formato y Énfasis</a></li>
+                <li><a href="../index.html">Volver a la Página Principal</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script>
+        const correctAnswers = {
+            q1: 'c',
+            q2: 'c',
+            q3: 'b',
+            q4: 'b',
+            q5: 'b',
+            q6: 'b',
+            q7: 'c',
+            q8: 'd',
+            q9: 'b',
+            q10: 'd'
+        };
+
+        function toggleSolution(id) {
+            const solutionDiv = document.getElementById(id);
+            if (solutionDiv.style.display === 'block') {
+                solutionDiv.style.display = 'none';
+            } else {
+                solutionDiv.style.display = 'block';
+            }
+        }
+
+        function checkQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const resultsList = document.getElementById('resultsList');
+            const quizResultsDiv = document.getElementById('quizResults');
+            const scoreSummary = document.getElementById('scoreSummary');
+            let score = 0;
+            const totalQuestions = Object.keys(correctAnswers).length;
+
+            resultsList.innerHTML = ''; // Limpiar resultados anteriores
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = quizForm.elements[questionName].value;
+                const correctAnswer = correctAnswers[questionName];
+                const listItem = document.createElement('li');
+                
+                if (selectedOption === correctAnswer) {
+                    listItem.classList.add('correct');
+                    listItem.textContent = `Pregunta ${i}: Correcta.`;
+                    score++;
+                } else {
+                    listItem.classList.add('incorrect');
+                    let selectedAnswerText = 'No respondida';
+                    if (selectedOption) {
+                        const selectedLabel = quizForm.querySelector(`input[name="${questionName}"][value="${selectedOption}"]`).closest('label');
+                        selectedAnswerText = selectedLabel ? selectedLabel.textContent.trim() : selectedAnswerText;
+                    }
+                    
+                    const correctLabel = quizForm.querySelector(`input[name="${questionName}"][value="${correctAnswer}"]`).closest('label');
+                    const correctAnswerText = correctLabel ? correctLabel.textContent.trim() : 'N/A';
+
+                    listItem.innerHTML = `Pregunta ${i}: Incorrecta. <br> Tu respuesta: "${selectedAnswerText}". <span class="correct-answer-info">Respuesta correcta: "${correctAnswerText}".</span>`;
+                }
+                resultsList.appendChild(listItem);
+            }
+
+            scoreSummary.textContent = `Tu puntuación es: ${score} de ${totalQuestions} preguntas correctas.`;
+            quizResultsDiv.style.display = 'block';
+            quizResultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function resetQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            quizForm.reset();
+            document.getElementById('quizResults').style.display = 'none';
+            document.getElementById('resultsList').innerHTML = '';
+            document.getElementById('scoreSummary').textContent = '';
+        }
+    </script>
+</body>
+</html>
