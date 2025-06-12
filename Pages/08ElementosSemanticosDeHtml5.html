@@ -1,17 +1,175 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elementos Semánticos de HTML5</title>
+    <title>Elementos Semánticos de HTML5 - Curso HTML</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
 </head>
 <body>
-    <H1>Clase 8: Elementos Semánticos de HTML5</H1>
-    <UL>
-        <li>La importancia de la semántica en HTML.</li>
-        <li>Nuevas etiquetas semánticas: &lt;header&gt;, &lt;footer>, &lt;nav&gt;, &lt;main&gt;, &lt;article&gt;, &lt;section&gt;, &lt;aside&gt;.</li>
-        <li>Uso correcto para mejorar la estructura y la accesibilidad.</li>
-    </UL>
-    <p><a href="/index.html">Vuelve a la página principal</a></p>
+    <div class="container">
+        <h1><p>CURSO DE INICIACIÓN A HTML</p><p>Clase 8: Elementos Semánticos de HTML5.</p></h1>
+
+        <p>A medida que la web ha evolucionado, también lo ha hecho HTML. Con la llegada de HTML5, se introdujeron nuevas etiquetas que no solo sirven para estructurar el contenido de manera visual, sino que también añaden un significado semántico. Esto es crucial para mejorar la legibilidad del código, la accesibilidad para usuarios con necesidades especiales y la optimización para motores de búsqueda. En esta clase, exploraremos la importancia de la semántica en HTML y nos familiarizaremos con las nuevas y poderosas etiquetas semánticas de HTML5.</p>
+
+        <hr>
+
+        <h2>8.1. La importancia de la semántica en HTML.</h2>
+        <p>Antes de HTML5, los desarrolladores solían usar etiquetas genéricas como <code>&lt;div&gt;</code> y <code>&lt;span&gt;</code>, con atributos <code>id</code> o <code>class</code>, para estructurar grandes partes de una página (ej., <code>&lt;div id="header"&gt;</code>, <code>&lt;div class="footer"&gt;</code>). Aunque funcionaba, este enfoque tenía limitaciones:</p>
+        <ul>
+            <li><strong>Legibilidad del código:</strong> Era más difícil para otros desarrolladores (y para ti mismo después de un tiempo) entender la estructura y el propósito de cada <code>&lt;div&gt;</code> con solo leer el código.</li>
+            <li><strong>Accesibilidad:</strong> Los lectores de pantalla y otras tecnologías de asistencia tenían dificultades para inferir la estructura y el significado de las diferentes secciones de una página. Por ejemplo, no sabían si un <code>&lt;div id="nav"&gt;</code> era realmente una navegación.</li>
+            <li><strong>SEO (Optimización para Motores de Búsqueda):</strong> Los motores de búsqueda intentan entender el contenido de tu página. Las etiquetas genéricas ofrecían menos pistas sobre la relevancia o la función de ciertas secciones.</li>
+        </ul>
+        <p>La <strong>semántica</strong> en HTML se refiere a dar significado al contenido más allá de su simple apariencia visual. Las etiquetas semánticas describen el tipo de contenido que contienen, lo que permite que tanto los navegadores como los motores de búsqueda y las tecnologías de asistencia comprendan mejor la estructura y el contexto de la información.</p>
+        <p class="note"><strong>Beneficios de la semántica:</strong></p>
+        <ul>
+            <li><strong>Mejor accesibilidad:</strong> Permite que los lectores de pantalla y otros dispositivos de asistencia ayuden a los usuarios a navegar y comprender el contenido de manera más efectiva.</li>
+            <li><strong>Mejor SEO:</strong> Los motores de búsqueda pueden interpretar el contenido de manera más precisa, lo que puede mejorar el ranking y la visibilidad de tu sitio.</li>
+            <li><strong>Código más limpio y mantenible:</strong> Facilita que los desarrolladores entiendan el propósito de las diferentes secciones de un documento.</li>
+            <li><strong>Flexibilidad de estilo:</strong> La separación de la estructura y el estilo (HTML para la estructura, CSS para el estilo) se mantiene clara.</li>
+        </ul>
+
+        <h2>8.2. Nuevas etiquetas semánticas: <code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;aside&gt;</code>.</h2>
+        <p>HTML5 introdujo varias etiquetas semánticas nuevas para proporcionar una estructura más clara y con significado. A continuación, exploraremos las más comunes:</p>
+
+        <h3>8.2.1. <code>&lt;header&gt;</code></h3>
+        <p>Representa el contenido introductorio o un grupo de ayudas de navegación. Típicamente contiene:</p>
+        <ul>
+            <li>Un encabezado (<code>&lt;h1&gt;</code> a <code>&lt;h6&gt;</code>).</li>
+            <li>Un logo.</li>
+            <li>Un eslogan o subtítulo.</li>
+            <li>Elementos de navegación (a menudo dentro de <code>&lt;nav&gt;</code>).</li>
+        </ul>
+        <p>Puede haber múltiples elementos <code>&lt;header&gt;</code> en una página (ej., uno para el sitio global y otro para una <code>&lt;article&gt;</code> específica).</p>
+        <p><strong>Ejemplo:</strong></p>
+        <pre><code>&lt;header&gt;
+    &lt;img src="logo.png" alt="Mi Empresa Logo"&gt;
+    &lt;h1&gt;Nombre de la Empresa&lt;/h1&gt;
+    &lt;nav&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href="/"&gt;Inicio&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="/servicios"&gt;Servicios&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+&lt;/header&gt;</code></pre>
+
+        <h3>8.2.2. <code>&lt;footer&gt;</code></h3>
+        <p>Representa el pie de página de un documento o sección. Típicamente contiene información sobre su sección contenedora, como:</p>
+        <ul>
+            <li>Información de autoría.</li>
+            <li>Enlaces a documentos relacionados.</li>
+            <li>Datos de copyright.</li>
+            <li>Información de contacto.</li>
+        </ul>
+        <p>Al igual que <code>&lt;header&gt;</code>, puede haber múltiples <code>&lt;footer&gt;</code> elementos en una página.</p>
+        <p><strong>Ejemplo:</strong></p>
+        <pre><code>&lt;footer&gt;
+    &lt;p&gt;&amp;copy; 2025 Mi Empresa. Todos los derechos reservados.&lt;/p&gt;
+    &lt;p&gt;Contacto: info@miempresa.com&lt;/p&gt;
+&lt;/footer&gt;</code></pre>
+
+        <h3>8.2.3. <code>&lt;nav&gt;</code></h3>
+        <p>Representa una sección de un documento que contiene enlaces de navegación. Se utiliza para bloques principales de navegación, como menús de sitio, tablas de contenido, etc.</p>
+        <p>No todos los grupos de enlaces deben estar dentro de un <code>&lt;nav&gt;</code>; solo los que representan la navegación principal.</p>
+        <p><strong>Ejemplo:</strong></p>
+        <pre><code>&lt;nav&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="/productos"&gt;Productos&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/acerca-de"&gt;Acerca de&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/contacto"&gt;Contacto&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+
+        <h3>8.2.4. <code>&lt;main&gt;</code></h3>
+        <p>Representa el contenido dominante del <code>&lt;body&gt;</code>. Debe haber solo <strong>un</strong> elemento <code>&lt;main&gt;</code> por documento, y debe ser único (no debe contener contenido duplicado que ya esté en el <code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code>, <code>&lt;nav&gt;</code> o <code>&lt;aside&gt;</code>).</p>
+        <p>Su propósito es mejorar la accesibilidad, permitiendo a los lectores de pantalla saltar directamente al contenido principal de la página.</p>
+        <p><strong>Ejemplo:</strong></p>
+        <pre><code>&lt;body&gt;
+    &lt;header&gt;...&lt;/header&gt;
+    &lt;nav&gt;...&lt;/nav&gt;
+    &lt;main&gt;
+        &lt;h2&gt;Contenido Principal de la Página&lt;/h2&gt;
+        &lt;p&gt;Aquí va el contenido central y único de este documento.&lt;/p&gt;
+    &lt;/main&gt;
+    &lt;footer&gt;...&lt;/footer&gt;
+&lt;/body&gt;</code></pre>
+
+        <h3>8.2.5. <code>&lt;article&gt;</code></h3>
+        <p>Representa una pieza de contenido independiente y autodependiente, que podría distribuirse y reutilizarse de forma independiente. Ejemplos incluyen:</p>
+        <ul>
+            <li>Un post de blog.</li>
+            <li>Un comentario de usuario.</li>
+            <li>Un widget interactivo.</li>
+            <li>Un ítem de noticias.</li>
+        </ul>
+        <p>Cada <code>&lt;article&gt;</code> debería tener sentido por sí mismo, incluso si se extrae de la página original.</p>
+        <p><strong>Ejemplo:</strong></p>
+        <pre><code>&lt;article&gt;
+    &lt;h2&gt;Mi Primer Artículo de Blog&lt;/h2&gt;
+    &lt;p&gt;Fecha: 10 de Junio, 2025&lt;/p&gt;
+    &lt;p&gt;Este es el contenido de mi artículo.&lt;/p&gt;
+    &lt;footer&gt;
+        &lt;p&gt;Publicado por: Juan Pérez&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/article&gt;</code></pre>
+
+        <h3>8.2.6. <code>&lt;section&gt;</code></h3>
+        <p>Representa una sección genérica de un documento, que agrupa contenido relacionado. Es una buena práctica usarla cuando el contenido de la sección podría tener un encabezado propio (aunque no siempre es necesario). Un <code>&lt;section&gt;</code> no es tan independiente como un <code>&lt;article&gt;</code>.</p>
+        <p><strong>Ejemplos:</strong> Capítulos de un libro, secciones de una página principal (ej., "Sobre nosotros", "Servicios", "Contacto").</p>
+        <p><strong>Ejemplo:</strong></p>
+        <pre><code>&lt;section&gt;
+    &lt;h2&gt;Nuestros Servicios&lt;/h2&gt;
+    &lt;p&gt;Ofrecemos una amplia gama de servicios...&lt;/p&gt;
+&lt;/section&gt;
+
+&lt;section&gt;
+    &lt;h2&gt;Opiniones de Clientes&lt;/h2&gt;
+    &lt;p&gt;Lo que dicen nuestros clientes...&lt;/p&gt;
+&lt;/section&gt;</code></pre>
+
+        <h3>8.2.7. <code>&lt;aside&gt;</code></h3>
+        <p>Representa una sección de un documento cuyo contenido está indirectamente relacionado con el contenido principal de la página, pero que es "aparte" de él. Típicamente se muestra como una barra lateral, un recuadro de citas, publicidad, o un glosario.</p>
+        <p><strong>Ejemplo:</strong></p>
+        <pre><code>&lt;main&gt;
+    &lt;article&gt;
+        &lt;h2&gt;Artículo principal&lt;/h2&gt;
+        &lt;p&gt;Contenido relevante del artículo.&lt;/p&gt;
+    &lt;/article&gt;
+    &lt;aside&gt;
+        &lt;h3&gt;Artículos relacionados&lt;/h3&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href="#"&gt;Otro tema interesante&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;Más sobre HTML5&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/aside&gt;
+&lt;/main&gt;</code></pre>
+
+        <h2>8.3. Uso correcto para mejorar la estructura y la accesibilidad.</h2>
+        <p>El uso correcto de estas etiquetas semánticas no se trata solo de que tu página se vea bien (ya que su estilo por defecto suele ser mínimo), sino de crear una base sólida para la web. Aquí hay algunas pautas clave:</p>
+        <ul>
+            <li><strong>Pregunta el "significado":</strong> Antes de usar un <code>&lt;div&gt;</code>, pregúntate si la sección de contenido tiene un significado específico que una etiqueta semántica podría representar mejor.</li>
+            <li><strong><code>&lt;main&gt;</code> único:</strong> Recuerda que solo debe haber un <code>&lt;main&gt;</code> por página.</li>
+            <li><strong>Jerarquía de encabezados:</strong> Asegúrate de que los encabezados (<code>&lt;h1&gt;</code> a <code>&lt;h6&gt;</code>) dentro de <code>&lt;article&gt;</code> y <code>&lt;section&gt;</code> sigan una estructura lógica para la sección que encabezan.</li>
+            <li><strong>Contenido independiente para <code>&lt;article&gt;</code>:</strong> Piensa si el contenido del <code>&lt;article&gt;</code> podría ser extraído y publicado en un feed RSS o en otro sitio web y seguir teniendo sentido. Si es así, es un buen candidato para <code>&lt;article&gt;</code>.</li>
+            <li><strong><code>&lt;section&gt;</code> para agrupaciones lógicas:</strong> Usa <code>&lt;section&gt;</code> para agrupar contenido que está relacionado temáticamente, a menudo con su propio encabezado.</li>
+            <li><strong>Navegación principal en <code>&lt;nav&gt;</code>:</strong> No envuelvas cada pequeño enlace en un <code>&lt;nav&gt;</code>; úsalo solo para los bloques de navegación principales.</li>
+            <li><strong>Contenido "aparte" en <code>&lt;aside&gt;</code>:</strong> Utiliza <code>&lt;aside&gt;</code> para información complementaria que podría ser útil pero no esencial para el flujo principal del documento.</li>
+        </ul>
+        <p>Al adoptar estas prácticas, no solo escribirás un HTML más limpio y fácil de mantener, sino que también contribuirás a una web más accesible y eficiente para todos.</p>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="07ImagenesInsertandoContenidoVisual.html">Capítulo 7: Imágenes (Anterior)</a></li>
+                <li><a href="09Formularios.html">Capítulo 9: Formularios (Siguiente)</a></li>
+                <li><a href="Ejercicios08.html">Ejercicios sobre Elementos Semánticos</a></li>
+                <li><a href="../index.html">Volver a la Página Principal</a></li>
+            </ul>
+        </footer>
+    </div>
 </body>
 </html>

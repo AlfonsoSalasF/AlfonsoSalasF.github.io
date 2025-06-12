@@ -1,17 +1,128 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Introducción a los Atributos Globales</title>
+    <title>Introducción a los Atributos Globales - Curso HTML</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
 </head>
 <body>
-    <H1>Clase 10: Introducción a los Atributos Globales</H1>
-    <UL>
-        <li>¿Qué son los atributos en HTML?</li>
-        <li>Atributos globales comunes: id, class, style, title, lang, dir.</li>
-        <li>Uso y propósito de cada uno</li>
-    </UL>
-    <p><a href="/index.html">Vuelve a la página principal</a></p>
+    <div class="container">
+        <h1><p>CURSO DE INICIACIÓN A HTML</p><p>Clase 10: Introducción a los Atributos Globales.</p></h1>
+
+        <p>Hasta ahora, hemos visto atributos que son específicos de ciertas etiquetas HTML (como <code>href</code> para <code>&lt;a&gt;</code> o <code>src</code> para <code>&lt;img&gt;</code>). Sin embargo, HTML ofrece un conjunto de atributos que pueden aplicarse a <strong>cualquier</strong> elemento HTML, independientemente de su tipo. Estos son los llamados "Atributos Globales". En esta clase, exploraremos qué son, por qué son importantes y cómo utilizar los más comunes para mejorar la funcionalidad y la accesibilidad de nuestras páginas web.</p>
+
+        <hr>
+
+        <h2>10.1. ¿Qué son los atributos en HTML?</h2>
+        <p>Recordando de clases anteriores, los atributos en HTML proporcionan información adicional sobre los elementos. Siempre se especifican en la etiqueta de apertura y generalmente vienen en pares nombre/valor, como <code>nombre_atributo="valor_atributo"</code>.</p>
+        <p>Existen dos categorías principales de atributos:</p>
+        <ul>
+            <li><strong>Atributos específicos de elemento:</strong> Aquellos que solo tienen sentido o funcionan con ciertas etiquetas (ej., <code>alt</code> para <code>&lt;img&gt;</code>, <code>action</code> para <code>&lt;form&gt;</code>).</li>
+            <li><strong>Atributos globales:</strong> Aquellos que pueden ser utilizados en cualquier elemento HTML. Proveen funcionalidades comunes o metadatos para la mayoría de los elementos.</li>
+        </ul>
+        <p>Los atributos globales son extremadamente útiles porque nos permiten añadir características transversales a nuestro contenido sin depender de la etiqueta específica.</p>
+
+        <h2>10.2. Atributos globales comunes: <code>id</code>, <code>class</code>, <code>style</code>, <code>title</code>, <code>lang</code>, <code>dir</code>.</h2>
+        <p>Veamos algunos de los atributos globales más utilizados:</p>
+
+        <h3>10.2.1. Atributo <code>id</code></h3>
+        <p>El atributo <code>id</code> especifica un identificador único para un elemento HTML. Este ID debe ser <strong>único en todo el documento</strong>. Se utiliza comúnmente para:</p>
+        <ul>
+            <li>Referenciar un elemento desde CSS (para aplicar estilos específicos).</li>
+            <li>Referenciar un elemento desde JavaScript (para manipularlo o interactuar con él).</li>
+            <li>Crear enlaces internos a secciones específicas de la página (anclas).</li>
+        </ul>
+        <p><strong>Ejemplo:</strong></p>
+        <pre><code>&lt;h2 id="seccion-contacto"&gt;Contáctanos&lt;/h2&gt;
+&lt;p&gt;Puedes enviarnos un email a &lt;a href="#seccion-contacto"&gt;aquí&lt;/a&gt;.&lt;/p&gt;</code></pre>
+        <p class="note"><strong>Reglas para <code>id</code>:</strong> Los valores de ID deben comenzar con una letra (A-Z o a-z), y pueden contener letras, dígitos (0-9), guiones (<code>-</code>), guiones bajos (<code>_</code>), dos puntos (<code>:</code>) y puntos (<code>.</code>). No deben contener espacios.</p>
+
+        <h3>10.2.2. Atributo <code>class</code></h3>
+        <p>El atributo <code>class</code> especifica uno o más nombres de clase para un elemento (separados por espacios). A diferencia de <code>id</code>, los nombres de clase <strong>no necesitan ser únicos</strong>; varios elementos pueden compartir la misma clase. Se utiliza principalmente para:</p>
+        <ul>
+            <li>Referenciar elementos desde CSS (para aplicar estilos a grupos de elementos).</li>
+            <li>Referenciar elementos desde JavaScript (para manipular grupos de elementos).</li>
+        </ul>
+        <p><strong>Ejemplo:</strong></p>
+        <pre><code>&lt;style&gt;
+    .destacado {
+        color: blue;
+        font-weight: bold;
+    }
+    .advertencia {
+        color: red;
+    }
+&lt;/style&gt;
+
+&lt;p class="destacado"&gt;Este párrafo está resaltado en azul.&lt;/p&gt;
+&lt;p class="advertencia"&gt;¡Cuidado con esta información!&lt;/p&gt;
+&lt;li class="destacado"&gt;Un ítem de lista destacado.&lt;/li&gt;</code></pre>
+        <p class="note"><strong>Uso de múltiples clases:</strong> Puedes asignar múltiples clases a un elemento separándolas con espacios: <code>&lt;p class="destacado importante"&gt;</code></p>
+
+        <h3>10.2.3. Atributo <code>style</code></h3>
+        <p>El atributo <code>style</code> especifica un estilo CSS en línea para un elemento. Permite aplicar reglas de estilo directamente al elemento HTML, sin necesidad de un archivo CSS externo o un bloque <code>&lt;style&gt;</code> en el <code>&lt;head&gt;</code>.</p>
+        <p><strong>Ejemplo:</strong></p>
+        <pre><code>&lt;p style="color: green; font-size: 1.2em;"&gt;Este texto es verde y más grande.&lt;/p&gt;
+&lt;button style="background-color: #f0f0f0; border: 1px solid gray; padding: 10px;"&gt;Botón Personalizado&lt;/button&gt;</code></pre>
+        <p class="note"><strong>Recomendación:</strong> Aunque es útil para estilos rápidos o pruebas, el uso excesivo de <code>style</code> en línea no es una buena práctica para sitios grandes. Es mejor separar el estilo del contenido usando hojas de estilo CSS externas (<code>&lt;link rel="stylesheet" href="styles.css"&gt;</code>) o internas (<code>&lt;style&gt;...&lt;/style&gt;</code>) para mantener el código más limpio y fácil de mantener.</p>
+
+        <h3>10.2.4. Atributo <code>title</code></h3>
+        <p>El atributo <code>title</code> proporciona información adicional sobre el elemento. Cuando un usuario pasa el ratón sobre el elemento, el texto del <code>title</code> a menudo aparece como un "tooltip" (cuadro de información emergente).</p>
+        <p><strong>Ejemplo:</strong></p>
+        <pre><code>&lt;p title="Este es un párrafo de ejemplo."&gt;Pasa el ratón por aquí.&lt;/p&gt;
+&lt;a href="https://www.google.com" title="Ir a la página de Google"&gt;Google&lt;/a&gt;</code></pre>
+        <p class="note"><strong>Accesibilidad:</strong> El <code>title</code> no siempre es accesible para usuarios de teclado o lectores de pantalla, por lo que no debe usarse para transmitir información crítica. Es mejor para información complementaria.</p>
+
+        <h3>10.2.5. Atributo <code>lang</code></h3>
+        <p>El atributo <code>lang</code> especifica el idioma del contenido del elemento (y sus descendientes). Es crucial para la accesibilidad y el SEO, ya que ayuda a los navegadores, motores de búsqueda y lectores de pantalla a interpretar correctamente el contenido.</p>
+        <p>Se recomienda especificar el idioma en la etiqueta <code>&lt;html&gt;</code> para todo el documento y luego sobrescribirlo en elementos específicos si parte del contenido está en otro idioma.</p>
+        <p><strong>Ejemplo:</strong></p>
+        <pre><code>&lt;html lang="es"&gt;
+&lt;head&gt;...&lt;/head&gt;
+&lt;body&gt;
+    &lt;p&gt;Hola mundo, esto está en español.&lt;/p&gt;
+    &lt;p lang="en"&gt;Hello world, this is in English.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <p class="note"><strong>Códigos de idioma:</strong> Utiliza códigos de idioma ISO 639-1 (ej., "es" para español, "en" para inglés, "fr" para francés). También puedes especificar dialectos regionales (ej., "es-MX" para español de México).</p>
+
+        <h3>10.2.6. Atributo <code>dir</code></h3>
+        <p>El atributo <code>dir</code> especifica la direccionalidad del texto del contenido del elemento. Es importante para idiomas que se leen de derecha a izquierda (RTL) como el árabe o el hebreo, a diferencia de la mayoría de los idiomas occidentales que son de izquierda a derecha (LTR).</p>
+        <ul>
+            <li><code>ltr</code>: Left-to-Right (por defecto para la mayoría de los idiomas).</li>
+            <li><code>rtl</code>: Right-to-Left.</li>
+            <li><code>auto</code>: El navegador determina la direccionalidad según el contenido del elemento.</li>
+        </ul>
+        <p><strong>Ejemplo:</strong></p>
+        <pre><code>&lt;p&gt;Este es un texto de izquierda a derecha.&lt;/p&gt;
+&lt;p dir="rtl"&gt;هذا نص من اليمين إلى اليسار.&lt;/p&gt;</code></pre>
+        <p class="note"><strong>Uso combinado:</strong> <code>lang</code> y <code>dir</code> a menudo se usan juntos para asegurar una correcta interpretación y presentación del contenido multilingüe.</p>
+
+        <h2>10.3. Uso y propósito de cada uno.</h2>
+        <p>Comprender el propósito de cada atributo global es clave para usarlos eficazmente:</p>
+        <ul>
+            <li><strong><code>id</code>:</strong> Identificación ÚNICA de un elemento. Crucial para JavaScript y CSS que necesitan apuntar a un elemento específico.</li>
+            <li><strong><code>class</code>:</strong> Clasificación de elementos. Permite agrupar elementos que comparten características (estilos, comportamientos) y aplicarles propiedades comunes. Fundamental para CSS.</li>
+            <li><strong><code>style</code>:</strong> Estilos en línea. Para aplicaciones de estilo muy específicas y de bajo alcance. Evitar su uso excesivo.</li>
+            <li><strong><code>title</code>:</strong> Información complementaria para el usuario. Proporciona un tooltip.</li>
+            <li><strong><code>lang</code>:</strong> Especificación del idioma del contenido. Vital para accesibilidad, motores de búsqueda y renderizado correcto del texto.</li>
+            <li><strong><code>dir</code>:</strong> Especificación de la direccionalidad del texto. Esencial para idiomas RTL.</li>
+        </ul>
+        <p>Dominar estos atributos te dará un control significativo sobre la estructura, presentación y comportamiento de tus documentos HTML, sentando las bases para interactuar con CSS y JavaScript.</p>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="09ComentariosHTMLyConvencionesDeCodificacion.html">Capítulo 9: Comentarios y Convenciones (Anterior)</a></li>
+                <li><a href="11MetaTagsYSEO.html">Capítulo 11: Meta Etiquetas y SEO (Siguiente)</a></li>
+                <li><a href="Ejercicios10.html">Ejercicios sobre Atributos Globales</a></li>
+                <li><a href="../index.html">Volver a la Página Principal</a></li>
+            </ul>
+        </footer>
+    </div>
 </body>
 </html>

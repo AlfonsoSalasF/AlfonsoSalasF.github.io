@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 9: Ejercicios de Comentarios y Convenciones</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/ejecicios_styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Clase 9: Ejercicios de Comentarios HTML y Convenciones de Codificación</h1>
+
+        <div class="exercise-section">
+            <h3>Ejercicios Prácticos</h3>
+            <p>Aplica tus conocimientos sobre comentarios y convenciones de codificación en HTML.</p>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 1: Añadir Comentarios Descriptivos</h4>
+                <p>El siguiente fragmento de código HTML carece de comentarios. Añade comentarios en los lugares apropiados para describir el propósito de cada sección (encabezado, navegación, sección de contenido, pie de página) y una nota específica para el enlace "Servicios".</p>
+                <pre><code>&lt;div&gt;
+    &lt;h1&gt;Mi Blog Personal&lt;/h1&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="/"&gt;Inicio&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/servicios"&gt;Servicios&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/contacto"&gt;Contacto&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;p&gt;Bienvenido a mi blog, donde comparto mis pensamientos y experiencias.&lt;/p&gt;
+    &lt;small&gt;&amp;copy; 2025 Mi Blog.&lt;/small&gt;
+&lt;/div&gt;</code></pre>
+                <button class="reveal-button" onclick="toggleSolution('solution1')">Resolver</button>
+                <div id="solution1" class="exercise-solution">
+<pre><code>&lt;!-- Contenedor principal de la página --&gt;
+&lt;div&gt;
+    &lt;!-- Sección del encabezado --&gt;
+    &lt;h1&gt;Mi Blog Personal&lt;/h1&gt;
+    &lt;!-- Navegación principal del sitio --&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="/"&gt;Inicio&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/servicios"&gt;Servicios&lt;/a&gt;&lt;/li&gt;
+        &lt;!-- Este enlace a servicios es provisional --&gt;
+        &lt;li&gt;&lt;a href="/contacto"&gt;Contacto&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;!-- Sección de contenido principal --&gt;
+    &lt;p&gt;Bienvenido a mi blog, donde comparto mis pensamientos y experiencias.&lt;/p&gt;
+    &lt;!-- Pie de página --&gt;
+    &lt;small&gt;&amp;copy; 2025 Mi Blog.&lt;/small&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 2: Corregir Indentación y Formato</h4>
+                <p>El siguiente fragmento de código HTML tiene problemas de indentación y formato. Corrígelos para que siga las buenas prácticas (indentación con 4 espacios, etiquetas y atributos en minúsculas, valores de atributos entre comillas dobles).</p>
+                <pre><code>&lt;HTML&gt;
+&lt;head&gt;
+&lt;TITLE&gt;Página de Prueba&lt;/TITLE&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;P&gt;Este es un parrafo.&lt;/P&gt;
+&lt;img SRC= "imagen.png" alt="Una imagen de prueba"&gt;
+&lt;/body&gt;
+&lt;/HTML&gt;</code></pre>
+                <button class="reveal-button" onclick="toggleSolution('solution2')">Resolver</button>
+                <div id="solution2" class="exercise-solution">
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Página de Prueba&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;p&gt;Este es un párrafo.&lt;/p&gt;
+    &lt;img src="imagen.png" alt="Una imagen de prueba"&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="quiz-section exercise-section">
+            <h3>Preguntas Tipo Test</h3>
+            <p>Evalúa tus conocimientos sobre comentarios y convenciones de codificación en HTML.</p>
+
+            <form id="quizForm">
+                <div class="quiz-question">
+                    <p>1. ¿Cuál es la sintaxis correcta para un comentario en HTML?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="a"> a) <code>// Esto es un comentario</code></label>
+                        <label><input type="radio" name="q1" value="b"> b) <code>&lt;!-- Esto es un comentario --&gt;</code></label>
+                        <label><input type="radio" name="q1" value="c"> c) <code>/* Esto es un comentario */</code></label>
+                        <label><input type="radio" name="q1" value="d"> d) <code>&lt;comment&gt;Esto es un comentario&lt;/comment&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>2. ¿Los comentarios HTML son visibles para el usuario en la página web final?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="a"> a) Sí, siempre.</label>
+                        <label><input type="radio" name="q2" value="b"> b) No, el navegador los ignora.</label>
+                        <label><input type="radio" name="q2" value="c"> c) Solo si la página tiene errores.</label>
+                        <label><input type="radio" name="q2" value="d"> d) Solo en navegadores antiguos.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>3. ¿Cuál es uno de los principales beneficios de usar comentarios en tu código HTML?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="a"> a) Aumentan la velocidad de carga de la página.</label>
+                        <label><input type="radio" name="q3" value="b"> b) Mejoran la legibilidad y comprensión del código para los desarrolladores.</label>
+                        <label><input type="radio" name="q3" value="c"> c) Controlan el estilo visual de los elementos HTML.</label>
+                        <label><input type="radio" name="q3" value="d"> d) Permiten ejecutar código JavaScript directamente en HTML.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>4. ¿Es posible anidar comentarios HTML (poner un comentario dentro de otro)?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="a"> a) Sí, es una práctica común.</label>
+                        <label><input type="radio" name="q4" value="b"> b) No, y puede causar problemas de interpretación.</label>
+                        <label><input type="radio" name="q4" value="c"> c) Solo si usas un tipo de comentario diferente para el interior.</label>
+                        <label><input type="radio" name="q4" value="d"> d) Depende del navegador que se utilice.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>5. ¿Cuál es la convención recomendada para el uso de mayúsculas/minúsculas en las etiquetas HTML?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="a"> a) Usar mayúsculas para las etiquetas y minúsculas para los atributos.</label>
+                        <label><input type="radio" name="q5" value="b"> b) Usar solo minúsculas para etiquetas y atributos.</label>
+                        <label><input type="radio" name="q5" value="c"> c) Usar mayúsculas para todas las etiquetas y atributos.</label>
+                        <label><input type="radio" name="q5" value="d"> d) Es indistinto, no hay una convención oficial.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>6. ¿Qué se logra con una buena indentación en el código HTML?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q6" value="a"> a) El código se ejecuta más rápido.</label>
+                        <label><input type="radio" name="q6" value="b"> b) Mejora la estructura semántica de la página.</label>
+                        <label><input type="radio" name="q6" value="c"> c) Aumenta la legibilidad y la comprensión visual de la jerarquía.</label>
+                        <label><input type="radio" name="q6" value="d"> d) Reduce la cantidad de código necesaria.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>7. Al escribir atributos HTML, ¿cómo se deben encerrar sus valores?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q7" value="a"> a) Siempre sin comillas.</label>
+                        <label><input type="radio" name="q7" value="b"> b) Con comillas simples o dobles.</label>
+                        <label><input type="radio" name="q7" value="c"> c) Solo con comillas dobles.</label>
+                        <label><input type="radio" name="q7" value="d"> d) No es necesario, el navegador lo entiende igual.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>8. ¿Cuál es la recomendación más común para la indentación en HTML?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q8" value="a"> a) Usar un solo espacio.</label>
+                        <label><input type="radio" name="q8" value="b"> b) Usar 2 o 4 espacios, o tabulaciones, siendo consistente.</label>
+                        <label><input type="radio" name="q8" value="c"> c) No es necesario indentar, el código se comprime para la web.</label>
+                        <label><input type="radio" name="q8" value="d"> d) Usar sangría aleatoria para evitar patrones.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>9. Si tienes un bloque de código HTML que quieres deshabilitar temporalmente sin borrarlo, ¿qué herramienta usarías?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q9" value="a"> a) Eliminar las etiquetas de apertura y cierre.</label>
+                        <label><input type="radio" name="q9" value="b"> b) Envolverlo en un comentario HTML.</label>
+                        <label><input type="radio" name="q9" value="c"> c) Cambiar las etiquetas a mayúsculas.</label>
+                        <label><input type="radio" name="q9" value="d"> d) Añadir el atributo <code>disabled="true"</code> a cada etiqueta.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>10. ¿Por qué se recomienda no usar <code>--</code> dentro del texto de un comentario HTML?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q10" value="a"> a) Porque interfiere con los motores de búsqueda.</label>
+                        <label><input type="radio" name="q10" value="b"> b) Porque puede ser interpretado como el cierre prematuro del comentario, causando errores.</label>
+                        <label><input type="radio" name="q10" value="c"> c) Porque los navegadores modernos no lo soportan.</label>
+                        <label><input type="radio" name="q10" value="d"> d) Es una práctica común y no causa ningún problema.</label>
+                    </div>
+                </div>
+
+                <button type="button" class="submit-quiz-button" onclick="checkQuiz()">Ver Resultados</button>
+            </form>
+
+            <div id="quizResults" class="quiz-results">
+                <p>Resultados del Test:</p>
+                <ol id="resultsList"></ol>
+                <p id="scoreSummary"></p>
+                <button type="button" class="reveal-button" onclick="resetQuiz()">Volver a Intentar</button>
+            </div>
+        </div>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="09ComentariosHTMLyConvencionesDeCodificacion.html">Volver a la Clase 9: Comentarios y Convenciones</a></li>
+                <li><a href="../index.html">Volver a la Página Principal</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script>
+        const correctAnswers = {
+            q1: 'b',
+            q2: 'b',
+            q3: 'b',
+            q4: 'b',
+            q5: 'b',
+            q6: 'c',
+            q7: 'b',
+            q8: 'b',
+            q9: 'b',
+            q10: 'b'
+        };
+
+        function toggleSolution(id) {
+            const solutionDiv = document.getElementById(id);
+            if (solutionDiv.style.display === 'block') {
+                solutionDiv.style.display = 'none';
+            } else {
+                solutionDiv.style.display = 'block';
+            }
+        }
+
+        function checkQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const resultsList = document.getElementById('resultsList');
+            const quizResultsDiv = document.getElementById('quizResults');
+            const scoreSummary = document.getElementById('scoreSummary');
+            let score = 0;
+            const totalQuestions = Object.keys(correctAnswers).length;
+
+            resultsList.innerHTML = ''; // Limpiar resultados anteriores
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = quizForm.elements[questionName].value;
+                const correctAnswer = correctAnswers[questionName];
+                const listItem = document.createElement('li');
+                
+                if (selectedOption === correctAnswer) {
+                    listItem.classList.add('correct');
+                    listItem.textContent = `Pregunta ${i}: Correcta.`;
+                    score++;
+                } else {
+                    listItem.classList.add('incorrect');
+                    let selectedAnswerText = 'No respondida';
+                    if (selectedOption) {
+                        const selectedLabel = quizForm.querySelector(`input[name="${questionName}"][value="${selectedOption}"]`).closest('label');
+                        selectedAnswerText = selectedLabel ? selectedLabel.textContent.trim() : selectedAnswerText;
+                    }
+                    
+                    const correctLabel = quizForm.querySelector(`input[name="${questionName}"][value="${correctAnswer}"]`).closest('label');
+                    const correctAnswerText = correctLabel ? correctLabel.textContent.trim() : 'N/A';
+
+                    listItem.innerHTML = `Pregunta ${i}: Incorrecta. <br> Tu respuesta: "${selectedAnswerText}". <span class="correct-answer-info">Respuesta correcta: "${correctAnswerText}".</span>`;
+                }
+                resultsList.appendChild(listItem);
+            }
+
+            scoreSummary.textContent = `Tu puntuación es: ${score} de ${totalQuestions} preguntas correctas.`;
+            quizResultsDiv.style.display = 'block';
+            quizResultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function resetQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            quizForm.reset();
+            document.getElementById('quizResults').style.display = 'none';
+            document.getElementById('resultsList').innerHTML = '';
+            document.getElementById('scoreSummary').textContent = '';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 8: Ejercicios de Elementos Semánticos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/ejecicios_styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Clase 8: Ejercicios de Elementos Semánticos de HTML5</h1>
+
+        <div class="exercise-section">
+            <h3>Ejercicios Prácticos</h3>
+            <p>Aplica tus conocimientos sobre los elementos semánticos de HTML5.</p>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 1: Estructura Básica con Semánticos</h4>
+                <p>Crea la estructura básica de una página web utilizando las etiquetas semánticas <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code> y <code>&lt;footer&gt;</code>. Dentro de <code>&lt;header&gt;</code>, incluye un <code>&lt;h1&gt;</code> con el título "Mi Sitio Web Semántico". Dentro de <code>&lt;nav&gt;</code>, crea una lista desordenada con dos enlaces: "Inicio" y "Acerca de". Dentro de <code>&lt;main&gt;</code>, un <code>&lt;p&gt;</code> con "Contenido principal de la página". Y en <code>&lt;footer&gt;</code>, un párrafo con "Copyright &copy; 2025".</p>
+                <button class="reveal-button" onclick="toggleSolution('solution1')">Resolver</button>
+                <div id="solution1" class="exercise-solution">
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Mi Sitio Web Semántico&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Mi Sitio Web Semántico&lt;/h1&gt;
+        &lt;nav&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="#"&gt;Inicio&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#"&gt;Acerca de&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+        &lt;p&gt;Contenido principal de la página.&lt;/p&gt;
+    &lt;/main&gt;
+    &lt;footer&gt;
+        &lt;p&gt;Copyright &amp;copy; 2025&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 2: Uso de <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code> y <code>&lt;aside&gt;</code></h4>
+                <p>Dentro de la etiqueta <code>&lt;main&gt;</code> (del ejercicio anterior o de una estructura básica), crea un <code>&lt;article&gt;</code> para un post de blog con un título (<code>&lt;h2&gt;</code>) "Mi Primer Post Semántico" y un párrafo de contenido. Dentro de este <code>&lt;article&gt;</code>, añade una <code>&lt;section&gt;</code> para "Comentarios" con un <code>&lt;h3&gt;</code>. Fuera del <code>&lt;article&gt;</code> pero aún dentro de <code>&lt;main&gt;</code>, añade una <code>&lt;aside&gt;</code> con un <code>&lt;h3&gt;</code> "Artículos Relacionados" y una lista desordenada de enlaces a otros posts (inventados).</p>
+                <button class="reveal-button" onclick="toggleSolution('solution2')">Resolver</button>
+                <div id="solution2" class="exercise-solution">
+<pre><code>&lt;main&gt;
+    &lt;article&gt;
+        &lt;h2&gt;Mi Primer Post Semántico&lt;/h2&gt;
+        &lt;p&gt;Este es el contenido de mi post de blog, que es una pieza de contenido independiente.&lt;/p&gt;
+        &lt;section&gt;
+            &lt;h3&gt;Comentarios&lt;/h3&gt;
+            &lt;p&gt;Sé el primero en comentar este artículo.&lt;/p&gt;
+        &lt;/section&gt;
+    &lt;/article&gt;
+    &lt;aside&gt;
+        &lt;h3&gt;Artículos Relacionados&lt;/h3&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href="#"&gt;HTML5 para Principiantes&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;CSS Básico&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/aside&gt;
+&lt;/main&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="quiz-section exercise-section">
+            <h3>Preguntas Tipo Test</h3>
+            <p>Evalúa tus conocimientos sobre los elementos semánticos de HTML5.</p>
+
+            <form id="quizForm">
+                <div class="quiz-question">
+                    <p>1. ¿Cuál es la principal razón para usar etiquetas semánticas en HTML5?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="a"> a) Para hacer que la página se vea más bonita.</label>
+                        <label><input type="radio" name="q1" value="b"> b) Para dar significado a las partes del contenido, mejorando accesibilidad y SEO.</label>
+                        <label><input type="radio" name="q1" value="c"> c) Para reducir el tamaño del archivo HTML.</label>
+                        <label><input type="radio" name="q1" value="d"> d) Para reemplazar completamente el uso de CSS.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>2. ¿Qué etiqueta se utiliza para el contenido introductorio o un grupo de ayudas de navegación en una sección o documento?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="a"> a) <code>&lt;section&gt;</code></label>
+                        <label><input type="radio" name="q2" value="b"> b) <code>&lt;top&gt;</code></label>
+                        <label><input type="radio" name="q2" value="c"> c) <code>&lt;head&gt;</code></label>
+                        <label><input type="radio" name="q2" value="d"> d) <code>&lt;header&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>3. ¿Qué etiqueta representa el contenido principal y único de un documento HTML?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="a"> a) <code>&lt;body&gt;</code></label>
+                        <label><input type="radio" name="q3" value="b"> b) <code>&lt;article&gt;</code></label>
+                        <label><input type="radio" name="q3" value="c"> c) <code>&lt;main&gt;</code></label>
+                        <label><input type="radio" name="q3" value="d"> d) <code>&lt;content&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>4. ¿Cuál de las siguientes afirmaciones sobre <code>&lt;main&gt;</code> es correcta?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="a"> a) Puede haber múltiples etiquetas <code>&lt;main&gt;</code> en una página.</label>
+                        <label><input type="radio" name="q4" value="b"> b) No debe contener contenido duplicado de otras secciones (header, footer, etc.).</label>
+                        <label><input type="radio" name="q4" value="c"> c) Se usa para la navegación principal del sitio.</label>
+                        <label><input type="radio" name="q4" value="d"> d) Es una etiqueta obsoleta en HTML5.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>5. La etiqueta <code>&lt;article&gt;</code> es adecuada para:</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="a"> a) Un párrafo cualquiera en la página.</label>
+                        <label><input type="radio" name="q5" value="b"> b) Contenido que podría ser distribuido y reutilizado de forma independiente (ej., un post de blog).</label>
+                        <label><input type="radio" name="q5" value="c"> c) El pie de página de un documento.</label>
+                        <label><input type="radio" name="q5" value="d"> d) Una barra lateral de publicidad.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>6. ¿Qué etiqueta se usaría para un bloque de enlaces de navegación principal del sitio?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q6" value="a"> a) <code>&lt;menu&gt;</code></label>
+                        <label><input type="radio" name="q6" value="b"> b) <code>&lt;div class="navigation"&gt;</code></label>
+                        <label><input type="radio" name="q6" value="c"> c) <code>&lt;nav&gt;</code></label>
+                        <label><input type="radio" name="q6" value="d"> d) <code>&lt;links&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>7. La etiqueta <code>&lt;aside&gt;</code> se utiliza para contenido:</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q7" value="a"> a) Que es el foco principal del documento.</label>
+                        <label><input type="radio" name="q7" value="b"> b) Que está directamente relacionado con el contenido circundante.</label>
+                        <label><input type="radio" name="q7" value="c"> c) Que está indirectamente relacionado con el contenido principal y es "aparte" de él.</label>
+                        <label><input type="radio" name="q7" value="d"> d) Que es un comentario del usuario.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>8. ¿Cuál es la etiqueta semántica adecuada para una sección genérica de un documento, que a menudo podría tener su propio encabezado?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q8" value="a"> a) <code>&lt;div&gt;</code></label>
+                        <label><input type="radio" name="q8" value="b"> b) <code>&lt;article&gt;</code></label>
+                        <label><input type="radio" name="q8" value="c"> c) <code>&lt;segment&gt;</code></label>
+                        <label><input type="radio" name="q8" value="d"> d) <code>&lt;section&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>9. ¿Qué información es común encontrar dentro de un elemento <code>&lt;footer&gt;</code>?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q9" value="a"> a) El título principal de la página (H1).</label>
+                        <label><input type="radio" name="q9" value="b"> b) La navegación principal del sitio.</label>
+                        <label><input type="radio" name="q9" value="c"> c) Información de copyright y contacto.</label>
+                        <label><input type="radio" name="q9" value="d"> d) El contenido de un post de blog.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>10. ¿Por qué es importante para la accesibilidad utilizar etiquetas semánticas como <code>&lt;nav&gt;</code> o <code>&lt;main&gt;</code>?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q10" value="a"> a) Hacen que el texto sea más grande para una mejor lectura.</label>
+                        <label><input type="radio" name="q10" value="b"> b) Permiten que los lectores de pantalla y otras tecnologías de asistencia entiendan la estructura del contenido.</label>
+                        <label><input type="radio" name="q10" value="c"> c) Son necesarios para aplicar estilos CSS modernos.</label>
+                        <label><input type="radio" name="q10" value="d"> d) Mejoran la velocidad de carga de la página.</label>
+                    </div>
+                </div>
+
+                <button type="button" class="submit-quiz-button" onclick="checkQuiz()">Ver Resultados</button>
+            </form>
+
+            <div id="quizResults" class="quiz-results">
+                <p>Resultados del Test:</p>
+                <ol id="resultsList"></ol>
+                <p id="scoreSummary"></p>
+                <button type="button" class="reveal-button" onclick="resetQuiz()">Volver a Intentar</button>
+            </div>
+        </div>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="08ElementosSemanticosDeHTML5.html">Volver a la Clase 8: Elementos Semánticos</a></li>
+                <li><a href="../index.html">Volver a la Página Principal</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script>
+        const correctAnswers = {
+            q1: 'b',
+            q2: 'd',
+            q3: 'c',
+            q4: 'b',
+            q5: 'b',
+            q6: 'c',
+            q7: 'c',
+            q8: 'd',
+            q9: 'c',
+            q10: 'b'
+        };
+
+        function toggleSolution(id) {
+            const solutionDiv = document.getElementById(id);
+            if (solutionDiv.style.display === 'block') {
+                solutionDiv.style.display = 'none';
+            } else {
+                solutionDiv.style.display = 'block';
+            }
+        }
+
+        function checkQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const resultsList = document.getElementById('resultsList');
+            const quizResultsDiv = document.getElementById('quizResults');
+            const scoreSummary = document.getElementById('scoreSummary');
+            let score = 0;
+            const totalQuestions = Object.keys(correctAnswers).length;
+
+            resultsList.innerHTML = ''; // Limpiar resultados anteriores
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = quizForm.elements[questionName].value;
+                const correctAnswer = correctAnswers[questionName];
+                const listItem = document.createElement('li');
+                
+                if (selectedOption === correctAnswer) {
+                    listItem.classList.add('correct');
+                    listItem.textContent = `Pregunta ${i}: Correcta.`;
+                    score++;
+                } else {
+                    listItem.classList.add('incorrect');
+                    let selectedAnswerText = 'No respondida';
+                    if (selectedOption) {
+                        const selectedLabel = quizForm.querySelector(`input[name="${questionName}"][value="${selectedOption}"]`).closest('label');
+                        selectedAnswerText = selectedLabel ? selectedLabel.textContent.trim() : selectedAnswerText;
+                    }
+                    
+                    const correctLabel = quizForm.querySelector(`input[name="${questionName}"][value="${correctAnswer}"]`).closest('label');
+                    const correctAnswerText = correctLabel ? correctLabel.textContent.trim() : 'N/A';
+
+                    listItem.innerHTML = `Pregunta ${i}: Incorrecta. <br> Tu respuesta: "${selectedAnswerText}". <span class="correct-answer-info">Respuesta correcta: "${correctAnswerText}".</span>`;
+                }
+                resultsList.appendChild(listItem);
+            }
+
+            scoreSummary.textContent = `Tu puntuación es: ${score} de ${totalQuestions} preguntas correctas.`;
+            quizResultsDiv.style.display = 'block';
+            quizResultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function resetQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            quizForm.reset();
+            document.getElementById('quizResults').style.display = 'none';
+            document.getElementById('resultsList').innerHTML = '';
+            document.getElementById('scoreSummary').textContent = '';
+        }
+    </script>
+</body>
+</html>

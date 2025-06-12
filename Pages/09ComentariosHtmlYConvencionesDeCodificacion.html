@@ -1,17 +1,120 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comentarios HTML y Convenciones de Codificación.</title>
+    <title>Comentarios HTML y Convenciones de Codificación - Curso HTML</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
 </head>
 <body>
-    <H1>Clase 9: Comentarios HTML y Convenciones de Codificación.</H1>
-    <UL>
-        <li>Cómo añadir comentarios en HTML ``.</li>
-        <li>La importancia de los comentarios para la legibilidad del código.</li>
-        <li>Convenciones básicas de indentación y formato.</li>
-    </UL>
-    <p><a href="/index.html">Vuelve a la página principal</a></p>
+    <div class="container">
+        <h1><p>CURSO DE INICIACIÓN A HTML</p><p>Clase 9: Comentarios HTML y Convenciones de Codificación.</p></h1>
+
+        <p>A medida que tus proyectos web crecen en complejidad, la legibilidad y el mantenimiento del código se vuelven tan importantes como su funcionalidad. En esta clase, aprenderemos a utilizar comentarios en HTML para documentar nuestro código y las convenciones de codificación que hacen que nuestro trabajo sea más profesional y fácil de entender para nosotros mismos y para otros desarrolladores.</p>
+
+        <hr>
+
+        <h2>9.1. Cómo añadir comentarios en HTML <code>&lt;!-- ... --&gt;</code>.</h2>
+        <p>Los comentarios son notas que los desarrolladores añaden al código fuente de un documento. Son ignorados por el navegador y no se muestran en la página web final, pero son visibles cuando se visualiza el código fuente de la página.</p>
+        <p>En HTML, los comentarios se escriben de la siguiente manera:</p>
+        <pre><code>&lt;!-- Este es un comentario en HTML --&gt;</code></pre>
+        <p>Un comentario comienza con <code>&lt;!--</code> y termina con <code>--&gt;</code>. Puedes escribir cualquier texto entre ellos.</p>
+        <p><strong>Ejemplo de uso de comentarios:</strong></p>
+        <pre><code>&lt;!-- Sección del encabezado global del sitio --&gt;
+&lt;header&gt;
+    &lt;h1&gt;Mi Sitio Web&lt;/h1&gt;
+    &lt;!-- Navegación principal --&gt;
+    &lt;nav&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href="/"&gt;Inicio&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="/servicios"&gt;Servicios&lt;/a&gt;&lt;/li&gt;
+            &lt;!-- Enlace a la página de contacto (pendiente de creación) --&gt;
+            &lt;li&gt;&lt;a href="/contacto"&gt;Contacto&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+&lt;/header&gt;</code></pre>
+        <p class="note"><strong>Importante:</strong> Los comentarios HTML no pueden anidarse. Es decir, no puedes poner un comentario dentro de otro comentario. Si lo intentas, el navegador puede interpretar el código de forma inesperada.</p>
+        <pre><code>&lt;!-- Este es el comentario padre &lt;!-- Este es un comentario anidado (¡incorrecto!) --&gt; --&gt;</code></pre>
+        <p>Evita usar <code>--</code> dentro del texto de un comentario, ya que esto podría ser interpretado como el cierre prematuro del comentario.</p>
+
+        <h2>9.2. La importancia de los comentarios para la legibilidad del código.</h2>
+        <p>Aunque los comentarios no afectan directamente el funcionamiento de tu página web, son una herramienta invaluable para los desarrolladores por varias razones:</p>
+        <ul>
+            <li><strong>Claridad y comprensión:</strong> Ayudan a explicar secciones complejas o no obvias del código. Cuando tú (o alguien más) revises el código en el futuro, los comentarios pueden refrescar la memoria sobre el propósito de una sección específica.</li>
+            <li><strong>Documentación:</strong> Sirven como una forma de documentación interna, describiendo la lógica detrás de ciertas decisiones de diseño o por qué un fragmento de código está estructurado de una manera particular.</li>
+            <li><strong>Depuración y desarrollo:</strong> Puedes "comentar" temporalmente bloques de código para depurar problemas o probar diferentes implementaciones sin borrarlos por completo. Esto es muy útil durante el desarrollo.</li>
+            <li><strong>Colaboración:</strong> Facilita el trabajo en equipo, ya que los comentarios permiten a los miembros del equipo entender rápidamente las contribuciones de los demás y seguir un estilo de codificación común.</li>
+            <li><strong>Notas para el futuro:</strong> Puedes dejar notas para ti mismo sobre tareas pendientes, mejoras futuras o advertencias sobre el código.</li>
+        </ul>
+        <p><strong>¿Cuándo usar comentarios?</strong></p>
+        <ul>
+            <li>Para describir el propósito de secciones grandes de tu página (ej., ``).</li>
+            <li>Para explicar etiquetas o atributos inusuales o complejos.</li>
+            <li>Para dejar notas sobre cambios futuros o problemas conocidos.</li>
+            <li>Para ocultar temporalmente código que no quieres que se renderice.</li>
+        </ul>
+        <p class="note"><strong>Consejo:</strong> No abuses de los comentarios. Un código bien escrito y semántico a menudo se explica por sí mismo. Comenta aquello que no es obvio o que requiere una explicación adicional.</p>
+
+        <h2>9.3. Convenciones básicas de indentación y formato.</h2>
+        <p>La forma en que organizas visualmente tu código se conoce como convenciones de codificación o estilo de código. Aunque HTML es indulgente con el espacio en blanco y las nuevas líneas, seguir estas convenciones es crucial para la legibilidad y la profesionalidad:</p>
+
+        <h3>9.3.1. Indentación</h3>
+        <p>La indentación es el uso de espacios o tabulaciones para empujar los elementos anidados hacia la derecha. Esto crea una jerarquía visual que refleja la estructura anidada del HTML.</p>
+        <ul>
+            <li><strong>Recomendado:</strong> Indentar con 2 o 4 espacios, o con tabulaciones. La consistencia es clave. Si usas espacios, úsalos siempre. Si usas tabulaciones, úsalas siempre. Los espacios suelen ser preferidos porque aseguran que el código se vea igual en cualquier editor, independientemente de la configuración de tabulación.</li>
+            <li>Cada vez que un elemento está anidado dentro de otro, se debe indentar.</li>
+        </ul>
+        <p><strong>Ejemplo (buena indentación):</strong></p>
+        <pre><code>&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Título de la Página&lt;/h1&gt;
+        &lt;nav&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="#"&gt;Enlace 1&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#"&gt;Enlace 2&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+&lt;/body&gt;</code></pre>
+        <p><strong>Ejemplo (mala indentación - difícil de leer):</strong></p>
+        <pre><code>&lt;body&gt;
+&lt;header&gt;
+&lt;h1&gt;Título de la Página&lt;/h1&gt;
+&lt;nav&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="#"&gt;Enlace 1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#"&gt;Enlace 2&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/nav&gt;
+&lt;/header&gt;
+&lt;/body&gt;</code></pre>
+
+        <h3>9.3.2. Uso de Mayúsculas/Minúsculas</h3>
+        <p>Aunque HTML no distingue entre mayúsculas y minúsculas para las etiquetas y atributos (<code>&lt;DIV&gt;</code> es lo mismo que <code>&lt;div&gt;</code>), la convención y la recomendación es usar <strong>siempre minúsculas</strong>.</p>
+        <p><strong>Ejemplo (correcto):</strong> <code>&lt;div&gt; &lt;p&gt; &lt;a href="#"&gt;</code></p>
+        <p><strong>Ejemplo (incorrecto/no recomendado):</strong> <code>&lt;DIV&gt; &lt;P&gt; &lt;A HREF="#"&gt;</code></p>
+
+        <h3>9.3.3. Comillas en Atributos</h3>
+        <p>Siempre encierra los valores de los atributos entre comillas (dobles o simples). Las comillas dobles (<code>"</code>) son las más comunes.</p>
+        <p><strong>Ejemplo (correcto):</strong> <code>&lt;img src="imagen.jpg" alt="Descripción"&gt;</code></p>
+        <p><strong>Ejemplo (incorrecto/no recomendado):</strong> <code>&lt;img src=imagen.jpg alt=Descripción&gt;</code> (Aunque a veces funcione, no es una buena práctica y puede causar problemas.)</p>
+
+        <h3>9.3.4. Espacios</h3>
+        <p>Usa un espacio después de la etiqueta en el atributo (ej., <code>&lt;img src="..." alt="..."&gt;</code>, no <code>&lt;imgsrc="..."alt="..."&gt;</code>).</p>
+        <p>Seguir estas convenciones, junto con el uso estratégico de comentarios, transformará tu código de HTML funcional a un HTML legible, mantenible y profesional.</p>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="08ElementosSemanticosDeHTML5.html">Capítulo 8: Elementos Semánticos (Anterior)</a></li>
+                <li><a href="10AtributosGlobalesYSuImportancia.html">Capítulo 10: Atributos Globales (Siguiente)</a></li>
+                <li><a href="Ejercicios09.html">Ejercicios sobre Comentarios y Convenciones</a></li>
+                <li><a href="../index.html">Volver a la Página Principal</a></li>
+            </ul>
+        </footer>
+    </div>
 </body>
 </html>

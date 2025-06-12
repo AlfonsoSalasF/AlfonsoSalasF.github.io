@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 10: Ejercicios de Atributos Globales</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/ejecicios_styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Clase 10: Ejercicios de Introducción a los Atributos Globales</h1>
+
+        <div class="exercise-section">
+            <h3>Ejercicios Prácticos</h3>
+            <p>Aplica tus conocimientos sobre los atributos globales en HTML.</p>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 1: Usando <code>id</code> y <code>class</code></h4>
+                <p>Crea un <code>&lt;div&gt;</code> con el <code>id="contenedor-principal"</code>. Dentro de este <code>&lt;div&gt;</code>, crea tres párrafos. El primero debe tener la <code>class="parrafo-rojo"</code>. El segundo, la <code>class="parrafo-azul"</code>. El tercero debe tener ambas clases: <code>"parrafo-rojo"</code> y <code>"parrafo-azul"</code>.</p>
+                <button class="reveal-button" onclick="toggleSolution('solution1')">Resolver</button>
+                <div id="solution1" class="exercise-solution">
+<pre><code>&lt;div id="contenedor-principal"&gt;
+    &lt;p class="parrafo-rojo"&gt;Este párrafo es rojo.&lt;/p&gt;
+    &lt;p class="parrafo-azul"&gt;Este párrafo es azul.&lt;/p&gt;
+    &lt;p class="parrafo-rojo parrafo-azul"&gt;Este párrafo es rojo y azul.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- Estilos CSS de ejemplo (podrían ir en common_styles.css o en un &lt;style&gt; en el head) --&gt;
+&lt;style&gt;
+    .parrafo-rojo {
+        color: red;
+    }
+    .parrafo-azul {
+        color: blue;
+    }
+&lt;/style&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 2: Atributos <code>style</code> y <code>title</code></h4>
+                <p>Crea un encabezado <code>&lt;h2&gt;</code> con el texto "Mi Título Especial". Aplícale un estilo en línea para que el texto sea de color morado y tenga un tamaño de fuente de 2em. Añade un <code>title</code> que diga "Este es un título muy importante".</p>
+                <button class="reveal-button" onclick="toggleSolution('solution2')">Resolver</button>
+                <div id="solution2" class="exercise-solution">
+<pre><code>&lt;h2 style="color: purple; font-size: 2em;" title="Este es un título muy importante"&gt;Mi Título Especial&lt;/h2&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 3: Atributos <code>lang</code> y <code>dir</code></h4>
+                <p>Configura la etiqueta <code>&lt;html&gt;</code> de la página para que el idioma principal sea español. Luego, dentro del <code>&lt;body&gt;</code>, crea un párrafo con contenido en inglés ("This is a paragraph in English.") y otro párrafo con contenido en árabe ("هذا نص باللغة العربية.") asegurándote de usar los atributos <code>lang</code> y <code>dir</code> correctos para cada uno.</p>
+                <button class="reveal-button" onclick="toggleSolution('solution3')">Resolver</button>
+                <div id="solution3" class="exercise-solution">
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt; &lt;!-- Idioma principal de la página: español --&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Ejercicio de Atributos Globales&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;p&gt;Este es un párrafo en español.&lt;/p&gt;
+    &lt;p lang="en"&gt;This is a paragraph in English.&lt;/p&gt;
+    &lt;p lang="ar" dir="rtl"&gt;هذا نص باللغة العربية.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="quiz-section exercise-section">
+            <h3>Preguntas Tipo Test</h3>
+            <p>Evalúa tus conocimientos sobre los atributos globales en HTML.</p>
+
+            <form id="quizForm">
+                <div class="quiz-question">
+                    <p>1. ¿Qué característica principal tienen los atributos globales en HTML?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="a"> a) Solo pueden usarse en etiquetas específicas como <code>&lt;img&gt;</code> o <code>&lt;a&gt;</code>.</label>
+                        <label><input type="radio" name="q1" value="b"> b) Pueden aplicarse a cualquier elemento HTML.</label>
+                        <label><input type="radio" name="q1" value="c"> c) Sirven exclusivamente para aplicar estilos CSS.</label>
+                        <label><input type="radio" name="q1" value="d"> d) Son obligatorios en todos los elementos HTML.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>2. ¿Qué atributo se utiliza para asignar un identificador único a un elemento en un documento HTML?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="a"> a) <code>class</code></label>
+                        <label><input type="radio" name="q2" value="b"> b) <code>name</code></label>
+                        <label><input type="radio" name="q2" value="c"> c) <code>id</code></label>
+                        <label><input type="radio" name="q2" value="d"> d) <code>data-id</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>3. Si quieres aplicar el mismo estilo a varios elementos HTML, ¿qué atributo global sería el más adecuado?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="a"> a) <code>id</code></label>
+                        <label><input type="radio" name="q3" value="b"> b) <code>style</code></label>
+                        <label><input type="radio" name="q3" value="c"> c) <code>title</code></label>
+                        <label><input type="radio" name="q3" value="d"> d) <code>class</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>4. ¿Qué atributo se utiliza para proporcionar una descripción emergente (tooltip) cuando el usuario pasa el ratón sobre un elemento?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="a"> a) <code>alt</code></label>
+                        <label><input type="radio" name="q4" value="b"> b) <code>tooltip</code></label>
+                        <label><input type="radio" name="q4" value="c"> c) <code>title</code></label>
+                        <label><input type="radio" name="q4" value="d"> d) <code>data-info</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>5. ¿Cuál es el atributo global que especifica el idioma del contenido de un elemento?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="a"> a) <code>language</code></label>
+                        <label><input type="radio" name="q5" value="b"> b) <code>locale</code></label>
+                        <label><input type="radio" name="q5" value="c"> c) <code>lang</code></label>
+                        <label><input type="radio" name="q5" value="d"> d) <code>charset</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>6. ¿Qué valor del atributo <code>dir</code> se utiliza para especificar la dirección de texto de derecha a izquierda (Right-to-Left)?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q6" value="a"> a) <code>rtl</code></label>
+                        <label><input type="radio" name="q6" value="b"> b) <code>ltr</code></label>
+                        <label><input type="radio" name="q6" value="c"> c) <code>left</code></label>
+                        <label><input type="radio" name="q6" value="d"> d) <code>right</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>7. ¿Por qué el uso excesivo del atributo <code>style</code> en línea no es una buena práctica?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q7" value="a"> a) Ralentiza la carga de la página.</label>
+                        <label><input type="radio" name="q7" value="b"> b) Hace el código más difícil de mantener y reutilizar.</label>
+                        <label><input type="radio" name="q7" value="c"> c) No es compatible con todos los navegadores.</label>
+                        <label><input type="radio" name="q7" value="d"> d) Deshabilita la semántica de HTML.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>8. Si un documento HTML está en español y quieres que un párrafo específico esté en inglés, ¿cómo lo indicarías?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q8" value="a"> a) Usando <code>&lt;p style="lang: en;"&gt;</code></label>
+                        <label><input type="radio" name="q8" value="b"> b) Usando <code>&lt;p class="english-text"&gt;</code></label>
+                        <label><input type="radio" name="q8" value="c"> c) Usando <code>&lt;p lang="en"&gt;</code></label>
+                        <label><input type="radio" name="q8" value="d"> d) No es posible mezclar idiomas en un mismo documento.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>9. ¿Cuál de los siguientes no es un uso común del atributo <code>id</code>?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q9" value="a"> a) Aplicar estilos CSS específicos a un elemento.</label>
+                        <label><input type="radio" name="q9" value="b"> b) Manipular un elemento específico con JavaScript.</label>
+                        <label><input type="radio" name="q9" value="c"> c) Crear enlaces internos a secciones de la página.</label>
+                        <label><input type="radio" name="q9" value="d"> d) Definir el tipo de contenido del elemento para motores de búsqueda.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>10. ¿Puedes asignar múltiples clases a un mismo elemento HTML?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q10" value="a"> a) No, solo se permite una clase por elemento.</label>
+                        <label><input type="radio" name="q10" value="b"> b) Sí, separándolas con comas.</label>
+                        <label><input type="radio" name="q10" value="c"> c) Sí, separándolas con espacios.</label>
+                        <label><input type="radio" name="q10" value="d"> d) Sí, pero solo si tienen el mismo prefijo.</label>
+                    </div>
+                </div>
+
+                <button type="button" class="submit-quiz-button" onclick="checkQuiz()">Ver Resultados</button>
+            </form>
+
+            <div id="quizResults" class="quiz-results">
+                <p>Resultados del Test:</p>
+                <ol id="resultsList"></ol>
+                <p id="scoreSummary"></p>
+                <button type="button" class="reveal-button" onclick="resetQuiz()">Volver a Intentar</button>
+            </div>
+        </div>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="10AtributosGlobalesYSuImportancia.html">Volver a la Clase 10: Atributos Globales</a></li>
+                <li><a href="../index.html">Volver a la Página Principal</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script>
+        const correctAnswers = {
+            q1: 'b',
+            q2: 'c',
+            q3: 'd',
+            q4: 'c',
+            q5: 'c',
+            q6: 'a',
+            q7: 'b',
+            q8: 'c',
+            q9: 'd',
+            q10: 'c'
+        };
+
+        function toggleSolution(id) {
+            const solutionDiv = document.getElementById(id);
+            if (solutionDiv.style.display === 'block') {
+                solutionDiv.style.display = 'none';
+            } else {
+                solutionDiv.style.display = 'block';
+            }
+        }
+
+        function checkQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const resultsList = document.getElementById('resultsList');
+            const quizResultsDiv = document.getElementById('quizResults');
+            const scoreSummary = document.getElementById('scoreSummary');
+            let score = 0;
+            const totalQuestions = Object.keys(correctAnswers).length;
+
+            resultsList.innerHTML = ''; // Limpiar resultados anteriores
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = quizForm.elements[questionName].value;
+                const correctAnswer = correctAnswers[questionName];
+                const listItem = document.createElement('li');
+                
+                if (selectedOption === correctAnswer) {
+                    listItem.classList.add('correct');
+                    listItem.textContent = `Pregunta ${i}: Correcta.`;
+                    score++;
+                } else {
+                    listItem.classList.add('incorrect');
+                    let selectedAnswerText = 'No respondida';
+                    if (selectedOption) {
+                        const selectedLabel = quizForm.querySelector(`input[name="${questionName}"][value="${selectedOption}"]`).closest('label');
+                        selectedAnswerText = selectedLabel ? selectedLabel.textContent.trim() : selectedAnswerText;
+                    }
+                    
+                    const correctLabel = quizForm.querySelector(`input[name="${questionName}"][value="${correctAnswer}"]`).closest('label');
+                    const correctAnswerText = correctLabel ? correctLabel.textContent.trim() : 'N/A';
+
+                    listItem.innerHTML = `Pregunta ${i}: Incorrecta. <br> Tu respuesta: "${selectedAnswerText}". <span class="correct-answer-info">Respuesta correcta: "${correctAnswerText}".</span>`;
+                }
+                resultsList.appendChild(listItem);
+            }
+
+            scoreSummary.textContent = `Tu puntuación es: ${score} de ${totalQuestions} preguntas correctas.`;
+            quizResultsDiv.style.display = 'block';
+            quizResultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function resetQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            quizForm.reset();
+            document.getElementById('quizResults').style.display = 'none';
+            document.getElementById('resultsList').innerHTML = '';
+            document.getElementById('scoreSummary').textContent = '';
+        }
+    </script>
+</body>
+</html>
