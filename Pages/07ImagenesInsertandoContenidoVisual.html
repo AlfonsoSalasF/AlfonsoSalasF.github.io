@@ -11,7 +11,7 @@
     <div class="container">
         <h1><p>CURSO DE INICIACIÓN A HTML</p><p>Clase 7: Imágenes: Insertando Contenido Visual.</p></h1>
 
-        <p>En el mundo digital actual, las imágenes son un componente esencial de cualquier página web atractiva y efectiva. No solo rompen la monotonía del texto, sino que también pueden transmitir información de manera rápida y visual, mejorar la estética y la experiencia del usuario. En esta clase, aprenderemos cómo insertar imágenes en nuestros documentos HTML utilizando la etiqueta fundamental y sus atributos clave para asegurar que se muestren correctamente y sean accesibles para todos.</p>
+        <p><img src="../Images/MiniyoC.png" alt="Viñeta de un chico joven, estudiante con una mochila" style="float: left; width: 100px; margin: 0 0 10px 10px;">En el mundo digital actual, las imágenes son un componente esencial de cualquier página web atractiva y efectiva. No solo rompen la monotonía del texto, sino que también pueden transmitir información de manera rápida y visual, mejorar la estética y la experiencia del usuario. En esta clase, aprenderemos cómo insertar imágenes en nuestros documentos HTML utilizando la etiqueta fundamental y sus atributos clave para asegurar que se muestren correctamente y sean accesibles para todos.</p>
 
         <hr>
 
@@ -35,8 +35,8 @@
         <p>Estos atributos opcionales especifican el ancho y el alto de la imagen en píxeles. Aunque puedes usar CSS para controlar el tamaño de las imágenes, especificar <code>width</code> y <code>height</code> directamente en la etiqueta <code>&lt;img&gt;</code> es una buena práctica porque ayuda al navegador a reservar el espacio necesario para la imagen antes de que se cargue, evitando saltos de diseño (layout shifts) que pueden afectar la experiencia del usuario y la puntuación de rendimiento (Core Web Vitals).</p>
         <p>Si solo especificas uno (por ejemplo, <code>width</code>), el navegador escalará la imagen proporcionalmente para mantener su relación de aspecto.</p>
         <p><strong>Ejemplo:</strong></p>
-        <pre><code>&lt;img src="imagenes/logo.png" alt="Logo de mi empresa" width="150" height="100"&gt;</code></pre>
-        <p>Si la imagen es muy grande y no se especifica el tamaño, podría sobrepasar los límites del diseño y requerir más tiempo de carga para el navegador para determinar sus dimensiones.</p>
+        <pre><code>&lt;img src="../Images/MiniyoC.png" alt="Chico joven estudiante" width="30" height="40"&gt;</code></pre>
+        <p><img src="../Images/MiniyoC.png" alt="Viñeta de un chico joven, estudiante con una mochila" width="30" height="40">Si la imagen es muy grande y no se especifica el tamaño, podría sobrepasar los límites del diseño y requerir más tiempo de carga para el navegador para determinar sus dimensiones.</p>
 
         <h2>7.2. Imágenes desde archivos locales y URLs.</h2>
         <p>La forma en que especificas la ruta en el atributo <code>src</code> depende de dónde se encuentre la imagen:</p>
@@ -53,7 +53,7 @@
 
         <h3>7.2.2. Imágenes desde URLs (Rutas Absolutas)</h3>
         <p>Puedes enlazar directamente a una imagen que está alojada en otro servidor web utilizando su URL completa (Uniform Resource Locator). Esto es común para incrustar imágenes de servicios externos o si no quieres alojar las imágenes en tu propio servidor.</p>
-        <p><strong>Ejemplo:</strong></p>
+        <p><strong>Ejemplo:</strong><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/800px-HTML5_logo_and_wordmark.svg.png" alt="Logo de HTML5" width="40"></p>
         <pre><code>&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/800px-HTML5_logo_and_wordmark.svg.png" alt="Logo de HTML5"&gt;</code></pre>
         <p class="note"><strong>Consideración:</strong> Al usar URLs externas, dependes de que el servidor que aloja la imagen esté siempre disponible y no cambie la URL. Es generalmente más seguro alojar tus propias imágenes si es posible.</p>
 
@@ -74,10 +74,10 @@
         </ul>
         <p><strong>Ejemplos:</strong></p>
         <ul>
-            <li>**Mal:** <code>&lt;img src="perro.jpg" alt="imagen"&gt;</code></li>
-            <li>**Regular:** <code>&lt;img src="perro.jpg" alt="Un perro"&gt;</code></li>
-            <li>**Bueno:** <code>&lt;img src="perro.jpg" alt="Perro golden retriever jugando en un parque."&gt;</code></li>
-            <li>**Mejor (si es un logo):** <code>&lt;img src="logo.png" alt="Logotipo de [Nombre de la Empresa]"&gt;</code></li>
+            <li>Mal: <code>&lt;img src="perro.jpg" alt="imagen"&gt;</code></li>
+            <li>Regular: <code>&lt;img src="perro.jpg" alt="Un perro"&gt;</code></li>
+            <li>Bueno: <code>&lt;img src="perro.jpg" alt="Perro golden retriever jugando en un parque."&gt;</code></li>
+            <li>Mejor (si es un logo): <code>&lt;img src="logo.png" alt="Logotipo de [Nombre de la Empresa]"&gt;</code></li>
         </ul>
 
         <h2>7.4. Imágenes como enlaces.</h2>
@@ -87,7 +87,7 @@
         <pre><code>&lt;a href="https://www.google.com" target="_blank"&gt;
     &lt;img src="imagenes/google_logo.png" alt="Ir a Google" width="100" height="34"&gt;
 &lt;/a&gt;</code></pre>
-        <p>En este ejemplo, al hacer clic en el logo de Google, el usuario será redirigido a la página principal de Google. El atributo <code>target="_blank"</code> hace que el enlace se abra en una nueva pestaña del navegador.</p>
+        <p>En este ejemplo, al hacer clic en el logo de Google, el usuario será redirigido a la página principal de Google. El atributo <code>target="_blank"</code> hace que el enlace se abra en una nueva pestaña del navegador. Recuerda los atributos de seguridad que tienes que utilizar para que la página de destino no tenga acceso a tu página: <code>rel="noopener noreferrer"</code>.</p>
         <p class="note"><strong>Consejo:</strong> Cuando usas una imagen como enlace, el texto alternativo del <code>&lt;img&gt;</code> se convierte en el texto del enlace para los lectores de pantalla. Asegúrate de que el <code>alt</code> describa el destino del enlace, no solo la imagen en sí. Por ejemplo, "Logo de Google" está bien, pero "Ir al sitio web de Google" o "Buscar en Google" podría ser aún más explícito si el logo es el único contenido clicable.</p>
 
         <hr>
@@ -95,9 +95,8 @@
         <footer>
             <p>Continúa explorando HTML:</p>
             <ul>
-                <li><a href="06EnlacesHyperlinksNavegacionEntrePaginas.html">Capítulo 6: Enlaces (Anterior)</a></li>
-                <li><a href="08TablasOrganizandoDatos.html">Capítulo 8: Tablas (Siguiente)</a></li>
-                <li><a href="Ejercicios07.html">Ejercicios sobre Imágenes</a></li>
+                <li><a href="Ejercicios07.html">Ejercicios de la clase 7.</a></li>
+                <li><a href="08ElementosSemanticosDeHtml5.html">Capítulo 8: Elementos semánticos de HTML 5 (Siguiente)</a></li>
                 <li><a href="../index.html">Volver a la Página Principal</a></li>
             </ul>
         </footer>
