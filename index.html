@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curso de iniciación a HTML</title>
+    <title>Tu Ruta de Aprendizaje Web</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* CSS estándar para la fuente */
         body {
             font-family: 'Inter', sans-serif;
         }
@@ -27,103 +26,140 @@
             background: #555;
             cursor: pointer;
         }
-        /* Animación para los módulos al pasar el ratón */
-        .module-item:hover {
-            transform: translateY(-5px);
+        /* Animación para las tarjetas al pasar el ratón */
+        .card-item:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col items-center py-8 px-4 sm:px-6 lg:px-8 bg-gray-100 text-gray-800">
-    <div class="max-w-4xl w-full bg-white p-6 sm:p-8 lg:p-10 rounded-xl shadow-lg">
-        <div class="flex flex-col items-center mb-8">
-            <img src="/Images/LogoHTML5.png" alt="Logo HTML5" class="w-32 h-auto mb-4 sm:w-40 md:w-48 lg:w-56">
-            <h1 class="text-4xl sm:text-5xl font-extrabold text-center text-blue-700 tracking-tight">
-                CURSO DE INICIACIÓN A HTML
-            </h1>
-        </div>
-        <p class="text-center text-lg mb-8 text-gray-600">Este manual está en proceso de creación!! Vuelve pronto para encontrar más artículos publicados.</p>
-        <div class="space-y-8">
-            <ol class="list-none p-0">
-                <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-blue-500 pb-2">Módulos</h2>
+<body class="min-h-screen flex flex-col items-center py-8 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 to-indigo-100 text-gray-800">
+    <header class="text-center mb-12 w-full max-w-4xl">
+        <h1 class="text-5xl sm:text-6xl font-extrabold text-blue-800 tracking-tight leading-tight mb-4">
+            Tu Ruta de Aprendizaje en Desarrollo Web
+        </h1>
+        <p class="text-xl sm:text-2xl text-gray-600 max-w-2xl mx-auto">
+            Aprende las tecnologías esenciales para convertirte en un desarrollador web completo.
+        </p>
+    </header>
 
-                <li class="mb-8 p-6 bg-blue-50 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform module-item">
-                    <h3 class="text-2xl font-semibold text-blue-800 mb-4">Módulo 1: Fundamentos de HTML Y LA Estructura Web (Clases 1-10).</h3>
-                    <ul class="list-disc ml-6 space-y-2">
-                        <li><a href="/Pages/01IntroduccionAlDesarrolloWebYHtml.html" class="text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200">Clase 1: Introducción al Desarrollo Web y HTML.</a></li>
-                        <li><a href="/Pages/02EstructuraBasicaDeUnDocumentoHtml.html" class="text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200">Clase 2: Estructura Básica de un Documento HTML.</a></li>
-                        <li><a href="/Pages/03ElementosDeTextoIEncabezadosYParrafos.html" class="text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200">Clase 3: Elementos de Texto I: Encabezados y Párrafos.</a></li>
-                        <li><a href="/Pages/04ElementosDeTextoIIFormatoYEnfasis.html" class="text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200">Clase 4: Elementos de Texto II: Formato y Énfasis.</a></li>
-                        <li><a href="/Pages/05ListasOrdenadasYDesordenadas.html" class="text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200">Clase 5: Listas: Ordenadas y Desordenadas.</a></li>
-                        <li><a href="/Pages/06EnlacesHyperlinksNavegacionEntrePaginas.html" class="text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200">Clase 6: Enlaces (Hyperlinks): Navegación entre Páginas.</a></li>
-                        <li><a href="/Pages/07ImagenesInsertandoContenidoVisual.html" class="text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200">Clase 7: Imágenes: Insertando Contenido Visual.</a></li>
-                        <li><a href="/Pages/08ElementosSemanticosDeHtml5.html" class="text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200">Clase 8: Elementos Semánticos de HTML5.</a></li>
-                        <li><a href="/Pages/09ComentariosHtmlYConvencionesDeCodificacion.html" class="text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200">Clase 9: Comentarios HTML y Convenciones de Codificación.</a></li>
-                        <li><a href="/Pages/10IntroduccionALosAtributosGlobales.html" class="text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200">Clase 10: Introducción a los Atributos Globales.</a></li>
-                    </ul>
-                </li>
-
-                <li class="mb-8 p-6 bg-green-50 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform module-item">
-                    <h3 class="text-2xl font-semibold text-green-800 mb-4">Módulo 2: Formularios y Contenido Interactivo (Clases 11-20).</h3>
-                    <ul class="list-disc ml-6 space-y-2">
-                        <li><a href="/Pages/11ConceptosBasicosDeFormulariosHtml.html" class="text-green-600 hover:text-green-800 hover:underline transition-colors duration-200">Clase 11: Conceptos Básicos de Formularios HTML.</a></li>
-                        <li><a href="/Pages/12ElementosDeEntradaDeTexto.html" class="text-green-600 hover:text-green-800 hover:underline transition-colors duration-200">Clase 12: Elementos de Entrada de Texto.</a></li>
-                        <li><a href="/Pages/13OtrosTiposDeEntradaISeleccion.html" class="text-green-600 hover:text-green-800 hover:underline transition-colors duration-200">Clase 13: Otros Tipos de Entrada I: Selección.</a></li>
-                        <li><a href="/Pages/14OtrosTiposDeEntradaIIFechasYArchivos.html" class="text-green-600 hover:text-green-800 hover:underline transition-colors duration-200">Clase 14: Otros Tipos de Entrada II: Fechas y Archivos.</a></li>
-                        <li><a href="/Pages/15BotonesYCamposDeTextoMultilinea.html" class="text-green-600 hover:text-green-800 hover:underline transition-colors duration-200">Clase 15: Botones y Campos de Texto Multilínea.</a></li>
-                        <li><a href="/Pages/16EstructuraDeFormulariosFieldsetYLegend.html" class="text-green-600 hover:text-green-800 hover:underline transition-colors duration-200">Clase 16: Estructura de Formularios: &lt;fieldset&gt; y &lt;legend&gt;.</a></li>
-                        <li><a href="/Pages/17ValidacionDeFormulariosConHtml5.html" class="text-green-600 hover:text-green-800 hover:underline transition-colors duration-200">Clase 17: Validación de Formularios con HTML5.</a></li>
-                        <li><a href="/Pages/18ElementosDeProgresoYMedicion.html" class="text-green-600 hover:text-green-800 hover:underline transition-colors duration-200">Clase 18: Elementos de Progreso y Medición.</a></li>
-                        <li><a href="/Pages/19ElementosInteractivosDetailsYSummary.html" class="text-green-600 hover:text-green-800 hover:underline transition-colors duration-200">Clase 19: Elementos Interactivos: &lt;details&gt; y &lt;summary&gt;.</a></li>
-                        <li><a href="/Pages/20TablasHtmlOrganizacionDeDatosTabulares.html" class="text-green-600 hover:text-green-800 hover:underline transition-colors duration-200">Clase 20: Tablas HTML: Organización de Datos Tabulares.</a></li>
-                    </ul>
-                </li>
-
-                <li class="mb-8 p-6 bg-purple-50 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform module-item">
-                    <h3 class="text-2xl font-semibold text-purple-800 mb-4">Módulo 3: Multimedia y Enriquecimiento de Contenido (Clases 21-30).</h3>
-                    <ul class="list-disc ml-6 space-y-2">
-                        <li><a href="/Pages/21AudioReproduccionDeSonido.html" class="text-purple-600 hover:text-purple-800 hover:underline transition-colors duration-200">Clase 21: Audio: Reproducción de Sonido.</a></li>
-                        <li><a href="/Pages/22VideoReproduccionDeVideo.html" class="text-purple-600 hover:text-purple-800 hover:underline transition-colors duration-200">Clase 22: Video: Reproducción de Video.</a></li>
-                        <li><a href="/Pages/23SubtitulosYPistasDeTextoParaVideo.html" class="text-purple-600 hover:text-purple-800 hover:underline transition-colors duration-200">Clase 23: Subtítulos y Pistas de Texto para Video.</a></li>
-                        <li><a href="/Pages/24CanvasDibujoConJavaScriptIntroduccion.html" class="text-purple-600 hover:text-purple-800 hover:underline transition-colors duration-200">Clase 24: Canvas: Dibujo con JavaScript (Introducción).</a></li>
-                        <li><a href="/Pages/25SvgGraficosVectorialesEscalables.html" class="text-purple-600 hover:text-purple-800 hover:underline transition-colors duration-200">Clase 25: SVG: Gráficos Vectoriales Escalables.</a></li>
-                        <li><a href="/Pages/26IframesInsertandoContenidoExterno.html" class="text-purple-600 hover:text-purple-800 hover:underline transition-colors duration-200">Clase 26: Iframes: Insertando Contenido Externo.</a></li>
-                        <li><a href="/Pages/27WebWorkersConceptoBasico.html" class="text-purple-600 hover:text-purple-800 hover:underline transition-colors duration-200">Clase 27: Web Workers (Concepto Básico).</a></li>
-                        <li><a href="/Pages/28MicrodatosYDatosEstructuradosIntroduccion.html" class="text-purple-600 hover:text-purple-800 hover:underline transition-colors duration-200">Clase 28: Microdatos y Datos Estructurados (Introducción).</a></li>
-                        <li><a href="/Pages/29ElDomDocumentObjectModelConcepto.html" class="text-purple-600 hover:text-purple-800 hover:underline transition-colors duration-200">Clase 29: El DOM (Document Object Model): Concepto.</a></li>
-                        <li><a href="/Pages/30SeoBasicoYHtml.html" class="text-purple-600 hover:text-purple-800 hover:underline transition-colors duration-200">Clase 30: SEO Básico y HTML.</a></li>
-                    </ul>
-                </li>
-
-                <li class="mb-8 p-6 bg-yellow-50 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform module-item">
-                    <h3 class="text-2xl font-semibold text-yellow-800 mb-4">Módulo 4: Temas Avanzados y Buenas Prácticas (Clases 31-40).</h3>
-                    <ul class="list-disc ml-6 space-y-2">
-                        <li><a href="/Pages/31AtributosPersonalizadosDeDatosData.html" class="text-yellow-600 hover:text-yellow-800 hover:underline transition-colors duration-200">Clase 31: Atributos Personalizados de Datos (data-*).</a></li>
-                        <li><a href="/Pages/32WebComponentsConceptoBasico.html" class="text-yellow-600 hover:text-yellow-800 hover:underline transition-colors duration-200">Clase 32: Web Components (Concepto Básico).</a></li>
-                        <li><a href="/Pages/33AtributoAriaParaAccesibilidadAvanzada.html" class="text-yellow-600 hover:text-yellow-800 hover:underline transition-colors duration-200">Clase 33: Atributo aria- para Accesibilidad Avanzada.</a></li>
-                        <li><a href="/Pages/34OptimizacionDelRendimientoHtml.html" class="text-yellow-600 hover:text-yellow-800 hover:underline transition-colors duration-200">Clase 34: Optimización del Rendimiento HTML.</a></li>
-                        <li><a href="/Pages/35HtmlYResponsividadIntroduccion.html" class="text-yellow-600 hover:text-yellow-800 hover:underline transition-colors duration-200">Clase 35: HTML y Responsividad (Introducción).</a></li>
-                        <li><a href="/Pages/36HtmlParaEmailMarketingConsideracionesEspeciales.html" class="text-yellow-600 hover:text-yellow-800 hover:underline transition-colors duration-200">Clase 36: HTML para E-mail Marketing (Consideraciones Especiales).</a></li>
-                        <li><a href="/Pages/37WebStorageLocalStorageYSessionStorageConcepto.html" class="text-yellow-600 hover:text-yellow-800 hover:underline transition-colors duration-200">Clase 37: Web Storage: localStorage y sessionStorage (Concepto).</a></li>
-                        <li><a href="/Pages/38HtmlYSeguridadWebConceptosBasicos.html" class="text-yellow-600 hover:text-yellow-800 hover:underline transition-colors duration-200">Clase 38: HTML y Seguridad Web (Conceptos Básicos).</a></li>
-                        <li><a href="/Pages/39BuenasPracticasYEstandaresDeCodificacion.html" class="text-yellow-600 hover:text-yellow-800 hover:underline transition-colors duration-200">Clase 39: Buenas Prácticas y Estándares de Codificación.</a></li>
-                        <li><a href="/Pages/40ProyectoFinalYSiguientesPasos.html" class="text-yellow-600 hover:text-yellow-800 hover:underline transition-colors duration-200">Clase 40: Proyecto Final y Siguientes Pasos.</a></li>
-                    </ul>
-                </li>
-            </ol>
-        </div>
-
-        <div class="mt-10 pt-6 border-t-2 border-gray-300 text-center">
-            <p class="mb-4 text-lg text-gray-700">
-                <a href="/CajónDesastre/Extra.html" class="text-blue-600 hover:text-blue-800 hover:underline font-medium">
-                    Enlaces de interés y apuntes no incluidos de momento
+    <main class="max-w-6xl w-full">
+        <section class="mb-12">
+            <h2 class="text-4xl font-bold text-gray-900 text-center mb-8 border-b-4 border-blue-500 pb-4">Cursos Fundamentales</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <a href="CursoHTML.html" class="block">
+                    <div class="card-item bg-white p-8 rounded-xl shadow-lg flex flex-col items-center text-center transition-all duration-300 transform">
+                        <img src="/Images/LogoHTML5.png" alt="Logo HTML" class="w-24 h-24 mb-4">
+                        <h3 class="text-2xl font-semibold text-orange-600 mb-2">HTML5</h3>
+                        <p class="text-gray-600">La estructura fundamental de cada página web.</p>
+                    </div>
                 </a>
-            </p>
-            <p class="text-lg text-gray-700">
-                <a href="/CajónDesastre/Ordenacióndeunproyectoweb.html" class="text-blue-600 hover:text-blue-800 hover:underline font-medium">
-                    Cómo ordenar un proyecto Web
+                <a href="CursoCSS.html" class="block">
+                    <div class="card-item bg-white p-8 rounded-xl shadow-lg flex flex-col items-center text-center transition-all duration-300 transform">
+                        <img src="/Images/LogoCSS3.png" alt="Logo CSS" class="w-24 h-24 mb-4">
+                        <h3 class="text-2xl font-semibold text-blue-700 mb-2">CSS3</h3>
+                        <p class="text-gray-600">Da vida y estilo a tus diseños web.</p>
+                    </div>
                 </a>
-            </p>
-        </div>
-    </div>
+                <a href="CursoJavaScript.html" class="block">
+                    <div class="card-item bg-white p-8 rounded-xl shadow-lg flex flex-col items-center text-center transition-all duration-300 transform">
+                        <img src="/Images/LogoJavaScript.png" alt="Logo JavaScript" class="w-24 h-24 mb-4">
+                        <h3 class="text-2xl font-semibold text-yellow-600 mb-2">JavaScript</h3>
+                        <p class="text-gray-600">Añade interactividad y lógica a tus aplicaciones.</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="text-4xl font-bold text-gray-900 text-center mb-8 border-b-4 border-purple-500 pb-4">Herramientas y Conocimientos Esenciales</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <a href="/tools/browser_consoles.html" class="block">
+                    <div class="card-item bg-white p-6 rounded-xl shadow-lg flex flex-col items-center text-center transition-all duration-300 transform">
+                        <img src="/Images/LogoConsola.png" alt="Logo Consola Navegador" class="w-20 h-20 mb-3">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-1">Consolas del Navegador</h3>
+                        <p class="text-gray-500 text-sm">Depura y experimenta en el frontend.</p>
+                    </div>
+                </a>
+                <a href="/tools/nodejs_course.html" class="block">
+                    <div class="card-item bg-white p-6 rounded-xl shadow-lg flex flex-col items-center text-center transition-all duration-300 transform">
+                        <img src="/Images/LogoNodeJS.png" alt="Logo Node.js" class="w-20 h-20 mb-3">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-1">Node.js</h3>
+                        <p class="text-gray-500 text-sm">Construye el backend con JavaScript.</p>
+                    </div>
+                </a>
+                <a href="/tools/mysql_course.html" class="block">
+                    <div class="card-item bg-white p-6 rounded-xl shadow-lg flex flex-col items-center text-center transition-all duration-300 transform">
+                        <img src="/Images/LogoMySQL.png" alt="Logo MySQL" class="w-20 h-20 mb-3">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-1">MySQL</h3>
+                        <p class="text-gray-500 text-sm">Gestiona bases de datos relacionales.</p>
+                    </div>
+                </a>
+                <a href="/tools/github_course.html" class="block">
+                    <div class="card-item bg-white p-6 rounded-xl shadow-lg flex flex-col items-center text-center transition-all duration-300 transform">
+                        <img src="/Images/LogoGitHub.png" alt="Logo GitHub" class="w-20 h-20 mb-3">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-1">GitHub</h3>
+                        <p class="text-gray-500 text-sm">Control de versiones y colaboración.</p>
+                    </div>
+                </a>
+                <a href="/tools/vscode_guide.html" class="block">
+                    <div class="card-item bg-white p-6 rounded-xl shadow-lg flex flex-col items-center text-center transition-all duration-300 transform">
+                        <img src="/Images/LogoVSCode.png" alt="Logo VS Code" class="w-20 h-20 mb-3">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-1">Visual Studio Code</h3>
+                        <p class="text-gray-500 text-sm">Tu entorno de desarrollo favorito.</p>
+                    </div>
+                </a>
+                <a href="/tools/command_line_basics.html" class="block">
+                    <div class="card-item bg-white p-6 rounded-xl shadow-lg flex flex-col items-center text-center transition-all duration-300 transform">
+                        <img src="/Images/LogoTerminal.png" alt="Logo Terminal" class="w-20 h-20 mb-3">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-1">Línea de Comandos/Terminal</h3>
+                        <p class="text-gray-500 text-sm">Controla tu sistema y herramientas.</p>
+                    </div>
+                </a>
+                <a href="/tools/networking_basics.html" class="block">
+                    <div class="card-item bg-white p-6 rounded-xl shadow-lg flex flex-col items-center text-center transition-all duration-300 transform">
+                        <img src="/Images/LogoRedes.png" alt="Logo Redes" class="w-20 h-20 mb-3">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-1">Conceptos de Redes (HTTP/S)</h3>
+                        <p class="text-gray-500 text-sm">Entiende la comunicación web.</p>
+                    </div>
+                </a>
+                 <a href="/tools/rest_api_basics.html" class="block">
+                    <div class="card-item bg-white p-6 rounded-xl shadow-lg flex flex-col items-center text-center transition-all duration-300 transform">
+                        <img src="/Images/LogoAPI.png" alt="Logo API REST" class="w-20 h-20 mb-3">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-1">API REST</h3>
+                        <p class="text-gray-500 text-sm">Diseño y consumo de APIs.</p>
+                    </div>
+                </a>
+                <a href="/tools/docker_basics.html" class="block">
+                    <div class="card-item bg-white p-6 rounded-xl shadow-lg flex flex-col items-center text-center transition-all duration-300 transform">
+                        <img src="/Images/LogoDocker.png" alt="Logo Docker" class="w-20 h-20 mb-3">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-1">Docker (Conceptos Básicos)</h3>
+                        <p class="text-gray-500 text-sm">Contenedores para despliegues.</p>
+                    </div>
+                </a>
+                <a href="/tools/agile_methodologies.html" class="block">
+                    <div class="card-item bg-white p-6 rounded-xl shadow-lg flex flex-col items-center text-center transition-all duration-300 transform">
+                        <img src="/Images/LogoAgile.png" alt="Logo Metodologías Ágiles" class="w-20 h-20 mb-3">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-1">Metodologías Ágiles</h3>
+                        <p class="text-gray-500 text-sm">Trabajo en equipo y gestión de proyectos.</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="mt-12 pt-8 border-t-2 border-gray-300 text-center text-gray-600 text-sm w-full max-w-4xl">
+        <p>&copy; 2025 Alfonso Salas. Todos los derechos reservados.</p>
+        <p class="mt-2">
+            <a href="/CajónDesastre/Extra.html" class="text-blue-600 hover:text-blue-800 hover:underline">
+                Enlaces de interés y apuntes no incluidos de momento
+            </a>
+        </p>
+        <p class="mt-1">
+            <a href="/CajónDesastre/Ordenacióndeunproyectoweb.html" class="text-blue-600 hover:text-blue-800 hover:underline">
+                Cómo ordenar un proyecto Web
+            </a>
+        </p>
+    </footer>
 </body>
 </html>

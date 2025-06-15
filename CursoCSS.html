@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso de iniciación a CSS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS estándar para la fuente */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+            cursor: pointer;
+        }
+        /* Animación para los módulos al pasar el ratón */
+        .module-item:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center py-8 px-4 sm:px-6 lg:px-8 bg-gray-100 text-gray-800">
+    <div class="max-w-4xl w-full bg-white p-6 sm:p-8 lg:p-10 rounded-xl shadow-lg">
+        <div class="flex flex-col items-center mb-8">
+            <img src="/Images/LogoCSS3.png" alt="Logo CSS3" class="w-32 h-auto mb-4 sm:w-40 md:w-48 lg:w-56">
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-center text-blue-700 tracking-tight">
+                CURSO DE INICIACIÓN A CSS
+            </h1>
+        </div>
+        <p class="text-center text-lg mb-8 text-gray-600">Este manual está en proceso de creación!! Vuelve pronto para encontrar más artículos publicados.</p>
+        <div class="space-y-8">
+            <ol class="list-none p-0">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-blue-500 pb-2">Módulos</h2>
+
+                <li class="mb-8 p-6 bg-blue-50 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform module-item">
+                    <h3 class="text-2xl font-semibold text-blue-800 mb-4">Módulo 1: Fundamentos de CSS y Estilos Básicos (Clases 1-10).</h3>
+                    <ul class="list-disc ml-6 space-y-2">
+                        <li><a href="/PagesCSS/01IntroduccionACSS.html" class="text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200">Clase 1: Introducción a CSS y su Rol en el Desarrollo Web.</a></li>
+                        <li><a href="/PagesCSS/02FormasDeIncluirCSS.html" class="text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200">Clase 2: Formas de Incluir CSS en HTML.</a></li>
+                        <li><a href="/PagesCSS/03SelectoresCSSFundamentales.html" class="text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200">Clase 3: Selectores CSS Fundamentales.</a></li>
+                        <li><a href="/PagesCSS/04ElModeloDeCaja.html" class="text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200">Clase 4: El Modelo de Caja (Box Model) en CSS.</a></li>
+                        <li><a href="/PagesCSS/05PropiedadesDeTextoI.html" class="text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200">Clase 5: Propiedades de Texto I: Color, Alineación y Decoración.</a></li>
+                        <li><a href="/PagesCSS/06PropiedadesDeTextoII.html" class="text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200">Clase 6: Propiedades de Texto II: Fuentes y Tamaños.</a></li>
+                        <li><a href="/PagesCSS/07FondosYBordes.html" class="text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200">Clase 7: Fondos y Bordes.</a></li>
+                        <li><a href="/PagesCSS/08UnidadesDeMedida.html" class="text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200">Clase 8: Unidades de Medida en CSS.</a></li>
+                        <li><a href="/PagesCSS/09CombinadoresDeSelectores.html" class="text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200">Clase 9: Combinadores de Selectores.</a></li>
+                        <li><a href="/PagesCSS/10EspecificidadYCascada.html" class="text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200">Clase 10: Especificidad y Cascada en CSS.</a></li>
+                    </ul>
+                </li>
+
+                <li class="mb-8 p-6 bg-green-50 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform module-item">
+                    <h3 class="text-2xl font-semibold text-green-800 mb-4">Módulo 2: Layout y Posicionamiento (Clases 11-20).</h3>
+                    <ul class="list-disc ml-6 space-y-2">
+                        <li><a href="/PagesCSS/11DisplayPropertiesI.html" class="text-green-600 hover:text-green-800 hover:underline transition-colors duration-200">Clase 11: Display Properties I: Block, Inline e Inline-Block.</a></li>
+                        <li><a href="/PagesCSS/12DisplayPropertiesII.html" class="text-green-600 hover:text-green-800 hover:underline transition-colors duration-200">Clase 12: Display Properties II: None y Visibilidad.</a></li>
+                        <li><a href="/PagesCSS/13IntroduccionAFlexboxContenedor.html" class="text-green-600 hover:text-green-800 hover:underline transition-colors duration-200">Clase 13: Introducción a Flexbox: Contenedor Flexible.</a></li>
+                        <li><a href="/PagesCSS/14FlexboxItemsFlexibles.html" class="text-green-600 hover:text-green-800 hover:underline transition-colors duration-200">Clase 14: Flexbox: Ítems Flexibles.</a></li>
+                        <li><a href="/PagesCSS/15IntroduccionACSSGridBasicos.html" class="text-green-600 hover:text-green-800 hover:underline transition-colors duration-200">Clase 15: Introducción a CSS Grid: Conceptos Básicos.</a></li>
+                        <li><a href="/PagesCSS/16CSSGridPosicionamiento.html" class="text-green-600 hover:text-green-800 hover:underline transition-colors duration-200">Clase 16: CSS Grid: Posicionamiento de Ítems.</a></li>
+                        <li><a href="/PagesCSS/17PosicionamientoStaticRelativeAbsolute.html" class="text-green-600 hover:text-green-800 hover:underline transition-colors duration-200">Clase 17: Posicionamiento en CSS: Static, Relative y Absolute.</a></li>
+                        <li><a href="/PagesCSS/18PosicionamientoFixedSticky.html" class="text-green-600 hover:text-green-800 hover:underline transition-colors duration-200">Clase 18: Posicionamiento en CSS: Fixed y Sticky.</a></li>
+                        <li><a href="/PagesCSS/19PropiedadZIndex.html" class="text-green-600 hover:text-green-800 hover:underline transition-colors duration-200">Clase 19: Propiedad Z-index.</a></li>
+                        <li><a href="/PagesCSS/20FlotadoresYClearfix.html" class="text-green-600 hover:text-green-800 hover:underline transition-colors duration-200">Clase 20: Flotadores (Floats) y Clearfix.</a></li>
+                    </ul>
+                </li>
+
+                <li class="mb-8 p-6 bg-purple-50 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform module-item">
+                    <h3 class="text-2xl font-semibold text-purple-800 mb-4">Módulo 3: Estilos Avanzados y Animaciones (Clases 21-30).</h3>
+                    <ul class="list-disc ml-6 space-y-2">
+                        <li><a href="/PagesCSS/21PseudoclasesYPseudoelementos.html" class="text-purple-600 hover:text-purple-800 hover:underline transition-colors duration-200">Clase 21: Pseudoclases y Pseudoelementos.</a></li>
+                        <li><a href="/PagesCSS/22TransicionesCSS.html" class="text-purple-600 hover:text-purple-800 hover:underline transition-colors duration-200">Clase 22: Transiciones CSS.</a></li>
+                        <li><a href="/PagesCSS/23TransformacionesCSS2D.html" class="text-purple-600 hover:text-purple-800 hover:underline transition-colors duration-200">Clase 23: Transformaciones CSS 2D.</a></li>
+                        <li><a href="/PagesCSS/24TransformacionesCSS3D.html" class="text-purple-600 hover:text-purple-800 hover:underline transition-colors duration-200">Clase 24: Transformaciones CSS 3D.</a></li>
+                        <li><a href="/PagesCSS/25AnimacionesCSSKeyframes.html" class="text-purple-600 hover:text-purple-800 hover:underline transition-colors duration-200">Clase 25: Animaciones CSS con `@keyframes`.</a></li>
+                        <li><a href="/PagesCSS/26SombrasBoxTextShadow.html" class="text-purple-600 hover:text-purple-800 hover:underline transition-colors duration-200">Clase 26: Sombras (Box-shadow y Text-shadow).</a></li>
+                        <li><a href="/PagesCSS/27FiltrosCSS.html" class="text-purple-600 hover:text-purple-800 hover:underline transition-colors duration-200">Clase 27: Filtros CSS.</a></li>
+                        <li><a href="/PagesCSS/28VariablesCSS.html" class="text-purple-600 hover:text-purple-800 hover:underline transition-colors duration-200">Clase 28: Variables CSS (Custom Properties).</a></li>
+                        <li><a href="/PagesCSS/29DisenoResponsivoMediaQueries.html" class="text-purple-600 hover:text-purple-800 hover:underline transition-colors duration-200">Clase 29: Diseño Responsivo con Media Queries.</a></li>
+                        <li><a href="/PagesCSS/30CompatibilidadNavegadoresPrefijos.html" class="text-purple-600 hover:text-purple-800 hover:underline transition-colors duration-200">Clase 30: Compatibilidad de Navegadores y Prefijos de Proveedor.</a></li>
+                    </ul>
+                </li>
+
+                <li class="mb-8 p-6 bg-yellow-50 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform module-item">
+                    <h3 class="text-2xl font-semibold text-yellow-800 mb-4">Módulo 4: Temas Especializados y Buenas Prácticas (Clases 31-40).</h3>
+                    <ul class="list-disc ml-6 space-y-2">
+                        <li><a href="/PagesCSS/31AccesibilidadEnCSS.html" class="text-yellow-600 hover:text-yellow-800 hover:underline transition-colors duration-200">Clase 31: Accesibilidad en CSS (ARIA y Estilos).</a></li>
+                        <li><a href="/PagesCSS/32OptimizacionDeCSS.html" class="text-yellow-600 hover:text-yellow-800 hover:underline transition-colors duration-200">Clase 32: Optimización de CSS: Rendimiento y Carga.</a></li>
+                        <li><a href="/PagesCSS/33MetodologiasCSS.html" class="text-yellow-600 hover:text-yellow-800 hover:underline transition-colors duration-200">Clase 33: Metodologías CSS (BEM, SMACSS, OOCSS).</a></li>
+                        <li><a href="/PagesCSS/34PreprocesadoresCSS.html" class="text-yellow-600 hover:text-yellow-800 hover:underline transition-colors duration-200">Clase 34: Preprocesadores CSS (Sass/Less/Stylus - Introducción).</a></li>
+                        <li><a href="/PagesCSS/35PostprocesadoresCSS.html" class="text-yellow-600 hover:text-yellow-800 hover:underline transition-colors duration-200">Clase 35: Postprocesadores CSS (PostCSS - Introducción).</a></li>
+                        <li><a href="/PagesCSS/36IconografiaConCSS.html" class="text-yellow-600 hover:text-yellow-800 hover:underline transition-colors duration-200">Clase 36: Iconografía con CSS (Font Awesome, SVG como CSS).</a></li>
+                        <li><a href="/PagesCSS/37DisenoDeFormulariosConCSS.html" class="text-yellow-600 hover:text-yellow-800 hover:underline transition-colors duration-200">Clase 37: Diseño de Formularios con CSS.</a></li>
+                        <li><a href="/PagesCSS/38EstilizandoTablasConCSS.html" class="text-yellow-600 hover:text-yellow-800 hover:underline transition-colors duration-200">Clase 38: Estilizando Tablas con CSS.</a></li>
+                        <li><a href="/PagesCSS/39AnimacionesScrollParallax.html" class="text-yellow-600 hover:text-yellow-800 hover:underline transition-colors duration-200">Clase 39: Animaciones Basadas en Scroll y Parallax (Concepto).</a></li>
+                        <li><a href="/PagesCSS/40ProyectoFinalCSS.html" class="text-yellow-600 hover:text-yellow-800 hover:underline transition-colors duration-200">Clase 40: Proyecto Final de CSS y Siguientes Pasos.</a></li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <div class="mt-10 pt-6 border-t-2 border-gray-300 text-center">
+            <p class="mb-4 text-lg text-gray-700">
+                <a href="/CajónDesastre/Extra.html" class="text-blue-600 hover:text-blue-800 hover:underline font-medium">
+                    Enlaces de interés y apuntes no incluidos de momento
+                </a>
+            </p>
+            <p class="text-lg text-gray-700">
+                <a href="/CajónDesastre/Ordenacióndeunproyectoweb.html" class="text-blue-600 hover:text-blue-800 hover:underline font-medium">
+                    Cómo ordenar un proyecto Web
+                </a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

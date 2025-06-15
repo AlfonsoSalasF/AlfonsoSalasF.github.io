@@ -1,0 +1,135 @@
+Curso de Iniciación a JavaScript
+Este curso está diseñado para proporcionar una introducción completa a JavaScript, cubriendo desde los fundamentos hasta temas más avanzados y buenas prácticas.
+Módulos del Curso:
+Módulo 1: Fundamentos de JavaScript (Clases 1-10)
+1.	Clase 1: Introducción a JavaScript y su Rol en el Desarrollo Web.
+o	¿Qué es JavaScript y por qué es fundamental?
+o	¿Dónde se ejecuta JavaScript? (Navegador y Node.js).
+o	Configuración del entorno de desarrollo básico.
+2.	Clase 2: Primeros Pasos: Incluir JavaScript en HTML.
+o	Etiquetas <script>.
+o	Enlace a archivos .js externos.
+o	Diferencia entre defer y async.
+3.	Clase 3: Variables y Tipos de Datos.
+o	Declaración de variables (var, let, const).
+o	Tipos de datos primitivos (String, Number, Boolean, Null, Undefined, Symbol, BigInt).
+o	typeof operador.
+4.	Clase 4: Operadores en JavaScript.
+o	Operadores aritméticos, de asignación, de comparación.
+o	Operadores lógicos (&&, ||, !).
+o	Operadores de incremento y decremento.
+5.	Clase 5: Estructuras de Control I: Condicionales.
+o	Sentencias if, else if, else.
+o	Operador ternario.
+o	Sentencia switch.
+6.	Clase 6: Estructuras de Control II: Bucles.
+o	Bucle for.
+o	Bucle while y do...while.
+o	break y continue.
+7.	Clase 7: Funciones: Declaración y Expresiones.
+o	Declaración de funciones.
+o	Expresiones de función.
+o	Parámetros y argumentos.
+o	return statement.
+8.	Clase 8: Ámbito (Scope) de las Variables.
+o	Ámbito global y local.
+o	Ámbito de bloque (let y const).
+o	Hoisting.
+9.	Clase 9: Arrays (Arreglos): Conceptos Básicos.
+o	Declaración y acceso a elementos.
+o	Métodos básicos de arrays (push, pop, shift, unshift, length).
+10.	Clase 10: Objetos: Conceptos Básicos.
+o	Creación de objetos literales.
+o	Acceso a propiedades (.dot notation, [] bracket notation).
+o	Métodos de objetos.
+Módulo 2: Manipulación del DOM y Eventos (Clases 11-20)
+11.	Clase 11: Introducción al DOM (Document Object Model).
+o	¿Qué es el DOM?
+o	El árbol del DOM.
+o	Acceso a elementos del DOM (document.getElementById, document.querySelector, document.querySelectorAll).
+12.	Clase 12: Modificación de Contenido y Atributos del DOM.
+o	innerHTML, textContent.
+o	setAttribute, getAttribute, removeAttribute.
+13.	Clase 13: Manipulación de Clases CSS con JavaScript.
+o	classList.add(), classList.remove(), classList.toggle(), classList.contains().
+14.	Clase 14: Creación y Eliminación de Elementos del DOM.
+o	document.createElement().
+o	appendChild(), removeChild(), insertBefore().
+15.	Clase 15: Introducción a Eventos en JavaScript.
+o	¿Qué son los eventos?
+o	Modelos de eventos.
+o	onclick, onmouseover, etc. (atributos HTML de eventos).
+16.	Clase 16: Manejo de Eventos con addEventListener.
+o	element.addEventListener(event, function, useCapture).
+o	Ventajas de addEventListener.
+17.	Clase 17: Objeto Evento.
+o	Propiedades del objeto event (target, type, preventDefault(), stopPropagation()).
+18.	Clase 18: Delegación de Eventos.
+o	Cómo manejar eventos de múltiples elementos de manera eficiente.
+19.	Clase 19: Formularios y Eventos de Formulario.
+o	Acceso a valores de formularios.
+o	Eventos submit, input, change, focus, blur.
+20.	Clase 20: Validación de Formularios con JavaScript (Básico).
+o	Comprobaciones simples de entrada de usuario.
+o	Mostrar mensajes de error.
+Módulo 3: Conceptos Avanzados y Asincronía (Clases 21-30)
+21.	Clase 21: Métodos de Arrays Avanzados I: Iteración.
+o	forEach, map, filter.
+o	Funciones de callback.
+22.	Clase 22: Métodos de Arrays Avanzados II: Reducción y Búsqueda.
+o	reduce, some, every, find, findIndex.
+23.	Clase 23: String Methods.
+o	length, toUpperCase(), toLowerCase().
+o	substring(), slice(), indexOf(), replace().
+24.	Clase 24: Math Object y Date Object.
+o	Math.random(), Math.floor(), Math.ceil(), etc.
+o	Creación y manipulación de fechas.
+25.	Clase 25: Programación Asíncrona: Callbacks.
+o	Introducción a la asincronía.
+o	El problema del "Callback Hell".
+26.	Clase 26: Programación Asíncrona: Promesas.
+o	Creación y consumo de Promesas (.then(), .catch(), .finally()).
+o	Encadenamiento de Promesas.
+27.	Clase 27: Programación Asíncrona: async/await.
+o	Sintaxis simplificada para Promesas.
+o	Manejo de errores con try...catch.
+28.	Clase 28: Fetch API: Realizando Peticiones HTTP.
+o	Consumo de APIs REST.
+o	Manejo de respuestas JSON.
+29.	Clase 29: Almacenamiento Local (Web Storage).
+o	localStorage y sessionStorage.
+o	Uso para guardar datos en el cliente.
+30.	Clase 30: JSON (JavaScript Object Notation).
+o	¿Qué es JSON?
+o	JSON.parse() y JSON.stringify().
+o	Intercambio de datos con servidores.
+Módulo 4: ES6+ y Buenas Prácticas (Clases 31-40)
+31.	Clase 31: Arrow Functions (Funciones Flecha).
+o	Sintaxis concisa.
+o	Diferencias en el this contextual.
+32.	Clase 32: Desestructuración de Arrays y Objetos.
+o	Extracción de valores de forma concisa.
+33.	Clase 33: Spread y Rest Operators.
+o	... operador para expandir y recolectar elementos.
+34.	Clase 34: Módulos JavaScript (ES Modules).
+o	import y export.
+o	Organización de código.
+35.	Clase 35: Clases en JavaScript (ES6).
+o	Sintaxis de clases (azúcar sintáctico sobre prototipos).
+o	Constructor, métodos, herencia.
+36.	Clase 36: Manejo de Errores: try...catch...finally.
+o	Bloques para detectar y manejar excepciones.
+o	Creación de errores personalizados.
+37.	Clase 37: Expresiones Regulares (RegExp - Introducción).
+o	Patrones para búsqueda y manipulación de texto.
+o	Métodos match, search, replace.
+38.	Clase 38: Conceptos Básicos de Programación Orientada a Objetos (POO) en JavaScript.
+o	Prototipos.
+o	Herencia prototípica.
+39.	Clase 39: Buenas Prácticas de Codificación en JavaScript.
+o	Convenciones de nombres, comentarios, legibilidad.
+o	Linters (ESLint - concepto).
+40.	Clase 40: Proyecto Final con JavaScript y Siguientes Pasos.
+o	Desarrollo de una aplicación interactiva simple.
+o	Recursos para seguir aprendiendo (frameworks, librerías, etc.).
+

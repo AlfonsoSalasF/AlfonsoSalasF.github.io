@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso de iniciación a JavaScript</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS estándar para la fuente */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+            cursor: pointer;
+        }
+        /* Animación para los módulos al pasar el ratón */
+        .module-item:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center py-8 px-4 sm:px-6 lg:px-8 bg-gray-100 text-gray-800">
+    <div class="max-w-4xl w-full bg-white p-6 sm:p-8 lg:p-10 rounded-xl shadow-lg">
+        <div class="flex flex-col items-center mb-8">
+            <img src="/Images/LogoJavaScript.png" alt="Logo JavaScript" class="w-32 h-auto mb-4 sm:w-40 md:w-48 lg:w-56">
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-center text-blue-700 tracking-tight">
+                CURSO DE INICIACIÓN A JAVASCRIPT
+            </h1>
+        </div>
+        <p class="text-center text-lg mb-8 text-gray-600">Este manual está en proceso de creación!! Vuelve pronto para encontrar más artículos publicados.</p>
+        <div class="space-y-8">
+            <ol class="list-none p-0">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-blue-500 pb-2">Módulos</h2>
+
+                <li class="mb-8 p-6 bg-blue-50 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform module-item">
+                    <h3 class="text-2xl font-semibold text-blue-800 mb-4">Módulo 1: Fundamentos de JavaScript (Clases 1-10).</h3>
+                    <ul class="list-disc ml-6 space-y-2">
+                        <li><a href="/PagesJS/01IntroduccionAJavaScript.html" class="text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200">Clase 1: Introducción a JavaScript y su Rol en el Desarrollo Web.</a></li>
+                        <li><a href="/PagesJS/02PrimerosPasosIncluirJS.html" class="text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200">Clase 2: Primeros Pasos: Incluir JavaScript en HTML.</a></li>
+                        <li><a href="/PagesJS/03VariablesYTiposDeDatos.html" class="text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200">Clase 3: Variables y Tipos de Datos.</a></li>
+                        <li><a href="/PagesJS/04OperadoresEnJavaScript.html" class="text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200">Clase 4: Operadores en JavaScript.</a></li>
+                        <li><a href="/PagesJS/05EstructurasDeControlICondicionales.html" class="text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200">Clase 5: Estructuras de Control I: Condicionales.</a></li>
+                        <li><a href="/PagesJS/06EstructurasDeControlIIBucles.html" class="text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200">Clase 6: Estructuras de Control II: Bucles.</a></li>
+                        <li><a href="/PagesJS/07FuncionesDeclaracionYExpresiones.html" class="text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200">Clase 7: Funciones: Declaración y Expresiones.</a></li>
+                        <li><a href="/PagesJS/08AmbitoDeLasVariables.html" class="text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200">Clase 8: Ámbito (Scope) de las Variables.</a></li>
+                        <li><a href="/PagesJS/09ArraysConceptosBasicos.html" class="text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200">Clase 9: Arrays (Arreglos): Conceptos Básicos.</a></li>
+                        <li><a href="/PagesJS/10ObjetosConceptosBasicos.html" class="text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200">Clase 10: Objetos: Conceptos Básicos.</a></li>
+                    </ul>
+                </li>
+
+                <li class="mb-8 p-6 bg-green-50 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform module-item">
+                    <h3 class="text-2xl font-semibold text-green-800 mb-4">Módulo 2: Manipulación del DOM y Eventos (Clases 11-20).</h3>
+                    <ul class="list-disc ml-6 space-y-2">
+                        <li><a href="/PagesJS/11IntroduccionAlDOM.html" class="text-green-600 hover:text-green-800 hover:underline transition-colors duration-200">Clase 11: Introducción al DOM (Document Object Model).</a></li>
+                        <li><a href="/PagesJS/12ModificacionContenidoAtributosDOM.html" class="text-green-600 hover:text-green-800 hover:underline transition-colors duration-200">Clase 12: Modificación de Contenido y Atributos del DOM.</a></li>
+                        <li><a href="/PagesJS/13ManipulacionClasesCSSConJS.html" class="text-green-600 hover:text-green-800 hover:underline transition-colors duration-200">Clase 13: Manipulación de Clases CSS con JavaScript.</a></li>
+                        <li><a href="/PagesJS/14CreacionEliminacionElementosDOM.html" class="text-green-600 hover:text-green-800 hover:underline transition-colors duration-200">Clase 14: Creación y Eliminación de Elementos del DOM.</a></li>
+                        <li><a href="/PagesJS/15IntroduccionAEventosEnJS.html" class="text-green-600 hover:text-green-800 hover:underline transition-colors duration-200">Clase 15: Introducción a Eventos en JavaScript.</a></li>
+                        <li><a href="/PagesJS/16ManejoDeEventosConAddEventListener.html" class="text-green-600 hover:text-green-800 hover:underline transition-colors duration-200">Clase 16: Manejo de Eventos con `addEventListener`.</a></li>
+                        <li><a href="/PagesJS/17ObjetoEvento.html" class="text-green-600 hover:text-green-800 hover:underline transition-colors duration-200">Clase 17: Objeto Evento.</a></li>
+                        <li><a href="/PagesJS/18DelegacionDeEventos.html" class="text-green-600 hover:text-green-800 hover:underline transition-colors duration-200">Clase 18: Delegación de Eventos.</a></li>
+                        <li><a href="/PagesJS/19FormulariosYEventosDeFormulario.html" class="text-green-600 hover:text-green-800 hover:underline transition-colors duration-200">Clase 19: Formularios y Eventos de Formulario.</a></li>
+                        <li><a href="/PagesJS/20ValidacionFormulariosJSBasico.html" class="text-green-600 hover:text-green-800 hover:underline transition-colors duration-200">Clase 20: Validación de Formularios con JavaScript (Básico).</a></li>
+                    </ul>
+                </li>
+
+                <li class="mb-8 p-6 bg-purple-50 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform module-item">
+                    <h3 class="text-2xl font-semibold text-purple-800 mb-4">Módulo 3: Conceptos Avanzados y Asincronía (Clases 21-30).</h3>
+                    <ul class="list-disc ml-6 space-y-2">
+                        <li><a href="/PagesJS/21MetodosArraysAvanzadosIIteracion.html" class="text-purple-600 hover:text-purple-800 hover:underline transition-colors duration-200">Clase 21: Métodos de Arrays Avanzados I: Iteración.</a></li>
+                        <li><a href="/PagesJS/22MetodosArraysAvanzadosIIReduccionBusqueda.html" class="text-purple-600 hover:text-purple-800 hover:underline transition-colors duration-200">Clase 22: Métodos de Arrays Avanzados II: Reducción y Búsqueda.</a></li>
+                        <li><a href="/PagesJS/23StringMethods.html" class="text-purple-600 hover:text-purple-800 hover:underline transition-colors duration-200">Clase 23: String Methods.</a></li>
+                        <li><a href="/PagesJS/24MathDateObject.html" class="text-purple-600 hover:text-purple-800 hover:underline transition-colors duration-200">Clase 24: Math Object y Date Object.</a></li>
+                        <li><a href="/PagesJS/25ProgramacionAsincronaCallbacks.html" class="text-purple-600 hover:text-purple-800 hover:underline transition-colors duration-200">Clase 25: Programación Asíncrona: Callbacks.</a></li>
+                        <li><a href="/PagesJS/26ProgramacionAsincronaPromesas.html" class="text-purple-600 hover:text-purple-800 hover:underline transition-colors duration-200">Clase 26: Programación Asíncrona: Promesas.</a></li>
+                        <li><a href="/PagesJS/27ProgramacionAsincronaAsyncAwait.html" class="text-purple-600 hover:text-purple-800 hover:underline transition-colors duration-200">Clase 27: Programación Asíncrona: `async`/`await`.</a></li>
+                        <li><a href="/PagesJS/28FetchAPI.html" class="text-purple-600 hover:text-purple-800 hover:underline transition-colors duration-200">Clase 28: Fetch API: Realizando Peticiones HTTP.</a></li>
+                        <li><a href="/PagesJS/29AlmacenamientoLocalWebStorage.html" class="text-purple-600 hover:text-purple-800 hover:underline transition-colors duration-200">Clase 29: Almacenamiento Local (Web Storage).</a></li>
+                        <li><a href="/PagesJS/30JSON.html" class="text-purple-600 hover:text-purple-800 hover:underline transition-colors duration-200">Clase 30: JSON (JavaScript Object Notation).</a></li>
+                    </ul>
+                </li>
+
+                <li class="mb-8 p-6 bg-yellow-50 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform module-item">
+                    <h3 class="text-2xl font-semibold text-yellow-800 mb-4">Módulo 4: ES6+ y Buenas Prácticas (Clases 31-40).</h3>
+                    <ul class="list-disc ml-6 space-y-2">
+                        <li><a href="/PagesJS/31ArrowFunctions.html" class="text-yellow-600 hover:text-yellow-800 hover:underline transition-colors duration-200">Clase 31: Arrow Functions (Funciones Flecha).</a></li>
+                        <li><a href="/PagesJS/32DesestructuracionArraysObjetos.html" class="text-yellow-600 hover:text-yellow-800 hover:underline transition-colors duration-200">Clase 32: Desestructuración de Arrays y Objetos.</a></li>
+                        <li><a href="/PagesJS/33SpreadRestOperators.html" class="text-yellow-600 hover:text-yellow-800 hover:underline transition-colors duration-200">Clase 33: Spread y Rest Operators.</a></li>
+                        <li><a href="/PagesJS/34ModulosJavaScript.html" class="text-yellow-600 hover:text-yellow-800 hover:underline transition-colors duration-200">Clase 34: Módulos JavaScript (ES Modules).</a></li>
+                        <li><a href="/PagesJS/35ClasesEnJavaScript.html" class="text-yellow-600 hover:text-yellow-800 hover:underline transition-colors duration-200">Clase 35: Clases en JavaScript (ES6).</a></li>
+                        <li><a href="/PagesJS/36ManejoDeErrores.html" class="text-yellow-600 hover:text-yellow-800 hover:underline transition-colors duration-200">Clase 36: Manejo de Errores: `try...catch...finally`.</a></li>
+                        <li><a href="/PagesJS/37ExpresionesRegulares.html" class="text-yellow-600 hover:text-yellow-800 hover:underline transition-colors duration-200">Clase 37: Expresiones Regulares (RegExp - Introducción).</a></li>
+                        <li><a href="/PagesJS/38ConceptosBasicosPOOJS.html" class="text-yellow-600 hover:text-yellow-800 hover:underline transition-colors duration-200">Clase 38: Conceptos Básicos de Programación Orientada a Objetos (POO) en JavaScript.</a></li>
+                        <li><a href="/PagesJS/39BuenasPracticasCodificacionJS.html" class="text-yellow-600 hover:text-yellow-800 hover:underline transition-colors duration-200">Clase 39: Buenas Prácticas de Codificación en JavaScript.</a></li>
+                        <li><a href="/PagesJS/40ProyectoFinalJS.html" class="text-yellow-600 hover:text-yellow-800 hover:underline transition-colors duration-200">Clase 40: Proyecto Final con JavaScript y Siguientes Pasos.</a></li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <div class="mt-10 pt-6 border-t-2 border-gray-300 text-center">
+            <p class="mb-4 text-lg text-gray-700">
+                <a href="/CajónDesastre/Extra.html" class="text-blue-600 hover:text-blue-800 hover:underline font-medium">
+                    Enlaces de interés y apuntes no incluidos de momento
+                </a>
+            </p>
+            <p class="text-lg text-gray-700">
+                <a href="/CajónDesastre/Ordenacióndeunproyectoweb.html" class="text-blue-600 hover:text-blue-800 hover:underline font-medium">
+                    Cómo ordenar un proyecto Web
+                </a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

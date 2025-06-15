@@ -1,0 +1,151 @@
+Módulos del Curso:
+Módulo 1: Fundamentos de CSS y Estilos Básicos (Clases 1-10)
+1.	Clase 1: Introducción a CSS y su Rol en el Desarrollo Web.
+o	¿Qué es CSS y por qué es importante?
+o	La separación de preocupaciones (HTML para estructura, CSS para estilo).
+o	Sintaxis básica de CSS: selectores, propiedades y valores.
+2.	Clase 2: Formas de Incluir CSS en HTML.
+o	Estilos en línea (inline).
+o	Estilos internos (<style> tag).
+o	Hojas de estilo externas (<link>).
+o	Ventajas y desventajas de cada método.
+3.	Clase 3: Selectores CSS Fundamentales.
+o	Selector universal (*).
+o	Selectores de tipo (elementos).
+o	Selectores de clase (.class).
+o	Selectores de ID (#id).
+4.	Clase 4: El Modelo de Caja (Box Model) en CSS.
+o	Contenido, padding, borde y margen.
+o	Propiedades width y height.
+o	box-sizing: content-box vs border-box.
+5.	Clase 5: Propiedades de Texto I: Color, Alineación y Decoración.
+o	color (colores con nombres, HEX, RGB, HSL).
+o	text-align.
+o	text-decoration.
+o	text-transform.
+6.	Clase 6: Propiedades de Texto II: Fuentes y Tamaños.
+o	font-family (fuentes genéricas y personalizadas).
+o	font-size.
+o	font-weight.
+o	font-style.
+o	line-height.
+7.	Clase 7: Fondos y Bordes.
+o	background-color.
+o	background-image.
+o	background-repeat, background-position, background-size.
+o	border-width, border-style, border-color.
+o	border-radius.
+8.	Clase 8: Unidades de Medida en CSS.
+o	Unidades absolutas (px, pt, cm).
+o	Unidades relativas (%, em, rem, vw, vh).
+o	Cuándo usar cada una.
+9.	Clase 9: Combinadores de Selectores.
+o	Selector descendente (espacio).
+o	Selector hijo (>).
+o	Selector adyacente (+).
+o	Selector de hermanos general (~).
+10.	Clase 10: Especificidad y Cascada en CSS.
+o	Entendiendo cómo se aplican los estilos.
+o	Reglas de la cascada (origen, especificidad, orden).
+o	La palabra clave !important (y por qué evitarla).
+Módulo 2: Layout y Posicionamiento (Clases 11-20)
+11.	Clase 11: Display Properties I: Block, Inline e Inline-Block.
+o	Diferencias y usos.
+o	Control del flujo del documento.
+12.	Clase 12: Display Properties II: None y Visibilidad.
+o	display: none vs visibility: hidden.
+o	Impacto en el layout y la accesibilidad.
+13.	Clase 13: Introducción a Flexbox: Contenedor Flexible.
+o	display: flex.
+o	flex-direction, flex-wrap, justify-content, align-items, align-content.
+14.	Clase 14: Flexbox: Ítems Flexibles.
+o	flex-grow, flex-shrink, flex-basis.
+o	flex shorthand.
+o	order, align-self.
+15.	Clase 15: Introducción a CSS Grid: Conceptos Básicos.
+o	display: grid.
+o	grid-template-columns, grid-template-rows.
+o	Unidad fr.
+16.	Clase 16: CSS Grid: Posicionamiento de Ítems.
+o	grid-column, grid-row.
+o	grid-area.
+o	justify-items, align-items, place-items.
+17.	Clase 17: Posicionamiento en CSS: Static, Relative y Absolute.
+o	Comprendiendo el flujo normal del documento.
+o	Desplazamiento con top, right, bottom, left.
+18.	Clase 18: Posicionamiento en CSS: Fixed y Sticky.
+o	Elementos fijos en la ventana gráfica.
+o	Elementos "pegajosos" al hacer scroll.
+19.	Clase 19: Propiedad Z-index.
+o	Controlando el apilamiento de elementos.
+o	Contextos de apilamiento.
+20.	Clase 20: Flotadores (Floats) y Clearfix.
+o	Uso histórico para layouts de columnas.
+o	El problema del "clear" y la solución clearfix.
+Módulo 3: Estilos Avanzados y Animaciones (Clases 21-30)
+21.	Clase 21: Pseudoclases y Pseudoelementos.
+o	Pseudoclases comunes (:hover, :active, :focus, :first-child, :nth-child).
+o	Pseudoelementos (::before, ::after, ::first-line, ::first-letter).
+22.	Clase 22: Transiciones CSS.
+o	transition-property, transition-duration, transition-timing-function, transition-delay.
+o	Creando efectos suaves.
+23.	Clase 23: Transformaciones CSS 2D.
+o	translate(), rotate(), scale(), skew().
+o	transform-origin.
+24.	Clase 24: Transformaciones CSS 3D.
+o	translate3d(), rotate3d(), scale3d().
+o	perspective, perspective-origin, backface-visibility.
+25.	Clase 25: Animaciones CSS con @keyframes.
+o	Definiendo secuencias de animación.
+o	animation-name, animation-duration, animation-timing-function, animation-delay.
+o	animation-iteration-count, animation-direction, animation-fill-mode.
+26.	Clase 26: Sombras (Box-shadow y Text-shadow).
+o	box-shadow: desplazamientos, blur, spread, color, inset.
+o	text-shadow: desplazamientos, blur, color.
+27.	Clase 27: Filtros CSS.
+o	filter (blur, brightness, contrast, grayscale, hue-rotate, invert, opacity, saturate, sepia, drop-shadow).
+28.	Clase 28: Variables CSS (Custom Properties).
+o	Declaración (--variable-name: value;).
+o	Uso (var(--variable-name);).
+o	Ventajas y alcance.
+29.	Clase 29: Diseño Responsivo con Media Queries.
+o	Sintaxis básica de @media.
+o	Breakpoints comunes (min-width, max-width).
+o	Estrategias "mobile-first" y "desktop-first".
+30.	Clase 30: Compatibilidad de Navegadores y Prefijos de Proveedor.
+o	Entendiendo los problemas de compatibilidad.
+o	Uso de prefijos (-webkit-, -moz-, -ms-, -o-).
+o	Herramientas para gestionar prefijos (Autoprefixer).
+Módulo 4: Temas Especializados y Buenas Prácticas (Clases 31-40)
+31.	Clase 31: Accesibilidad en CSS (ARIA y Estilos).
+o	Cómo los estilos pueden afectar la accesibilidad.
+o	Consideraciones para usuarios con discapacidades visuales.
+o	Estados :focus-visible.
+32.	Clase 32: Optimización de CSS: Rendimiento y Carga.
+o	Minificación y compresión.
+o	Eliminación de CSS no utilizado.
+o	Estrategias de carga (asincronía, defer).
+33.	Clase 33: Metodologías CSS (BEM, SMACSS, OOCSS).
+o	Introducción a las metodologías para organizar CSS.
+o	Conceptos básicos de BEM (Block, Element, Modifier).
+34.	Clase 34: Preprocesadores CSS (Sass/Less/Stylus - Introducción).
+o	¿Qué son y por qué usarlos?
+o	Variables, anidamiento, mixins, funciones. (Concepto general sin profundizar en uno específico).
+35.	Clase 35: Postprocesadores CSS (PostCSS - Introducción).
+o	Transformando CSS con JavaScript.
+o	Autoprefixer como ejemplo.
+36.	Clase 36: Iconografía con CSS (Font Awesome, SVG como CSS).
+o	Uso de librerías de iconos.
+o	Integración de SVG directamente en CSS (como background-image o mask).
+37.	Clase 37: Diseño de Formularios con CSS.
+o	Estilizando elementos de formulario (<input>, <select>, <textarea>, <button>).
+o	Pseudoclases para estados de formulario (:valid, :invalid, :disabled).
+38.	Clase 38: Estilizando Tablas con CSS.
+o	Diseño responsivo para tablas.
+o	Alternar colores de filas.
+39.	Clase 39: Animaciones Basadas en Scroll y Parallax (Concepto).
+o	Introducción a efectos visuales controlados por el scroll.
+o	La idea detrás del parallax.
+40.	Clase 40: Proyecto Final de CSS y Siguientes Pasos.
+o	Aplicación práctica de los conocimientos adquiridos.
+o	Recursos para seguir aprendiendo (frameworks, herramientas, etc.).
