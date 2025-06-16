@@ -1,25 +1,124 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clase 11: Conceptos Básicos de Formularios HTML</title>
+    <title>Conceptos Básicos de Formularios HTML - Curso HTML</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
 </head>
 <body>
-    <H1>Conceptos Básicos de Formularios HTML</H1>
-    <UL>
-        <li>La etiqueta &lt;form&gt; y sus atributos action y method (GET vs. POST).</li>
-        <li>Introducción a los elementos de formulario.</li>
-        <li>Importancia de los formularios para la interacción del usuario.</li>
-    </UL>
-    <footer>
+    <div class="container">
+        <h1>
+            <p>CURSO DE INICIACIÓN A HTML</p>
+            <p>Clase 11: Conceptos Básicos de Formularios HTML.</p>
+        </h1>
+
+        <p>Los formularios HTML son la columna vertebral de la interactividad en la web. Permiten a los usuarios enviar información a un servidor, ya sea para iniciar sesión, registrarse, realizar una compra, enviar un comentario o realizar una búsqueda. En esta clase, sentaremos las bases para entender cómo funcionan los formularios, explorando la etiqueta fundamental <code>&lt;form&gt;</code> y sus atributos clave, así como una introducción a los diferentes tipos de elementos que componen un formulario.</p>
+
+        <hr>
+
+        <section>
+            <h2>11.1. La etiqueta <code>&lt;form&gt;</code> y sus atributos <code>action</code> y <code>method</code>.</h2>
+            <p>Todo formulario HTML comienza y termina con la etiqueta <code>&lt;form&gt;</code>. Esta etiqueta es un contenedor para todos los elementos de control del formulario (campos de entrada, botones, etc.). Sin la etiqueta <code>&lt;form&gt;</code>, los datos no pueden ser enviados correctamente a un servidor.</p>
+
+            <h3>11.1.1. Atributo <code>action</code></h3>
+            <p>El atributo <code>action</code> especifica la URL (Uniform Resource Locator) a la que se enviarán los datos del formulario cuando este sea enviado. Esta URL suele ser un script en el lado del servidor (ej., un archivo PHP, Python, Node.js, etc.) que procesará la información enviada por el usuario.</p>
+            <ul>
+                <li>Si se omite el atributo <code>action</code>, los datos se enviarán a la URL de la página actual.</li>
+            </ul>
+            <p><strong>Ejemplo:</strong></p>
+            <pre><code>&lt;form action="/procesar_formulario.php"&gt;
+    &lt;!-- Elementos del formulario aquí --&gt;
+&lt;/form&gt;</code></pre>
+            <div class="note">
+                <p><strong>URL relativa o absoluta:</strong> La URL puede ser relativa (como en el ejemplo, <code>/procesar_formulario.php</code>) o absoluta (<code>https://ejemplo.com/procesar_formulario.php</code>).</p>
+            </div>
+
+            <h3>11.1.2. Atributo <code>method</code></h3>
+            <p>El atributo <code>method</code> especifica el método HTTP que se utilizará para enviar los datos del formulario. Los dos métodos más comunes son <code>GET</code> y <code>POST</code>.</p>
+
+            <h4><code>GET</code>:</h4>
+            <ul>
+                <li>Los datos del formulario se envían como parte de la URL, anexados al atributo <code>action</code> como pares nombre/valor (ej., <code>/procesar.php?nombre=Juan&amp;edad=30</code>).</li>
+                <li><em>Cuándo usarlo</em>: Ideal para formularios que buscan datos (ej., barras de búsqueda, filtros) donde los datos enviados no son sensibles y pueden ser marcados como favoritos o compartidos.
+                <li><em>Limitaciones</em>: La cantidad de datos que se pueden enviar es limitada (depende del navegador y del servidor), y los datos son visibles en la URL (no apto para contraseñas u otra información sensible).</li>
+            </ul>
+            <p><strong>Ejemplo con GET:</strong></p>
+            <pre><code>&lt;form action="/buscar.php" method="GET"&gt;
+    &lt;label for="query"&gt;Buscar:&lt;/label&gt;
+    &lt;input type="text" id="query" name="q"&gt;
+    &lt;button type="submit"&gt;Buscar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+
+            <h4><code>POST</code>:</h4>
+            <ul>
+                <li>Los datos del formulario se envían en el cuerpo de la solicitud HTTP, lo que los hace invisibles en la URL.</li>
+                <li><em>Cuándo usarlo</em>: Ideal para enviar información sensible (contraseñas, datos personales) o grandes volúmenes de datos (subida de archivos, formularios extensos). También se utiliza para operaciones que modifican datos en el servidor (ej., crear un nuevo usuario, enviar un comentario).</li>
+                <li><em>Ventajas</em>: No hay límites prácticos en la cantidad de datos, y los datos no son visibles en la URL.</li>
+            </ul>
+            <p><strong>Ejemplo con POST:</strong></p>
+            <pre><code>&lt;form action="/registro_usuario.php" method="POST"&gt;
+    &lt;label for="username"&gt;Usuario:&lt;/label&gt;
+    &lt;input type="text" id="username" name="user"&gt;
+    &lt;label for="password"&gt;Contraseña:&lt;/label&gt;
+    &lt;input type="password" id="password" name="pwd"&gt;
+    &lt;button type="submit"&gt;Registrar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        </section>
+
+        <section>
+            <h2>11.2. Introducción a los elementos de formulario.</h2>
+            <p>Dentro de la etiqueta <code>&lt;form&gt;</code>, podemos encontrar una variedad de elementos de control que permiten al usuario interactuar y proporcionar datos. Los más comunes son:</p>
+            <ul>
+                <li><strong><code>&lt;input&gt;</code>:</strong> El elemento de formulario más versátil. Se utiliza para crear una amplia gama de controles interactivos (campos de texto, casillas de verificación, botones de radio, botones, etc.) cambiando su atributo <code>type</code>.</li>
+                <li><strong><code>&lt;textarea&gt;</code>:</strong> Un área de texto multilínea para entradas de texto más largas (ej., comentarios, mensajes).</li>
+                <li><strong><code>&lt;select&gt;</code> y <code>&lt;option&gt;</code>:</strong> Crean listas desplegables para seleccionar una o varias opciones de un conjunto predefinido.</li>
+                <li><strong><code>&lt;button&gt;</code>:</strong> Para crear botones clicables, a menudo usados para enviar el formulario.</li>
+                <li><strong><code>&lt;label&gt;</code>:</strong> Proporciona una etiqueta (descripción) para un control de formulario, mejorando la accesibilidad y la usabilidad.</li>
+                <li><code>&lt;fieldset&gt;</code> y <code>&lt;legend&gt;</code>: Se utilizan para agrupar elementos relacionados en un formulario y proporcionarles un título, mejorando la estructura y la accesibilidad.</li>
+            </ul>
+            <p>En las próximas clases, exploraremos cada uno de estos elementos en detalle, aprendiendo a utilizarlos de forma efectiva.</p>
+            <p><strong>Ejemplo básico con algunos elementos:</strong></p>
+            <pre><code>&lt;form action="/enviar_datos.php" method="POST"&gt;
+    &lt;p&gt;Su nombre:&lt;/p&gt;
+    &lt;input type="text" name="nombre_usuario"&gt;
+    &lt;br&gt;&lt;br&gt;
+    
+    &lt;p&gt;Su mensaje:&lt;/p&gt;
+    &lt;textarea name="mensaje_usuario" rows="4" cols="50"&gt;&lt;/textarea&gt;
+    &lt;br&gt;&lt;br&gt;
+    
+    &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        </section>
+
+        <section>
+            <h2>11.3. Importancia de los formularios para la interacción del usuario.</h2>
+            <p>Los formularios son el puente principal entre el usuario y el servidor. Sin ellos, las páginas web serían en gran medida estáticas y la interacción sería limitada. Su importancia radica en varios aspectos:</p>
+            <ul>
+                <li><strong>Recopilación de datos:</strong> Permiten a las empresas y organizaciones recopilar información esencial de los usuarios (datos de contacto, preferencias, pedidos, etc.).</li>
+                <li><strong>Personalización:</strong> Facilitan la creación de experiencias de usuario personalizadas, como perfiles de usuario, configuraciones y recomendaciones.</li>
+                <li><strong>Funcionalidad clave:</strong> Hacen posible funcionalidades críticas como inicios de sesión, registros, búsquedas, carritos de compra, envíos de contenido y mucho más.</li>
+                <li><strong>Feedback y comunicación:</strong> Son la vía principal para que los usuarios envíen comentarios, reporten problemas o se comuniquen con los administradores del sitio.</li>
+            </ul>
+            <p>Diseñar formularios intuitivos, accesibles y validados es crucial para una buena experiencia de usuario. Un formulario mal diseñado puede frustrar a los usuarios y hacer que abandonen una página o un proceso.</p>
+            <div class="note">
+                <p><strong>Próximos pasos:</strong> En las siguientes clases, nos sumergiremos en los detalles de cada tipo de elemento de formulario, sus atributos y las mejores prácticas para crearlos.</p>
+            </div>
+        </section>
+        
+        <hr>
+
+        <footer>
             <p>Continúa explorando HTML:</p>
             <ul>
-                <li><a href="Ejercicios11.html">Ejercicios sobre Formularios</a></li>
-                <li><a href="11ConceptosBasicosDeFormulariosHtml.html">Clase 12: Elementos de entrada de texto (Siguiente)</a></li>
+                <li><a href="Ejercicios11.html">Ejercicios sobre esta lección.</a></li>
+                <li><a href="12ElementosDeEntradaDeTexto.html">Clase 12: Elementos de entrada de texto (Siguiente)</a></li>
                 <li><a href="../CursoHTML.html">Índice del curso</a></li>
                 <li><a href="../index.html">Desarrollo Web</a></li>
             </ul>
-    </footer>
+        </footer>
+    </div>
 </body>
 </html>

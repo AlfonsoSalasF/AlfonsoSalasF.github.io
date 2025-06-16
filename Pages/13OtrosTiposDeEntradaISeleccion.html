@@ -1,17 +1,214 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Otros Tipos de Entrada I: Selección</title>
-</head>
+    <title>Otros Tipos de Entrada I: Selección - Curso HTML</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css"> </head>
 <body>
-    <H1>Clase 13: Otros Tipos de Entrada I: Selección</H1>
-    <UL>
-        <li>checkbox y radio (grupos de radio buttons).</li>
-        <li>La etiqueta &lt;label&gt; y su asociación con los inputs.</li>
-        <li>Listas desplegables: &lt;select&gt;, &lt;option&gt;, &lt;optgroup&gt;.</li>
-    </UL>
-    <p><a href="/index.html">Vuelve a la página principal</a></p>
+    <div class="container">
+        <h1>
+            <p>CURSO DE INICIACIÓN A HTML</p>
+            <p>Clase 13: Otros Tipos de Entrada I: Selección.</p>
+        </h1>
+
+        <p>Además de los campos de texto, los formularios HTML ofrecen una variedad de elementos para que los usuarios elijan entre opciones predefinidas. Estos elementos son cruciales para guiar al usuario, estandarizar las respuestas y mejorar la usabilidad. En esta clase, exploraremos los botones de opción (radio buttons), las casillas de verificación (checkboxes) y las listas desplegables, junto con la importante etiqueta <code>&lt;label&gt;</code> que asocia texto descriptivo a los controles de formulario.</p>
+
+        <hr>
+
+        <section>
+            <h2>13.1. <code>checkbox</code> y <code>radio</code> (grupos de radio buttons).</h2>
+            <p>Estos dos tipos de <code>&lt;input&gt;</code> permiten al usuario seleccionar opciones de una lista.</p>
+
+            <h3>13.1.1. <code>&lt;input type="checkbox"&gt;</code></h3>
+            <p>Permite al usuario seleccionar **cero, una o varias opciones** de un conjunto.</p>
+            <ul>
+                <li>Cada checkbox es independiente, y se envía su valor si está marcado.</li>
+                <li>Se utiliza para opciones que no son mutuamente excluyentes (ej., "Deseo recibir boletines", "Acepto los términos y condiciones", "Selecciona tus intereses").</li>
+            </ul>
+            <p><strong>Ejemplo:</strong></p>
+            <pre><code>&lt;form&gt;
+    &lt;p&gt;Selecciona tus intereses:&lt;/p&gt;
+    &lt;div class="checkbox-group"&gt;
+        &lt;input type="checkbox" id="interes1" name="intereses" value="html"&gt;
+        &lt;label for="interes1"&gt;HTML&lt;/label&gt;&lt;br&gt;
+        
+        &lt;input type="checkbox" id="interes2" name="intereses" value="css"&gt;
+        &lt;label for="interes2"&gt;CSS&lt;/label&gt;&lt;br&gt;
+        
+        &lt;input type="checkbox" id="interes3" name="intereses" value="js"&gt;
+        &lt;label for="interes3"&gt;JavaScript&lt;/label&gt;
+    &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+            <form>
+                <p>Selecciona tus intereses:</p>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="interes1_ejemplo" name="intereses_ejemplo" value="html">
+                    <label for="interes1_ejemplo">HTML</label><br>
+                    
+                    <input type="checkbox" id="interes2_ejemplo" name="intereses_ejemplo" value="css">
+                    <label for="interes2_ejemplo">CSS</label><br>
+                    
+                    <input type="checkbox" id="interes3_ejemplo" name="intereses_ejemplo" value="js">
+                    <label for="interes3_ejemplo">JavaScript</label>
+                </div>
+            </form>
+
+            <h3>13.1.2. <code>&lt;input type="radio"&gt;</code> (grupos de radio buttons)</h3>
+            <p>Permite al usuario seleccionar **una y solo una opción** de un conjunto. Las opciones son mutuamente excluyentes.</p>
+            <ul>
+                <li>Para agrupar botones de radio, deben compartir el **mismo atributo <code>name</code>**. Esto asegura que solo se pueda seleccionar uno dentro de ese grupo.</li>
+                <li>Se utiliza para opciones donde solo una respuesta es válida (ej., "Sexo", "Método de pago", "Nivel de experiencia").</li>
+            </ul>
+            <p><strong>Ejemplo:</strong></p>
+            <pre><code>&lt;form&gt;
+    &lt;p&gt;Selecciona tu sexo:&lt;/p&gt;
+    &lt;div class="radio-group"&gt;
+        &lt;input type="radio" id="masculino" name="sexo" value="masculino"&gt;
+        &lt;label for="masculino"&gt;Masculino&lt;/label&gt;&lt;br&gt;
+        
+        &lt;input type="radio" id="femenino" name="sexo" value="femenino"&gt;
+        &lt;label for="femenino"&gt;Femenino&lt;/label&gt;&lt;br&gt;
+        
+        &lt;input type="radio" id="otro" name="sexo" value="otro"&gt;
+        &lt;label for="otro"&gt;Otro&lt;/label&gt;
+    &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+            <form>
+                <p>Selecciona tu sexo:</p>
+                <div class="radio-group">
+                    <input type="radio" id="masculino_ejemplo" name="sexo_ejemplo" value="masculino">
+                    <label for="masculino_ejemplo">Masculino</label><br>
+                    
+                    <input type="radio" id="femenino_ejemplo" name="sexo_ejemplo" value="femenino">
+                    <label for="femenino_ejemplo">Femenino</label><br>
+                    
+                    <input type="radio" id="otro_ejemplo" name="sexo_ejemplo" value="otro">
+                    <label for="otro_ejemplo">Otro</label>
+                </div>
+            </form>
+            <div class="note">
+                <p><strong>Atributo <code>checked</code>:</strong> Puedes usar el atributo <code>checked</code> en un checkbox o radio button para que aparezca seleccionado por defecto al cargar la página: <code>&lt;input type="radio" checked&gt;</code>.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>13.2. La etiqueta <code>&lt;label&gt;</code> y su asociación con los inputs.</h2>
+            <p>La etiqueta <code>&lt;label&gt;</code> es fundamental para la accesibilidad y la usabilidad de los formularios. Sirve para proporcionar una descripción textual (una "etiqueta") para un control de formulario.</p>
+            <ul>
+                <li>**Asociación explícita:** La mejor práctica es asociar un <code>&lt;label&gt;</code> con un control de formulario usando el atributo <code>for</code> del <code>&lt;label&gt;</code>, cuyo valor debe coincidir con el <code>id</code> del control del formulario.</li>
+                <li>**Beneficios:**
+                    <ul>
+                        <li>Cuando el usuario hace clic en el texto de la etiqueta, el control de formulario asociado recibe el foco o se activa (ej., un checkbox se marca).</li>
+                        <li>Los lectores de pantalla leen la etiqueta junto con el tipo de control, lo que es vital para la comprensión del formulario por parte de usuarios con discapacidad visual.</li>
+                    </ul>
+                </li>
+            </ul>
+            <p><strong>Ejemplo de asociación con <code>for</code> y <code>id</code>:</strong></p>
+            <pre><code>&lt;label for="email_contacto"&gt;Correo Electrónico:&lt;/label&gt;
+&lt;input type="email" id="email_contacto" name="email"&gt;</code></pre>
+            <form>
+                <label for="email_contacto_ejemplo">Correo Electrónico (clic en el texto para activar):</label>
+                <input type="email" id="email_contacto_ejemplo" name="email_contacto_ejemplo">
+            </form>
+            <div class="note">
+                <p><strong>Asociación implícita (menos común):</strong> También se puede envolver el input dentro de la etiqueta <code>&lt;label&gt;</code>, pero la asociación explícita (<code>for</code>/<code>id</code>) es generalmente preferida por su claridad y flexibilidad en el styling.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>13.3. Listas desplegables: <code>&lt;select&gt;</code>, <code>&lt;option&gt;</code>, <code>&lt;optgroup&gt;</code>.</h2>
+            <p>Las listas desplegables (o menús desplegables) permiten a los usuarios seleccionar una o varias opciones de una lista predefinida.</p>
+
+            <h3>13.3.1. <code>&lt;select&gt;</code></h3>
+            <p>Es la etiqueta contenedora para la lista desplegable. Su atributo <code>name</code> es el que se envía al servidor con el valor de la opción seleccionada.</p>
+            <ul>
+                <li><code>size</code>: (Opcional) Número de opciones visibles sin necesidad de desplazamiento. Si es mayor que 1, la lista se muestra como una caja de desplazamiento en lugar de un menú desplegable.</li>
+                <li><code>multiple</code>: (Opcional) Si está presente, permite al usuario seleccionar múltiples opciones (normalmente manteniendo Ctrl/Cmd mientras hace clic). Los valores seleccionados se envían como un array al servidor.</li>
+            </ul>
+            <p><strong>Ejemplo:</strong></p>
+            <pre><code>&lt;form&gt;
+    &lt;label for="paises"&gt;Selecciona un país:&lt;/label&gt;
+    &lt;select id="paises" name="pais"&gt;
+        &lt;option value="es"&gt;España&lt;/option&gt;
+        &lt;option value="mx"&gt;México&lt;/option&gt;
+        &lt;option value="ar"&gt;Argentina&lt;/option&gt;
+    &lt;/select&gt;
+&lt;/form&gt;</code></pre>
+            <form>
+                <label for="paises_ejemplo">Selecciona un país:</label>
+                <select id="paises_ejemplo" name="pais_ejemplo">
+                    <option value="es">España</option>
+                    <option value="mx">México</option>
+                    <option value="ar">Argentina</option>
+                </select>
+            </form>
+
+            <h3>13.3.2. <code>&lt;option&gt;</code></h3>
+            <p>Representa una de las opciones individuales dentro de un <code>&lt;select&gt;</code>.</p>
+            <ul>
+                <li><code>value</code>: El valor que se envía al servidor cuando esta opción es seleccionada. Si se omite, se envía el texto visible de la opción.</li>
+                <li><code>selected</code>: (Opcional) Si está presente, esta opción aparecerá seleccionada por defecto al cargar la página.</li>
+            </ul>
+            <p><strong>Ejemplo con <code>value</code> y <code>selected</code>:</strong></p>
+            <pre><code>&lt;select name="color"&gt;
+    &lt;option value="red"&gt;Rojo&lt;/option&gt;
+    &lt;option value="blue" selected&gt;Azul&lt;/option&gt;
+    &lt;option value="green"&gt;Verde&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+            <form>
+                <label for="color_ejemplo">Selecciona un color (Azul preseleccionado):</label>
+                <select id="color_ejemplo" name="color_ejemplo">
+                    <option value="red">Rojo</option>
+                    <option value="blue" selected>Azul</option>
+                    <option value="green">Verde</option>
+                </select>
+            </form>
+
+            <h3>13.3.3. <code>&lt;optgroup&gt;</code></h3>
+            <p>Se utiliza para agrupar opciones relacionadas dentro de un <code>&lt;select&gt;</code>, creando una estructura jerárquica. La etiqueta <code>label</code> de <code>&lt;optgroup&gt;</code> se muestra como un encabezado para el grupo.</p>
+            <p><strong>Ejemplo:</strong></p>
+            <pre><code>&lt;select name="fruta"&gt;
+    &lt;optgroup label="Cítricos"&gt;
+        &lt;option value="naranja"&gt;Naranja&lt;/option&gt;
+        &lt;option value="limon"&gt;Limón&lt;/option&gt;
+    &lt;/optgroup&gt;
+    &lt;optgroup label="Frutas con hueso"&gt;
+        &lt;option value="melocoton"&gt;Melocotón&lt;/option&gt;
+        &lt;option value="ciruela"&gt;Ciruela&lt;/option&gt;
+    &lt;/optgroup&gt;
+&lt;/select&gt;</code></pre>
+            <form>
+                <label for="fruta_ejemplo">Selecciona una fruta:</label>
+                <select id="fruta_ejemplo" name="fruta_ejemplo">
+                    <optgroup label="Cítricos">
+                        <option value="naranja">Naranja</option>
+                        <option value="limon">Limón</option>
+                    </optgroup>
+                    <optgroup label="Frutas con hueso">
+                        <option value="melocoton">Melocotón</option>
+                        <option value="ciruela">Ciruela</option>
+                    </optgroup>
+                </select>
+            </form>
+            <div class="note">
+                <p><strong>Usabilidad:</strong> Los menús desplegables son ideales para listas largas de opciones. Para listas cortas (2-5 opciones), los botones de radio suelen ser más intuitivos.</p>
+            </div>
+        </section>
+        
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="Ejercicios13.html">Ejercicios sobre esta lección.</a></li>
+                <li><a href="14OtrosTiposDeEntradaIIFechasYArchivos.html">Clase 14: Otros tipos de entrada: Fechas y archivos. (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
 </body>
 </html>

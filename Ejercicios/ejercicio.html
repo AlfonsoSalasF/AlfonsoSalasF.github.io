@@ -6,30 +6,30 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Ejercicio trabajando enlaces</h1>
-    <p>Busca información en <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">Google</a> para lo que quieras.</p>
-    <p>Enlace a un archivo interno en el mismo directorio: <a href="Pruebas.html">Haz click.</a></p>
-    <p>Vete a otra carpeta <a href="Carpeta de prueba/OtraPrueba.html">pulsa</a></p>
-    <p>Acceder a otro archivo que está en un directorio superior <a href="../Pages/06EnlacesHyperlinksNavegacionEntrePaginas.html">Capítulo 6</a></p>
-    <p>Ir a la raiz <a href="/">index</a></p>
-    <p>Ejemplo de rutas absolutas <a href="/Pages/06EnlacesHyperlinksNavegacionEntrePaginas.html">pulsa</a></p>
-    <p>Puedes encontrar más información sobre desarrollo web en <a href="https://developer.mozilla.org/es/docs/Web">MDN Web Docs</a>.</p>
-    <p>Esto es una opción para enviar un <a href="mailto: asalasf@gmail.com">mail</a> a mi dirección de correo</p>
-    <p>Abrimos un link a otra <a href="/Pages/06EnlacesHyperlinksNavegacionEntrePaginas.html" target="_blank" rel="noopener noreferrer">página</a> sin enviar opener ni referrer.</p>
-    <p>Envío de un correo electrónico con varios datos <a href="mailto:asalasf@gmail.com?subject=El%20asunto%20del%20correo.&body= Buenos%20dias,%0D%0A%20A%20continuación%20le%20remito%20solicitud%20de...&cc=alfonso@alfonsosalas.com&bcc=asalas@unicaja.es">click</a>
-    <p><a href="mailto:soporte@ejemplo.com?subject=Soporte%20técnico&body=Hola,%0D%0A%0D%0AEstoy%20teniendo%20un%20problema%20con%20su%20servicio.%0D%0A%0D%0ADetalles%20del%20problema:%0D%0A-%20Fecha%20de%20ocurrencia:%20DD/MM/AAAA%0D%0A-%20Descripción:%0D%0A%0D%0APor%20favor,%20indíqueme%20cómo%20proceder.%0D%0A%0D%0AGracias,%0D%0AAlfonso">Solicitar soporte</a></p>
-    <script>
-    function enviarCorreo() {
-        var destinatario = "correo@ejemplo.com";
-        var asunto = encodeURIComponent("Consulta Personalizada");
-        var cuerpo = encodeURIComponent("Hola,\n\nQuisiera obtener más información sobre sus servicios.\n\nSaludos,\nAlfonso");
+    <form action="../Pages/01IntroduccionAlDesarrolloWebYHtml.html" method="GET">
+    <label for="query">Buscar:</label>
+    <input type="text" id="query" name="q">
+    <button type="submit">Pergeñar</button>
+    </form>
 
-        window.location.href = "mailto:" + destinatario + "?subject=" + asunto + "&body=" + cuerpo;
-    }
-    </script>
+    <form action="../Pages/01IntroduccionAlDesarrolloWebYHtml.html" method="POST">
+    <label for="username">Usuario:</label>
+    <input type="text" id="username" name="user">
+    <label for="password">Contraseña:</label>
+    <input type="password" id="password" name="pwd">
+    <button type="submit">Registrar</button>
 
-    <button onclick="enviarCorreo()">Enviar correo dinámico</button>
-    <p><a href="tel:+34620740044">Papa llama</a></p>
-    <p><a href="https://wa.me/34123456789">Enviar WhatsApp</a></p>
+    <form action="/enviar_datos.php" method="POST">
+    <p>Su nombre:</p>
+    <input type="text" name="nombre_usuario">
+    <br><br>
+    
+    <p>Su mensaje:</p>
+    <textarea name="mensaje_usuario" rows="4" cols="50"></textarea>
+    <br><br>
+    
+    <button type="submit">Enviar</button>
+</form>
+</form>
 </body>
 </html>

@@ -1,16 +1,203 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elementos de Entrada de Texto</title>
-</head>
+    <title>Elementos de Entrada de Texto - Curso HTML</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css"> </head>
 <body>
-    <H1>Clase 12: Elementos de Entrada de Texto</H1>
-    <UL>
-        <li>text, password, email, number, tel, url, search.</li>
-        <li>Atributos name, value, placeholder, readonly, disabled, required.</li>
-    </UL>
-    <p><a href="/index.html">Vuelve a la página principal</a></p>
+    <div class="container">
+        <h1>
+            <p>CURSO DE INICIACIÓN A HTML</p>
+            <p>Clase 12: Elementos de Entrada de Texto.</p>
+        </h1>
+
+        <p>Una vez comprendidos los conceptos básicos de los formularios en HTML, es momento de adentrarnos en los elementos de entrada más comunes: los campos de texto. El elemento <code>&lt;input&gt;</code>, con su atributo <code>type</code>, es increíblemente versátil y nos permite recopilar una amplia variedad de información textual del usuario. En esta clase, exploraremos los tipos de entrada de texto más utilizados y los atributos clave que nos permiten controlarlos y validarlos.</p>
+
+        <hr>
+
+        <section>
+            <h2>12.1. Tipos de entrada de texto: <code>text</code>, <code>password</code>, <code>email</code>, <code>number</code>, <code>tel</code>, <code>url</code>, <code>search</code>.</h2>
+            <p>Todos estos tipos se crean utilizando la etiqueta <code>&lt;input&gt;</code> y especificando el valor de su atributo <code>type</code>.</p>
+
+            <h3>12.1.1. <code>&lt;input type="text"&gt;</code></h3>
+            <p>Es el tipo de entrada por defecto y el más genérico. Se utiliza para recopilar texto simple de una sola línea.</p>
+            <p><strong>Uso común:</strong> Nombres, apellidos, direcciones (línea 1), títulos cortos.</p>
+            <p><strong>Ejemplo:</strong></p>
+            <pre><code>&lt;form&gt;
+    &lt;label for="nombre"&gt;Nombre Completo:&lt;/label&gt;
+    &lt;input type="text" id="nombre" name="nombre"&gt;
+&lt;/form&gt;</code></pre>
+            <form>
+                <label for="nombre_ejemplo">Nombre Completo:</label>
+                <input type="text" id="nombre_ejemplo" name="nombre_ejemplo">
+            </form>
+
+            <h3>12.1.2. <code>&lt;input type="password"&gt;</code></h3>
+            <p>Diseñado para campos de contraseña. El texto ingresado se oculta (generalmente con asteriscos o puntos) para proteger la privacidad del usuario.</p>
+            <p><strong>Uso común:</strong> Contraseñas de inicio de sesión, campos de confirmación de contraseña.</p>
+            <p><strong>Ejemplo:</strong></p>
+            <pre><code>&lt;form&gt;
+    &lt;label for="contrasena"&gt;Contraseña:&lt;/label&gt;
+    &lt;input type="password" id="contrasena" name="contrasena"&gt;
+&lt;/form&gt;</code></pre>
+            <form>
+                <label for="contrasena_ejemplo">Contraseña:</label>
+                <input type="password" id="contrasena_ejemplo" name="contrasena_ejemplo">
+            </form>
+
+            <h3>12.1.3. <code>&lt;input type="email"&gt;</code></h3>
+            <p>Diseñado para direcciones de correo electrónico. Los navegadores y dispositivos móviles a menudo ajustan el teclado para facilitar la entrada de correos electrónicos (ej., incluyendo el símbolo "@"). Proporciona validación básica del formato del email en el navegador.</p>
+            <p><strong>Uso común:</strong> Campos de email en formularios de registro, contacto o boletines.</p>
+            <p><strong>Ejemplo:</strong></p>
+            <pre><code>&lt;form&gt;
+    &lt;label for="correo"&gt;Correo Electrónico:&lt;/label&gt;
+    &lt;input type="email" id="correo" name="correo"&gt;
+&lt;/form&gt;</code></pre>
+            <form>
+                <label for="correo_ejemplo">Correo Electrónico:</label>
+                <input type="email" id="correo_ejemplo" name="correo_ejemplo">
+            </form>
+
+            <h3>12.1.4. <code>&lt;input type="number"&gt;</code></h3>
+            <p>Para la entrada de números. Los navegadores suelen mostrar controles de "subir/bajar" (spinners) junto al campo y pueden restringir la entrada a solo dígitos.</p>
+            <p><strong>Uso común:</strong> Cantidades, edades, códigos postales (si solo son números).</p>
+            <p><strong>Ejemplo:</strong></p>
+            <pre><code>&lt;form&gt;
+    &lt;label for="edad"&gt;Edad:&lt;/label&gt;
+    &lt;input type="number" id="edad" name="edad" min="0" max="120" step="1"&gt;
+&lt;/form&gt;</code></pre>
+            <form>
+                <label for="edad_ejemplo">Edad:</label>
+                <input type="number" id="edad_ejemplo" name="edad_ejemplo" min="0" max="120" step="1">
+            </form>
+            <div class="note">
+                <p><strong>Atributos adicionales para <code>type="number"</code>:</strong></p>
+                <ul>
+                    <li><code>min</code>: Valor mínimo permitido.</li>
+                    <li><code>max</code>: Valor máximo permitido.</li>
+                    <li><code>step</code>: El incremento o decremento de los controles (por defecto es 1).</li>
+                </ul>
+            </div>
+
+            <h3>12.1.5. <code>&lt;input type="tel"&gt;</code></h3>
+            <p>Para números de teléfono. Aunque no valida el formato del teléfono, los navegadores en dispositivos móviles suelen invocar un teclado numérico optimizado para la entrada de números de teléfono.</p>
+            <p><strong>Uso común:</strong> Campos de número de teléfono.</p>
+            <p><strong>Ejemplo:</strong></p>
+            <pre><code>&lt;form&gt;
+    &lt;label for="telefono"&gt;Teléfono:&lt;/label&gt;
+    &lt;input type="tel" id="telefono" name="telefono"&gt;
+&lt;/form&gt;</code></pre>
+            <form>
+                <label for="telefono_ejemplo">Teléfono:</label>
+                <input type="tel" id="telefono_ejemplo" name="telefono_ejemplo">
+            </form>
+            <div class="note">
+                <p><strong>Validación de formato:</strong> Para una validación de formato específica (ej., NIF/NIE, formato de teléfono), a menudo se utiliza el atributo <code>pattern</code> (que veremos en clases posteriores) o JavaScript.</p>
+            </div>
+
+            <h3>12.1.6. <code>&lt;input type="url"&gt;</code></h3>
+            <p>Para direcciones URL. Los navegadores pueden proporcionar validación básica del formato de la URL.</p>
+            <p><strong>Uso común:</strong> Campos de sitio web, enlaces a perfiles sociales.</p>
+            <p><strong>Ejemplo:</strong></p>
+            <pre><code>&lt;form&gt;
+    &lt;label for="website"&gt;Tu Sitio Web:&lt;/label&gt;
+    &lt;input type="url" id="website" name="website"&gt;
+&lt;/form&gt;</code></pre>
+            <form>
+                <label for="website_ejemplo">Tu Sitio Web:</label>
+                <input type="url" id="website_ejemplo" name="website_ejemplo">
+            </form>
+
+            <h3>12.1.7. <code>&lt;input type="search"&gt;</code></h3>
+            <p>Para campos de búsqueda. Los navegadores pueden añadir una "X" para borrar el contenido en algunos sistemas operativos, y los estilos predeterminados pueden variar.</p>
+            <p><strong>Uso común:</strong> Barras de búsqueda en sitios web.</p>
+            <p><strong>Ejemplo:</strong></p>
+            <pre><code>&lt;form&gt;
+    &lt;label for="buscar"&gt;Buscar en el sitio:&lt;/label&gt;
+    &lt;input type="search" id="buscar" name="buscar"&gt;
+&lt;/form&gt;</code></pre>
+            <form>
+                <label for="buscar_ejemplo">Buscar en el sitio:</label>
+                <input type="search" id="buscar_ejemplo" name="buscar_ejemplo">
+            </form>
+        </section>
+
+        <section>
+            <h2>12.2. Atributos comunes de los elementos de entrada: <code>name</code>, <code>value</code>, <code>placeholder</code>, <code>readonly</code>, <code>disabled</code>, <code>required</code>.</h2>
+
+            <h3>12.2.1. Atributo <code>name</code></h3>
+            <p>El atributo <code>name</code> es crucial. Define el nombre del control del formulario. Es el nombre que se utilizará para identificar el dato cuando el formulario se envía al servidor.</p>
+            <p><strong>Sin un atributo <code>name</code>, el valor de un campo de entrada no se enviará.</strong></p>
+            <p><strong>Ejemplo:</strong> Si el usuario escribe "Juan" en un campo con <code>name="nombre"</code>, el servidor recibirá "nombre=Juan".</p>
+            <pre><code>&lt;input type="text" name="nombre_de_usuario"&gt;</code></pre>
+
+            <h3>12.2.2. Atributo <code>value</code></h3>
+            <p>Define el valor inicial del campo de entrada. Para campos de texto, es el texto que aparece por defecto. Para otros tipos de entrada, puede ser el valor que se envía al servidor cuando el campo está seleccionado o se activa.</p>
+            <p><strong>Ejemplo:</strong></p>
+            <pre><code>&lt;input type="text" name="ciudad" value="Madrid"&gt;</code></pre>
+            <form>
+                <label for="ciudad_ejemplo">Ciudad (valor predefinido):</label>
+                <input type="text" id="ciudad_ejemplo" name="ciudad_ejemplo" value="Madrid">
+            </form>
+
+            <h3>12.2.3. Atributo <code>placeholder</code></h3>
+            <p>Proporciona una pista corta (generalmente un texto de ejemplo o una breve descripción del formato esperado) que se muestra dentro del campo de entrada cuando este está vacío. El texto desaparece automáticamente cuando el usuario comienza a escribir.</p>
+            <p><strong>Ejemplo:</strong></p>
+            <pre><code>&lt;input type="email" name="correo" placeholder="ejemplo@dominio.com"&gt;</code></pre>
+            <form>
+                <label for="email_placeholder">Correo (con placeholder):</label>
+                <input type="email" id="email_placeholder" name="email_placeholder" placeholder="ejemplo@dominio.com">
+            </form>
+            <div class="note">
+                <p><strong>No sustituye a <code>&lt;label&gt;</code>:</strong> El <code>placeholder</code> no debe usarse como sustituto de la etiqueta <code>&lt;label&gt;</code>, ya que los lectores de pantalla no lo anuncian de la misma manera y desaparece al escribir.</p>
+            </div>
+
+            <h3>12.2.4. Atributo <code>readonly</code></h3>
+            <p>Cuando está presente, el campo de entrada no puede ser modificado por el usuario. Sin embargo, su valor se sigue enviando con el formulario.</p>
+            <p><strong>Ejemplo:</strong></p>
+            <pre><code>&lt;input type="text" name="id_usuario" value="12345" readonly&gt;</code></pre>
+            <form>
+                <label for="id_usuario_readonly">ID de Usuario (solo lectura):</label>
+                <input type="text" id="id_usuario_readonly" name="id_usuario_readonly" value="12345" readonly>
+            </form>
+
+            <h3>12.2.5. Atributo <code>disabled</code></h3>
+            <p>Cuando está presente, el campo de entrada está inhabilitado, es decir, no es interactivo. No puede ser modificado por el usuario y, crucialmente, **su valor no se envía con el formulario**.</p>
+            <p><strong>Ejemplo:</strong></p>
+            <pre><code>&lt;input type="text" name="campo_inactivo" value="No editable" disabled&gt;</code></pre>
+            <form>
+                <label for="campo_inactivo_disabled">Campo Inactivo (deshabilitado):</label>
+                <input type="text" id="campo_inactivo_disabled" name="campo_inactivo_disabled" value="No editable" disabled>
+            </form>
+
+            <h3>12.2.6. Atributo <code>required</code></h3>
+            <p>Cuando está presente, indica que el campo debe ser rellenado antes de que el formulario pueda ser enviado. Los navegadores muestran un mensaje de error si el usuario intenta enviar el formulario sin rellenar un campo `required`.</p>
+            <p><strong>Ejemplo:</strong></p>
+            <pre><code>&lt;input type="text" name="apellido" required&gt;</code></pre>
+            <form action="#" method="POST">
+                <label for="apellido_required">Apellido (obligatorio):</label>
+                <input type="text" id="apellido_required" name="apellido_required" required>
+                <button type="submit">Enviar Formulario</button>
+            </form>
+            <div class="note">
+                <p><strong>Validación del lado del cliente:</strong> El atributo <code>required</code> proporciona validación del lado del cliente (en el navegador). Siempre se debe realizar también validación del lado del servidor para garantizar la seguridad y la integridad de los datos.</p>
+            </div>
+        </section>
+        
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="Ejercicios12.html">Ejercicios sobre esta lección.</a></li>
+                <li><a href="13OtrosTiposDeEntradaISeleccion.html">Clase 13: Otros tipos de entradas: Selección (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
 </body>
 </html>
