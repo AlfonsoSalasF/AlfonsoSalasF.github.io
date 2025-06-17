@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 11: Ejercicios de Conceptos Básicos de Formularios</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/ejecicios_styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Clase 11: Ejercicios de Conceptos Básicos de Formularios HTML</h1>
+
+        <div class="exercise-section">
+            <h3>Ejercicios Prácticos de la Clase 11</h3>
+            <p>Para consolidar tus conocimientos sobre los conceptos básicos de formularios HTML, te propongo los siguientes ejercicios. Intenta resolverlos por ti mismo antes de ver la solución.</p>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 1: Formulario Básico de Contacto</h4>
+                <p>Crea un formulario HTML básico para una sección de "Contacto".</p>
+                <ul>
+                    <li>El formulario debe tener la etiqueta <code>&lt;form&gt;</code>.</li>
+                    <li>Define el atributo <code>action</code> para que los datos se envíen a una URL ficticia como <code>/procesar_contacto.php</code>.</li>
+                    <li>Define el atributo <code>method</code> para que los datos se envíen de forma segura (invisible en la URL).</li>
+                    <li>Incluye un campo de texto simple para el "Nombre" y un botón para "Enviar". No te preocupes aún por los detalles de los inputs, solo la estructura del formulario.</li>
+                </ul>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution1')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution1">
+                    <pre><code>&lt;form action="/procesar_contacto.php" method="POST"&gt;
+    &lt;p&gt;Nombre:&lt;/p&gt;
+    &lt;input type="text" name="nombre"&gt;
+    &lt;br&gt;&lt;br&gt;
+    &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 2: Formulario de Búsqueda</h4>
+                <p>Crea un formulario simple para una barra de búsqueda en un sitio web.</p>
+                <ul>
+                    <li>El formulario debe apuntar a la URL <code>/buscar.html</code>.</li>
+                    <li>Utiliza el método HTTP adecuado para una búsqueda (donde los parámetros pueden ser visibles en la URL).</li>
+                    <li>Debe contener un campo de texto para la consulta de búsqueda y un botón para "Buscar".</li>
+                </ul>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution2')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution2">
+                    <pre><code>&lt;form action="/buscar.html" method="GET"&gt;
+    &lt;p&gt;Término de búsqueda:&lt;/p&gt;
+    &lt;input type="text" name="q"&gt;
+    &lt;br&gt;&lt;br&gt;
+    &lt;button type="submit"&gt;Buscar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 3: ¿<code>GET</code> o <code>POST</code>?</h4>
+                <p>Para cada uno de los siguientes escenarios, indica si el método <code>GET</code> o <code>POST</code> sería más apropiado y explica brevemente por qué:</p>
+                <ol>
+                    <li>Formulario de inicio de sesión (usuario y contraseña).</li>
+                    <li>Envío de un mensaje largo en un foro.</li>
+                    <li>Filtrar productos en una tienda online por categoría y precio.</li>
+                    <li>Formulario para subir una imagen.</li>
+                </ol>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution3')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution3">
+                    <p><strong>Respuestas:</strong></p>
+                    <ol>
+                        <li>
+                            <p><strong>Formulario de inicio de sesión:</strong> <code>POST</code>.</p>
+                            <p><strong>Razón:</strong> Se están enviando datos sensibles (contraseña) que no deben ser visibles en la URL. Además, la acción de "iniciar sesión" modifica el estado del usuario en el servidor.</p>
+                        </li>
+                        <li>
+                            <p><strong>Envío de un mensaje largo en un foro:</strong> <code>POST</code>.</p>
+                            <p><strong>Razón:</strong> Se envía un volumen de datos potencialmente grande, y el método <code>GET</code> tiene limitaciones de tamaño en la URL. Además, se está creando o modificando contenido en el servidor.</p>
+                        </li>
+                        <li>
+                            <p><strong>Filtrar productos en una tienda online:</strong> <code>GET</code>.</p>
+                            <p><strong>Razón:</strong> Los parámetros de filtro (categoría, precio) no son sensibles y pueden ser parte de la URL. Esto permite al usuario guardar la URL en favoritos o compartirla para mostrar los resultados con los mismos filtros.</p>
+                        </li>
+                        <li>
+                            <p><strong>Formulario para subir una imagen:</strong> <code>POST</code>.</p>
+                            <p><strong>Razón:</strong> Se está enviando una gran cantidad de datos binarios (la imagen) que no cabrían en una URL. La subida de archivos siempre requiere <code>POST</code>.</p>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 4: Importancia de los Formularios (Reflexión)</h4>
+                <p>En tus propias palabras, explica por qué los formularios HTML son fundamentales para la interacción del usuario en la web. Menciona al menos dos razones clave.</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution4')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution4">
+                    <p>Los formularios HTML son esenciales para la interacción del usuario en la web por varias razones, entre ellas:</p>
+                    <ul>
+                        <li><strong>Recopilación y envío de información:</strong> Permiten a los usuarios introducir y enviar datos (texto, selecciones, archivos, etc.) a un servidor. Sin ellos, las páginas web serían estáticas y unidireccionales, incapaces de recoger entradas de los usuarios para acciones como registros, inicios de sesión, comentarios, pedidos de productos, búsquedas, etc.</li>
+                        <li><strong>Habilitar la funcionalidad interactiva:</strong> Son el mecanismo principal para que los usuarios controlen o modifiquen el contenido o el comportamiento de una aplicación web. Prácticamente cualquier acción que implique una entrada del usuario y una respuesta dinámica (comprar un producto, buscar información, enviar un email desde una web, etc.) se basa en un formulario.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 5: Estructura del Formulario</h4>
+                <p>Crea un formulario para registrar un nuevo usuario. De momento, solo la estructura general.</p>
+                <ul>
+                    <li>La etiqueta <code>&lt;form&gt;</code> debe tener un <code>action</code> a <code>/registrar_usuario.php</code> y un <code>method</code> apropiado.</li>
+                    <li>Dentro del formulario, utiliza elementos como <code>&lt;p&gt;</code> para indicar "Nombre de usuario:", "Email:" y "Contraseña:".</li>
+                    <li>Añade inputs de tipo <code>text</code> para el nombre de usuario y <code>email</code> para el correo, y <code>password</code> para la contraseña. No te preocupes por sus atributos <code>name</code> o <code>id</code> aún.</li>
+                    <li>Termina con un botón de submit que diga "Registrarme".</li>
+                </ul>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution5')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution5">
+                    <pre><code>&lt;form action="/registrar_usuario.php" method="POST"&gt;
+    &lt;p&gt;Nombre de usuario:&lt;/p&gt;
+    &lt;input type="text"&gt;
+    &lt;br&gt;&lt;br&gt;
+    
+    &lt;p&gt;Email:&lt;/p&gt;
+    &lt;input type="email"&gt;
+    &lt;br&gt;&lt;br&gt;
+    
+    &lt;p&gt;Contraseña:&lt;/p&gt;
+    &lt;input type="password"&gt;
+    &lt;br&gt;&lt;br&gt;
+    
+    &lt;button type="submit"&gt;Registrarme&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="quiz-section">
+            <h3>Quiz de la Clase 11: Conceptos Básicos de Formularios</h3>
+            <p>¡Pon a prueba tus conocimientos con este quiz de 10 preguntas!</p>
+            <form id="quizForm">
+                <div class="quiz-question">
+                    <h4>1. ¿Cuál es la etiqueta HTML fundamental para crear un formulario?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="a"> <code>&lt;input&gt;</code></label>
+                        <label><input type="radio" name="q1" value="b"> <code>&lt;form&gt;</code></label>
+                        <label><input type="radio" name="q1" value="c"> <code>&lt;fieldset&gt;</code></label>
+                        <label><input type="radio" name="q1" value="d"> <code>&lt;submit&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>2. ¿Qué atributo de la etiqueta <code>&lt;form&gt;</code> especifica la URL a la que se enviarán los datos?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="a"> <code>url</code></label>
+                        <label><input type="radio" name="q2" value="b"> <code>target</code></label>
+                        <label><input type="radio" name="q2" value="c"> <code>action</code></label>
+                        <label><input type="radio" name="q2" value="d"> <code>link</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>3. ¿Cuál método HTTP envía los datos del formulario de manera que son visibles en la URL?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="a"> <code>POST</code></label>
+                        <label><input type="radio" name="q3" value="b"> <code>GET</code></label>
+                        <label><input type="radio" name="q3" value="c"> <code>PUT</code></label>
+                        <label><input type="radio" name="q3" value="d"> <code>DELETE</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>4. ¿Qué método es más adecuado para enviar información sensible como contraseñas?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="a"> <code>GET</code></label>
+                        <label><input type="radio" name="q4" value="b"> <code>PUT</code></label>
+                        <label><input type="radio" name="q4" value="c"> <code>POST</code></label>
+                        <label><input type="radio" name="q4" value="d"> <code>FETCH</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>5. Si un formulario no tiene definido el atributo <code>action</code>, ¿a dónde se envían los datos?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="a"> A una página de error.</label>
+                        <label><input type="radio" name="q5" value="b"> Los datos no se envían.</label>
+                        <label><input type="radio" name="q5" value="c"> A la URL de la página actual.</label>
+                        <label><input type="radio" name="q5" value="d"> A <code>index.html</code>.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>6. ¿Cuál de los siguientes no es un elemento de formulario común?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q6" value="a"> <code>&lt;input&gt;</code></label>
+                        <label><input type="radio" name="q6" value="b"> <code>&lt;textarea&gt;</code></label>
+                        <label><input type="radio" name="q6" value="c"> <code>&lt;div&gt;</code></label>
+                        <label><input type="radio" name="q6" value="d"> <code>&lt;select&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>7. ¿Por qué son importantes los formularios para la interacción del usuario en la web?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q7" value="a"> Permiten reproducir videos.</label>
+                        <label><input type="radio" name="q7" value="b"> Permiten a los usuarios enviar información al servidor.</label>
+                        <label><input type="radio" name="q7" value="c"> Son solo para decorar la página.</label>
+                        <label><input type="radio" name="q7" value="d"> Facilitan la navegación a otras páginas sin enlaces.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>8. Para un formulario de búsqueda, donde los parámetros son visibles y compartibles, ¿qué método HTTP usarías?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q8" value="a"> <code>POST</code></label>
+                        <label><input type="radio" name="q8" value="b"> <code>GET</code></label>
+                        <label><input type="radio" name="q8" value="c"> Ambos son igual de buenos.</label>
+                        <label><input type="radio" name="q8" value="d"> Ninguno de los anteriores.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>9. ¿Cuál es el propósito principal del elemento <code>&lt;form&gt;</code>?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q9" value="a"> Estilizar el contenido de la página.</label>
+                        <label><input type="radio" name="q9" value="b"> Actuar como un contenedor para los elementos de control que recopilan la entrada del usuario.</label>
+                        <label><input type="radio" name="q9" value="c"> Mostrar imágenes y videos.</label>
+                        <label><input type="radio" name="q9" value="d"> Definir el encabezado de un documento.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>10. ¿Qué significa el atributo <code>method="POST"</code> para el envío de datos?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q10" value="a"> Los datos se envían de forma visible en la URL.</label>
+                        <label><input type="radio" name="q10" value="b"> Los datos se cifran automáticamente.</label>
+                        <label><input type="radio" name="q10" value="c"> Los datos se envían en el cuerpo de la solicitud HTTP.</label>
+                        <label><input type="radio" name="q10" value="d"> Los datos solo se envían si el usuario está logueado.</label>
+                    </div>
+                </div>
+
+                <button type="button" class="submit-quiz-button" id="checkAnswersBtn" onclick="checkQuiz()">Ver Resultados</button>
+            </form>
+
+            <div id="quizResults" class="quiz-results">
+                <p>Resultados del Test:</p> <ol id="resultsList"></ol>
+                <p id="scoreSummary"></p> <button type="button" class="reveal-button" id="resetQuizBtn" onclick="resetQuiz()" style="display: none;">Volver a Intentar</button>
+            </div>
+        </div>
+        <hr>
+
+       <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="11ConceptosBasicosDeFormulariosHtml.html">Volver a la Clase 11: Conceptos básicos de formularios html.</a></li>
+                <li><a href="12ElementosDeEntradaDeTexto.html">Clase 12: Elementos de entrada de texto (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script>
+        // Función para mostrar/ocultar soluciones de ejercicios
+        function toggleSolution(button, solutionId) {
+            const solution = document.getElementById(solutionId);
+            if (solution.style.display === 'block') {
+                solution.style.display = 'none';
+                button.textContent = 'Mostrar Solución';
+            } else {
+                solution.style.display = 'block';
+                button.textContent = 'Ocultar Solución';
+            }
+        }
+
+        // Datos del quiz
+        const quizAnswers = {
+            q1: 'b', // <form>
+            q2: 'c', // action
+            q3: 'b', // GET
+            q4: 'c', // POST
+            q5: 'c', // A la URL de la página actual.
+            q6: 'c', // <div>
+            q7: 'b', // Permiten a los usuarios enviar información al servidor.
+            q8: 'b', // GET
+            q9: 'b', // Actuar como un contenedor para los elementos de control que recopilan la entrada del usuario.
+            q10: 'c' // Los datos se envían en el cuerpo de la solicitud HTTP.
+        };
+
+        function checkQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const resultsList = document.getElementById('resultsList');
+            const scoreSummary = document.getElementById('scoreSummary');
+            const quizResultsDiv = document.getElementById('quizResults');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+            
+            resultsList.innerHTML = ''; // Limpiar resultados anteriores
+            let score = 0;
+
+            for (let i = 1; i <= 10; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = quizForm.elements[questionName].value;
+                const correctAnswer = quizAnswers[questionName];
+                
+                const listItem = document.createElement('li');
+                listItem.classList.add(selectedOption === correctAnswer ? 'correct' : 'incorrect');
+
+                // Obtener el texto de la opción seleccionada (escapando HTML)
+                let selectedAnswerText = 'No respondida';
+                if (selectedOption) {
+                    const selectedLabel = quizForm.querySelector(`input[name="${questionName}"][value="${selectedOption}"]`).closest('label');
+                    selectedAnswerText = selectedLabel ? selectedLabel.textContent.trim() : selectedAnswerText;
+                }
+                
+                // Obtener el texto de la opción correcta (escapando HTML)
+                const correctLabel = quizForm.querySelector(`input[name="${questionName}"][value="${correctAnswer}"]`).closest('label');
+                const correctAnswerText = correctLabel ? correctLabel.textContent.trim() : 'N/A';
+
+                // Usar textContent para insertar los textos y evitar interpretación HTML
+                const questionTextNode = document.createTextNode(`Pregunta ${i}: `);
+                const yourAnswerTextNode = document.createTextNode(`Tu respuesta: "${selectedAnswerText}". `);
+                const correctAnswerTextNode = document.createTextNode(`Respuesta correcta: "${correctAnswerText}".`);
+
+                listItem.appendChild(questionTextNode);
+                if (selectedOption !== correctAnswer) { // Solo añadir detalles si es incorrecta
+                    listItem.appendChild(document.createElement('br'));
+                    listItem.appendChild(yourAnswerTextNode);
+                    const correctInfoSpan = document.createElement('span');
+                    correctInfoSpan.classList.add('correct-answer-info');
+                    correctInfoSpan.appendChild(correctAnswerTextNode);
+                    listItem.appendChild(correctInfoSpan);
+                } else {
+                    listItem.appendChild(document.createTextNode('Correcta.'));
+                }
+                
+                resultsList.appendChild(listItem);
+            }
+
+            scoreSummary.textContent = `Tu puntuación es: ${score} de 10 preguntas correctas.`;
+            quizResultsDiv.style.display = 'block'; // Mostrar la sección de resultados
+            quizResultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Desplazarse a los resultados
+
+            // Ocultar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'none';
+            // Mostrar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'inline-block'; 
+        }
+
+        function resetQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            quizForm.reset(); // Reinicia todos los radio buttons
+            document.getElementById('quizResults').style.display = 'none'; // Oculta los resultados
+            document.getElementById('resultsList').innerHTML = ''; // Limpia la lista de resultados
+            document.getElementById('scoreSummary').textContent = ''; // Limpia el resumen de puntuación
+
+            // Mostrar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'inline-block'; 
+            // Ocultar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

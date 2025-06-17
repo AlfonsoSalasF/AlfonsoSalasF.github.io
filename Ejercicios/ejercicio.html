@@ -3,33 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dime quién eres</title>
 </head>
 <body>
-    <form action="../Pages/01IntroduccionAlDesarrolloWebYHtml.html" method="GET">
-    <label for="query">Buscar:</label>
-    <input type="text" id="query" name="q">
-    <button type="submit">Pergeñar</button>
+    <section><h1>Coocle</h1>
+    <form action="/registrar_usuario.html" method="get">
+        <p>Introduzca usuario y contraseña:</p>
+        <br>
+        <label for="usuario">Usuario:</label>
+        <input type="text" id="usuario" name="user">
+        <label for="contraseña">Contraseña:</label>
+        <input type="password" id="contraseña" name="psw">
+        <br><br>
+        <label for="correo">Correo electrónico:</label>
+        <input type="email" id="correo" name="email">
+        <button type="submit">Registrarme</button>
+
     </form>
+    </section>
 
-    <form action="../Pages/01IntroduccionAlDesarrolloWebYHtml.html" method="POST">
-    <label for="username">Usuario:</label>
-    <input type="text" id="username" name="user">
-    <label for="password">Contraseña:</label>
-    <input type="password" id="password" name="pwd">
-    <button type="submit">Registrar</button>
-
-    <form action="/enviar_datos.php" method="POST">
-    <p>Su nombre:</p>
-    <input type="text" name="nombre_usuario">
-    <br><br>
-    
-    <p>Su mensaje:</p>
-    <textarea name="mensaje_usuario" rows="4" cols="50"></textarea>
-    <br><br>
-    
-    <button type="submit">Enviar</button>
-</form>
-</form>
 </body>
 </html>
