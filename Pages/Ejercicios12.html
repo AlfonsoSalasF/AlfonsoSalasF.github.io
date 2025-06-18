@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 12: Ejercicios de Elementos de Entrada de Texto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/ejecicios_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Clase 12: Ejercicios de Elementos de Entrada de Texto</h1>
+
+        <div class="exercise-section">
+            <h3>Ejercicios Prácticos de la Clase 12</h3>
+            <p>Para consolidar tus conocimientos sobre los elementos de entrada de texto en HTML, te propongo los siguientes ejercicios. Intenta resolverlos por ti mismo antes de ver la solución.</p>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 1: Formulario Básico de Perfil de Usuario</h4>
+                <p>Crea un formulario para un perfil de usuario con los siguientes campos de entrada de texto:</p>
+                <ul>
+                    <li>Un campo para el "Nombre completo" de tipo <code>text</code>.</li>
+                    <li>Un campo para el "Correo Electrónico" de tipo <code>email</code>.</li>
+                    <li>Un campo para la "Contraseña" de tipo <code>password</code>.</li>
+                    <li>Asegúrate de que cada <code>input</code> tenga su atributo <code>name</code> y una <code>label</code> asociada.</li>
+                </ul>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution1')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution1">
+                    <pre><code>&lt;form action="#" method="POST"&gt;
+    &lt;label for="nombre_completo"&gt;Nombre completo:&lt;/label&gt;
+    &lt;input type="text" id="nombre_completo" name="nombre_completo"&gt;
+
+    &lt;label for="email_perfil"&gt;Correo Electrónico:&lt;/label&gt;
+    &lt;input type="email" id="email_perfil" name="email_perfil"&gt;
+
+    &lt;label for="password_perfil"&gt;Contraseña:&lt;/label&gt;
+    &lt;input type="password" id="password_perfil" name="password_perfil"&gt;
+
+    &lt;button type="submit"&gt;Guardar Perfil&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 2: Entrada de Edad con Restricciones</h4>
+                <p>Crea un campo de entrada para la "Edad" utilizando el tipo <code>number</code>. Configura los siguientes atributos:</p>
+                <ul>
+                    <li>El valor mínimo permitido debe ser <code>0</code>.</li>
+                    <li>El valor máximo permitido debe ser <code>120</code>.</li>
+                    <li>El incremento/decremento debe ser de <code>1</code>.</li>
+                    <li>Añade una <code>label</code> apropiada.</li>
+                </ul>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution2')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution2">
+                    <pre><code>&lt;form action="#" method="POST"&gt;
+    &lt;label for="edad_ejercicio"&gt;Edad:&lt;/label&gt;
+    &lt;input type="number" id="edad_ejercicio" name="edad_ejercicio" min="0" max="120" step="1"&gt;
+    &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 3: Información de Contacto Adicional</h4>
+                <p>Añade dos campos a un formulario:</p>
+                <ul>
+                    <li>Uno para el "Número de Teléfono" usando el tipo <code>tel</code>.</li>
+                    <li>Otro para el "Sitio Web Personal" usando el tipo <code>url</code>.</li>
+                    <li>Incluye sus respectivas <code>label</code>s y atributos <code>name</code>.</li>
+                </ul>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution3')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution3">
+                    <pre><code>&lt;form action="#" method="POST"&gt;
+    &lt;label for="telefono_ejercicio"&gt;Número de Teléfono:&lt;/label&gt;
+    &lt;input type="tel" id="telefono_ejercicio" name="telefono_ejercicio"&gt;
+
+    &lt;label for="website_ejercicio"&gt;Sitio Web Personal:&lt;/label&gt;
+    &lt;input type="url" id="website_ejercicio" name="website_ejercicio"&gt;
+
+    &lt;button type="submit"&gt;Enviar Contacto&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 4: Barra de Búsqueda con Pista</h4>
+                <p>Crea una barra de búsqueda para un sitio web. Debe cumplir lo siguiente:</p>
+                <ul>
+                    <li>Utiliza el tipo <code>search</code>.</li>
+                    <li>Añade un <code>placeholder</code> que diga "Buscar productos..." para guiar al usuario.</li>
+                    <li>Incluye una <code>label</code> apropiada y un atributo <code>name</code>.</li>
+                </ul>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution4')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution4">
+                    <pre><code>&lt;form action="/buscar" method="GET"&gt;
+    &lt;label for="buscar_productos"&gt;Búsqueda de Productos:&lt;/label&gt;
+    &lt;input type="search" id="buscar_productos" name="q" placeholder="Buscar productos..."&gt;
+    &lt;button type="submit"&gt;Buscar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 5: Campos de Solo Lectura y Deshabilitados</h4>
+                <p>Crea dos campos de texto:</p>
+                <ul>
+                    <li>Un campo para "ID de Transacción" con un valor predefinido de "TXN12345" que no pueda ser modificado por el usuario, pero cuyo valor sí se envíe con el formulario.</li>
+                    <li>Un campo para "Estado de la Cuenta" con un valor predefinido de "Activa" que no pueda ser modificado por el usuario y cuyo valor <strong>no</strong> se envíe con el formulario.</li>
+                    <li>Usa los atributos <code>readonly</code> y <code>disabled</code> según corresponda.</li>
+                </ul>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution5')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution5">
+                    <pre><code>&lt;form action="#" method="POST"&gt;
+    &lt;label for="id_transaccion"&gt;ID de Transacción:&lt;/label&gt;
+    &lt;input type="text" id="id_transaccion" name="id_transaccion" value="TXN12345" readonly&gt;
+
+    &lt;label for="estado_cuenta"&gt;Estado de la Cuenta:&lt;/label&gt;
+    &lt;input type="text" id="estado_cuenta" name="estado_cuenta" value="Activa" disabled&gt;
+
+    &lt;button type="submit"&gt;Enviar Formulario&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 6: Campo Obligatorio</h4>
+                <p>Crea un formulario con un campo de texto para el "Nombre de Usuario". Este campo debe ser obligatorio para poder enviar el formulario.</p>
+                <ul>
+                    <li>Asegúrate de que el usuario no pueda enviar el formulario si este campo está vacío.</li>
+                    <li>Añade un botón de envío.</li>
+                </ul>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution6')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution6">
+                    <pre><code>&lt;form action="#" method="POST"&gt;
+    &lt;label for="nombre_usuario_req"&gt;Nombre de Usuario (obligatorio):&lt;/label&gt;
+    &lt;input type="text" id="nombre_usuario_req" name="nombre_usuario_req" required&gt;
+    &lt;button type="submit"&gt;Registrar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="quiz-section">
+            <h3>Quiz de la Clase 12: Elementos de Entrada de Texto</h3>
+            <p>¡Pon a prueba tus conocimientos con este quiz de 10 preguntas!</p>
+            <form id="quizForm">
+                <div class="quiz-question">
+                    <h4>1. ¿Qué tipo de <code>&lt;input&gt;</code> se utiliza para ocultar la entrada del usuario, mostrándola como asteriscos o puntos?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="a"> <code>type="text"</code></label>
+                        <label><input type="radio" name="q1" value="b"> <code>type="hidden"</code></label>
+                        <label><input type="radio" name="q1" value="c"> <code>type="password"</code></label>
+                        <label><input type="radio" name="q1" value="d"> <code>type="secret"</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>2. ¿Qué atributo se utiliza para establecer el valor inicial que aparece en un campo de texto?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="a"> <code>placeholder</code></label>
+                        <label><input type="radio" name="q2" value="b"> <code>default</code></label>
+                        <label><input type="radio" name="q2" value="c"> <code>value</code></label>
+                        <label><input type="radio" name="q2" value="d"> <code>initial</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>3. Para un campo de correo electrónico, ¿qué tipo de <code>&lt;input&gt;</code> es el más adecuado?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="a"> <code>type="text"</code></label>
+                        <label><input type="radio" name="q3" value="b"> <code>type="url"</code></label>
+                        <label><input type="radio" name="q3" value="c"> <code>type="email"</code></label>
+                        <label><input type="radio" name="q3" value="d"> <code>type="mail"</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>4. Si necesitas que un campo de entrada acepte solo números enteros y muestre controles de "subir/bajar", ¿qué <code>type</code> usarías?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="a"> <code>type="text"</code></label>
+                        <label><input type="radio" name="q4" value="b"> <code>type="digits"</code></label>
+                        <label><input type="radio" name="q4" value="c"> <code>type="number"</code></label>
+                        <label><input type="radio" name="q4" value="d"> <code>type="integer"</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>5. ¿Qué atributo de <code>&lt;input type="number"&gt;</code> define el valor máximo permitido?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="a"> <code>range</code></label>
+                        <label><input type="radio" name="q5" value="b"> <code>maxlength</code></label>
+                        <label><input type="radio" name="q5" value="c"> <code>limit</code></label>
+                        <label><input type="radio" name="q5" value="d"> <code>max</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>6. El atributo <code>name</code> es esencial porque:</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q6" value="a"> Define el estilo visual del campo.</label>
+                        <label><input type="radio" name="q6" value="b"> Identifica el dato cuando el formulario se envía al servidor.</label>
+                        <label><input type="radio" name="q6" value="c"> Proporciona una pista al usuario.</label>
+                        <label><input type="radio" name="q6" value="d"> Hace que el campo sea obligatorio.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>7. ¿Cuál de los siguientes atributos muestra una pista dentro del campo de entrada que desaparece cuando el usuario comienza a escribir?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q7" value="a"> <code>value</code></label>
+                        <label><input type="radio" name="q7" value="b"> <code>hint</code></label>
+                        <label><input type="radio" name="q7" value="c"> <code>label</code></label>
+                        <label><input type="radio" name="q7" value="d"> <code>placeholder</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>8. Si un campo de entrada tiene el atributo <code>readonly</code>, ¿su valor se envía al servidor cuando se envía el formulario?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q8" value="a"> No, nunca.</label>
+                        <label><input type="radio" name="q8" value="b"> Sí, siempre.</label>
+                        <label><input type="radio" name="q8" value="c"> Solo si el campo está vacío.</label>
+                        <label><input type="radio" name="q8" value="d"> Depende del tipo de <code>input</code>.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>9. ¿Qué atributo hace que un campo no sea interactivo y su valor NO se envíe con el formulario?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q9" value="a"> <code>readonly</code></label>
+                        <label><input type="radio" name="q9" value="b"> <code>inactive</code></label>
+                        <label><input type="radio" name="q9" value="c"> <code>disabled</code></label>
+                        <label><input type="radio" name="q9" value="d"> <code>locked</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>10. Para hacer que un campo sea obligatorio antes de que el formulario pueda ser enviado, ¿qué atributo HTML5 utilizarías?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q10" value="a"> <code>mandatory</code></label>
+                        <label><input type="radio" name="q10" value="b"> <code>validate</code></label>
+                        <label><input type="radio" name="q10" value="c"> <code>required</code></label>
+                        <label><input type="radio" name="q10" value="d"> <code>not-empty</code></label>
+                    </div>
+                </div>
+
+                <button type="button" class="submit-quiz-button" id="checkAnswersBtn" onclick="checkQuiz()">Ver Resultados</button>
+            </form>
+
+            <div id="quizResults" class="quiz-results">
+                <p>Resultados del Test:</p>
+                <ol id="resultsList"></ol>
+                <p id="scoreSummary"></p>
+                <button type="button" class="reveal-button" id="resetQuizBtn" onclick="resetQuiz()" style="display: none;">Volver a Intentar</button>
+            </div>
+        </div>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="12ElementosDeEntradaDeTexto.html">Volver a la Clase 12: Elementos de Entrada de Texto.</a></li>
+                <li><a href="13OtrosTiposDeEntradaISeleccion.html">Clase 13: Otros tipos de entradas: Selección (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script>
+        // Función para mostrar/ocultar soluciones de ejercicios
+        function toggleSolution(button, solutionId) {
+            const solution = document.getElementById(solutionId);
+            if (solution.style.display === 'block') {
+                solution.style.display = 'none';
+                button.textContent = 'Mostrar Solución';
+            } else {
+                solution.style.display = 'block';
+                button.textContent = 'Ocultar Solución';
+            }
+        }
+
+        // Datos del quiz
+        const quizAnswers = {
+            q1: 'c', // type="password"
+            q2: 'c', // value
+            q3: 'c', // type="email"
+            q4: 'c', // type="number"
+            q5: 'd', // max
+            q6: 'b', // Identifica el dato cuando el formulario se envía al servidor.
+            q7: 'd', // placeholder
+            q8: 'b', // Sí, siempre.
+            q9: 'c', // disabled
+            q10: 'c' // required
+        };
+
+        function checkQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const resultsList = document.getElementById('resultsList');
+            const scoreSummary = document.getElementById('scoreSummary');
+            const quizResultsDiv = document.getElementById('quizResults');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            resultsList.innerHTML = ''; // Limpiar resultados anteriores
+            let score = 0;
+
+            for (let i = 1; i <= 10; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = quizForm.elements[questionName].value;
+                const correctAnswer = quizAnswers[questionName];
+
+                const listItem = document.createElement('li');
+                listItem.classList.add(selectedOption === correctAnswer ? 'correct' : 'incorrect');
+
+                // Obtener el texto de la opción seleccionada (escapando HTML)
+                let selectedAnswerText = 'No respondida';
+                if (selectedOption) {
+                    const selectedLabel = quizForm.querySelector(`input[name="${questionName}"][value="${selectedOption}"]`).closest('label');
+                    selectedAnswerText = selectedLabel ? selectedLabel.textContent.trim() : selectedAnswerText;
+                }
+
+                // Obtener el texto de la opción correcta (escapando HTML)
+                const correctLabel = quizForm.querySelector(`input[name="${questionName}"][value="${correctAnswer}"]`).closest('label');
+                const correctAnswerText = correctLabel ? correctLabel.textContent.trim() : 'N/A';
+
+                // Usar textContent para insertar los textos y evitar interpretación HTML
+                const questionTextNode = document.createTextNode(`Pregunta ${i}: `);
+                const yourAnswerTextNode = document.createTextNode(`Tu respuesta: "${selectedAnswerText}". `);
+                const correctAnswerTextNode = document.createTextNode(`Respuesta correcta: "${correctAnswerText}".`);
+
+                listItem.appendChild(questionTextNode);
+                if (selectedOption !== correctAnswer) { // Solo añadir detalles si es incorrecta
+                    listItem.appendChild(document.createElement('br'));
+                    listItem.appendChild(yourAnswerTextNode);
+                    const correctInfoSpan = document.createElement('span');
+                    correctInfoSpan.classList.add('correct-answer-info');
+                    correctInfoSpan.appendChild(correctAnswerTextNode);
+                    listItem.appendChild(correctInfoSpan);
+                } else {
+                    listItem.appendChild(document.createTextNode('Correcta.'));
+                    score++;
+                }
+
+                resultsList.appendChild(listItem);
+            }
+
+            scoreSummary.textContent = `Tu puntuación es: ${score} de 10 preguntas correctas.`;
+            quizResultsDiv.style.display = 'block'; // Mostrar la sección de resultados
+            quizResultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Desplazarse a los resultados
+
+            // Ocultar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'none';
+            // Mostrar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'inline-block';
+        }
+
+        function resetQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            quizForm.reset(); // Reinicia todos los radio buttons
+            document.getElementById('quizResults').style.display = 'none'; // Oculta los resultados
+            document.getElementById('resultsList').innerHTML = ''; // Limpia la lista de resultados
+            document.getElementById('scoreSummary').textContent = ''; // Limpia el resumen de puntuación
+
+            // Mostrar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'inline-block';
+            // Ocultar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

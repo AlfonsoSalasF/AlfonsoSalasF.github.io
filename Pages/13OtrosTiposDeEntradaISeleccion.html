@@ -23,7 +23,7 @@
             <p>Estos dos tipos de <code>&lt;input&gt;</code> permiten al usuario seleccionar opciones de una lista.</p>
 
             <h3>13.1.1. <code>&lt;input type="checkbox"&gt;</code></h3>
-            <p>Permite al usuario seleccionar **cero, una o varias opciones** de un conjunto.</p>
+            <p>Permite al usuario seleccionar <em>cero, una o varias opciones</em> de un conjunto.</p>
             <ul>
                 <li>Cada checkbox es independiente, y se envía su valor si está marcado.</li>
                 <li>Se utiliza para opciones que no son mutuamente excluyentes (ej., "Deseo recibir boletines", "Acepto los términos y condiciones", "Selecciona tus intereses").</li>
@@ -57,9 +57,9 @@
             </form>
 
             <h3>13.1.2. <code>&lt;input type="radio"&gt;</code> (grupos de radio buttons)</h3>
-            <p>Permite al usuario seleccionar **una y solo una opción** de un conjunto. Las opciones son mutuamente excluyentes.</p>
+            <p>Permite al usuario seleccionar <em>una y solo una opción</em> de un conjunto. Las opciones son mutuamente excluyentes.</p>
             <ul>
-                <li>Para agrupar botones de radio, deben compartir el **mismo atributo <code>name</code>**. Esto asegura que solo se pueda seleccionar uno dentro de ese grupo.</li>
+                <li>Para agrupar botones de radio, deben compartir el <em>mismo atributo <code>name</code></em>. Esto asegura que solo se pueda seleccionar uno dentro de ese grupo.</li>
                 <li>Se utiliza para opciones donde solo una respuesta es válida (ej., "Sexo", "Método de pago", "Nivel de experiencia").</li>
             </ul>
             <p><strong>Ejemplo:</strong></p>
@@ -98,8 +98,8 @@
             <h2>13.2. La etiqueta <code>&lt;label&gt;</code> y su asociación con los inputs.</h2>
             <p>La etiqueta <code>&lt;label&gt;</code> es fundamental para la accesibilidad y la usabilidad de los formularios. Sirve para proporcionar una descripción textual (una "etiqueta") para un control de formulario.</p>
             <ul>
-                <li>**Asociación explícita:** La mejor práctica es asociar un <code>&lt;label&gt;</code> con un control de formulario usando el atributo <code>for</code> del <code>&lt;label&gt;</code>, cuyo valor debe coincidir con el <code>id</code> del control del formulario.</li>
-                <li>**Beneficios:**
+                <li><strong>Asociación explícita:</strong> La mejor práctica es asociar un <code>&lt;label&gt;</code> con un control de formulario usando el atributo <code>for</code> del <code>&lt;label&gt;</code>, cuyo valor debe coincidir con el <code>id</code> del control del formulario.</li>
+                <li><strong>Beneficios:</strong>
                     <ul>
                         <li>Cuando el usuario hace clic en el texto de la etiqueta, el control de formulario asociado recibe el foco o se activa (ej., un checkbox se marca).</li>
                         <li>Los lectores de pantalla leen la etiqueta junto con el tipo de control, lo que es vital para la comprensión del formulario por parte de usuarios con discapacidad visual.</li>
