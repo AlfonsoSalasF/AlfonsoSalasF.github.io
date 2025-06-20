@@ -1,17 +1,131 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elementos de Progreso y Medición</title>
+    <title>Elementos de Progreso y Medición - Curso HTML</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
 </head>
 <body>
-    <H1>Clase 18: Elementos de Progreso y Medición.</H1>
-    <UL>
-        <li>&lt;progress&gt; para barras de progreso (atributos value y max).</li>
-        <li>&lt;meter&gt; para mediciones (atributos value, min, max, low, high, optimum).</li>
-        <li>Casos de uso para estos elementos.</li>
-    </UL>
-    <p><a href="/index.html">Vuelve a la página principal</a></p>
+    <div class="container">
+        <h1>
+            <p>CURSO DE INICIACIÓN A HTML</p>
+            <p>Clase 18: Elementos de Progreso y Medición.</p>
+        </h1>
+
+        <p>Además de los campos de entrada para recopilar información, HTML5 nos ofrece elementos semánticos para visualizar el progreso de una tarea o la magnitud de un valor dentro de un rango definido. Estos elementos, <code>&lt;progress&gt;</code> y <code>&lt;meter&gt;</code>, mejoran la comunicación con el usuario de manera visual y accesible.</p>
+
+        <hr>
+
+        <section>
+            <h2>18.1. <code>&lt;progress&gt;</code> para barras de progreso.</h2>
+            <p>El elemento <code>&lt;progress&gt;</code> se utiliza para visualizar el progreso de una tarea. Es ideal para indicar cuánto se ha completado de un proceso que se espera que finalice.</p>
+            <p><strong>Atributos principales:</strong></p>
+            <ul>
+                <li><code>value</code>: Indica la cantidad de trabajo ya completado. Debe ser un número de punto flotante válido entre 0 y el valor de <code>max</code>.</li>
+                <li><code>max</code>: Define el valor que representa el 100% de la tarea. Si se omite, el valor por defecto es 1.</li>
+            </ul>
+            <p>Si el atributo <code>value</code> no está presente, la barra de progreso se muestra como una barra indeterminada (animada), lo que indica que una tarea está en curso, pero el progreso total es desconocido (ej., "cargando...").</p>
+            <p><strong>Ejemplo: Descarga de un archivo.</strong></p>
+            <pre><code>&lt;form&gt;
+    &lt;label for="descarga"&gt;Progreso de la descarga:&lt;/label&gt;
+    &lt;progress id="descarga" value="70" max="100"&gt;70%&lt;/progress&gt;
+    &lt;p&gt;Archivo descargado: 70%&lt;/p&gt;
+
+    &lt;label for="carga_indeterminada"&gt;Cargando contenido...&lt;/label&gt;
+    &lt;progress id="carga_indeterminada"&gt;Cargando...&lt;/progress&gt;
+&lt;/form&gt;</code></pre>
+            <form>
+                <label for="descarga_ejemplo">Progreso de la descarga:</label>
+                <progress id="descarga_ejemplo" value="70" max="100">70%</progress>
+                <p>Archivo descargado: 70%</p>
+
+                <label for="carga_indeterminada_ejemplo">Cargando contenido...</label>
+                <progress id="carga_indeterminada_ejemplo">Cargando...</progress>
+            </form>
+            <div class="note">
+                <p><strong>Contenido interno:</strong> El texto o HTML dentro de las etiquetas <code>&lt;progress&gt;...&lt;/progress&gt;</code> (como "70%") se muestra en navegadores que no soportan el elemento <code>&lt;progress&gt;</code> (o por parte de lectores de pantalla), actuando como un fallback.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>18.2. <code>&lt;meter&gt;</code> para mediciones.</h2>
+            <p>El elemento <code>&lt;meter&gt;</code> se utiliza para mostrar la medición escalar dentro de un rango conocido. Es adecuado para indicar el nivel actual de algo (ej., uso del disco, nivel de batería, relevancia de un resultado).</p>
+            <p><strong>Atributos principales:</strong></p>
+            <ul>
+                <li><code>value</code>: El valor medido actual.</li>
+                <li><code>min</code>: El valor más bajo del rango. Por defecto es 0.</li>
+                <li><code>max</code>: El valor más alto del rango. Por defecto es 1.</li>
+                <li><code>low</code>: El valor que define el límite inferior de la zona "baja". Si <code>value</code> está por debajo de <code>low</code>, se considera "bajo".</li>
+                <li><code>high</code>: El valor que define el límite superior de la zona "alta". Si <code>value</code> está por encima de <code>high</code>, se considera "alto".</li>
+                <li><code>optimum</code>: El valor ideal o "óptimo" dentro del rango. Ayuda a los navegadores a determinar si un valor "bajo" o "alto" es bueno o malo (ej., bajo nivel de batería es malo, baja latencia es buena).</li>
+            </ul>
+            <p><strong>Ejemplo: Uso del disco y nivel de batería.</strong></p>
+            <pre><code>&lt;form&gt;
+    &lt;label for="uso_disco"&gt;Uso del disco (GB):&lt;/label&gt;
+    &lt;meter id="uso_disco" value="70" min="0" max="100" low="20" high="80" optimum="50"&gt;70 GB usados de 100 GB&lt;/meter&gt;
+    &lt;p&gt;Espacio: 70/100 GB (Bajo &lt; 20, Alto &gt; 80, Óptimo en 50)&lt;/p&gt;
+
+    &lt;label for="nivel_bateria"&gt;Nivel de batería:&lt;/label&gt;
+    &lt;meter id="nivel_bateria" value="0.25" min="0" max="1" low="0.1" high="0.7" optimum="0.9"&gt;25%&lt;/meter&gt;
+    &lt;p&gt;Batería: 25% (Bajo &lt; 10%, Alto &gt; 70%, Óptimo en 90%)&lt;/p&gt;
+&lt;/form&gt;</code></pre>
+            <form>
+                <label for="uso_disco_ejemplo">Uso del disco (GB):</label>
+                <meter id="uso_disco_ejemplo" value="70" min="0" max="100" low="20" high="80" optimum="50">70 GB usados de 100 GB</meter>
+                <p>Espacio: 70/100 GB (Bajo &lt; 20, Alto &gt; 80, Óptimo en 50)</p>
+
+                <label for="nivel_bateria_ejemplo">Nivel de batería:</label>
+                <meter id="nivel_bateria_ejemplo" value="0.25" min="0" max="1" low="0.1" high="0.7" optimum="0.9">25%</meter>
+                <p>Batería: 25% (Bajo &lt; 10%, Alto &gt; 70%, Óptimo en 90%)</p>
+            </form>
+            <div class="note">
+                <p><strong>Diferencia con <code>&lt;progress&gt;</code>:</strong> Mientras <code>&lt;progress&gt;</code> indica una tarea que avanza hacia una finalización, <code>&lt;meter&gt;</code> representa una medida estática o un valor actual dentro de un rango establecido.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>18.3. Casos de uso para estos elementos.</h2>
+            <p>Ambos elementos son valiosos para proporcionar información clara y concisa a los usuarios:</p>
+            <ul>
+                <li><strong><code>&lt;progress&gt;</code>:</strong>
+                    <ul>
+                        <li>Barras de carga de páginas, imágenes o videos.</li>
+                        <li>Estado de envío de formularios complejos.</li>
+                        <li>Progreso de un asistente paso a paso.</li>
+                        <li>Indicadores de instalación de software.</li>
+                    </ul>
+                </li>
+                <li><strong><code>&lt;meter&gt;</code>:</strong>
+                    <ul>
+                        <li>Indicadores de uso de recursos (CPU, memoria, disco).</li>
+                        <li>Niveles de batería de un dispositivo.</li>
+                        <li>Relevancia de resultados de búsqueda.</li>
+                        <li>Puntuaciones en un juego (ej., nivel de salud, mana).</li>
+                        <li>Calificaciones de productos o servicios (ej., promedio de estrellas).</li>
+                        <li>Cantidad de elementos en un carrito de compras.</li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="note">
+                <p><strong>Estilo CSS:</strong> Ambos elementos <code>&lt;progress&gt;</code> y <code>&lt;meter&gt;</code> pueden ser estilizados con CSS para adaptarse al diseño de tu sitio web, aunque la personalización de su apariencia interna (como el color de la barra en diferentes estados de <code>&lt;meter&gt;</code>) puede ser más compleja y variar entre navegadores.</p>
+            </div>
+        </section>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="Ejercicios17.html">Ejercicios sobre la lección anterior.</a></li>
+                <li><a href="Ejercicios18.html">Ejercicios sobre esta lección.</a></li>
+                <li><a href="19...html">Clase 19: (Próxima Lección)</a></li> <!-- Placeholder for next lesson -->
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
 </body>
 </html>

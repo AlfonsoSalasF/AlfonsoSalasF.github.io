@@ -1,17 +1,141 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estructura de Formularios: &lt;fieldset&gt; y &lt;legend&gt;</title>
+    <title>Estructura de Formularios: fieldset y legend - Curso HTML</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
 </head>
 <body>
-    <H1>Clase 16: Estructura de Formularios: &lt;fieldset&gt; y &lt;legend&gt;.</H1>
-    <UL>
-        <li>Agrupar elementos de formulario con &lt;fieldset&gt;.</li>
-        <li>Título del grupo con &lt;legend&gt;.</li>
-        <li>Mejorar la semántica y la accesibilidad de los formularios.</li>
-    </UL>
-    <p><a href="/index.html">Vuelve a la página principal</a></p>
+    <div class="container">
+        <h1>
+            <p>CURSO DE INICIACIÓN A HTML</p>
+            <p>Clase 16: Estructura de Formularios: <code>&lt;fieldset&gt;</code> y <code>&lt;legend&gt;</code>.</p>
+        </h1>
+
+        <p>A medida que los formularios se vuelven más complejos, es crucial organizarlos de manera lógica para mejorar tanto la usabilidad para los usuarios como la accesibilidad para las tecnologías de asistencia. En esta clase, aprenderemos sobre las etiquetas <code>&lt;fieldset&gt;</code> y <code>&lt;legend&gt;</code>, que nos permiten agrupar elementos relacionados en un formulario.</p>
+
+        <hr>
+
+        <section>
+            <h2>16.1. Agrupar elementos de formulario con <code>&lt;fieldset&gt;</code>.</h2>
+            <p>La etiqueta <code>&lt;fieldset&gt;</code> se utiliza para agrupar semánticamente varios controles de formulario y etiquetas relacionadas dentro de un formulario. Al agrupar elementos visual y lógicamente, facilita la comprensión y navegación de formularios largos o complejos.</p>
+            <p>Visualmente, <code>&lt;fieldset&gt;</code> suele dibujar un borde alrededor de los elementos agrupados, pero su valor principal es semántico y para la accesibilidad.</p>
+            <p><strong>Ejemplo:</strong></p>
+            <pre><code>&lt;form action="#" method="POST"&gt;
+    &lt;fieldset&gt;
+        &lt;!-- Elementos relacionados con información personal --&gt;
+        &lt;label for="nombre_personal"&gt;Nombre:&lt;/label&gt;
+        &lt;input type="text" id="nombre_personal" name="nombre_personal"&gt;
+
+        &lt;label for="apellido_personal"&gt;Apellido:&lt;/label&gt;
+        &lt;input type="text" id="apellido_personal" name="apellido_personal"&gt;
+    &lt;/fieldset&gt;
+
+    &lt;fieldset&gt;
+        &lt;!-- Elementos relacionados con información de contacto --&gt;
+        &lt;label for="email_contacto"&gt;Email:&lt;/label&gt;
+        &lt;input type="email" id="email_contacto" name="email_contacto"&gt;
+
+        &lt;label for="telefono_contacto"&gt;Teléfono:&lt;/label&gt;
+        &lt;input type="tel" id="telefono_contacto" name="telefono_contacto"&gt;
+    &lt;/fieldset&gt;
+    &lt;button type="submit"&gt;Enviar Formulario&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+            <form action="#" method="POST">
+                <fieldset>
+                    <label for="nombre_personal_ejemplo">Nombre:</label>
+                    <input type="text" id="nombre_personal_ejemplo" name="nombre_personal_ejemplo">
+
+                    <label for="apellido_personal_ejemplo">Apellido:</label>
+                    <input type="text" id="apellido_personal_ejemplo" name="apellido_personal_ejemplo">
+                </fieldset>
+
+                <fieldset>
+                    <label for="email_contacto_ejemplo">Email:</label>
+                    <input type="email" id="email_contacto_ejemplo" name="email_contacto_ejemplo">
+
+                    <label for="telefono_contacto_ejemplo">Teléfono:</label>
+                    <input type="tel" id="telefono_contacto_ejemplo" name="telefono_contacto_ejemplo">
+                </fieldset>
+                <button type="submit">Enviar Formulario</button>
+            </form>
+        </section>
+
+        <section>
+            <h2>16.2. Título del grupo con <code>&lt;legend&gt;</code>.</h2>
+            <p>La etiqueta <code>&lt;legend&gt;</code> se utiliza para proporcionar un título o subtítulo para un grupo de elementos dentro de un <code>&lt;fieldset&gt;</code>. Debe ser el primer elemento dentro de <code>&lt;fieldset&gt;</code>.</p>
+            <p>Este título es esencial para dar contexto al grupo de campos, especialmente para usuarios de lectores de pantalla, que pueden navegar por grupos de campos en lugar de campo por campo.</p>
+            <p><strong>Ejemplo:</strong></p>
+            <pre><code>&lt;form action="#" method="POST"&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;Datos Personales&lt;/legend&gt;
+        &lt;label for="nombre_legend"&gt;Nombre:&lt;/label&gt;
+        &lt;input type="text" id="nombre_legend" name="nombre_legend"&gt;
+
+        &lt;label for="fecha_nac_legend"&gt;Fecha de Nacimiento:&lt;/label&gt;
+        &lt;input type="date" id="fecha_nac_legend" name="fecha_nac_legend"&gt;
+    &lt;/fieldset&gt;
+
+    &lt;fieldset&gt;
+        &lt;legend&gt;Información de Cuenta&lt;/legend&gt;
+        &lt;label for="usuario_legend"&gt;Nombre de Usuario:&lt;/label&gt;
+        &lt;input type="text" id="usuario_legend" name="usuario_legend"&gt;
+
+        &lt;label for="pass_legend"&gt;Contraseña:&lt;/label&gt;
+        &lt;input type="password" id="pass_legend" name="pass_legend"&gt;
+    &lt;/fieldset&gt;
+    &lt;button type="submit"&gt;Registrar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+            <form action="#" method="POST">
+                <fieldset>
+                    <legend>Datos Personales</legend>
+                    <label for="nombre_legend_ejemplo">Nombre:</label>
+                    <input type="text" id="nombre_legend_ejemplo" name="nombre_legend_ejemplo">
+
+                    <label for="fecha_nac_legend_ejemplo">Fecha de Nacimiento:</label>
+                    <input type="date" id="fecha_nac_legend_ejemplo" name="fecha_nac_legend_ejemplo">
+                </fieldset>
+
+                <fieldset>
+                    <legend>Información de Cuenta</legend>
+                    <label for="usuario_legend_ejemplo">Nombre de Usuario:</label>
+                    <input type="text" id="usuario_legend_ejemplo" name="usuario_legend_ejemplo">
+
+                    <label for="pass_legend_ejemplo">Contraseña:</label>
+                    <input type="password" id="pass_legend_ejemplo" name="pass_legend_ejemplo">
+                </fieldset>
+                <button type="submit">Registrar</button>
+            </form>
+        </section>
+
+        <section>
+            <h2>16.3. Mejorar la semántica y la accesibilidad de los formularios.</h2>
+            <p>El uso de <code>&lt;fieldset&gt;</code> y <code>&lt;legend&gt;</code> no es meramente estético; es fundamental para la semántica y la accesibilidad de los formularios:</p>
+            <ul>
+                <li><strong>Semántica:</strong> Indica claramente qué campos están relacionados entre sí, haciendo el HTML más estructurado y comprensible tanto para los desarrolladores como para los navegadores.</li>
+                <li><strong>Accesibilidad:</strong> Para los usuarios de lectores de pantalla, cuando navegan por un formulario, el lector de pantalla anunciará el texto de la <code>&lt;legend&gt;</code> al entrar en un <code>&lt;fieldset&gt;</code>. Esto proporciona un contexto crucial para el grupo de campos, ayudando a los usuarios con discapacidad visual a entender la estructura del formulario y el propósito de los campos agrupados.</li>
+                <li><strong>Usabilidad:</strong> Incluso para usuarios sin discapacidades visuales, la agrupación visual de campos relacionados con un título claro mejora la legibilidad y la facilidad de uso de formularios largos.</li>
+            </ul>
+            <div class="note">
+                <p><strong>Diseño CSS:</strong> Aunque <code>&lt;fieldset&gt;</code> y <code>&lt;legend&gt;</code> tienen estilos predeterminados (un borde y el título superpuesto), estos se pueden personalizar completamente con CSS para que se adapten al diseño de tu sitio web, manteniendo sus beneficios semánticos y de accesibilidad.</p>
+            </div>
+        </section>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="Ejercicios15.html">Ejercicios sobre la lección anterior.</a></li>
+                <li><a href="Ejercicios16.html">Ejercicios sobre esta lección.</a></li>
+                <li><a href="17...html">Clase 17: (Próxima Lección)</a></li> <!-- Placeholder for next lesson -->
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
 </body>
 </html>

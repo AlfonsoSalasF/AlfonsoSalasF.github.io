@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 13: Ejercicios de Otros Tipos de Entrada I - Selección</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/ejecicios_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Clase 13: Ejercicios de Otros Tipos de Entrada I - Selección</h1>
+
+        <div class="exercise-section">
+            <h3>Ejercicios Prácticos de la Clase 13</h3>
+            <p>Para consolidar tus conocimientos sobre los elementos de selección en HTML, te propongo los siguientes ejercicios. Intenta resolverlos por ti mismo antes de ver la solución.</p>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 1: Selección de Intereses (Múltiples Opciones)</h4>
+                <p>Crea un grupo de casillas de verificación (checkboxes) para que el usuario seleccione sus intereses. Las opciones deben ser "Deportes", "Lectura" y "Música".</p>
+                <ul>
+                    <li>Asegúrate de que cada checkbox tenga un <code>name</code> común y su propio <code>value</code> y <code>id</code>, con <code>label</code>s asociadas.</li>
+                </ul>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution1')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution1">
+                    <pre><code>&lt;form action="#" method="POST"&gt;
+    &lt;p&gt;Selecciona tus intereses:&lt;/p&gt;
+    &lt;div class="checkbox-group"&gt;
+        &lt;input type="checkbox" id="interes_deportes" name="intereses" value="deportes"&gt;
+        &lt;label for="interes_deportes"&gt;Deportes&lt;/label&gt;&lt;br&gt;
+        
+        &lt;input type="checkbox" id="interes_lectura" name="intereses" value="lectura"&gt;
+        &lt;label for="interes_lectura"&gt;Lectura&lt;/label&gt;&lt;br&gt;
+        
+        &lt;input type="checkbox" id="interes_musica" name="intereses" value="musica"&gt;
+        &lt;label for="interes_musica"&gt;Música&lt;/label&gt;
+    &lt;/div&gt;
+    &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 2: Selección de Género (Una Sola Opción)</h4>
+                <p>Crea un grupo de botones de opción (radio buttons) para que el usuario seleccione su género. Las opciones deben ser "Masculino", "Femenino" y "No especificar". La opción "No especificar" debe estar preseleccionada.</p>
+                <ul>
+                    <li>Asegúrate de que todos los radio buttons compartan el mismo <code>name</code>.</li>
+                    <li>Utiliza el atributo <code>checked</code>.</li>
+                </ul>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution2')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution2">
+                    <pre><code>&lt;form action="#" method="POST"&gt;
+    &lt;p&gt;Selecciona tu género:&lt;/p&gt;
+    &lt;div class="radio-group"&gt;
+        &lt;input type="radio" id="genero_masculino" name="genero" value="masculino"&gt;
+        &lt;label for="genero_masculino"&gt;Masculino&lt;/label&gt;&lt;br&gt;
+        
+        &lt;input type="radio" id="genero_femenino" name="genero" value="femenino"&gt;
+        &lt;label for="genero_femenino"&gt;Femenino&lt;/label&gt;&lt;br&gt;
+        
+        &lt;input type="radio" id="genero_no_especificar" name="genero" value="no_especificar" checked&gt;
+        &lt;label for="genero_no_especificar"&gt;No especificar&lt;/label&gt;
+    &lt;/div&gt;
+    &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 3: Lista Desplegable de Países</h4>
+                <p>Crea una lista desplegable (<code>&lt;select&gt;</code>) para que el usuario elija su país. Incluye al menos tres países de tu elección. El país por defecto debe ser "España".</p>
+                <ul>
+                    <li>Cada país debe ser un <code>&lt;option&gt;</code> con un <code>value</code> apropiado.</li>
+                    <li>Usa el atributo <code>selected</code> para la opción por defecto.</li>
+                </ul>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution3')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution3">
+                    <pre><code>&lt;form action="#" method="POST"&gt;
+    &lt;label for="pais_lista"&gt;Selecciona tu país:&lt;/label&gt;
+    &lt;select id="pais_lista" name="pais"&gt;
+        &lt;option value="es" selected&gt;España&lt;/option&gt;
+        &lt;option value="mx"&gt;México&lt;/option&gt;
+        &lt;option value="ar"&gt;Argentina&lt;/option&gt;
+        &lt;option value="co"&gt;Colombia&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 4: Lista Desplegable con Grupos (Optgroups)</h4>
+                <p>Crea una lista desplegable de continentes y países. Agrupa los países por su continente utilizando <code>&lt;optgroup&gt;</code>.</p>
+                <ul>
+                    <li>Al menos dos <code>&lt;optgroup&gt;</code>.</li>
+                    <li>Al menos dos <code>&lt;option&gt;</code> por grupo.</li>
+                </ul>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution4')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution4">
+                    <pre><code>&lt;form action="#" method="POST"&gt;
+    &lt;label for="continente_pais"&gt;Selecciona un continente y país:&lt;/label&gt;
+    &lt;select id="continente_pais" name="ubicacion"&gt;
+        &lt;optgroup label="Europa"&gt;
+            &lt;option value="es"&gt;España&lt;/option&gt;
+            &lt;option value="fr"&gt;Francia&lt;/option&gt;
+        &lt;/optgroup&gt;
+        &lt;optgroup label="América"&gt;
+            &lt;option value="us"&gt;Estados Unidos&lt;/option&gt;
+            &lt;option value="br"&gt;Brasil&lt;/option&gt;
+        &lt;/optgroup&gt;
+        &lt;optgroup label="Asia"&gt;
+            &lt;option value="jp"&gt;Japón&lt;/option&gt;
+            &lt;option value="in"&gt;India&lt;/option&gt;
+        &lt;/optgroup&gt;
+    &lt;/select&gt;
+    &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 5: Lista de Habilidades (Selección Múltiple)</h4>
+                <p>Crea una lista desplegable que permita al usuario seleccionar múltiples habilidades (ej., "HTML", "CSS", "JavaScript", "Python"). El campo debe mostrar 4 opciones visibles sin desplazamiento inicial.</p>
+                <ul>
+                    <li>Utiliza el atributo <code>multiple</code> en <code>&lt;select&gt;</code>.</li>
+                    <li>Utiliza el atributo <code>size</code>.</li>
+                </ul>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution5')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution5">
+                    <pre><code>&lt;form action="#" method="POST"&gt;
+    &lt;label for="habilidades_multi"&gt;Selecciona tus habilidades (Ctrl/Cmd + clic para múltiple):&lt;/label&gt;
+    &lt;select id="habilidades_multi" name="habilidades" multiple size="4"&gt;
+        &lt;option value="html"&gt;HTML&lt;/option&gt;
+        &lt;option value="css"&gt;CSS&lt;/option&gt;
+        &lt;option value="javascript"&gt;JavaScript&lt;/option&gt;
+        &lt;option value="python"&gt;Python&lt;/option&gt;
+        &lt;option value="sql"&gt;SQL&lt;/option&gt;
+        &lt;option value="git"&gt;Git&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 6: Asociación Explícita de Labels</h4>
+                <p>Demuestra la asociación explícita de una etiqueta <code>&lt;label&gt;</code> con un campo de texto usando los atributos <code>for</code> e <code>id</code>. El campo de texto debe ser para "Nombre de Usuario".</p>
+                <ul>
+                    <li>Asegúrate de que al hacer clic en el texto de la etiqueta, el campo de entrada reciba el foco.</li>
+                </ul>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution6')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution6">
+                    <pre><code>&lt;form action="#" method="POST"&gt;
+    &lt;label for="nombre_usuario_label"&gt;Nombre de Usuario:&lt;/label&gt;
+    &lt;input type="text" id="nombre_usuario_label" name="nombre_usuario"&gt;
+    &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="quiz-section">
+            <h3>Quiz de la Clase 13: Otros Tipos de Entrada I - Selección</h3>
+            <p>¡Pon a prueba tus conocimientos con este quiz de 10 preguntas!</p>
+            <form id="quizForm">
+                <div class="quiz-question">
+                    <h4>1. ¿Qué tipo de <code>&lt;input&gt;</code> permite al usuario seleccionar una o varias opciones de un conjunto?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="a"> <code>radio</code></label>
+                        <label><input type="radio" name="q1" value="b"> <code>checkbox</code></label>
+                        <label><input type="radio" name="q1" value="c"> <code>select</code></label>
+                        <label><input type="radio" name="q1" value="d"> <code>option</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>2. Para agrupar botones de radio y asegurar que solo se pueda seleccionar uno, ¿qué atributo deben compartir?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="a"> <code>id</code></label>
+                        <label><input type="radio" name="q2" value="b"> <code>value</code></label>
+                        <label><input type="radio" name="q2" value="c"> <code>name</code></label>
+                        <label><input type="radio" name="q2" value="d"> <code>group</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>3. ¿Qué atributo se utiliza en un <code>&lt;option&gt;</code> para que aparezca seleccionado por defecto en un <code>&lt;select&gt;</code>?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="a"> <code>default</code></label>
+                        <label><input type="radio" name="q3" value="b"> <code>checked</code></label>
+                        <label><input type="radio" name="q3" value="c"> <code>selected</code></label>
+                        <label><input type="radio" name="q3" value="d"> <code>active</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>4. La etiqueta <code>&lt;label&gt;</code> se asocia explícitamente a un control de formulario mediante su atributo <code>for</code>, que debe coincidir con el _____ del control.</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="a"> <code>name</code></label>
+                        <label><input type="radio" name="q4" value="b"> <code>class</code></label>
+                        <label><input type="radio" name="q4" value="c"> <code>type</code></label>
+                        <label><input type="radio" name="q4" value="d"> <code>id</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>5. ¿Qué etiqueta se utiliza para crear un menú desplegable?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="a"> <code>&lt;list&gt;</code></label>
+                        <label><input type="radio" name="q5" value="b"> <code>&lt;dropdown&gt;</code></label>
+                        <label><input type="radio" name="q5" value="c"> <code>&lt;select&gt;</code></label>
+                        <label><input type="radio" name="q5" value="d"> <code>&lt;menu&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>6. Si deseas permitir al usuario seleccionar múltiples opciones en una lista desplegable, ¿qué atributo debes añadir a la etiqueta <code>&lt;select&gt;</code>?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q6" value="a"> <code>multiple</code></label>
+                        <label><input type="radio" name="q6" value="b"> <code>multiselect</code></label>
+                        <label><input type="radio" name="q6" value="c"> <code>options="multiple"</code></label>
+                        <label><input type="radio" name="q6" value="d"> <code>many</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>7. ¿Cuál es el propósito de la etiqueta <code>&lt;optgroup&gt;</code> dentro de un <code>&lt;select&gt;</code>?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q7" value="a"> Define una opción predeterminada.</label>
+                        <label><input type="radio" name="q7" value="b"> Agrupa opciones relacionadas con un encabezado.</label>
+                        <label><input type="radio" name="q7" value="c"> Permite la selección múltiple.</label>
+                        <label><input type="radio" name="q7" value="d"> Establece el tamaño de la lista desplegable.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>8. ¿Qué atributo en <code>&lt;input type="checkbox"&gt;</code> o <code>&lt;input type="radio"&gt;</code> hace que se muestre inicialmente marcado?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q8" value="a"> <code>selected</code></label>
+                        <label><input type="radio" name="q8" value="b"> <code>active</code></label>
+                        <label><input type="radio" name="q8" value="c"> <code>checked</code></label>
+                        <label><input type="radio" name="q8" value="d"> <code>on</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>9. ¿Cuál es la ventaja principal de usar <code>&lt;label&gt;</code> asociado con <code>for</code> e <code>id</code> para la accesibilidad?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q9" value="a"> Hace que el texto de la etiqueta sea más grande.</label>
+                        <label><input type="radio" name="q9" value="b"> Permite que los lectores de pantalla asocien la etiqueta con el control.</label>
+                        <label><input type="radio" name="q9" value="c"> Cambia el color del fondo del formulario.</label>
+                        <label><input type="radio" name="q9" value="d"> Evita que el usuario ingrese datos incorrectos.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>10. ¿Cuál es el valor que se envía al servidor para una opción seleccionada en un <code>&lt;select&gt;</code> si el atributo <code>value</code> está ausente en la etiqueta <code>&lt;option&gt;</code>?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q10" value="a"> Una cadena vacía.</label>
+                        <label><input type="radio" name="q10" value="b"> El texto visible de la opción.</label>
+                        <label><input type="radio" name="q10" value="c"> "undefined".</label>
+                        <label><input type="radio" name="q10" value="d"> El nombre del <code>&lt;select&gt;</code>.</label>
+                    </div>
+                </div>
+
+                <button type="button" class="submit-quiz-button" id="checkAnswersBtn" onclick="checkQuiz()">Ver Resultados</button>
+            </form>
+
+            <div id="quizResults" class="quiz-results">
+                <p>Resultados del Test:</p>
+                <ol id="resultsList"></ol>
+                <p id="scoreSummary"></p>
+                <button type="button" class="reveal-button" id="resetQuizBtn" onclick="resetQuiz()" style="display: none;">Volver a Intentar</button>
+            </div>
+        </div>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="13OtrosTiposDeEntradaISeleccion.html">Volver a la Clase 13: Otros Tipos de Entrada I - Selección.</a></li>
+                <li><a href="14OtrosTiposDeEntradaIIFechasYArchivos.html">Clase 14: Otros tipos de entrada: Fechas y archivos. (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script>
+        // Función para mostrar/ocultar soluciones de ejercicios
+        function toggleSolution(button, solutionId) {
+            const solution = document.getElementById(solutionId);
+            if (solution.style.display === 'block') {
+                solution.style.display = 'none';
+                button.textContent = 'Mostrar Solución';
+            } else {
+                solution.style.display = 'block';
+                button.textContent = 'Ocultar Solución';
+            }
+        }
+
+        // Datos del quiz
+        const quizAnswers = {
+            q1: 'b', // checkbox
+            q2: 'c', // name
+            q3: 'c', // selected
+            q4: 'd', // id
+            q5: 'c', // <select>
+            q6: 'a', // multiple
+            q7: 'b', // Agrupa opciones relacionadas con un encabezado.
+            q8: 'c', // checked
+            q9: 'b', // Permite que los lectores de pantalla asocien la etiqueta con el control.
+            q10: 'b' // El texto visible de la opción.
+        };
+
+        function checkQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const resultsList = document.getElementById('resultsList');
+            const scoreSummary = document.getElementById('scoreSummary');
+            const quizResultsDiv = document.getElementById('quizResults');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            resultsList.innerHTML = ''; // Limpiar resultados anteriores
+            let score = 0;
+
+            for (let i = 1; i <= 10; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = quizForm.elements[questionName].value;
+                const correctAnswer = quizAnswers[questionName];
+
+                const listItem = document.createElement('li');
+                listItem.classList.add(selectedOption === correctAnswer ? 'correct' : 'incorrect');
+
+                // Obtener el texto de la opción seleccionada (escapando HTML)
+                let selectedAnswerText = 'No respondida';
+                if (selectedOption) {
+                    const selectedLabel = quizForm.querySelector(`input[name="${questionName}"][value="${selectedOption}"]`).closest('label');
+                    selectedAnswerText = selectedLabel ? selectedLabel.textContent.trim() : selectedAnswerText;
+                }
+
+                // Obtener el texto de la opción correcta (escapando HTML)
+                const correctLabel = quizForm.querySelector(`input[name="${questionName}"][value="${correctAnswer}"]`).closest('label');
+                const correctAnswerText = correctLabel ? correctLabel.textContent.trim() : 'N/A';
+
+                // Usar textContent para insertar los textos y evitar interpretación HTML
+                const questionTextNode = document.createTextNode(`Pregunta ${i}: `);
+                const yourAnswerTextNode = document.createTextNode(`Tu respuesta: "${selectedAnswerText}". `);
+                const correctAnswerTextNode = document.createTextNode(`Respuesta correcta: "${correctAnswerText}".`);
+
+                listItem.appendChild(questionTextNode);
+                if (selectedOption !== correctAnswer) { // Solo añadir detalles si es incorrecta
+                    listItem.appendChild(document.createElement('br'));
+                    listItem.appendChild(yourAnswerTextNode);
+                    const correctInfoSpan = document.createElement('span');
+                    correctInfoSpan.classList.add('correct-answer-info');
+                    correctInfoSpan.appendChild(correctAnswerTextNode);
+                    listItem.appendChild(correctInfoSpan);
+                } else {
+                    listItem.appendChild(document.createTextNode('Correcta.'));
+                    score++;
+                }
+
+                resultsList.appendChild(listItem);
+            }
+
+            scoreSummary.textContent = `Tu puntuación es: ${score} de 10 preguntas correctas.`;
+            quizResultsDiv.style.display = 'block'; // Mostrar la sección de resultados
+            quizResultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Desplazarse a los resultados
+
+            // Ocultar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'none';
+            // Mostrar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'inline-block';
+        }
+
+        function resetQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            quizForm.reset(); // Reinicia todos los radio buttons
+            document.getElementById('quizResults').style.display = 'none'; // Oculta los resultados
+            document.getElementById('resultsList').innerHTML = ''; // Limpia la lista de resultados
+            document.getElementById('scoreSummary').textContent = ''; // Limpia el resumen de puntuación
+
+            // Mostrar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'inline-block';
+            // Ocultar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

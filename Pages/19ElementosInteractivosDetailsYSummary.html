@@ -1,17 +1,122 @@
-<!DOCTYPE html>
-<html lang="en">
+!DOCTYPE html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elementos Interactivos: &lt;details&gt; y &lt;summary&gt;</title>
+    <title>Elementos Interactivos: details y summary - Curso HTML</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
 </head>
 <body>
-    <H1>Clase 19: Elementos Interactivos: &lt;details&gt; y &lt;summary&gt;</H1>
-    <UL>
-        <li>Crear secciones expandibles/colapsables de contenido.</li>
-        <li>Uso de &lt;details&gt; y &lt;summary&gt;.</li>
-        <li>Atributo open.</li>
-    </UL>
-    <p><a href="/index.html">Vuelve a la página principal</a></p>
+    <div class="container">
+        <h1>
+            <p>CURSO DE INICIACIÓN A HTML</p>
+            <p>Clase 19: Elementos Interactivos: <code>&lt;details&gt;</code> y <code>&lt;summary&gt;</code>.</p>
+        </h1>
+
+        <p>HTML5 introdujo elementos que nos permiten crear componentes de interfaz de usuario interactivos de forma nativa, sin necesidad de JavaScript. Entre ellos, <code>&lt;details&gt;</code> y <code>&lt;summary&gt;</code> son perfectos para implementar secciones de contenido expandibles y colapsables, como preguntas frecuentes (FAQ) o detalles adicionales.</p>
+
+        <hr>
+
+        <section>
+            <h2>19.1. Creación de secciones expandibles/colapsables de contenido con <code>&lt;details&gt;</code> y <code>&lt;summary&gt;</code>.</h2>
+            <p>El elemento <code>&lt;details&gt;</code> crea un widget de divulgación a través del cual el usuario puede obtener información adicional o controles. El elemento <code>&lt;summary&gt;</code> proporciona un resumen o leyenda visible para el <code>&lt;details&gt;</code>, que sirve como un control para alternar la visibilidad del resto del contenido del <code>&lt;details&gt;</code>.</p>
+            <p>Cuando el usuario hace clic en el <code>&lt;summary&gt;</code>, el contenido dentro de <code>&lt;details&gt;</code> se expande o se contrae. Por defecto, el contenido está colapsado.</p>
+            <p><strong>Estructura básica:</strong></p>
+            <pre><code>&lt;details&gt;
+    &lt;summary&gt;Título o pregunta visible&lt;/summary&gt;
+    &lt;p&gt;Contenido detallado que se expande/contrae.&lt;/p&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Elemento 1&lt;/li&gt;
+        &lt;li&gt;Elemento 2&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/details&gt;</code></pre>
+
+            <h3>19.1.1. Uso de <code>&lt;details&gt;</code> y <code>&lt;summary&gt;</code>.</h3>
+            <p>El <code>&lt;summary&gt;</code> debe ser el primer hijo del elemento <code>&lt;details&gt;</code>. Todo el contenido que sigue a <code>&lt;summary&gt;</code> dentro de <code>&lt;details&gt;</code> será el contenido que se mostrará u ocultará.</p>
+            <p><strong>Ejemplo: Pregunta Frecuente (FAQ).</strong></p>
+            <pre><code>&lt;div&gt;
+    &lt;details&gt;
+        &lt;summary&gt;¿Qué es HTML?&lt;/summary&gt;
+        &lt;p&gt;HTML (HyperText Markup Language) es el lenguaje estándar para crear páginas web y aplicaciones web. Se utiliza para estructurar el contenido de una página, como encabezados, párrafos, imágenes y enlaces.&lt;/p&gt;
+    &lt;/details&gt;
+    &lt;br&gt;
+    &lt;details&gt;
+        &lt;summary&gt;¿Cuál es la diferencia entre HTML y CSS?&lt;/summary&gt;
+        &lt;p&gt;HTML estructura el contenido de una página web, mientras que CSS (Cascading Style Sheets) se utiliza para estilizar ese contenido, controlando la presentación visual como colores, fuentes, espaciado y diseño.&lt;/p&gt;
+    &lt;/details&gt;
+&lt;/div&gt;</code></pre>
+            <div>
+                <details>
+                    <summary>¿Qué es HTML?</summary>
+                    <p>HTML (HyperText Markup Language) es el lenguaje estándar para crear páginas web y aplicaciones web. Se utiliza para estructurar el contenido de una página, como encabezados, párrafos, imágenes y enlaces.</p>
+                </details>
+                <br>
+                <details>
+                    <summary>¿Cuál es la diferencia entre HTML y CSS?</summary>
+                    <p>HTML estructura el contenido de una página web, mientras que CSS (Cascading Style Sheets) se utiliza para estilizar ese contenido, controlando la presentación visual como colores, fuentes, espaciado y diseño.</p>
+                </details>
+            </div>
+        </section>
+
+        <section>
+            <h2>19.2. Atributo <code>open</code>.</h2>
+            <p>El atributo booleano <code>open</code> en la etiqueta <code>&lt;details&gt;</code> indica si los detalles de contenido deben ser visibles para el usuario al cargar la página. Si el atributo <code>open</code> está presente, el contenido estará expandido por defecto. Si está ausente, el contenido estará colapsado por defecto.</p>
+            <p><strong>Ejemplo: Sección de "Avisos importantes" abierta por defecto.</strong></p>
+            <pre><code>&lt;details open&gt;
+    &lt;summary&gt;Avisos Importantes&lt;/summary&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Mantenimiento programado para el próximo viernes a las 02:00 AM.&lt;/li&gt;
+        &lt;li&gt;Nuevas funcionalidades añadidas a su panel de control.&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/details&gt;</code></pre>
+            <details open>
+                <summary>Avisos Importantes</summary>
+                <ul>
+                    <li>Mantenimiento programado para el próximo viernes a las 02:00 AM.</li>
+                    <li>Nuevas funcionalidades añadidas a su panel de control.</li>
+                </ul>
+            </details>
+            <br>
+            <p><strong>Ejemplo: Sección colapsada por defecto.</strong></p>
+            <pre><code>&lt;details&gt;
+    &lt;summary&gt;Ver detalles de contacto&lt;/summary&gt;
+    &lt;p&gt;Teléfono: +34 987 654 321&lt;/p&gt;
+    &lt;p&gt;Email: info@ejemplo.com&lt;/p&gt;
+&lt;/details&gt;</code></pre>
+            <details>
+                <summary>Ver detalles de contacto</summary>
+                <p>Teléfono: +34 987 654 321</p>
+                <p>Email: info@ejemplo.com</p>
+            </details>
+        </section>
+
+        <section>
+            <h2>19.3. Casos de uso para <code>&lt;details&gt;</code> y <code>&lt;summary&gt;</code>.</h2>
+            <p>Estos elementos son muy versátiles y pueden mejorar la usabilidad y la organización del contenido en diversas situaciones:</p>
+            <ul>
+                <li><strong>Preguntas Frecuentes (FAQ):</strong> Es el uso más común, permitiendo mostrar solo las preguntas y expandir las respuestas al hacer clic.</li>
+                <li><strong>Detalles Opcionales:</strong> Información adicional que no es crucial para todos los usuarios, pero que está disponible si se desea.</li>
+                <li><strong>Secciones Colapsables:</strong> En paneles de administración, filtros de búsqueda avanzados, o cualquier lugar donde quieras ocultar/mostrar un bloque de contenido para ahorrar espacio o reducir la sobrecarga visual.</li>
+                <li><strong>Acordeones Simples:</strong> Aunque para acordeones complejos con interacciones avanzadas podrías necesitar JavaScript, para los básicos, <code>&lt;details&gt;</code> es una solución nativa y accesible.</li>
+            </ul>
+            <div class="note">
+                <p><strong>Accesibilidad integrada:</strong> Una de las mayores ventajas de <code>&lt;details&gt;</code> y <code>&lt;summary&gt;</code> es que gestionan automáticamente la semántica de accesibilidad (roles ARIA, estados) sin que el desarrollador tenga que añadir atributos específicos.</p>
+            </div>
+        </section>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="Ejercicios18.html">Ejercicios sobre la lección anterior.</a></li>
+                <li><a href="Ejercicios19.html">Ejercicios sobre esta lección.</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
 </body>
 </html>

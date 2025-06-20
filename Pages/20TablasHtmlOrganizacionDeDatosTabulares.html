@@ -1,18 +1,311 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tablas HTML: Organización de Datos Tabulares</title>
+    <title>Tablas HTML: Organización de Datos Tabulares - Curso HTML</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
+    <style>
+        /* Estilos específicos para tablas en esta clase, para mejorar la visualización */
+        table {
+            width: 100%;
+            border-collapse: collapse; /* Colapsa los bordes de la celda */
+            margin: 20px 0;
+            font-size: 0.95em;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px; /* Bordes redondeados para la tabla */
+            overflow: hidden; /* Asegura que los bordes redondeados se apliquen bien */
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        thead {
+            background-color: #e0e0e0;
+        }
+        tfoot {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        caption {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+    </style>
 </head>
 <body>
-    <H1>Clase 20: Tablas HTML: Organización de Datos Tabulares.</H1>
-    <UL>
-        <li>La etiqueta &lt;table&gt;.</li>
-        <li>Filas y columnas: &lt;tr&gt;, &lt;th&gt;, &lt;td&gt;.</li>
-        <li>Encabezado, cuerpo y pie de tabla: &lt;thead&gt;, &lt;tbody&gt;, &lt;tfoot&gt;.</li>
-        <li>Combinar celdas: rowspan y colspan.</li>
-    </UL>
-    <p><a href="/index.html">Vuelve a la página principal</a></p>
- </body>
+    <div class="container">
+        <h1>
+            <p>CURSO DE INICIACIÓN A HTML</p>
+            <p>Clase 20: Tablas HTML: Organización de Datos Tabulares.</p>
+        </h1>
+
+        <p>Las tablas HTML son elementos fundamentales para organizar y mostrar datos en formato tabular, es decir, en filas y columnas. Aunque no deben usarse para el diseño de la página (para eso usamos CSS y Flexbox/Grid), son indispensables para presentar información estructurada como estadísticas, listados de productos, horarios, etc.</p>
+
+        <hr>
+
+        <section>
+            <h2>20.1. La etiqueta <code>&lt;table&gt;</code>.</h2>
+            <p>El elemento <code>&lt;table&gt;</code> es el contenedor principal de toda la tabla. Dentro de él, se definen las filas, encabezados y celdas de datos.</p>
+            <p><strong>Ejemplo básico:</strong></p>
+            <pre><code>&lt;table&gt;
+    &lt;caption&gt;Productos Destacados&lt;/caption&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Producto&lt;/th&gt;
+        &lt;th&gt;Precio&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Laptop&lt;/td&gt;
+        &lt;td&gt;1200€&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Teléfono&lt;/td&gt;
+        &lt;td&gt;800€&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+            <table>
+                <caption>Productos Destacados</caption>
+                <tr>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                </tr>
+                <tr>
+                    <td>Laptop</td>
+                    <td>1200€</td>
+                </tr>
+                <tr>
+                    <td>Teléfono</td>
+                    <td>800€</td>
+                </tr>
+            </table>
+            <div class="note">
+                <p><strong><code>&lt;caption&gt;</code>:</strong> Aunque no se menciona en la sección, la etiqueta <code>&lt;caption&gt;</code> proporciona un título o una breve descripción para toda la tabla, lo cual es muy importante para la accesibilidad.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>20.2. Filas y columnas: <code>&lt;tr&gt;</code>, <code>&lt;th&gt;</code>, <code>&lt;td&gt;</code>.</h2>
+            <p>Estos son los elementos fundamentales para construir la estructura de la tabla:</p>
+            <ul>
+                <li><code>&lt;tr&gt;</code> (Table Row): Define una fila de celdas en una tabla. Cada <code>&lt;tr&gt;</code> representa una nueva fila.</li>
+                <li><code>&lt;th&gt;</code> (Table Header): Define una celda de encabezado en una tabla. El texto dentro de <code>&lt;th&gt;</code> suele aparecer en negrita y centrado por defecto, y semánticamente indica que es el encabezado de una columna o fila.</li>
+                <li><code>&lt;td&gt;</code> (Table Data): Define una celda de datos estándar en una tabla. Contiene el contenido real de la tabla.</li>
+            </ul>
+            <p><strong>Ejemplo: Horario de Clases.</strong></p>
+            <pre><code>&lt;table&gt;
+    &lt;caption&gt;Horario Semanal&lt;/caption&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Día&lt;/th&gt;
+        &lt;th&gt;Mañana&lt;/th&gt;
+        &lt;th&gt;Tarde&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Lunes&lt;/td&gt;
+        &lt;td&gt;Matemáticas&lt;/td&gt;
+        &lt;td&gt;Historia&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Martes&lt;/td&gt;
+        &lt;td&gt;Ciencias&lt;/td&gt;
+        &lt;td&gt;Lengua&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+            <table>
+                <caption>Horario Semanal</caption>
+                <tr>
+                    <th>Día</th>
+                    <th>Mañana</th>
+                    <th>Tarde</th>
+                </tr>
+                <tr>
+                    <td>Lunes</td>
+                    <td>Matemáticas</td>
+                    <td>Historia</td>
+                </tr>
+                <tr>
+                    <td>Martes</td>
+                    <td>Ciencias</td>
+                    <td>Lengua</td>
+                </tr>
+            </table>
+        </section>
+
+        <section>
+            <h2>20.3. Encabezado, cuerpo y pie de tabla: <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, <code>&lt;tfoot&gt;</code>.</h2>
+            <p>Para mejorar la semántica y la organización de tablas complejas, HTML proporciona elementos para dividir la tabla en secciones lógicas. Esto es muy útil para la accesibilidad y para aplicar estilos específicos a cada parte de la tabla.</p>
+            <ul>
+                <li><code>&lt;thead&gt;</code> (Table Head): Contiene el contenido de encabezado de la tabla (normalmente las etiquetas <code>&lt;th&gt;</code>).</li>
+                <li><code>&lt;tbody&gt;</code> (Table Body): Contiene el cuerpo principal de los datos de la tabla. Puede haber múltiples <code>&lt;tbody&gt;</code> en una tabla.</li>
+                <li><code>&lt;tfoot&gt;</code> (Table Foot): Contiene el contenido del pie de la tabla (ej., totales, notas, resúmenes). Aunque semánticamente es el pie, visualmente puede aparecer antes del <code>&lt;tbody&gt;</code> en el HTML, pero se renderizará al final de la tabla.</li>
+            </ul>
+            <p><strong>Ejemplo: Informe de Ventas Mensuales.</strong></p>
+            <pre><code>&lt;table&gt;
+    &lt;caption&gt;Informe de Ventas por Producto (Junio)&lt;/caption&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Producto&lt;/th&gt;
+            &lt;th&gt;Cantidad Vendida&lt;/th&gt;
+            &lt;th&gt;Ingresos (€)&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Camiseta&lt;/td&gt;
+            &lt;td&gt;150&lt;/td&gt;
+            &lt;td&gt;3000&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Pantalón&lt;/td&gt;
+            &lt;td&gt;80&lt;/td&gt;
+            &lt;td&gt;4000&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Zapatillas&lt;/td&gt;
+            &lt;td&gt;50&lt;/td&gt;
+            &lt;td&gt;5000&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+    &lt;tfoot&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Total&lt;/td&gt;
+            &lt;td&gt;280&lt;/td&gt;
+            &lt;td&gt;12000&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tfoot&gt;
+&lt;/table&gt;</code></pre>
+            <table>
+                <caption>Informe de Ventas por Producto (Junio)</caption>
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad Vendida</th>
+                        <th>Ingresos (€)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Camiseta</td>
+                        <td>150</td>
+                        <td>3000</td>
+                    </tr>
+                    <tr>
+                        <td>Pantalón</td>
+                        <td>80</td>
+                        <td>4000</td>
+                    </tr>
+                    <tr>
+                        <td>Zapatillas</td>
+                        <td>50</td>
+                        <td>5000</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>Total</td>
+                        <td>280</td>
+                        <td>12000</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+
+        <section>
+            <h2>20.4. Combinar celdas: <code>rowspan</code> y <code>colspan</code>.</h2>
+            <p>Los atributos <code>rowspan</code> y <code>colspan</code> se utilizan para hacer que una celda ocupe el espacio de múltiples filas o columnas, respectivamente. Son esenciales para crear tablas con diseños más complejos.</p>
+            <ul>
+                <li><code>colspan</code>: Especifica el número de columnas que una celda debe abarcar.</li>
+                <li><code>rowspan</code>: Especifica el número de filas que una celda debe abarcar.</li>
+            </ul>
+            <p><strong>Ejemplo: Horario con celdas combinadas.</strong></p>
+            <pre><code>&lt;table&gt;
+    &lt;caption&gt;Horario Detallado&lt;/caption&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Día&lt;/th&gt;
+            &lt;th colspan="2"&gt;Mañana&lt;/th&gt;
+            &lt;th&gt;Tarde&lt;/th&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;th&gt;&lt;/th&gt; &lt;!-- Celda vacía para alinear --&gt;
+            &lt;th&gt;9:00 - 11:00&lt;/th&gt;
+            &lt;th&gt;11:00 - 13:00&lt;/th&gt;
+            &lt;th&gt;15:00 - 17:00&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Lunes&lt;/td&gt;
+            &lt;td&gt;Matemáticas&lt;/td&gt;
+            &lt;td&gt;Física&lt;/td&gt;
+            &lt;td rowspan="2"&gt;Deportes&lt;/td&gt; &lt;!-- Ocupa 2 filas --&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Martes&lt;/td&gt;
+            &lt;td colspan="2"&gt;Programación&lt;/td&gt; &lt;!-- Ocupa 2 columnas --&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+            <table>
+                <caption>Horario Detallado</caption>
+                <thead>
+                    <tr>
+                        <th>Día</th>
+                        <th colspan="2">Mañana</th>
+                        <th>Tarde</th>
+                    </tr>
+                    <tr>
+                        <th></th> <!-- Celda vacía para alinear -->
+                        <th>9:00 - 11:00</th>
+                        <th>11:00 - 13:00</th>
+                        <th>15:00 - 17:00</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Lunes</td>
+                        <td>Matemáticas</td>
+                        <td>Física</td>
+                        <td rowspan="2">Deportes</td> <!-- Ocupa 2 filas -->
+                    </tr>
+                    <tr>
+                        <td>Martes</td>
+                        <td colspan="2">Programación</td> <!-- Ocupa 2 columnas -->
+                    </tr>
+                </tbody>
+            </table>
+            <div class="note">
+                <p><strong>Cuidado con el abuso:</strong> Combinar celdas puede hacer que la estructura de la tabla sea más compleja y, en algunos casos, menos accesible. Úsalo solo cuando sea estrictamente necesario para la presentación lógica de los datos.</p>
+            </div>
+        </section>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="Ejercicios19.html">Ejercicios sobre la lección anterior.</a></li>
+                <li><a href="Ejercicios20.html">Ejercicios sobre esta lección.</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
+</body>
 </html>

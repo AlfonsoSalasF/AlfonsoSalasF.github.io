@@ -1,17 +1,148 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Validación de Formularios con HTML5</title>
+    <title>Validación de Formularios con HTML5 - Curso HTML</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
 </head>
 <body>
-    <H1>Clase 17: Validación de Formularios con HTML5.</H1>
-    <UL>
-        <li>Validación nativa de HTML5 (required, pattern, minlength, maxlength).</li>
-        <li>Mensajes de error por defecto del navegador.</li>
-        <li>Pseudo-clases de CSS para estilos de validación (ej. :valid, :invalid).</li>
-    </UL>
-    <p><a href="/index.html">Vuelve a la página principal</a></p>
+    <div class="container">
+        <h1>
+            <p>CURSO DE INICIACIÓN A HTML</p>
+            <p>Clase 17: Validación de Formularios con HTML5.</p>
+        </h1>
+
+        <p>La validación de formularios es un paso crucial para asegurar que los datos enviados por los usuarios son correctos y cumplen con los requisitos. HTML5 nos proporciona herramientas de validación nativas que nos permiten implementar verificaciones básicas directamente en el navegador, mejorando la experiencia del usuario y reduciendo la necesidad de JavaScript para validaciones simples.</p>
+
+        <hr>
+
+        <section>
+            <h2>17.1. Validación nativa de HTML5: <code>required</code>, <code>pattern</code>, <code>minlength</code>, <code>maxlength</code>.</h2>
+            <p>Estos atributos permiten definir reglas de validación directamente en los elementos <code>&lt;input&gt;</code> y <code>&lt;textarea&gt;</code>.</p>
+
+            <h3>17.1.1. Atributo <code>required</code></h3>
+            <p>Ya lo hemos visto, pero es fundamental en validación. Indica que un campo debe ser rellenado antes de que el formulario pueda ser enviado. Si está vacío, el navegador impedirá el envío y mostrará un mensaje de error.</p>
+            <p><strong>Ejemplo:</strong></p>
+            <pre><code>&lt;form action="#" method="POST"&gt;
+    &lt;label for="nombre_req"&gt;Nombre (obligatorio):&lt;/label&gt;
+    &lt;input type="text" id="nombre_req" name="nombre_req" required&gt;
+    &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+            <form action="#" method="POST">
+                <label for="nombre_req_ejemplo">Nombre (obligatorio):</label>
+                <input type="text" id="nombre_req_ejemplo" name="nombre_req_ejemplo" required>
+                <button type="submit">Enviar</button>
+            </form>
+
+            <h3>17.1.2. Atributo <code>pattern</code></h3>
+            <p>Permite especificar una expresión regular contra la cual el valor del campo debe coincidir para ser válido. Es increíblemente potente para validar formatos específicos (números de teléfono, códigos postales, etc.).</p>
+            <p><strong>Ejemplo:</strong> Un código postal de 5 dígitos.</p>
+            <pre><code>&lt;form action="#" method="POST"&gt;
+    &lt;label for="codigo_postal"&gt;Código Postal (5 dígitos numéricos):&lt;/label&gt;
+    &lt;input type="text" id="codigo_postal" name="codigo_postal" pattern="[0-9]{5}" title="Por favor, introduce un código postal de 5 dígitos."&gt;
+    &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+            <form action="#" method="POST">
+                <label for="codigo_postal_ejemplo">Código Postal (5 dígitos numéricos):</label>
+                <input type="text" id="codigo_postal_ejemplo" name="codigo_postal_ejemplo" pattern="[0-9]{5}" title="Por favor, introduce un código postal de 5 dígitos.">
+                <button type="submit">Enviar</button>
+            </form>
+            <div class="note">
+                <p><strong>Atributo <code>title</code> con <code>pattern</code>:</strong> Es una buena práctica usar el atributo <code>title</code> junto con <code>pattern</code>. El texto de <code>title</code> se mostrará al usuario como una pista cuando el patrón no coincida, mejorando la usabilidad.</p>
+            </div>
+
+            <h3>17.1.3. Atributos <code>minlength</code> y <code>maxlength</code></h3>
+            <p>Controlan la longitud mínima y máxima permitida para el texto de un campo.</p>
+            <ul>
+                <li><code>minlength</code>: Especifica el número mínimo de caracteres que el usuario debe introducir.</li>
+                <li><code>maxlength</code>: Especifica el número máximo de caracteres que el usuario puede introducir.</li>
+            </ul>
+            <p><strong>Ejemplo:</strong> Contraseña entre 8 y 16 caracteres.</p>
+            <pre><code>&lt;form action="#" method="POST"&gt;
+    &lt;label for="contrasena_len"&gt;Contraseña (8-16 caracteres):&lt;/label&gt;
+    &lt;input type="password" id="contrasena_len" name="contrasena_len" minlength="8" maxlength="16" required&gt;
+    &lt;button type="submit"&gt;Registrar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+            <form action="#" method="POST">
+                <label for="contrasena_len_ejemplo">Contraseña (8-16 caracteres):</label>
+                <input type="password" id="contrasena_len_ejemplo" name="contrasena_len_ejemplo" minlength="8" maxlength="16" required>
+                <button type="submit">Registrar</button>
+            </form>
+        </section>
+
+        <section>
+            <h2>17.2. Mensajes de error por defecto del navegador.</h2>
+            <p>Cuando un campo de formulario no cumple con una regla de validación HTML5 (ej., un campo <code>required</code> está vacío, o un <code>email</code> no tiene el formato correcto), el navegador mostrará un mensaje de error por defecto. Estos mensajes varían ligeramente entre navegadores y suelen aparecer como un tooltip cerca del campo.</p>
+            <p>Estos mensajes son útiles para proporcionar retroalimentación instantánea al usuario sin necesidad de escribir JavaScript. Sin embargo, su estilo y contenido no son directamente personalizables con CSS estándar.</p>
+            <p><strong>Cómo probarlos:</strong> Intenta enviar los formularios de los ejemplos anteriores sin rellenar los campos <code>required</code>, o introduciendo un formato incorrecto para <code>email</code> o <code>pattern</code>.</p>
+            <div class="note">
+                <p><strong>Personalización de mensajes de error:</strong> Si necesitas mensajes de error altamente personalizados (en cuanto a contenido o estilo), deberás recurrir a JavaScript para interceptar el evento de validación (<code>invalid</code>) y mostrar tus propios mensajes.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>17.3. Pseudo-clases de CSS para estilos de validación (ej. <code>:valid</code>, <code>:invalid</code>).</h2>
+            <p>HTML5 introduce pseudo-clases CSS que permiten aplicar estilos a los campos de formulario basándose en su estado de validación. Esto es extremadamente útil para dar retroalimentación visual al usuario.</p>
+            <ul>
+                <li><code>:valid</code>: Selecciona un elemento <code>&lt;input&gt;</code> o <code>&lt;textarea&gt;</code> cuyo valor se valida correctamente según sus reglas de HTML5.</li>
+                <li><code>:invalid</code>: Selecciona un elemento <code>&lt;input&gt;</code> o <code>&lt;textarea&gt;</code> cuyo valor no se valida correctamente.</li>
+                <li><code>:required</code>: Selecciona los campos que tienen el atributo <code>required</code>.</li>
+                <li><code>:optional</code>: Selecciona los campos que no tienen el atributo <code>required</code>.</li>
+            </ul>
+            <p><strong>Ejemplo de estilos CSS:</strong></p>
+            <pre><code class="css">/* Estilo para campos válidos */
+input:valid {
+    border-color: #28a745; /* Verde */
+    box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+}
+
+/* Estilo para campos inválidos */
+input:invalid {
+    border-color: #dc3545; /* Rojo */
+    box-shadow: 0 0 5px rgba(220, 53, 69, 0.5);
+}
+
+/* Para resaltar campos requeridos antes de que se interactúe con ellos */
+input:required {
+    background-color: #fffafa; /* Fondo ligeramente diferente */
+}
+
+/* Opcional: Estilo para un campo email inválido */
+input[type="email"]:invalid {
+    background-color: #ffebeb;
+}</code></pre>
+            <p><strong>Aplicación del ejemplo:</strong></p>
+            <form action="#" method="POST">
+                <label for="email_valid_invalid">Email:</label>
+                <input type="email" id="email_valid_invalid" name="email_valid_invalid" required placeholder="ejemplo@dominio.com">
+                
+                <label for="texto_min_max">Texto (min 3, max 10):</label>
+                <input type="text" id="texto_min_max" name="texto_min_max" minlength="3" maxlength="10" required>
+                
+                <label for="password_pattern">Contraseña (Al menos 6 caracteres, 1 mayúscula, 1 número):</label>
+                <input type="password" id="password_pattern" name="password_pattern" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" title="Debe contener al menos un número, una mayúscula, una minúscula y al menos 6 caracteres." required>
+                <button type="submit">Enviar</button>
+            </form>
+            <div class="note">
+                <p><strong>Importante:</strong> Los estilos <code>:valid</code> e <code>:invalid</code> solo se aplican si el campo tiene reglas de validación (ej., <code>required</code>, <code>type="email"</code>, <code>pattern</code>). Un simple <code>&lt;input type="text"&gt;</code> sin <code>required</code> siempre será <code>:valid</code> si está vacío.</p>
+            </div>
+        </section>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="Ejercicios16.html">Ejercicios sobre la lección anterior.</a></li>
+                <li><a href="Ejercicios17.html">Ejercicios sobre esta lección.</a></li>
+                <li><a href="18...html">Clase 18: (Próxima Lección)</a></li> <!-- Placeholder for next lesson -->
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
 </body>
 </html>

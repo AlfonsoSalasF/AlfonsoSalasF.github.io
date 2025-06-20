@@ -1,17 +1,148 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Botones y Campos de Texto Multilínea</title>
+    <title>Botones y Campos de Texto Multilínea - Curso HTML</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
 </head>
 <body>
-    <H1>Clase 15: Botones y Campos de Texto Multilínea.</H1>
-    <UL>
-        <li>textarea para entradas de texto multilínea (atributos rows y cols).</li>
-        <li>Botones: &lt;button type="submit"&gt;, &lt;button type="reset"&gt;, &lt;button type="button"&gt;.</li>
-        <li>El input type submit y reset.</li>
-    </UL>
-    <p><a href="/index.html">Vuelve a la página principal</a></p>
+    <div class="container">
+        <h1>
+            <p>CURSO DE INICIACIÓN A HTML</p>
+            <p>Clase 15: Botones y Campos de Texto Multilínea.</p>
+        </h1>
+
+        <p>En esta clase, nos centraremos en dos elementos de formulario esenciales: las áreas de texto multilínea para entradas extensas y los diferentes tipos de botones que permiten a los usuarios interactuar con los formularios, enviándolos, restableciéndolos o activando scripts.</p>
+
+        <hr>
+
+        <section>
+            <h2>15.1. <code>&lt;textarea&gt;</code> para entradas de texto multilínea.</h2>
+            <p>A diferencia de <code>&lt;input type="text"&gt;</code> que es para una sola línea, la etiqueta <code>&lt;textarea&gt;</code> se utiliza para crear un campo de entrada donde el usuario puede escribir varias líneas de texto. Es ideal para comentarios, mensajes largos, descripciones, etc.</p>
+            <p><strong>Atributos comunes:</strong></p>
+            <ul>
+                <li><code>name</code>: El nombre del control que se enviará al servidor.</li>
+                <li><code>id</code>: Identificador único para asociarlo con una <code>&lt;label&gt;</code>.</li>
+                <li><code>rows</code>: (Obligatorio para la validación HTML5, pero se puede omitir y usar CSS) Especifica el número visible de líneas de texto.</li>
+                <li><code>cols</code>: (Obligatorio para la validación HTML5, pero se puede omitir y usar CSS) Especifica el ancho visible en número de caracteres promedio.</li>
+                <li><code>placeholder</code>: Un texto de pista que se muestra cuando el área de texto está vacía.</li>
+                <li><code>readonly</code>, <code>disabled</code>, <code>required</code>: Funcionan de manera similar a los campos <code>&lt;input&gt;</code>.</li>
+            </ul>
+            <p><strong>Ejemplo:</strong></p>
+            <pre><code>&lt;form&gt;
+    &lt;label for="comentarios"&gt;Tus comentarios:&lt;/label&gt;
+    &lt;textarea id="comentarios" name="comentarios" rows="5" cols="40" placeholder="Escribe aquí tus sugerencias..."&gt;&lt;/textarea&gt;
+    &lt;br&gt;&lt;br&gt;
+    &lt;label for="descripcion_producto"&gt;Descripción del producto:&lt;/label&gt;
+    &lt;textarea id="descripcion_producto" name="descripcion_producto" rows="10" placeholder="Describe el producto en detalle..." required&gt;&lt;/textarea&gt;
+    &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+            <form>
+                <label for="comentarios_ejemplo">Tus comentarios:</label>
+                <textarea id="comentarios_ejemplo" name="comentarios_ejemplo" rows="5" cols="40" placeholder="Escribe aquí tus sugerencias..."></textarea>
+                <br><br>
+                <label for="descripcion_producto_ejemplo">Descripción del producto:</label>
+                <textarea id="descripcion_producto_ejemplo" name="descripcion_producto_ejemplo" rows="10" placeholder="Describe el producto en detalle..." required></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+            <div class="note">
+                <p><strong>Tamaño del <code>textarea</code>:</strong> Aunque <code>rows</code> y <code>cols</code> controlan el tamaño inicial, el tamaño final a menudo se maneja mejor con CSS (propiedades <code>width</code> y <code>height</code>), y se puede permitir que el usuario redimensione el campo con la propiedad CSS <code>resize</code>.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>15.2. Botones: <code>&lt;button type="submit"&gt;</code>, <code>&lt;button type="reset"&gt;</code>, <code>&lt;button type="button"&gt;</code>.</h2>
+            <p>La etiqueta <code>&lt;button&gt;</code> es la forma más moderna y flexible de crear botones en formularios HTML. Permite incluir contenido HTML (imágenes, etiquetas, etc.) dentro del botón, a diferencia de <code>&lt;input type="submit"&gt;</code>.</p>
+
+            <h3>15.2.1. <code>&lt;button type="submit"&gt;</code></h3>
+            <p>Es el tipo de botón por defecto si no se especifica. Envía los datos del formulario al servidor cuando se hace clic en él.</p>
+            <p><strong>Ejemplo:</strong></p>
+            <pre><code>&lt;form action="#" method="POST"&gt;
+    &lt;label for="nombre_btn_submit"&gt;Nombre:&lt;/label&gt;
+    &lt;input type="text" id="nombre_btn_submit" name="nombre_btn_submit"&gt;
+    &lt;button type="submit"&gt;Enviar Formulario&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+            <form action="#" method="POST">
+                <label for="nombre_btn_submit_ejemplo">Nombre:</label>
+                <input type="text" id="nombre_btn_submit_ejemplo" name="nombre_btn_submit_ejemplo">
+                <button type="submit">Enviar Formulario</button>
+            </form>
+
+            <h3>15.2.2. <code>&lt;button type="reset"&gt;</code></h3>
+            <p>Restablece todos los campos del formulario a sus valores iniciales (los definidos por los atributos <code>value</code> o <code>checked</code>).</p>
+            <p><strong>Ejemplo:</strong></p>
+            <pre><code>&lt;form&gt;
+    &lt;label for="campo_reset"&gt;Escribe algo:&lt;/label&gt;
+    &lt;input type="text" id="campo_reset" name="campo_reset" value="Valor inicial"&gt;
+    &lt;button type="reset"&gt;Restablecer Formulario&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+            <form>
+                <label for="campo_reset_ejemplo">Escribe algo:</label>
+                <input type="text" id="campo_reset_ejemplo" name="campo_reset_ejemplo" value="Valor inicial">
+                <button type="reset">Restablecer Formulario</button>
+            </form>
+
+            <h3>15.2.3. <code>&lt;button type="button"&gt;</code></h3>
+            <p>No tiene comportamiento predeterminado asociado a los formularios. Se utiliza típicamente con JavaScript para activar funciones personalizadas, como mostrar/ocultar elementos, enviar datos con AJAX, etc.</p>
+            <p><strong>Ejemplo:</strong></p>
+            <pre><code>&lt;button type="button" onclick="alert('Botón clicado!')"&gt;Haz Clic&lt;/button&gt;</code></pre>
+            <button type="button" onclick="alert('Botón clicado!')">Haz Clic</button>
+            <div class="note">
+                <p><strong>Uso de <code>alert()</code>:</strong> En un entorno real, se preferiría usar un modal o un mensaje dentro de la página en lugar de <code>alert()</code> para una mejor experiencia de usuario.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>15.3. El <code>&lt;input type="submit"&gt;</code> y <code>&lt;input type="reset"&gt;</code>.</h2>
+            <p>Estos son los equivalentes de los tipos de botón <code>submit</code> y <code>reset</code>, pero implementados como elementos <code>&lt;input&gt;</code>. La principal diferencia es que no pueden contener contenido HTML complejo, y su texto se define con el atributo <code>value</code>.</p>
+
+            <h3>15.3.1. <code>&lt;input type="submit"&gt;</code></h3>
+            <p>Crea un botón que envía el formulario. El texto del botón se define en su atributo <code>value</code>.</p>
+            <p><strong>Ejemplo:</strong></p>
+            <pre><code>&lt;form action="#" method="POST"&gt;
+    &lt;label for="usuario_input_submit"&gt;Usuario:&lt;/label&gt;
+    &lt;input type="text" id="usuario_input_submit" name="usuario_input_submit"&gt;
+    &lt;input type="submit" value="Enviar Datos"&gt;
+&lt;/form&gt;</code></pre>
+            <form action="#" method="POST">
+                <label for="usuario_input_submit_ejemplo">Usuario:</label>
+                <input type="text" id="usuario_input_submit_ejemplo" name="usuario_input_submit_ejemplo">
+                <input type="submit" value="Enviar Datos">
+            </form>
+
+            <h3>15.3.2. <code>&lt;input type="reset"&gt;</code></h3>
+            <p>Crea un botón que restablece el formulario. El texto del botón se define en su atributo <code>value</code>.</p>
+            <p><strong>Ejemplo:</strong></p>
+            <pre><code>&lt;form&gt;
+    &lt;label for="email_input_reset"&gt;Email:&lt;/label&gt;
+    &lt;input type="email" id="email_input_reset" name="email_input_reset" value="ejemplo@dominio.com"&gt;
+    &lt;input type="reset" value="Limpiar Campos"&gt;
+&lt;/form&gt;</code></pre>
+            <form>
+                <label for="email_input_reset_ejemplo">Email:</label>
+                <input type="email" id="email_input_reset_ejemplo" name="email_input_reset_ejemplo" value="ejemplo@dominio.com">
+                <input type="reset" value="Limpiar Campos">
+            </form>
+            <div class="note">
+                <p><strong><code>&lt;button&gt;</code> vs. <code>&lt;input&gt;</code>:</strong> Generalmente se prefiere <code>&lt;button&gt;</code> sobre <code>&lt;input type="submit"&gt;</code>/<code>&lt;input type="reset"&gt;</code> por su mayor flexibilidad en el contenido y el estilo, aunque ambos siguen siendo válidos.</p>
+            </div>
+        </section>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="Ejercicios14.html">Ejercicios sobre la lección anterior.</a></li>
+                <li><a href="Ejercicios15.html">Ejercicios sobre esta lección.</a></li>
+                <li><a href="16EstructuraDeFormulariosFieldsetLegend.html">Clase 16: Estructura de Formularios: &lt;fieldset&gt; y &lt;legend&gt; (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
 </body>
 </html>

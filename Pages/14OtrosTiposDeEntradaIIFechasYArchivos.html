@@ -1,17 +1,171 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Otros Tipos de Entrada II: Fechas y Archivos</title>
+    <title>Otros Tipos de Entrada II: Fechas y Archivos - Curso HTML</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
 </head>
 <body>
-    <H1>Clase 14: Otros Tipos de Entrada II: Fechas y Archivos</H1>
-    <UL>
-        <li>date, time, datetime-local, month, week.</li>
-        <li>file para subir archivos.</li>
-        <li>Atributos min, max, step para entradas numéricas y de fecha/hora.</li>
-    </UL>
-    <p><a href="/index.html">Vuelve a la página principal</a></p>
+    <div class="container">
+        <h1>
+            <p>CURSO DE INICIACIÓN A HTML</p>
+            <p>Clase 14: Otros Tipos de Entrada II: Fechas y Archivos.</p>
+        </h1>
+
+        <p>Continuando con los elementos de entrada de formularios, en esta clase exploraremos tipos de <code>&lt;input&gt;</code> que permiten a los usuarios seleccionar fechas, horas y cargar archivos. Estos tipos ofrecen interfaces de usuario especializadas y mejoran la experiencia, además de proporcionar validación básica directamente desde el navegador.</p>
+
+        <hr>
+
+        <section>
+            <h2>14.1. Tipos de entrada de fecha y hora: <code>date</code>, <code>time</code>, <code>datetime-local</code>, <code>month</code>, <code>week</code>.</h2>
+            <p>HTML5 introdujo varios tipos de <code>&lt;input&gt;</code> específicos para la selección de fechas y horas, que a menudo proporcionan interfaces de calendario o reloj nativas del navegador, lo que facilita enormemente la entrada de datos para el usuario.</p>
+
+            <h3>14.1.1. <code>&lt;input type="date"&gt;</code></h3>
+            <p>Permite al usuario seleccionar una fecha (año, mes, día). El navegador generalmente muestra un selector de calendario.</p>
+            <p><strong>Uso común:</strong> Fechas de nacimiento, fechas de eventos, fechas de inicio/fin.</p>
+            <p><strong>Ejemplo:</strong></p>
+            <pre><code>&lt;form&gt;
+    &lt;label for="fecha_evento"&gt;Fecha del evento:&lt;/label&gt;
+    &lt;input type="date" id="fecha_evento" name="fecha_evento"&gt;
+&lt;/form&gt;</code></pre>
+            <form>
+                <label for="fecha_evento_ejemplo">Fecha del evento:</label>
+                <input type="date" id="fecha_evento_ejemplo" name="fecha_evento_ejemplo">
+            </form>
+
+            <h3>14.1.2. <code>&lt;input type="time"&gt;</code></h3>
+            <p>Permite al usuario seleccionar una hora (horas y minutos, opcionalmente segundos y fracciones de segundo).</p>
+            <p><strong>Uso común:</strong> Horas de citas, horarios de apertura/cierre.</p>
+            <p><strong>Ejemplo:</strong></p>
+            <pre><code>&lt;form&gt;
+    &lt;label for="hora_cita"&gt;Hora de la cita:&lt;/label&gt;
+    &lt;input type="time" id="hora_cita" name="hora_cita"&gt;
+&lt;/form&gt;</code></pre>
+            <form>
+                <label for="hora_cita_ejemplo">Hora de la cita:</label>
+                <input type="time" id="hora_cita_ejemplo" name="hora_cita_ejemplo">
+            </form>
+
+            <h3>14.1.3. <code>&lt;input type="datetime-local"&gt;</code></h3>
+            <p>Combina la selección de fecha y hora en un solo campo, sin incluir información de zona horaria.</p>
+            <p><strong>Uso común:</strong> Fechas y horas de reuniones locales, horarios de reservas.</p>
+            <p><strong>Ejemplo:</strong></p>
+            <pre><code>&lt;form&gt;
+    &lt;label for="cita_completa"&gt;Fecha y hora de la reunión:&lt;/label&gt;
+    &lt;input type="datetime-local" id="cita_completa" name="cita_completa"&gt;
+&lt;/form&gt;</code></pre>
+            <form>
+                <label for="cita_completa_ejemplo">Fecha y hora de la reunión:</label>
+                <input type="datetime-local" id="cita_completa_ejemplo" name="cita_completa_ejemplo">
+            </form>
+
+            <h3>14.1.4. <code>&lt;input type="month"&gt;</code></h3>
+            <p>Permite al usuario seleccionar un mes y un año.</p>
+            <p><strong>Uso común:</strong> Fechas de caducidad de tarjetas de crédito (solo mes/año), períodos fiscales.</p>
+            <p><strong>Ejemplo:</strong></p>
+            <pre><code>&lt;form&gt;
+    &lt;label for="fecha_caducidad"&gt;Mes y año de caducidad (MM/AAAA):&lt;/label&gt;
+    &lt;input type="month" id="fecha_caducidad" name="fecha_caducidad"&gt;
+&lt;/form&gt;</code></pre>
+            <form>
+                <label for="fecha_caducidad_ejemplo">Mes y año de caducidad (MM/AAAA):</label>
+                <input type="month" id="fecha_caducidad_ejemplo" name="fecha_caducidad_ejemplo">
+            </form>
+
+            <h3>14.1.5. <code>&lt;input type="week"&gt;</code></h3>
+            <p>Permite al usuario seleccionar una semana y un año.</p>
+            <p><strong>Uso común:</strong> Planificación de proyectos por semanas, informes semanales.</p>
+            <p><strong>Ejemplo:</strong></p>
+            <pre><code>&lt;form&gt;
+    &lt;label for="semana_proyecto"&gt;Semana del proyecto:&lt;/label&gt;
+    &lt;input type="week" id="semana_proyecto" name="semana_proyecto"&gt;
+&lt;/form&gt;</code></pre>
+            <form>
+                <label for="semana_proyecto_ejemplo">Semana del proyecto:</label>
+                <input type="week" id="semana_proyecto_ejemplo" name="semana_proyecto_ejemplo">
+            </form>
+        </section>
+
+        <section>
+            <h2>14.2. Entrada de archivos: <code>&lt;input type="file"&gt;</code> para subir archivos.</h2>
+            <p>El tipo <code>file</code> permite a los usuarios seleccionar uno o varios archivos de su dispositivo para subirlos al servidor. Es crucial para funcionalidades como la subida de imágenes de perfil, documentos, etc.</p>
+            <p><strong>Importante:</strong> Para que la subida de archivos funcione correctamente, el formulario debe tener el atributo <code>enctype="multipart/form-data"</code> en la etiqueta <code>&lt;form&gt;</code>, y el método debe ser <code>POST</code>.</p>
+            <p><strong>Atributos comunes:</strong></p>
+            <ul>
+                <li><code>accept</code>: Especifica los tipos de archivo que el servidor aceptará, o que el dispositivo de entrada debería aceptar (ej., <code>image/*</code> para cualquier imagen, <code>.pdf</code> para PDFs).</li>
+                <li><code>multiple</code>: Si está presente, permite al usuario seleccionar varios archivos a la vez.</li>
+            </ul>
+            <p><strong>Ejemplo:</strong></p>
+            <pre><code>&lt;form action="/upload_file.php" method="POST" enctype="multipart/form-data"&gt;
+    &lt;label for="subir_imagen"&gt;Sube tu imagen de perfil (JPG/PNG):&lt;/label&gt;
+    &lt;input type="file" id="subir_imagen" name="imagen_perfil" accept="image/jpeg, image/png"&gt;
+    &lt;br&gt;&lt;br&gt;
+    &lt;label for="subir_documentos"&gt;Sube documentos (múltiples PDF/DOCX):&lt;/label&gt;
+    &lt;input type="file" id="subir_documentos" name="documentos[]" accept=".pdf,.docx" multiple&gt;
+    &lt;br&gt;&lt;br&gt;
+    &lt;button type="submit"&gt;Subir&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+            <form action="#" method="POST" enctype="multipart/form-data">
+                <label for="subir_imagen_ejemplo">Sube tu imagen de perfil (JPG/PNG):</label>
+                <input type="file" id="subir_imagen_ejemplo" name="imagen_perfil_ejemplo" accept="image/jpeg, image/png">
+                <br><br>
+                <label for="subir_documentos_ejemplo">Sube documentos (múltiples PDF/DOCX):</label>
+                <input type="file" id="subir_documentos_ejemplo" name="documentos_ejemplo[]" accept=".pdf,.docx" multiple>
+                <br><br>
+                <button type="submit">Subir</button>
+            </form>
+            <div class="note">
+                <p><strong>Nombre del campo para múltiples archivos:</strong> Cuando se usa <code>multiple</code>, es común añadir <code>[]</code> al final del atributo <code>name</code> (ej., <code>name="documentos[]"</code>) para que el servidor pueda interpretar los archivos como un array.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>14.3. Atributos <code>min</code>, <code>max</code>, <code>step</code> para entradas numéricas y de fecha/hora.</h2>
+            <p>Estos atributos, vistos previamente con <code>type="number"</code>, también son aplicables a los tipos de entrada de fecha y hora para definir rangos y granularidad.</p>
+            <ul>
+                <li><code>min</code>: Establece el valor mínimo permitido.</li>
+                <li><code>max</code>: Establece el valor máximo permitido.</li>
+                <li><code>step</code>: Define los incrementos válidos para el valor (ej., cada 5 minutos, cada 7 días).</li>
+            </ul>
+            <p><strong>Ejemplo con <code>date</code>:</strong></p>
+            <pre><code>&lt;form&gt;
+    &lt;label for="fecha_reservacion"&gt;Fecha de reservación (solo en 2025):&lt;/label&gt;
+    &lt;input type="date" id="fecha_reservacion" name="fecha_reservacion" min="2025-01-01" max="2025-12-31"&gt;
+&lt;/form&gt;</code></pre>
+            <form>
+                <label for="fecha_reservacion_ejemplo">Fecha de reservación (solo en 2025):</label>
+                <input type="date" id="fecha_reservacion_ejemplo" name="fecha_reservacion_ejemplo" min="2025-01-01" max="2025-12-31">
+            </form>
+
+            <p><strong>Ejemplo con <code>time</code> (pasos de 15 minutos):</strong></p>
+            <pre><code>&lt;form&gt;
+    &lt;label for="hora_reunion"&gt;Hora de la reunión (incrementos de 15 min):&lt;/label&gt;
+    &lt;input type="time" id="hora_reunion" name="hora_reunion" step="900"&gt; &lt;!-- 900 segundos = 15 minutos --&gt;
+&lt;/form&gt;</code></pre>
+            <form>
+                <label for="hora_reunion_ejemplo">Hora de la reunión (incrementos de 15 min):</label>
+                <input type="time" id="hora_reunion_ejemplo" name="hora_reunion_ejemplo" step="900">
+            </form>
+            <div class="note">
+                <p><strong>Valores de <code>step</code> para tiempo:</strong> Para los tipos de tiempo, <code>step</code> se mide en segundos. Por ejemplo, <code>60</code> para minutos, <code>900</code> para 15 minutos.</p>
+            </div>
+        </section>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="Ejercicios13.html">Ejercicios sobre la lección anterior.</a></li>
+                <li><a href="Ejercicios14.html">Ejercicios sobre esta lección.</a></li>
+                <li><a href="15BotonesYCamposDeTextoMultilinea.html">Clase 15: Botones y Campos de Texto Multilínea (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
 </body>
 </html>
