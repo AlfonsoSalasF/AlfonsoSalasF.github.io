@@ -70,3 +70,35 @@ form button[type="submit"] {
 form button[type="submit"]:hover {
     background-color: #2980b9;
 }
+
+/*Contenido añadido en revisión 21/06/2025 al meter Ejercicios17
+/* Estilos para la validación de formularios */
+input:invalid {
+    border-color: #dc3545; /* Rojo para campos inválidos */
+    box-shadow: 0 0 5px rgba(220, 53, 69, 0.5);
+}
+input:valid {
+    border-color: #28a745; /* Verde para campos válidos */
+}
+/* Opcional: Estilo para mostrar el mensaje de error por defecto */
+/* NOTA: Este estilo solo oculta/muestra el span, necesitarías añadir el span en tu HTML al lado del input */
+input:invalid + span.error-message {
+    display: block;
+    color: #dc3545;
+    font-size: 0.8em;
+    margin-top: -8px; /* Ajusta para que quede cerca del input */
+    margin-bottom: 10px;
+}
+span.error-message {
+    display: none; /* Oculto por defecto */
+}
+
+/* Puedes añadir más reglas de estilo aquí si las necesitas para otros tipos de input validados */
+/* Por ejemplo, para textarea: */
+textarea:invalid {
+    border-color: #dc3545;
+    box-shadow: 0 0 5px rgba(220, 53, 69, 0.5);
+}
+textarea:valid {
+    border-color: #28a745;
+}

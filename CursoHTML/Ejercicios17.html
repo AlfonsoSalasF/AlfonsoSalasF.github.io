@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 17: Ejercicios de Validación de Formularios con HTML5</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/ejercicios_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Clase 17: Ejercicios de Validación de Formularios con HTML5</h1>
+
+        <div class="exercise-section">
+            <h3>Ejercicios Prácticos de la Clase 17</h3>
+            <p>Para consolidar tus conocimientos sobre la validación de formularios con HTML5, te propongo los siguientes ejercicios. Intenta resolverlos por ti mismo antes de ver la solución.</p>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 1: Campo de Nombre Obligatorio</h4>
+                <p>Crea un campo de texto para el "Nombre de Usuario" y hazlo obligatorio para el envío del formulario.</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution1')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution1">
+                    <pre><code>&lt;form action="#" method="POST"&gt;
+    &lt;label for="username_required"&gt;Nombre de Usuario:&lt;/label&gt;
+    &lt;input type="text" id="username_required" name="username" required&gt;
+    &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 2: Campo de Correo Electrónico con Validación de Formato</h4>
+                <p>Crea un campo para el "Correo Electrónico" que requiera un formato de email válido y que sea obligatorio.</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution2')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution2">
+                    <pre><code>&lt;form action="#" method="POST"&gt;
+    &lt;label for="email_validated"&gt;Correo Electrónico:&lt;/label&gt;
+    &lt;input type="email" id="email_validated" name="email" required&gt;
+    &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 3: Contraseña con Longitud Mínima y Máxima</h4>
+                <p>Implementa un campo de "Contraseña" que debe tener al menos 8 caracteres y un máximo de 16. Hazlo también obligatorio.</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution3')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution3">
+                    <pre><code>&lt;form action="#" method="POST"&gt;
+    &lt;label for="password_length"&gt;Contraseña (8-16 caracteres):&lt;/label&gt;
+    &lt;input type="password" id="password_length" name="password" minlength="8" maxlength="16" required&gt;
+    &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 4: Número de Teléfono con Patrón Específico</h4>
+                <p>Crea un campo para el "Número de Teléfono" que solo acepte 9 dígitos numéricos (sin guiones ni espacios). Utiliza el atributo `pattern`.</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution4')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution4">
+                    <pre><code>&lt;form action="#" method="POST"&gt;
+    &lt;label for="phone_pattern"&gt;Número de Teléfono (9 dígitos numéricos):&lt;/label&gt;
+    &lt;input type="tel" id="phone_pattern" name="phone" pattern="[0-9]{9}" title="Debe contener exactamente 9 dígitos numéricos (ej. 123456789)" required&gt;
+    &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 5: Rango de Edad con Valores Mínimo y Máximo</h4>
+                <p>Crea un campo numérico para la "Edad" que solo acepte valores entre 18 y 99 (ambos inclusive). Hazlo obligatorio.</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution5')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution5">
+                    <pre><code>&lt;form action="#" method="POST"&gt;
+    &lt;label for="age_range"&gt;Edad (18-99):&lt;/label&gt;
+    &lt;input type="number" id="age_range" name="age" min="18" max="99" required&gt;
+    &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="quiz-section">
+            <h3>Quiz de la Clase 17: Validación de Formularios con HTML5</h3>
+            <p>¡Pon a prueba tus conocimientos con este quiz de 10 preguntas!</p>
+            <form id="quizForm">
+                <div class="quiz-question">
+                    <h4>1. ¿Qué atributo de HTML5 se utiliza para hacer que un campo de formulario sea obligatorio?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="a"> <code>mandatory</code></label>
+                        <label><input type="radio" name="q1" value="b"> <code>required</code></label>
+                        <label><input type="radio" name="q1" value="c"> <code>must-fill</code></label>
+                        <label><input type="radio" name="q1" value="d"> <code>not-empty</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>2. Para validar el formato de un correo electrónico, ¿qué <code>type</code> de input se debe usar?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="a"> <code>type="text"</code></label>
+                        <label><input type="radio" name="q2" value="b"> <code>type="email"</code></label>
+                        <label><input type="radio" name="q2" value="c"> <code>type="url"</code></label>
+                        <label><input type="radio" name="q2" value="d"> <code>type="mail"</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>3. ¿Qué atributo se utiliza para especificar una expresión regular que el valor de un campo debe coincidir?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="a"> <code>regex</code></label>
+                        <label><input type="radio" name="q3" value="b"> <code>format</code></label>
+                        <label><input type="radio" name="q3" value="c"> <code>pattern</code></label>
+                        <label><input type="radio" name="q3" value="d"> <code>validate</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>4. Para definir la longitud mínima de caracteres permitida en un campo de texto, ¿qué atributo se usa?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="a"> <code>min-length</code></label>
+                        <label><input type="radio" name="q4" value="b"> <code>length-min</code></label>
+                        <label><input type="radio" name="q4" value="c"> <code>minlength</code></label>
+                        <label><input type="radio" name="q4" value="d"> <code>minimum-characters</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>5. ¿Qué atributo proporciona una pista sobre el formato esperado al usuario cuando la validación falla para un campo con <code>pattern</code>?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="a"> <code>placeholder</code></label>
+                        <label><input type="radio" name="q5" value="b"> <code>hint</code></label>
+                        <label><input type="radio" name="q5" value="c"> <code>data-info</code></label>
+                        <label><input type="radio" name="q5" value="d"> <code>title</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>6. Si un campo numérico debe aceptar valores entre 1 y 100, ¿qué atributos se usarían?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q6" value="a"> <code>range="1-100"</code></label>
+                        <label><input type="radio" name="q6" value="b"> <code>min="1" max="100"</code></label>
+                        <label><input type="radio" name="q6" value="c"> <code>value-min="1" value-max="100"</code></label>
+                        <label><input type="radio" name="q6" value="d"> <code>limits="1,100"</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>7. ¿Cuál es el pseudo-clase CSS que se aplica a un campo de formulario cuando su valor es válido según sus reglas de validación?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q7" value="a"> <code>:ok</code></label>
+                        <label><input type="radio" name="q7" value="b"> <code>:valid</code></label>
+                        <label><input type="radio" name="q7" value="c"> <code>:checked</code></label>
+                        <label><input type="radio" name="q7" value="d"> <code>:correct</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>8. ¿Qué pseudo-clase CSS se aplica a un campo de formulario cuando su valor es inválido según sus reglas de validación?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q8" value="a"> <code>:error</code></label>
+                        <label><input type="radio" name="q8" value="b"> <code>:invalid</code></label>
+                        <label><input type="radio" name="q8" value="c"> <code>:wrong</code></label>
+                        <label><input type="radio" name="q8" value="d"> <code>:failed</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>9. ¿Qué sucede si un campo marcado con <code>required</code> se envía vacío?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q9" value="a"> El navegador ignora el campo y lo envía vacío.</label>
+                        <label><input type="radio" name="q9" value="b"> Se muestra un mensaje de error nativo del navegador y el formulario no se envía.</label>
+                        <label><input type="radio" name="q9" value="c"> El servidor devuelve un error 404.</label>
+                        <label><input type="radio" name="q9" value="d"> El campo se llena automáticamente con un valor por defecto.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>10. ¿Las validaciones de HTML5 reemplazan completamente la necesidad de validación en el lado del servidor?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q10" value="a"> Sí, son suficientes para cualquier aplicación web.</label>
+                        <label><input type="radio" name="q10" value="b"> No, la validación del lado del servidor sigue siendo crucial por seguridad y fiabilidad.</label>
+                        <label><input type="radio" name="q10" value="c"> Solo si el usuario utiliza un navegador moderno.</label>
+                        <label><input type="radio" name="q10" value="d"> Sí, si se usan en combinación con JavaScript avanzado.</label>
+                    </div>
+                </div>
+
+                <button type="button" class="submit-quiz-button" id="checkAnswersBtn">Ver Resultados</button>
+            </form>
+
+            <div id="quizResults" class="quiz-results">
+                <p>Resultados del Test:</p>
+                <ol id="resultsList"></ol>
+                <p id="scoreSummary"></p>
+                <button type="button" class="reveal-button" id="resetQuizBtn" style="display: none;">Volver a Intentar</button>
+            </div>
+        </div>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="Ejercicios16.html">Ejercicios sobre la lección anterior.</a></li>
+                <li><a href="17ValidacionDeFormulariosConHtml5.html">Volver a la Clase 17: Validación de Formularios con HTML5.</a></li>
+                <li><a href="18...html">Clase 18: (Próxima Lección)</a></li> <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script>
+        // Función para mostrar/ocultar soluciones de ejercicios
+        function toggleSolution(button, solutionId) {
+            const solution = document.getElementById(solutionId);
+            if (solution.style.display === 'block') {
+                solution.style.display = 'none';
+                button.textContent = 'Mostrar Solución';
+            } else {
+                solution.style.display = 'block';
+                button.textContent = 'Ocultar Solución';
+            }
+        }
+
+        // Datos del quiz
+        const quizAnswers = {
+            q1: 'b', // required
+            q2: 'b', // type="email"
+            q3: 'c', // pattern
+            q4: 'c', // minlength
+            q5: 'd', // title
+            q6: 'b', // min="1" max="100"
+            q7: 'b', // :valid
+            q8: 'b', // :invalid
+            q9: 'b', // Se muestra un mensaje de error nativo del navegador y el formulario no se envía.
+            q10: 'b' // No, la validación del lado del servidor sigue siendo crucial por seguridad y fiabilidad.
+        };
+
+        // Asignar eventos a los botones una vez que el DOM esté completamente cargado
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            if (checkAnswersBtn) {
+                checkAnswersBtn.addEventListener('click', checkQuiz);
+            }
+            if (resetQuizBtn) {
+                resetQuizBtn.addEventListener('click', resetQuiz);
+            }
+        });
+
+        function checkQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const resultsList = document.getElementById('resultsList');
+            const scoreSummary = document.getElementById('scoreSummary');
+            const quizResultsDiv = document.getElementById('quizResults');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            resultsList.innerHTML = ''; // Limpiar resultados anteriores
+            let score = 0;
+
+            for (let i = 1; i <= 10; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = quizForm.elements[questionName] ? quizForm.elements[questionName].value : '';
+                const correctAnswer = quizAnswers[questionName];
+
+                const listItem = document.createElement('li');
+                listItem.classList.add(selectedOption === correctAnswer ? 'correct' : 'incorrect');
+
+                // Obtener el texto de la opción seleccionada (preservando <code>)
+                let selectedAnswerText = 'No respondida';
+                if (selectedOption) {
+                    const selectedLabel = quizForm.querySelector(`input[name="${questionName}"][value="${selectedOption}"]`);
+                    if (selectedLabel) {
+                        const labelClone = selectedLabel.closest('label').cloneNode(true);
+                        labelClone.querySelector('input').remove();
+                        selectedAnswerText = labelClone.innerHTML.trim();
+                    }
+                }
+
+                // Obtener el texto de la opción correcta (preservando <code>)
+                const correctLabel = quizForm.querySelector(`input[name="${questionName}"][value="${correctAnswer}"]`);
+                let correctAnswerText = 'N/A';
+                if (correctLabel) {
+                    const correctLabelClone = correctLabel.closest('label').cloneNode(true);
+                    correctLabelClone.querySelector('input').remove();
+                    correctAnswerText = correctLabelClone.innerHTML.trim();
+                }
+
+                const questionText = document.createTextNode(`Pregunta ${i}: `);
+                listItem.appendChild(questionText);
+
+                if (selectedOption !== correctAnswer) {
+                    listItem.innerHTML += ` Tu respuesta: "${selectedAnswerText}".<br>`;
+                    const correctInfoSpan = document.createElement('span');
+                    correctInfoSpan.classList.add('correct-answer-info');
+                    correctInfoSpan.innerHTML = `Respuesta correcta: "${correctAnswerText}".`;
+                    listItem.appendChild(correctInfoSpan);
+                } else {
+                    listItem.innerHTML += ` Correcta.`;
+                    score++;
+                }
+
+                resultsList.appendChild(listItem);
+            }
+
+            scoreSummary.textContent = `Tu puntuación es: ${score} de 10 preguntas correctas.`;
+            quizResultsDiv.style.display = 'block'; // Mostrar la sección de resultados
+            quizResultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Desplazarse a los resultados
+
+            // Ocultar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'none';
+            // Mostrar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'inline-block';
+        }
+
+        function resetQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            quizForm.reset(); // Reinicia todos los radio buttons
+            document.getElementById('quizResults').style.display = 'none'; // Oculta los resultados
+            document.getElementById('resultsList').innerHTML = ''; // Limpia la lista de resultados
+            document.getElementById('scoreSummary').textContent = ''; // Limpia el resumen de puntuación
+
+            // Mostrar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'inline-block';
+            // Ocultar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

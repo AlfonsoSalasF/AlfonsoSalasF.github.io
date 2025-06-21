@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,50 +8,24 @@
 </head>
 <body>
 
-    <form action="#" method="get">
-    <div class="intereses">
-        <p>Selecciona que tipo de intereses tienes:</p>
-        <input type="checkbox" name="interes" id="Deportes" value="Deportes">
-        <label for="Deportes">Deportes</label><br>
-        <input type="checkbox" name="interes" id="Lectura" value="Lectura">
-        <label for="Lectura">Lectura</label><br>
-        <input type="checkbox" name="interes" id="Musica" value="Música">
-        <label for="Musica">Música</label><br>
-    </div>
-
-    <div class="intereses">
-        <p>Selecciona tu género:</p>
-        <input type="radio" name="género" id="masculino" value="masculino">
-        <label for="masculino">Masculino</label>
-        <input type="radio" name="género" id="femenino" value="femenino">
-        <label for="femenino">Femenino</label>
-        <input type="radio" name="género" id="noespecifica" value="noespecifica">
-        <label for="noespecifica">No especifica</label>
-    </div>
-    <div class="intereses">
-        <select name="pais" id="pais">
-            <optgroup label="Europa"></optgroup>
-            <option value="Portugal">Portugal</option>
-            <option value="España" selected>España</option>
-           <optgroup label="América"></optgroup>
-            <option value="Argentina">Argentina</option>
-            <option value="El Salvador">El Salvador</option>
-        </select>
-    </div>
-    <div class="intereses">
-        <p>Elige qué códigos de programación conoces:</p>
-        <select name="codigo" id="codigo" size="4" multiple>
-            <option value="HTML">HTML</option>
-            <option value="CSS">CSS</option>
-            <option value="JavaScript">JavaScript</option>
-            <option value="Python">Python</option>
-        </select>
-    </div>
-    <div class="intereses">
-        <button type="submit">Incorporar datos:</button>
-    </div>
-    </form>
-
+   <form action="/dias.php" method="get">
+        <label for="fecha"><strong>date: </strong>Introzca una fecha</label>
+        <input type="date" id="fecha" name="FechaEscogida">
+        <br>
+        <label for="hora"><strong>time: </strong>Introduzca una hora</label>
+        <input type="time" id="hora" name="HoraEscogida">
+        <br>
+        <label for="fechahora"><strong>datetime-local: </strong>Fecha y hora local</label>
+        <input type="datetime-local" id="fechahora" name="FechaHoraEscogida">
+        <br>
+        <label for="mes"><strong>month: </strong>Escoja un mes y un año</label>
+        <input type="month" id="mes" name="MesEscogido">
+        <br>
+        <label for="semana"><strong>week: </strong>Escoja una semana del año</label>
+        <input type="week" id="semana" name="SemanaEscogida">
+        <br>
+        <button type="submit">Subir</button>
+   </form>
 
 </body>
 </html>

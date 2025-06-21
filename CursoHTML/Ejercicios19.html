@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 19: Ejercicios de Elementos Interactivos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/ejercicios_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Clase 19: Ejercicios de Elementos Interactivos</h1>
+
+        <div class="exercise-section">
+            <h3>Ejercicios Prácticos de la Clase 19</h3>
+            <p>Para consolidar tus conocimientos sobre los elementos `&lt;details&gt;` y `&lt;summary&gt;`, te propongo los siguientes ejercicios. Intenta resolverlos por ti mismo antes de ver la solución.</p>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 1: Pregunta Frecuente Simple</h4>
+                <p>Crea una sección de "Preguntas Frecuentes" con una pregunta y su respuesta. La pregunta debe ser visible inicialmente y la respuesta oculta, expandiéndose al hacer clic.</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution1')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution1">
+                    <pre><code>&lt;details&gt;
+    &lt;summary&gt;¿Cómo puedo restablecer mi contraseña?&lt;/summary&gt;
+    &lt;p&gt;Puedes restablecer tu contraseña haciendo clic en el enlace "Olvidé mi contraseña" en la página de inicio de sesión.&lt;/p&gt;
+&lt;/details&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 2: Detalles de un Producto</h4>
+                <p>Crea una sección para los "Detalles del Producto" que inicialmente muestre el título "Especificaciones Técnicas". Al expandirla, debe mostrar una lista desordenada de especificaciones (ej., "Memoria RAM: 16GB", "Almacenamiento: 512GB SSD").</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution2')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution2">
+                    <pre><code>&lt;details&gt;
+    &lt;summary&gt;Especificaciones Técnicas&lt;/summary&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Memoria RAM: 16GB&lt;/li&gt;
+        &lt;li&gt;Almacenamiento: 512GB SSD&lt;/li&gt;
+        &lt;li&gt;Procesador: Intel Core i7&lt;/li&gt;
+        &lt;li&gt;Pantalla: 15 pulgadas Full HD&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/details&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 3: Sección Colapsable Abierta por Defecto</h4>
+                <p>Crea una sección "Configuración Avanzada" que, a diferencia de los ejemplos anteriores, debe estar expandida (abierta) por defecto. Dentro, coloca un par de casillas de verificación (checkboxes).</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution3')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution3">
+                    <pre><code>&lt;details open&gt;
+    &lt;summary&gt;Configuración Avanzada&lt;/summary&gt;
+    &lt;label&gt;
+        &lt;input type="checkbox" name="notificaciones" value="email" checked&gt; Recibir notificaciones por correo
+    &lt;/label&gt;&lt;br&gt;
+    &lt;label&gt;
+        &lt;input type="checkbox" name="notificaciones" value="sms"&gt; Recibir notificaciones por SMS
+    &lt;/label&gt;
+&lt;/details&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 4: Múltiples Secciones Colapsables (Acordeón Simple)</h4>
+                <p>Crea una serie de tres elementos `&lt;details&gt;` que simulen un acordeón de preguntas frecuentes. Cada uno debe tener una pregunta y una respuesta corta. Asegúrate de que, al abrir uno, los demás permanezcan abiertos o cerrados independientemente.</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution4')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution4">
+                    <pre><code>&lt;h4&gt;Preguntas Frecuentes:&lt;/h4&gt;
+&lt;details&gt;
+    &lt;summary&gt;¿Cuál es la política de devoluciones?&lt;/summary&gt;
+    &lt;p&gt;Aceptamos devoluciones dentro de los 30 días posteriores a la compra con el recibo original.&lt;/p&gt;
+&lt;/details&gt;
+
+&lt;details&gt;
+    &lt;summary&gt;¿Ofrecen envío internacional?&lt;/summary&gt;
+    &lt;p&gt;Sí, ofrecemos envío a la mayoría de los países. Los costos varían según el destino.&lt;/p&gt;
+&lt;/details&gt;
+
+&lt;details&gt;
+    &lt;summary&gt;¿Cómo puedo contactar al soporte técnico?&lt;/summary&gt;
+    &lt;p&gt;Puedes contactarnos por email en soporte@ejemplo.com o por teléfono al 555-1234.&lt;/p&gt;
+&lt;/details&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 5: `&lt;details&gt;` con Contenido Complejo</h4>
+                <p>Crea un `&lt;details&gt;` cuya `&lt;summary&gt;` sea "Más Información sobre Nuestro Servicio". Dentro del contenido expandible, incluye un párrafo de texto, un enlace y una imagen pequeña (puedes usar un placeholder).</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution5')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution5">
+                    <pre><code>&lt;details&gt;
+    &lt;summary&gt;Más Información sobre Nuestro Servicio&lt;/summary&gt;
+    &lt;p&gt;Nuestro servicio ofrece soluciones innovadoras para optimizar tus procesos empresariales. Nos enfocamos en la eficiencia y la escalabilidad.&lt;/p&gt;
+    &lt;img src="https://via.placeholder.com/100" alt="Servicio" style="width:100px; height:auto; display:block; margin: 10px 0;"&gt;
+    &lt;p&gt;Visita nuestra &lt;a href="#"&gt;página de servicios&lt;/a&gt; para más detalles.&lt;/p&gt;
+&lt;/details&gt;</code></pre>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="quiz-section">
+            <h3>Quiz de la Clase 19: Elementos Interactivos</h3>
+            <p>¡Pon a prueba tus conocimientos con este quiz de 10 preguntas!</p>
+            <form id="quizForm">
+                <div class="quiz-question">
+                    <h4>1. ¿Qué etiqueta HTML se utiliza para crear un widget de divulgación que se puede expandir y contraer?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="a"> <code>&lt;expandable&gt;</code></label>
+                        <label><input type="radio" name="q1" value="b"> <code>&lt;toggle&gt;</code></label>
+                        <label><input type="radio" name="q1" value="c"> <code>&lt;details&gt;</code></label>
+                        <label><input type="radio" name="q1" value="d"> <code>&lt;collapsible&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>2. ¿Qué etiqueta se utiliza como resumen o leyenda visible para el contenido de un elemento <code>&lt;details&gt;</code>?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="a"> <code>&lt;caption&gt;</code></label>
+                        <label><input type="radio" name="q2" value="b"> <code>&lt;heading&gt;</code></label>
+                        <label><input type="radio" name="q2" value="c"> <code>&lt;summary&gt;</code></label>
+                        <label><input type="radio" name="q2" value="d"> <code>&lt;label&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>3. Si un elemento <code>&lt;details&gt;</code> tiene el atributo <code>open</code>, ¿qué significa?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="a"> Que no se puede cerrar.</label>
+                        <label><input type="radio" name="q3" value="b"> Que su contenido está visible por defecto al cargar la página.</label>
+                        <label><input type="radio" name="q3" value="c"> Que solo se puede abrir con JavaScript.</label>
+                        <label><input type="radio" name="q3" value="d"> Que el navegador lo ha marcado como interactivo.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>4. ¿Qué tipo de contenido se puede colocar dentro de un elemento <code>&lt;details&gt;</code> (después de <code>&lt;summary&gt;</code>)?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="a"> Solo texto plano.</label>
+                        <label><input type="radio" name="q4" value="b"> Solo párrafos y listas.</label>
+                        <label><input type="radio" name="q4" value="c"> Cualquier tipo de contenido de flujo (párrafos, imágenes, listas, tablas, etc.).</label>
+                        <label><input type="radio" name="q4" value="d"> Solo elementos de formulario.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>5. ¿Es necesario JavaScript para hacer que un elemento <code>&lt;details&gt;</code> funcione?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="a"> Sí, siempre se necesita JavaScript.</label>
+                        <label><input type="radio" name="q5" value="b"> No, es un elemento HTML nativo que funciona por sí mismo.</label>
+                        <label><input type="radio" name="q5" value="c"> Solo para animar la expansión y contracción.</label>
+                        <label><input type="radio" name="q5" value="d"> Solo si se quiere cambiar el texto de <code>&lt;summary&gt;</code>.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>6. ¿Cuál es una de las principales ventajas de accesibilidad de usar <code>&lt;details&gt;</code> y <code>&lt;summary&gt;</code>?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q6" value="a"> Hace que el contenido sea más difícil de encontrar por los motores de búsqueda.</label>
+                        <label><input type="radio" name="q6" value="b"> Los lectores de pantalla anuncian automáticamente su estado (expandido/contraído) y su función.</label>
+                        <label><input type="radio" name="q6" value="c"> Permite a los usuarios cambiar el color de fondo.</label>
+                        <label><input type="radio" name="q6" value="d"> Reduce el tiempo de carga de la página.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>7. ¿Se puede estilizar la flecha o icono de divulgación por defecto de <code>&lt;details&gt;</code> con CSS?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q7" value="a"> No, está fijado por el navegador.</label>
+                        <label><input type="radio" name="q7" value="b"> Sí, usando el pseudo-elemento <code>::marker</code> o <code>::-webkit-details-marker</code>.</label>
+                        <label><input type="radio" name="q7" value="c"> Solo con JavaScript.</label>
+                        <label><input type="radio" name="q7" value="d"> Solo si el <code>&lt;details&gt;</code> está dentro de un <code>&lt;form&gt;</code>.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>8. ¿Cuál es el comportamiento predeterminado de un <code>&lt;details&gt;</code> cuando se carga la página sin el atributo <code>open</code>?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q8" value="a"> El contenido está visible.</label>
+                        <label><input type="radio" name="q8" value="b"> El contenido está oculto.</label>
+                        <label><input type="radio" name="q8" value="c"> Muestra un mensaje de error.</label>
+                        <label><input type="radio" name="q8" value="d"> Se expande y contrae automáticamente.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>9. Si quieres que la primera <code>&lt;details&gt;</code> de un grupo de FAQs esté abierta por defecto, ¿qué atributo añadirías?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q9" value="a"> <code>default-open</code></label>
+                        <label><input type="radio" name="q9" value="b"> <code>expanded</code></label>
+                        <label><input type="radio" name="q9" value="c"> <code>open</code></label>
+                        <label><input type="radio" name="q9" value="d"> <code>visible</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>10. ¿Cuál es una aplicación común para <code>&lt;details&gt;</code> y <code>&lt;summary&gt;</code> en el diseño web?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q10" value="a"> Crear menús de navegación principales.</label>
+                        <label><input type="radio" name="q10" value="b"> Mostrar la carga de un archivo.</label>
+                        <label><input type="radio" name="q10" value="c"> Secciones de "Preguntas Frecuentes" (FAQ) o acordeones simples.</label>
+                        <label><input type="radio" name="q10" value="d"> Validar la entrada de usuario en formularios.</label>
+                    </div>
+                </div>
+
+                <button type="button" class="submit-quiz-button" id="checkAnswersBtn">Ver Resultados</button>
+            </form>
+
+            <div id="quizResults" class="quiz-results">
+                <p>Resultados del Test:</p>
+                <ol id="resultsList"></ol>
+                <p id="scoreSummary"></p>
+                <button type="button" class="reveal-button" id="resetQuizBtn" style="display: none;">Volver a Intentar</button>
+            </div>
+        </div>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="Ejercicios18.html">Ejercicios sobre la lección anterior.</a></li>
+                <li><a href="19ElementosInteractivosDetailsYSummary.html">Volver a la Clase 19: Elementos Interactivos: `&lt;details&gt;` y `&lt;summary&gt;`.</a></li>
+                <li><a href="20...html">Clase 20: (Próxima Lección)</a></li> <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script>
+        // Función para mostrar/ocultar soluciones de ejercicios
+        function toggleSolution(button, solutionId) {
+            const solution = document.getElementById(solutionId);
+            if (solution.style.display === 'block') {
+                solution.style.display = 'none';
+                button.textContent = 'Mostrar Solución';
+            } else {
+                solution.style.display = 'block';
+                button.textContent = 'Ocultar Solución';
+            }
+        }
+
+        // Datos del quiz
+        const quizAnswers = {
+            q1: 'c', // <details>
+            q2: 'c', // <summary>
+            q3: 'b', // Que su contenido está visible por defecto al cargar la página.
+            q4: 'c', // Cualquier tipo de contenido de flujo (párrafos, imágenes, listas, tablas, etc.).
+            q5: 'b', // No, es un elemento HTML nativo que funciona por sí mismo.
+            q6: 'b', // Los lectores de pantalla anuncian automáticamente su estado (expandido/contraído) y su función.
+            q7: 'b', // Sí, usando el pseudo-elemento ::marker o ::-webkit-details-marker.
+            q8: 'b', // El contenido está oculto.
+            q9: 'c', // open
+            q10: 'c' // Secciones de "Preguntas Frecuentes" (FAQ) o acordeones simples.
+        };
+
+        // Asignar eventos a los botones una vez que el DOM esté completamente cargado
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            if (checkAnswersBtn) {
+                checkAnswersBtn.addEventListener('click', checkQuiz);
+            }
+            if (resetQuizBtn) {
+                resetQuizBtn.addEventListener('click', resetQuiz);
+            }
+        });
+
+        function checkQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const resultsList = document.getElementById('resultsList');
+            const scoreSummary = document.getElementById('scoreSummary');
+            const quizResultsDiv = document.getElementById('quizResults');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            resultsList.innerHTML = ''; // Limpiar resultados anteriores
+            let score = 0;
+
+            for (let i = 1; i <= 10; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = quizForm.elements[questionName] ? quizForm.elements[questionName].value : '';
+                const correctAnswer = quizAnswers[questionName];
+
+                const listItem = document.createElement('li');
+                listItem.classList.add(selectedOption === correctAnswer ? 'correct' : 'incorrect');
+
+                // Obtener el texto de la opción seleccionada (preservando <code>)
+                let selectedAnswerText = 'No respondida';
+                if (selectedOption) {
+                    const selectedLabel = quizForm.querySelector(`input[name="${questionName}"][value="${selectedOption}"]`);
+                    if (selectedLabel) {
+                        const labelClone = selectedLabel.closest('label').cloneNode(true);
+                        labelClone.querySelector('input').remove();
+                        selectedAnswerText = labelClone.innerHTML.trim();
+                    }
+                }
+
+                // Obtener el texto de la opción correcta (preservando <code>)
+                const correctLabel = quizForm.querySelector(`input[name="${questionName}"][value="${correctAnswer}"]`);
+                let correctAnswerText = 'N/A';
+                if (correctLabel) {
+                    const correctLabelClone = correctLabel.closest('label').cloneNode(true);
+                    correctLabelClone.querySelector('input').remove();
+                    correctAnswerText = correctLabelClone.innerHTML.trim();
+                }
+
+                const questionText = document.createTextNode(`Pregunta ${i}: `);
+                listItem.appendChild(questionText);
+
+                if (selectedOption !== correctAnswer) {
+                    listItem.innerHTML += ` Tu respuesta: "${selectedAnswerText}".<br>`;
+                    const correctInfoSpan = document.createElement('span');
+                    correctInfoSpan.classList.add('correct-answer-info');
+                    correctInfoSpan.innerHTML = `Respuesta correcta: "${correctAnswerText}".`;
+                    listItem.appendChild(correctInfoSpan);
+                } else {
+                    listItem.innerHTML += ` Correcta.`;
+                    score++;
+                }
+
+                resultsList.appendChild(listItem);
+            }
+
+            scoreSummary.textContent = `Tu puntuación es: ${score} de 10 preguntas correctas.`;
+            quizResultsDiv.style.display = 'block'; // Mostrar la sección de resultados
+            quizResultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Desplazarse a los resultados
+
+            // Ocultar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'none';
+            // Mostrar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'inline-block';
+        }
+
+        function resetQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            quizForm.reset(); // Reinicia todos los radio buttons
+            document.getElementById('quizResults').style.display = 'none'; // Oculta los resultados
+            document.getElementById('resultsList').innerHTML = ''; // Limpia la lista de resultados
+            document.getElementById('scoreSummary').textContent = ''; // Limpia el resumen de puntuación
+
+            // Mostrar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'inline-block';
+            // Ocultar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

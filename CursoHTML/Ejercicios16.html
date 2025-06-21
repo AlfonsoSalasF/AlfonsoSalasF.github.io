@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 16: Ejercicios de Estructura de Formularios</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/ejercicios_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Clase 16: Ejercicios de Estructura de Formularios</h1>
+
+        <div class="exercise-section">
+            <h3>Ejercicios Prácticos de la Clase 16</h3>
+            <p>Para consolidar tus conocimientos sobre la estructuración de formularios con `&lt;fieldset&gt;` y `&lt;legend&gt;`, te propongo los siguientes ejercicios. Intenta resolverlos por ti mismo antes de ver la solución.</p>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 1: Agrupación Básica de Información Personal</h4>
+                <p>Crea un formulario simple con dos campos: "Nombre Completo" y "Email". Agrupa estos campos dentro de un `&lt;fieldset&gt;` y utiliza un `&lt;legend&gt;` para titular la sección como "Datos Personales".</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution1')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution1">
+                    <pre><code>&lt;form action="#" method="POST"&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;Datos Personales&lt;/legend&gt;
+        
+        &lt;label for="nombre_completo"&gt;Nombre Completo:&lt;/label&gt;
+        &lt;input type="text" id="nombre_completo" name="nombre_completo" required&gt;
+
+        &lt;label for="email_personal"&gt;Email:&lt;/label&gt;
+        &lt;input type="email" id="email_personal" name="email_personal" required&gt;
+    &lt;/fieldset&gt;
+    &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 2: Agrupación para Dirección</h4>
+                <p>Añade al formulario anterior una nueva sección `&lt;fieldset&gt;` para "Datos de Dirección". Esta sección debe incluir campos para "Calle", "Ciudad" y "Código Postal".</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution2')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution2">
+                    <pre><code>&lt;form action="#" method="POST"&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;Datos Personales&lt;/legend&gt;
+        
+        &lt;label for="nombre_completo_ej2"&gt;Nombre Completo:&lt;/label&gt;
+        &lt;input type="text" id="nombre_completo_ej2" name="nombre_completo" required&gt;
+
+        &lt;label for="email_personal_ej2"&gt;Email:&lt;/label&gt;
+        &lt;input type="email" id="email_personal_ej2" name="email_personal" required&gt;
+    &lt;/fieldset&gt;
+
+    &lt;fieldset&gt;
+        &lt;legend&gt;Datos de Dirección&lt;/legend&gt;
+        
+        &lt;label for="calle"&gt;Calle:&lt;/label&gt;
+        &lt;input type="text" id="calle" name="calle"&gt;
+
+        &lt;label for="ciudad"&gt;Ciudad:&lt;/label&gt;
+        &lt;input type="text" id="ciudad" name="ciudad"&gt;
+
+        &lt;label for="codigo_postal"&gt;Código Postal:&lt;/label&gt;
+        &lt;input type="text" id="codigo_postal" name="codigo_postal"&gt;
+    &lt;/fieldset&gt;
+    &lt;button type="submit"&gt;Enviar Formulario&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 3: Formulario de Preferencias con Radio Buttons Agrupados</h4>
+                <p>Crea un formulario para que el usuario seleccione su método de contacto preferido (Email, Teléfono, SMS) utilizando radio buttons. Agrupa estos radio buttons dentro de un `&lt;fieldset&gt;` con el título "Método de Contacto Preferido".</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution3')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution3">
+                    <pre><code>&lt;form action="#" method="POST"&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;Método de Contacto Preferido&lt;/legend&gt;
+        
+        &lt;div class="radio-group"&gt;
+            &lt;input type="radio" id="contacto_email" name="metodo_contacto" value="email" checked&gt;
+            &lt;label for="contacto_email"&gt;Email&lt;/label&gt;&lt;br&gt;
+
+            &lt;input type="radio" id="contacto_telefono" name="metodo_contacto" value="telefono"&gt;
+            &lt;label for="contacto_telefono"&gt;Teléfono&lt;/label&gt;&lt;br&gt;
+
+            &lt;input type="radio" id="contacto_sms" name="metodo_contacto" value="sms"&gt;
+            &lt;label for="contacto_sms"&gt;SMS&lt;/label&gt;
+        &lt;/div&gt;
+    &lt;/fieldset&gt;
+    &lt;button type="submit"&gt;Guardar Preferencias&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 4: Múltiples `&lt;fieldset&gt;` Anidados</h4>
+                <p>Imagina un formulario de configuración de cuenta. Crea un `&lt;fieldset&gt;` principal llamado "Configuración de Cuenta". Dentro de este, anida otro `&lt;fieldset&gt;` llamado "Configuración de Notificaciones" que contenga checkboxes para "Email", "SMS" y "Push".</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution4')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution4">
+                    <pre><code>&lt;form action="#" method="POST"&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;Configuración de Cuenta&lt;/legend&gt;
+        
+        &lt;label for="username_config"&gt;Nombre de Usuario:&lt;/label&gt;
+        &lt;input type="text" id="username_config" name="username_config"&gt;
+
+        &lt;fieldset&gt;
+            &lt;legend&gt;Configuración de Notificaciones&lt;/legend&gt;
+            
+            &lt;div class="checkbox-group"&gt;
+                &lt;input type="checkbox" id="notif_email" name="notificaciones[]" value="email" checked&gt;
+                &lt;label for="notif_email"&gt;Notificaciones por Email&lt;/label&gt;&lt;br&gt;
+
+                &lt;input type="checkbox" id="notif_sms" name="notificaciones[]" value="sms"&gt;
+                &lt;label for="notif_sms"&gt;Notificaciones por SMS&lt;/label&gt;&lt;br&gt;
+
+                &lt;input type="checkbox" id="notif_push" name="notificaciones[]" value="push" checked&gt;
+                &lt;label for="notif_push"&gt;Notificaciones Push&lt;/label&gt;
+            &lt;/div&gt;
+        &lt;/fieldset&gt;
+        
+        &lt;label for="timezone"&gt;Zona Horaria:&lt;/label&gt;
+        &lt;select id="timezone" name="timezone"&gt;
+            &lt;option value="utc-5"&gt;UTC-5&lt;/option&gt;
+            &lt;option value="utc+1" selected&gt;UTC+1&lt;/option&gt;
+            &lt;option value="utc+8"&gt;UTC+8&lt;/option&gt;
+        &lt;/select&gt;
+    &lt;/fieldset&gt;
+    &lt;button type="submit"&gt;Guardar Cambios&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 5: Formulario Completo de Perfil con Grupos y `&lt;textarea&gt;`</h4>
+                <p>Crea un formulario completo de "Perfil de Usuario" que incluya las siguientes secciones agrupadas con `&lt;fieldset&gt;`:</p>
+                <ul>
+                    <li>**"Información Básica":** Nombre, Apellido, Fecha de Nacimiento (`type="date"`).</li>
+                    <li>**"Contacto":** Email, Teléfono (`type="tel"`).</li>
+                    <li>**"Acerca de Mí":** Una descripción multilínea (`&lt;textarea&gt;`).</li>
+                </ul>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution5')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution5">
+                    <pre><code>&lt;form action="/guardar_perfil" method="POST"&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;Información Básica&lt;/legend&gt;
+        
+        &lt;label for="nombre_perfil"&gt;Nombre:&lt;/label&gt;
+        &lt;input type="text" id="nombre_perfil" name="nombre" required&gt;
+
+        &lt;label for="apellido_perfil"&gt;Apellido:&lt;/label&amp;gt;
+        &lt;input type="text" id="apellido_perfil" name="apellido" required&gt;
+
+        &lt;label for="fecha_nacimiento"&gt;Fecha de Nacimiento:&lt;/label&gt;
+        &lt;input type="date" id="fecha_nacimiento" name="fecha_nacimiento"&gt;
+    &lt;/fieldset&gt;
+
+    &lt;fieldset&gt;
+        &lt;legend&gt;Contacto&lt;/legend&gt;
+        
+        &lt;label for="email_perfil"&gt;Email:&lt;/label&gt;
+        &lt;input type="email" id="email_perfil" name="email" required&gt;
+
+        &lt;label for="telefono_perfil"&gt;Teléfono:&lt;/label&gt;
+        &lt;input type="tel" id="telefono_perfil" name="telefono"&gt;
+    &lt;/fieldset&gt;
+
+    &lt;fieldset&gt;
+        &lt;legend&gt;Acerca de Mí&lt;/legend&gt;
+        
+        &lt;label for="acerca_de_mi"&gt;Escribe algo sobre ti:&lt;/label&gt;
+        &lt;textarea id="acerca_de_mi" name="descripcion" rows="5" cols="60"&gt;&lt;/textarea&gt;
+    &lt;/fieldset&gt;
+
+    &lt;button type="submit"&gt;Actualizar Perfil&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="quiz-section">
+            <h3>Quiz de la Clase 16: Estructura de Formularios</h3>
+            <p>¡Pon a prueba tus conocimientos con este quiz de 10 preguntas!</p>
+            <form id="quizForm">
+                <div class="quiz-question">
+                    <h4>1. ¿Qué etiqueta HTML se utiliza para agrupar elementos relacionados dentro de un formulario?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="a"> <code>&lt;group&gt;</code></label>
+                        <label><input type="radio" name="q1" value="b"> <code>&lt;fieldset&gt;</code></label>
+                        <label><input type="radio" name="q1" value="c"> <code>&lt;section&gt;</code></label>
+                        <label><input type="radio" name="q1" value="d"> <code>&lt;container&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>2. ¿Qué etiqueta se utiliza para proporcionar una leyenda o título para un grupo de elementos dentro de un <code>&lt;fieldset&gt;</code>?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="a"> <code>&lt;title&gt;</code></label>
+                        <label><input type="radio" name="q2" value="b"> <code>&lt;caption&gt;</code></label>
+                        <label><input type="radio" name="q2" value="c"> <code>&lt;label&gt;</code></label>
+                        <label><input type="radio" name="q2" value="d"> <code>&lt;legend&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>3. ¿Cuál es el principal beneficio de usar <code>&lt;fieldset&gt;</code> y <code>&lt;legend&gt;</code> para la accesibilidad?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="a"> Hacen que el formulario se vea más moderno.</label>
+                        <label><input type="radio" name="q3" value="b"> Permiten a los lectores de pantalla anunciar el propósito del grupo de campos.</label>
+                        <label><input type="radio" name="q3" value="c"> Reducen el tamaño del archivo HTML.</label>
+                        <label><input type="radio" name="q3" value="d"> Mejoran el rendimiento de envío del formulario.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>4. ¿Es posible anidar múltiples etiquetas <code>&lt;fieldset&gt;</code> dentro de otras?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="a"> Sí, pero solo hasta un nivel de anidación.</label>
+                        <label><input type="radio" name="q4" value="b"> No, la anidación de <code>&lt;fieldset&gt;</code> no está permitida.</label>
+                        <label><input type="radio" name="q4" value="c"> Sí, se pueden anidar en múltiples niveles para organizar subgrupos.</label>
+                        <label><input type="radio" name="q4" value="d"> Solo si se usa CSS para controlarlo.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>5. ¿Qué atributo permite deshabilitar un grupo completo de campos de formulario contenidos en un <code>&lt;fieldset&gt;</code>?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="a"> <code>disabled-group</code></label>
+                        <label><input type="radio" name="q5" value="b"> <code>inactive</code></label>
+                        <label><input type="radio" name="q5" value="c"> <code>disabled</code></label>
+                        <label><input type="radio" name="q5" value="d"> <code>locked</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>6. Si un <code>&lt;fieldset&gt;</code> está deshabilitado, ¿qué sucede con los campos de entrada dentro de él?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q6" value="a"> Se vuelven de solo lectura.</label>
+                        <label><input type="radio" name="q6" value="b"> Mantienen su estado activo, pero no se envían.</label>
+                        <label><input type="radio" name="q6" value="c"> También se deshabilitan y no se pueden interactuar con ellos ni se envían.</label>
+                        <label><input type="radio" name="q6" value="d"> Su estilo cambia automáticamente a gris, pero siguen funcionando.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>7. ¿Qué efecto visual tiene <code>&lt;fieldset&gt;</code> por defecto en la mayoría de los navegadores?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q7" value="a"> Añade un color de fondo diferente a los campos.</label>
+                        <label><input type="radio" name="q7" value="b"> Crea un borde alrededor de los elementos agrupados y la leyenda.</label>
+                        <label><input type="radio" name="q7" value="c"> Coloca los campos en una nueva columna.</label>
+                        <label><input type="radio" name="q7" value="d"> Oculta los campos hasta que se haga clic en la leyenda.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>8. ¿Es <code>&lt;legend&gt;</code> un elemento obligatorio dentro de un <code>&lt;fieldset&gt;</code>?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q8" value="a"> Sí, es estrictamente obligatorio por validación HTML.</label>
+                        <label><input type="radio" name="q8" value="b"> No es obligatorio, pero es muy recomendado por accesibilidad y usabilidad.</label>
+                        <label><input type="radio" name="q8" value="c"> Solo si el <code>&lt;fieldset&gt;</code> contiene más de tres campos.</label>
+                        <label><input type="radio" name="q8" value="d"> Solo si se usa JavaScript para manipular el <code>&lt;fieldset&gt;</code>.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>9. ¿Se puede estilizar <code>&lt;fieldset&gt;</code> y <code>&lt;legend&gt;</code> con CSS?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q9" value="a"> No, son elementos puramente semánticos y no responden a CSS.</label>
+                        <label><input type="radio" name="q9" value="b"> Sí, completamente. Se pueden cambiar bordes, colores, fuentes, etc.</label>
+                        <label><input type="radio" name="q9" value="c"> Solo se pueden cambiar el color del texto y el color de fondo.</label>
+                        <label><input type="radio" name="q9" value="d"> Solo si se utiliza la propiedad <code>!important</code>.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>10. En el contexto de un formulario, ¿cuál es la principal función de agrupar campos con <code>&lt;fieldset&gt;</code>?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q10" value="a"> Validar automáticamente los campos internos.</label>
+                        <label><input type="radio" name="q10" value="b"> Mejorar la semántica y la organización lógica del formulario.</label>
+                        <label><input type="radio" name="q10" value="c"> Reducir el número de peticiones HTTP al servidor.</label>
+                        <label><input type="radio" name="q10" value="d"> Aumentar la velocidad de carga de la página.</label>
+                    </div>
+                </div>
+
+                <button type="button" class="submit-quiz-button" id="checkAnswersBtn">Ver Resultados</button>
+            </form>
+
+            <div id="quizResults" class="quiz-results">
+                <p>Resultados del Test:</p>
+                <ol id="resultsList"></ol>
+                <p id="scoreSummary"></p>
+                <button type="button" class="reveal-button" id="resetQuizBtn" style="display: none;">Volver a Intentar</button>
+            </div>
+        </div>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="Ejercicios15.html">Ejercicios sobre la lección anterior.</a></li>
+                <li><a href="16EstructuraDeFormulariosFieldsetLegend.html">Volver a la Clase 16: Estructura de Formularios: `&lt;fieldset&gt;` y `&lt;legend&gt;`.</a></li>
+                <li><a href="17ValidacionDeFormulariosConHtml5.html">Clase 17: Validación de Formularios con HTML5 (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script>
+        // Función para mostrar/ocultar soluciones de ejercicios
+        function toggleSolution(button, solutionId) {
+            const solution = document.getElementById(solutionId);
+            if (solution.style.display === 'block') {
+                solution.style.display = 'none';
+                button.textContent = 'Mostrar Solución';
+            } else {
+                solution.style.display = 'block';
+                button.textContent = 'Ocultar Solución';
+            }
+        }
+
+        // Datos del quiz
+        const quizAnswers = {
+            q1: 'b', // <fieldset>
+            q2: 'd', // <legend>
+            q3: 'b', // Permiten a los lectores de pantalla anunciar el propósito del grupo de campos.
+            q4: 'c', // Sí, se pueden anidar en múltiples niveles para organizar subgrupos.
+            q5: 'c', // disabled
+            q6: 'c', // También se deshabilitan y no se pueden interactuar con ellos ni se envían.
+            q7: 'b', // Crea un borde alrededor de los elementos agrupados y la leyenda.
+            q8: 'b', // No es obligatorio, pero es muy recomendado por accesibilidad y usabilidad.
+            q9: 'b', // Sí, completamente. Se pueden cambiar bordes, colores, fuentes, etc.
+            q10: 'b' // Mejorar la semántica y la organización lógica del formulario.
+        };
+
+        // Asignar eventos a los botones una vez que el DOM esté completamente cargado
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            if (checkAnswersBtn) {
+                checkAnswersBtn.addEventListener('click', checkQuiz);
+            }
+            if (resetQuizBtn) {
+                resetQuizBtn.addEventListener('click', resetQuiz);
+            }
+        });
+
+        function checkQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const resultsList = document.getElementById('resultsList');
+            const scoreSummary = document.getElementById('scoreSummary');
+            const quizResultsDiv = document.getElementById('quizResults');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            resultsList.innerHTML = ''; // Limpiar resultados anteriores
+            let score = 0;
+
+            for (let i = 1; i <= 10; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = quizForm.elements[questionName] ? quizForm.elements[questionName].value : '';
+                const correctAnswer = quizAnswers[questionName];
+
+                const listItem = document.createElement('li');
+                listItem.classList.add(selectedOption === correctAnswer ? 'correct' : 'incorrect');
+
+                // Obtener el texto de la opción seleccionada (preservando <code>)
+                let selectedAnswerText = 'No respondida';
+                if (selectedOption) {
+                    const selectedLabel = quizForm.querySelector(`input[name="${questionName}"][value="${selectedOption}"]`);
+                    if (selectedLabel) {
+                        const labelClone = selectedLabel.closest('label').cloneNode(true);
+                        labelClone.querySelector('input').remove();
+                        selectedAnswerText = labelClone.innerHTML.trim();
+                    }
+                }
+
+                // Obtener el texto de la opción correcta (preservando <code>)
+                const correctLabel = quizForm.querySelector(`input[name="${questionName}"][value="${correctAnswer}"]`);
+                let correctAnswerText = 'N/A';
+                if (correctLabel) {
+                    const correctLabelClone = correctLabel.closest('label').cloneNode(true);
+                    correctLabelClone.querySelector('input').remove();
+                    correctAnswerText = correctLabelClone.innerHTML.trim();
+                }
+
+                const questionText = document.createTextNode(`Pregunta ${i}: `);
+                listItem.appendChild(questionText);
+
+                if (selectedOption !== correctAnswer) {
+                    listItem.innerHTML += ` Tu respuesta: "${selectedAnswerText}".<br>`;
+                    const correctInfoSpan = document.createElement('span');
+                    correctInfoSpan.classList.add('correct-answer-info');
+                    correctInfoSpan.innerHTML = `Respuesta correcta: "${correctAnswerText}".`;
+                    listItem.appendChild(correctInfoSpan);
+                } else {
+                    listItem.innerHTML += ` Correcta.`;
+                    score++;
+                }
+
+                resultsList.appendChild(listItem);
+            }
+
+            scoreSummary.textContent = `Tu puntuación es: ${score} de 10 preguntas correctas.`;
+            quizResultsDiv.style.display = 'block'; // Mostrar la sección de resultados
+            quizResultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Desplazarse a los resultados
+
+            // Ocultar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'none';
+            // Mostrar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'inline-block';
+        }
+
+        function resetQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            quizForm.reset(); // Reinicia todos los radio buttons
+            document.getElementById('quizResults').style.display = 'none'; // Oculta los resultados
+            document.getElementById('resultsList').innerHTML = ''; // Limpia la lista de resultados
+            document.getElementById('scoreSummary').textContent = ''; // Limpia el resumen de puntuación
+
+            // Mostrar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'inline-block';
+            // Ocultar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

@@ -32,6 +32,31 @@
     margin-bottom: 0;
 }
 
+/* Estilos específicos para tablas dentro de los ejercicios */
+        .exercise-solution table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 0.9em;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .exercise-solution th, .exercise-solution td {
+            border: 1px solid #ddd;
+            padding: 8px 10px;
+            text-align: left;
+        }
+        .exercise-solution th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        .exercise-solution caption {
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
 /* Estilos para el quiz */
 .quiz-question {
     background-color: #f9f9f9;

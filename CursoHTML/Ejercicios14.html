@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 14: Ejercicios de Otros Tipos de Entrada II - Fechas y Archivos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/ejercicios_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Clase 14: Ejercicios de Otros Tipos de Entrada II - Fechas y Archivos</h1>
+
+        <div class="exercise-section">
+            <h3>Ejercicios Prácticos de la Clase 14</h3>
+            <p>Para consolidar tus conocimientos sobre los tipos de entrada de fecha, hora y archivo en HTML, te propongo los siguientes ejercicios. Intenta resolverlos por ti mismo antes de ver la solución.</p>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 1: Selector de Fecha de Nacimiento</h4>
+                <p>Crea un campo de entrada que permita al usuario seleccionar su fecha de nacimiento. Asegúrate de que el formato sea solo fecha (día, mes, año).</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution1')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution1">
+                    <pre><code>&lt;form action="#" method="POST"&gt;
+    &lt;label for="fecha_nacimiento"&gt;Fecha de Nacimiento:&lt;/label&gt;
+    &lt;input type="date" id="fecha_nacimiento" name="fecha_nacimiento"&gt;
+    &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 2: Selector de Hora de Alarma con Incrementos</h4>
+                <p>Crea un campo para que el usuario establezca una hora de alarma. La selección de minutos debe ir en incrementos de 10 minutos (ej., 00, 10, 20, etc.).</p>
+                <ul>
+                    <li>Utiliza el atributo <code>step</code> para definir los incrementos.</li>
+                </ul>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution2')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution2">
+                    <pre><code>&lt;form action="#" method="POST"&gt;
+    &lt;label for="hora_alarma"&gt;Establecer Hora de Alarma (incrementos de 10 min):&lt;/label&gt;
+    &lt;input type="time" id="hora_alarma" name="hora_alarma" step="600"&gt; &lt;!-- 600 segundos = 10 minutos --&gt;
+    &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 3: Campo de Carga de Imagen de Perfil</h4>
+                <p>Crea un campo para que el usuario pueda subir una imagen de perfil. El campo solo debe aceptar archivos JPG y PNG.</p>
+                <ul>
+                    <li>Recuerda la importancia de los atributos del formulario para la subida de archivos.</li>
+                </ul>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution3')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution3">
+                    <pre><code>&lt;form action="/upload_profile_image" method="POST" enctype="multipart/form-data"&gt;
+    &lt;label for="imagen_perfil"&gt;Sube tu imagen de perfil (JPG/PNG):&lt;/label&gt;
+    &lt;input type="file" id="imagen_perfil" name="imagen_perfil" accept="image/jpeg, image/png"&gt;
+    &lt;button type="submit"&gt;Subir Imagen&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 4: Selector de Mes y Año para Tarjeta de Crédito</h4>
+                <p>Implementa un campo para la fecha de caducidad de una tarjeta de crédito que solo permita seleccionar el mes y el año.</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution4')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution4">
+                    <pre><code>&lt;form action="#" method="POST"&gt;
+    &lt;label for="caducidad_tarjeta"&gt;Mes y Año de Caducidad de la Tarjeta:&lt;/label&gt;
+    &lt;input type="month" id="caducidad_tarjeta" name="caducidad_tarjeta"&gt;
+    &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 5: Carga de Múltiples Documentos PDF</h4>
+                <p>Crea un campo que permita al usuario subir múltiples documentos, pero solo se deben aceptar archivos en formato PDF.</p>
+                <ul>
+                    <li>Asegúrate de que el <code>name</code> del input esté preparado para múltiples archivos.</li>
+                </ul>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution5')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution5">
+                    <pre><code>&lt;form action="/upload_documents" method="POST" enctype="multipart/form-data"&gt;
+    &lt;label for="documentos_pdf"&gt;Sube tus documentos (múltiples PDF):&lt;/label&gt;
+    &lt;input type="file" id="documentos_pdf" name="documentos_pdf[]" accept=".pdf" multiple&gt;
+    &lt;button type="submit"&gt;Subir Documentos&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="quiz-section">
+            <h3>Quiz de la Clase 14: Otros Tipos de Entrada II - Fechas y Archivos</h3>
+            <p>¡Pon a prueba tus conocimientos con este quiz de 10 preguntas!</p>
+            <form id="quizForm">
+                <div class="quiz-question">
+                    <h4>1. ¿Qué tipo de <code>&lt;input&gt;</code> permite al usuario seleccionar una fecha completa (año, mes, día)?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="a"> <code>type="datetime"</code></label>
+                        <label><input type="radio" name="q1" value="b"> <code>type="date"</code></label>
+                        <label><input type="radio" name="q1" value="c"> <code>type="calendar"</code></label>
+                        <label><input type="radio" name="q1" value="d"> <code>type="monthday"</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>2. Para permitir la selección de una hora sin información de zona horaria, ¿qué <code>type</code> se debe usar?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="a"> <code>type="datetime"</code></label>
+                        <label><input type="radio" name="q2" value="b"> <code>type="time"</code></label>
+                        <label><input type="radio" name="q2" value="c"> <code>type="hour"</code></label>
+                        <label><input type="radio" name="q2" value="d"> <code>type="local-time"</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>3. ¿Qué atributo es crucial para la etiqueta <code>&lt;form&gt;</code> cuando se desea permitir la subida de archivos?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="a"> <code>method="GET"</code></label>
+                        <label><input type="radio" name="q3" value="b"> <code>enctype="text/plain"</code></label>
+                        <label><input type="radio" name="q3" value="c"> <code>action="/upload"</code></label>
+                        <label><input type="radio" name="q3" value="d"> <code>enctype="multipart/form-data"</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>4. Si necesitas un campo que combine la selección de fecha y hora local, ¿qué <code>type</code> usarías?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="a"> <code>type="datetime-local"</code></label>
+                        <label><input type="radio" name="q4" value="b"> <code>type="date-time"</code></label>
+                        <label><input type="radio" name="q4" value="c"> <code>type="full-date-time"</code></label>
+                        <label><input type="radio" name="q4" value="d"> <code>type="timestamp"</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>5. ¿Qué atributo del <code>&lt;input type="file"&gt;</code> se usa para restringir los tipos de archivo que pueden ser seleccionados por el usuario?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="a"> <code>filetype</code></label>
+                        <label><input type="radio" name="q5" value="b"> <code>validate</code></label>
+                        <label><input type="radio" name="q5" value="c"> <code>accept</code></label>
+                        <label><input type="radio" name="q5" value="d"> <code>format</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>6. Para permitir que un usuario seleccione varios archivos a la vez en un <code>&lt;input type="file"&gt;</code>, ¿qué atributo se debe añadir?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q6" value="a"> <code>multiple="true"</code></label>
+                        <label><input type="radio" name="q6" value="b"> <code>multi</code></label>
+                        <label><input type="radio" name="q6" value="c"> <code>multiple</code></label>
+                        <label><input type="radio" name="q6" value="d"> <code>allow-multiple</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>7. Si usas <code>type="time"</code>, el atributo <code>step</code> se mide en:</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q7" value="a"> Minutos</label>
+                        <label><input type="radio" name="q7" value="b"> Horas</label>
+                        <label><input type="radio" name="q7" value="c"> Segundos</label>
+                        <label><input type="radio" name="q7" value="d"> Milisegundos</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>8. Para especificar que una fecha de entrada debe estar dentro de un rango específico, ¿qué atributos se utilizan?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q8" value="a"> <code>start</code> y <code>end</code></label>
+                        <label><input type="radio" name="q8" value="b"> <code>min</code> y <code>max</code></label>
+                        <label><input type="radio" name="q8" value="c"> <code>range</code></label>
+                        <label><input type="radio" name="q8" value="d"> <code>limit</code> y <code>bound</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>9. ¿Qué tipo de <code>&lt;input&gt;</code> es ideal para seleccionar un período fiscal o un mes de caducidad de tarjeta?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q9" value="a"> <code>type="date"</code></label>
+                        <label><input type="radio" name="q9" value="b"> <code>type="week"</code></label>
+                        <label><input type="radio" name="q9" value="c"> <code>type="month"</code></label>
+                        <label><input type="radio" name="q9" value="d"> <code>type="year"</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>10. Al subir múltiples archivos con <code>&lt;input type="file" multiple&gt;</code>, ¿cómo se suele nombrar el atributo <code>name</code> para que el servidor los reciba como un array?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q10" value="a"> <code>name="files"</code></label>
+                        <label><input type="radio" name="q10" value="b"> <code>name="files[]"</code></label>
+                        <label><input type="radio" name="q10" value="c"> <code>name="file_array"</code></label>
+                        <label><input type="radio" name="q10" value="d"> <code>name="files_multiple"</code></label>
+                    </div>
+                </div>
+
+                <button type="button" class="submit-quiz-button" id="checkAnswersBtn" onclick="checkQuiz()">Ver Resultados</button>
+            </form>
+
+            <div id="quizResults" class="quiz-results">
+                <p>Resultados del Test:</p>
+                <ol id="resultsList"></ol>
+                <p id="scoreSummary"></p>
+                <button type="button" class="reveal-button" id="resetQuizBtn" onclick="resetQuiz()" style="display: none;">Volver a Intentar</button>
+            </div>
+        </div>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="14OtrosTiposDeEntradaIIFechasYArchivos.html">Volver a la Clase 14: Otros Tipos de Entrada II: Fechas y Archivos.</a></li>
+                <li><a href="15BotonesYCamposDeTextoMultilinea.html">Clase 15: Botones y Campos de Texto Multilínea (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script>
+        // Función para mostrar/ocultar soluciones de ejercicios
+        function toggleSolution(button, solutionId) {
+            const solution = document.getElementById(solutionId);
+            if (solution.style.display === 'block') {
+                solution.style.display = 'none';
+                button.textContent = 'Mostrar Solución';
+            } else {
+                solution.style.display = 'block';
+                button.textContent = 'Ocultar Solución';
+            }
+        }
+
+        // Datos del quiz
+        const quizAnswers = {
+            q1: 'b', // type="date"
+            q2: 'b', // type="time"
+            q3: 'd', // enctype="multipart/form-data"
+            q4: 'a', // type="datetime-local"
+            q5: 'c', // accept
+            q6: 'c', // multiple
+            q7: 'c', // Segundos
+            q8: 'b', // min y max
+            q9: 'c', // type="month"
+            q10: 'b' // name="files[]"
+        };
+
+        function checkQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const resultsList = document.getElementById('resultsList');
+            const scoreSummary = document.getElementById('scoreSummary');
+            const quizResultsDiv = document.getElementById('quizResults');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            resultsList.innerHTML = ''; // Limpiar resultados anteriores
+            let score = 0;
+
+            for (let i = 1; i <= 10; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = quizForm.elements[questionName].value;
+                const correctAnswer = quizAnswers[questionName];
+
+                const listItem = document.createElement('li');
+                listItem.classList.add(selectedOption === correctAnswer ? 'correct' : 'incorrect');
+
+                // Obtener el texto de la opción seleccionada (escapando HTML)
+                let selectedAnswerText = 'No respondida';
+                if (selectedOption) {
+                    const selectedLabel = quizForm.querySelector(`input[name="${questionName}"][value="${selectedOption}"]`).closest('label');
+                    selectedAnswerText = selectedLabel ? selectedLabel.textContent.trim() : selectedAnswerText;
+                }
+
+                // Obtener el texto de la opción correcta (escapando HTML)
+                const correctLabel = quizForm.querySelector(`input[name="${questionName}"][value="${correctAnswer}"]`).closest('label');
+                const correctAnswerText = correctLabel ? correctLabel.textContent.trim() : 'N/A';
+
+                // Usar textContent para insertar los textos y evitar interpretación HTML
+                const questionTextNode = document.createTextNode(`Pregunta ${i}: `);
+                const yourAnswerTextNode = document.createTextNode(`Tu respuesta: "${selectedAnswerText}". `);
+                const correctAnswerTextNode = document.createTextNode(`Respuesta correcta: "${correctAnswerText}".`);
+
+                listItem.appendChild(questionTextNode);
+                if (selectedOption !== correctAnswer) { // Solo añadir detalles si es incorrecta
+                    listItem.appendChild(document.createElement('br'));
+                    listItem.appendChild(yourAnswerTextNode);
+                    const correctInfoSpan = document.createElement('span');
+                    correctInfoSpan.classList.add('correct-answer-info');
+                    correctInfoSpan.appendChild(correctAnswerTextNode);
+                    listItem.appendChild(correctInfoSpan);
+                } else {
+                    listItem.appendChild(document.createTextNode('Correcta.'));
+                    score++;
+                }
+
+                resultsList.appendChild(listItem);
+            }
+
+            scoreSummary.textContent = `Tu puntuación es: ${score} de 10 preguntas correctas.`;
+            quizResultsDiv.style.display = 'block'; // Mostrar la sección de resultados
+            quizResultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Desplazarse a los resultados
+
+            // Ocultar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'none';
+            // Mostrar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'inline-block';
+        }
+
+        function resetQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            quizForm.reset(); // Reinicia todos los radio buttons
+            document.getElementById('quizResults').style.display = 'none'; // Oculta los resultados
+            document.getElementById('resultsList').innerHTML = ''; // Limpia la lista de resultados
+            document.getElementById('scoreSummary').textContent = ''; // Limpia el resumen de puntuación
+
+            // Mostrar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'inline-block';
+            // Ocultar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

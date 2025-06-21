@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 20: Ejercicios de Tablas HTML</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/ejercicios_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Clase 20: Ejercicios de Tablas HTML</h1>
+
+        <div class="exercise-section">
+            <h3>Ejercicios Prácticos de la Clase 20</h3>
+            <p>Para consolidar tus conocimientos sobre las tablas HTML, te propongo los siguientes ejercicios. Intenta resolverlos por ti mismo antes de ver la solución.</p>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 1: Tabla Básica de Productos</h4>
+                <p>Crea una tabla con un encabezado (`Producto`, `Precio`, `Stock`) y dos filas de datos de ejemplo (ej., "Laptop", "$1200", "50" y "Ratón", "$25", "200").</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution1')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution1">
+                    <pre><code>&lt;table&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Producto&lt;/th&gt;
+            &lt;th&gt;Precio&lt;/th&gt;
+            &lt;th&gt;Stock&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Laptop&lt;/td&gt;
+            &lt;td&gt;$1200&lt;/td&gt;
+            &lt;td&gt;50&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Ratón&lt;/td&gt;
+            &lt;td&gt;$25&lt;/td&gt;
+            &lt;td&gt;200&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 2: Tabla con Título (`&lt;caption&gt;`)</h4>
+                <p>Modifica la tabla anterior o crea una nueva para incluir un título que diga "Inventario de Productos de Electrónica".</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution2')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution2">
+                    <pre><code>&lt;table&gt;
+    &lt;caption&gt;Inventario de Productos de Electrónica&lt;/caption&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Producto&lt;/th&gt;
+            &lt;th&gt;Precio&lt;/th&gt;
+            &lt;th&gt;Stock&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Laptop&lt;/td&gt;
+            &lt;td&gt;$1200&lt;/td&gt;
+            &lt;td&gt;50&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Ratón&lt;/td&gt;
+            &lt;td&gt;$25&lt;/td&gt;
+            &lt;td&gt;200&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 3: Tabla con `&lt;tfoot&gt;` y `colspan`</h4>
+                <p>Crea una tabla con encabezados (`Artículo`, `Cantidad`, `Precio Unitario`, `Total`). Añade algunas filas de productos. Al final, incluye un pie de tabla (`&lt;tfoot&gt;`) con una fila que resuma el "Gran Total" y el valor de un "Subtotal", usando `colspan` para que el texto "Gran Total" ocupe varias columnas.</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution3')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution3">
+                    <pre><code>&lt;table&gt;
+    &lt;caption&gt;Factura de Compra&lt;/caption&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Artículo&lt;/th&gt;
+            &lt;th&gt;Cantidad&lt;/th&gt;
+            &lt;th&gt;Precio Unitario&lt;/th&gt;
+            &lt;th&gt;Total&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Teclado&lt;/td&gt;
+            &lt;td&gt;1&lt;/td&gt;
+            &lt;td&gt;$50.00&lt;/td&gt;
+            &lt;td&gt;$50.00&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Monitor&lt;/td&gt;
+            &lt;td&gt;1&lt;/td&gt;
+            &lt;td&gt;$200.00&lt;/td&gt;
+            &lt;td&gt;$200.00&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+    &lt;tfoot&gt;
+        &lt;tr&gt;
+            &lt;td colspan="3" style="text-align: right;"&gt;&lt;strong&gt;Subtotal:&lt;/strong&gt;&lt;/td&gt;
+            &lt;td&gt;$250.00&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td colspan="3" style="text-align: right;"&gt;&lt;strong&gt;Gran Total:&lt;/strong&gt;&lt;/td&gt;
+            &lt;td&gt;$250.00&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tfoot&gt;
+&lt;/table&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 4: Tabla con `rowspan` y `colspan` (Horario Simple)</h4>
+                <p>Crea una tabla que represente un horario simple. Incluye un día que abarque dos filas (usando `rowspan`) y una asignatura que ocupe dos columnas (usando `colspan`). Por ejemplo, "Almuerzo" ocupa dos horas o "Matemáticas" es doble sesión.</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution4')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution4">
+                    <pre><code>&lt;table&gt;
+    &lt;caption&gt;Horario Semanal&lt;/caption&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Día&lt;/th&gt;
+            &lt;th&gt;9:00 - 10:00&lt;/th&gt;
+            &lt;th&gt;10:00 - 11:00&lt;/th&gt;
+            &lt;th&gt;11:00 - 12:00&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Lunes&lt;/td&gt;
+            &lt;td&gt;Historia&lt;/td&gt;
+            &lt;td colspan="2"&gt;Matemáticas&lt;/td&gt; &lt;!-- Ocupa 2 columnas --&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td rowspan="2"&gt;Martes&lt;/td&gt; &lt;!-- Ocupa 2 filas --&gt;
+            &lt;td&gt;Ciencias&lt;/td&gt;
+            &lt;td&gt;Arte&lt;/td&gt;
+            &lt;td&gt;Física&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Música&lt;/td&gt;
+            &lt;td&gt;Educación Física&lt;/td&gt;
+            &lt;td&gt;Química&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 5: Tabla de Contactos con Encabezados de Columna y Fila</h4>
+                <p>Crea una tabla de contactos con columnas para "Nombre" y "Email". Además, asegúrate de que el primer elemento de cada fila de datos (`&lt;td&gt;`) que actúa como "Nombre" tenga un encabezado implícito. Esto se logra con `&lt;th&gt;` en lugar de `&lt;td&gt;` para el nombre, dentro del `&lt;tbody&gt;`.</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution5')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution5">
+                    <pre><code>&lt;table&gt;
+    &lt;caption&gt;Lista de Contactos&lt;/caption&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Nombre&lt;/th&gt;
+            &lt;th&gt;Email&lt;/th&gt;
+            &lt;th&gt;Teléfono&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;th scope="row"&gt;Juan Pérez&lt;/th&gt; &lt;!-- Encabezado de fila --&gt;
+            &lt;td&gt;juan.perez@ejemplo.com&lt;/td&gt;
+            &lt;td&gt;555-1234&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;th scope="row"&gt;María García&lt;/th&gt; &lt;!-- Encabezado de fila --&gt;
+            &lt;td&gt;maria.garcia@ejemplo.com&lt;/td&gt;
+            &lt;td&gt;555-5678&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="quiz-section">
+            <h3>Quiz de la Clase 20: Tablas HTML</h3>
+            <p>¡Pon a prueba tus conocimientos con este quiz de 10 preguntas!</p>
+            <form id="quizForm">
+                <div class="quiz-question">
+                    <h4>1. ¿Qué etiqueta HTML se utiliza para definir una tabla?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="a"> <code>&lt;grid&gt;</code></label>
+                        <label><input type="radio" name="q1" value="b"> <code>&lt;data&gt;</code></label>
+                        <label><input type="radio" name="q1" value="c"> <code>&lt;table&gt;</code></label>
+                        <label><input type="radio" name="q1" value="d"> <code>&lt;sheet&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>2. ¿Cuál es la etiqueta para definir una fila en una tabla?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="a"> <code>&lt;tc&gt;</code></label>
+                        <label><input type="radio" name="q2" value="b"> <code>&lt;row&gt;</code></label>
+                        <label><input type="radio" name="q2" value="c"> <code>&lt;tr&gt;</code></label>
+                        <label><input type="radio" name="q2" value="d"> <code>&lt;tf&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>3. ¿Qué etiqueta se utiliza para definir una celda de encabezado en una tabla?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="a"> <code>&lt;hd&gt;</code></label>
+                        <label><input type="radio" name="q3" value="b"> <code>&lt;hcell&gt;</code></label>
+                        <label><input type="radio" name="q3" value="c"> <code>&lt;th&gt;</code></label>
+                        <label><input type="radio" name="q3" value="d"> <code>&lt;headcell&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>4. ¿Qué etiqueta se utiliza para agrupar el contenido del cuerpo de una tabla?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="a"> <code>&lt;tablebody&gt;</code></label>
+                        <label><input type="radio" name="q4" value="b"> <code>&lt;body&gt;</code></label>
+                        <label><input type="radio" name="q4" value="c"> <code>&lt;tbody&gt;</code></label>
+                        <label><input type="radio" name="q4" value="d"> <code>&lt;data-body&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>5. ¿Qué atributo se usa para fusionar celdas a través de múltiples columnas?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="a"> <code>rowspan</code></label>
+                        <label><input type="radio" name="q5" value="b"> <code>colspan</code></label>
+                        <label><input type="radio" name="q5" value="c"> <code>mergecols</code></label>
+                        <label><input type="radio" name="q5" value="d"> <code>colmerge</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>6. ¿Qué etiqueta se utiliza para proporcionar un título o descripción a una tabla?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q6" value="a"> <code>&lt;title&gt;</code></label>
+                        <label><input type="radio" name="q6" value="b"> <code>&lt;summary&gt;</code></label>
+                        <label><input type="radio" name="q6" value="c"> <code>&lt;label&gt;</code></label>
+                        <label><input type="radio" name="q6" value="d"> <code>&lt;caption&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>7. ¿En qué sección de la tabla debe ir la etiqueta <code>&lt;caption&gt;</code>?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q7" value="a"> Dentro de <code>&lt;thead&gt;</code></label>
+                        <label><input type="radio" name="q7" value="b"> Antes de <code>&lt;table&gt;</code></label>
+                        <label><input type="radio" name="q7" value="c"> Inmediatamente después de la etiqueta de apertura <code>&lt;table&gt;</code></label>
+                        <label><input type="radio" name="q7" value="d"> Después de <code>&lt;tfoot&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>8. Para una tabla que muestra los resultados de estudiantes con filas para cada estudiante y columnas para sus notas, ¿qué etiqueta usarías para los nombres de los estudiantes si quieres que sirvan como encabezados de fila?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q8" value="a"> <code>&lt;td&gt;</code></label>
+                        <label><input type="radio" name="q8" value="b"> <code>&lt;th scope="row"&gt;</code></label>
+                        <label><input type="radio" name="q8" value="c"> <code>&lt;rowhead&gt;</code></label>
+                        <label><input type="radio" name="q8" value="d"> <code>&lt;td class="header"&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>9. ¿Qué sección de la tabla se utiliza para agrupar las filas que contienen los datos resumidos o totales?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q9" value="a"> <code>&lt;summary&gt;</code></label>
+                        <label><input type="radio" name="q9" value="b"> <code>&lt;foot&gt;</code></label>
+                        <label><input type="radio" name="q9" value="c"> <code>&lt;tfoot&gt;</code></label>
+                        <label><input type="radio" name="q9" value="d"> <code>&lt;endtable&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>10. ¿Cuál de los siguientes no es un buen caso de uso para una tabla HTML?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q10" value="a"> Mostrar datos financieros anuales.</label>
+                        <label><input type="radio" name="q10" value="b"> Presentar un calendario de eventos.</label>
+                        <label><input type="radio" name="q10" value="c"> Diseñar el diseño completo de una página web (layout).</label>
+                        <label><input type="radio" name="q10" value="d"> Comparar especificaciones de productos.</label>
+                    </div>
+                </div>
+
+                <button type="button" class="submit-quiz-button" id="checkAnswersBtn">Ver Resultados</button>
+            </form>
+
+            <div id="quizResults" class="quiz-results">
+                <p>Resultados del Test:</p>
+                <ol id="resultsList"></ol>
+                <p id="scoreSummary"></p>
+                <button type="button" class="reveal-button" id="resetQuizBtn" style="display: none;">Volver a Intentar</button>
+            </div>
+        </div>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="Ejercicios19.html">Ejercicios sobre la lección anterior.</a></li>
+                <li><a href="20TablasHtmlOrganizacionDeDatosTabulares.html">Volver a la Clase 20: Tablas HTML.</a></li>
+                <li><a href="21...html">Clase 21: (Próxima Lección)</a></li> <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script>
+        // Función para mostrar/ocultar soluciones de ejercicios
+        function toggleSolution(button, solutionId) {
+            const solution = document.getElementById(solutionId);
+            if (solution.style.display === 'block') {
+                solution.style.display = 'none';
+                button.textContent = 'Mostrar Solución';
+            } else {
+                solution.style.display = 'block';
+                button.textContent = 'Ocultar Solución';
+            }
+        }
+
+        // Datos del quiz
+        const quizAnswers = {
+            q1: 'c', // <table>
+            q2: 'c', // <tr>
+            q3: 'c', // <th>
+            q4: 'c', // <tbody>
+            q5: 'b', // colspan
+            q6: 'd', // <caption>
+            q7: 'c', // Inmediatamente después de la etiqueta de apertura <table>
+            q8: 'b', // <th scope="row">
+            q9: 'c', // <tfoot>
+            q10: 'c' // Diseñar el diseño completo de una página web (layout).
+        };
+
+        // Asignar eventos a los botones una vez que el DOM esté completamente cargado
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            if (checkAnswersBtn) {
+                checkAnswersBtn.addEventListener('click', checkQuiz);
+            }
+            if (resetQuizBtn) {
+                resetQuizBtn.addEventListener('click', resetQuiz);
+            }
+        });
+
+        function checkQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const resultsList = document.getElementById('resultsList');
+            const scoreSummary = document.getElementById('scoreSummary');
+            const quizResultsDiv = document.getElementById('quizResults');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            resultsList.innerHTML = ''; // Limpiar resultados anteriores
+            let score = 0;
+
+            for (let i = 1; i <= 10; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = quizForm.elements[questionName] ? quizForm.elements[questionName].value : '';
+                const correctAnswer = quizAnswers[questionName];
+
+                const listItem = document.createElement('li');
+                listItem.classList.add(selectedOption === correctAnswer ? 'correct' : 'incorrect');
+
+                // Obtener el texto de la opción seleccionada (preservando <code>)
+                let selectedAnswerText = 'No respondida';
+                if (selectedOption) {
+                    const selectedLabel = quizForm.querySelector(`input[name="${questionName}"][value="${selectedOption}"]`);
+                    if (selectedLabel) {
+                        const labelClone = selectedLabel.closest('label').cloneNode(true);
+                        labelClone.querySelector('input').remove();
+                        selectedAnswerText = labelClone.innerHTML.trim();
+                    }
+                }
+
+                // Obtener el texto de la opción correcta (preservando <code>)
+                const correctLabel = quizForm.querySelector(`input[name="${questionName}"][value="${correctAnswer}"]`);
+                let correctAnswerText = 'N/A';
+                if (correctLabel) {
+                    const correctLabelClone = correctLabel.closest('label').cloneNode(true);
+                    correctLabelClone.querySelector('input').remove();
+                    correctAnswerText = correctLabelClone.innerHTML.trim();
+                }
+
+                const questionText = document.createTextNode(`Pregunta ${i}: `);
+                listItem.appendChild(questionText);
+
+                if (selectedOption !== correctAnswer) {
+                    listItem.innerHTML += ` Tu respuesta: "${selectedAnswerText}".<br>`;
+                    const correctInfoSpan = document.createElement('span');
+                    correctInfoSpan.classList.add('correct-answer-info');
+                    correctInfoSpan.innerHTML = `Respuesta correcta: "${correctAnswerText}".`;
+                    listItem.appendChild(correctInfoSpan);
+                } else {
+                    listItem.innerHTML += ` Correcta.`;
+                    score++;
+                }
+
+                resultsList.appendChild(listItem);
+            }
+
+            scoreSummary.textContent = `Tu puntuación es: ${score} de 10 preguntas correctas.`;
+            quizResultsDiv.style.display = 'block'; // Mostrar la sección de resultados
+            quizResultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Desplazarse a los resultados
+
+            // Ocultar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'none';
+            // Mostrar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'inline-block';
+        }
+
+        function resetQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            quizForm.reset(); // Reinicia todos los radio buttons
+            document.getElementById('quizResults').style.display = 'none'; // Oculta los resultados
+            document.getElementById('resultsList').innerHTML = ''; // Limpia la lista de resultados
+            document.getElementById('scoreSummary').textContent = ''; // Limpia el resumen de puntuación
+
+            // Mostrar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'inline-block';
+            // Ocultar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

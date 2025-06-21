@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 18: Ejercicios de Elementos de Progreso y Medición</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/ejercicios_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Clase 18: Ejercicios de Elementos de Progreso y Medición</h1>
+
+        <div class="exercise-section">
+            <h3>Ejercicios Prácticos de la Clase 18</h3>
+            <p>Para consolidar tus conocimientos sobre los elementos `&lt;progress&gt;` y `&lt;meter&gt;`, te propongo los siguientes ejercicios. Intenta resolverlos por ti mismo antes de ver la solución.</p>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 1: Barra de Progreso de Carga</h4>
+                <p>Crea una barra de progreso que muestre un 75% de avance en la carga de un archivo. No necesita un valor máximo si es el predeterminado.</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution1')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution1">
+                    <pre><code>&lt;p&gt;Carga del archivo:&lt;/p&gt;
+&lt;progress value="75" max="100"&gt;75%&lt;/progress&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 2: Progreso Indeterminado</h4>
+                <p>Crea una barra de progreso para una tarea cuya duración es desconocida (progreso indeterminado).</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution2')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution2">
+                    <pre><code>&lt;p&gt;Procesando datos...&lt;/p&gt;
+&lt;progress&gt;Cargando...&lt;/progress&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 3: Medidor de Espacio en Disco</h4>
+                <p>Crea un medidor (`&lt;meter&gt;`) que muestre el uso del espacio en disco. Asume que tienes 100 GB en total, has usado 80 GB, la advertencia está en 70 GB y el "punto alto" (óptimo) es 50 GB. El valor óptimo sería 50GB, la mitad de los 100GB disponibles, la barra de progreso estará en verde.</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution3')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution3">
+                    <pre><code>&lt;label for="disk_space"&gt;Espacio en Disco Usado:&lt;/label&gt;
+&lt;meter id="disk_space" value="80" min="0" max="100" low="60" high="90" optimum="50"&gt;80 GB de 100 GB&lt;/meter&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 4: Medidor de Nivel de Batería</h4>
+                <p>Representa un nivel de batería al 30%. El rango es de 0 a 100. Considera que un nivel bajo es por debajo del 20% y un nivel alto por encima del 80%. El óptimo es 100%.</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution4')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution4">
+                    <pre><code>&lt;label for="battery_level"&gt;Nivel de Batería:&lt;/label&gt;
+&lt;meter id="battery_level" value="30" min="0" max="100" low="20" high="80" optimum="100"&gt;30%&lt;/meter&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 5: Medidor de Calificación de Producto</h4>
+                <p>Crea un medidor para la calificación promedio de un producto, que es 3.5 de 5 estrellas. Establece un valor bajo en 2 y un valor alto en 4, con el óptimo en 5.</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution5')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution5">
+                    <pre><code>&lt;label for="product_rating"&gt;Calificación Promedio:&lt;/label&gt;
+&lt;meter id="product_rating" value="3.5" min="0" max="5" low="2" high="4" optimum="5"&gt;3.5 de 5 estrellas&lt;/meter&gt;</code></pre>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="quiz-section">
+            <h3>Quiz de la Clase 18: Elementos de Progreso y Medición</h3>
+            <p>¡Pon a prueba tus conocimientos con este quiz de 10 preguntas!</p>
+            <form id="quizForm">
+                <div class="quiz-question">
+                    <h4>1. ¿Qué etiqueta HTML se utiliza para mostrar el progreso de una tarea?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="a"> <code>&lt;meter&gt;</code></label>
+                        <label><input type="radio" name="q1" value="b"> <code>&lt;status&gt;</code></label>
+                        <label><input type="radio" name="q1" value="c"> <code>&lt;progress&gt;</code></label>
+                        <label><input type="radio" name="q1" value="d"> <code>&lt;gauge&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>2. Si un elemento <code>&lt;progress&gt;</code> no tiene el atributo <code>value</code>, ¿qué indica?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="a"> Que la tarea está completa.</label>
+                        <label><input type="radio" name="q2" value="b"> Que la tarea aún no ha comenzado.</label>
+                        <label><input type="radio" name="q2" value="c"> Un progreso indeterminado o desconocido.</label>
+                        <label><input type="radio" name="q2" value="d"> Un error en el progreso.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>3. ¿Qué atributo de <code>&lt;meter&gt;</code> define el valor actual que se está midiendo?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="a"> <code>current</code></label>
+                        <label><input type="radio" name="q3" value="b"> <code>value</code></label>
+                        <label><input type="radio" name="q3" value="c"> <code>level</code></label>
+                        <label><input type="radio" name="q3" value="d"> <code>measure</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>4. ¿Cuál de los siguientes atributos es exclusivo de <code>&lt;meter&gt;</code> y no se usa en <code>&lt;progress&gt;</code>?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="a"> <code>max</code></label>
+                        <label><input type="radio" name="q4" value="b"> <code>value</code></label>
+                        <label><input type="radio" name="q4" value="c"> <code>optimum</code></label>
+                        <label><input type="radio" name="q4" value="d"> <code>min</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>5. ¿Qué atributo de <code>&lt;meter&gt;</code> indica un valor que se considera el "ideal" o el "mejor" dentro del rango?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="a"> <code>best</code></label>
+                        <label><input type="radio" name="q5" value="b"> <code>high</code></label>
+                        <label><input type="q5" value="c"> <code>optimum</code></label>
+                        <label><input type="radio" name="q5" value="d"> <code>target</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>6. El atributo <code>low</code> en <code>&lt;meter&gt;</code> define:</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q6" value="a"> El valor más bajo posible del medidor.</label>
+                        <label><input type="radio" name="q6" value="b"> Un valor que se considera por debajo del rango normal.</label>
+                        <label><input type="radio" name="q6" value="c"> El valor que dispara una alerta de bajo rendimiento.</label>
+                        <label><input type="radio" name="q6" value="d"> El umbral para que el medidor cambie a color rojo.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>7. ¿Para qué tipo de escenario sería más apropiado usar <code>&lt;progress&gt;</code>?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q7" value="a"> Mostrar la puntuación de un examen.</label>
+                        <label><input type="radio" name="q7" value="b"> Indicar la cantidad de agua en un tanque.</label>
+                        <label><input type="radio" name="q7" value="c"> La descarga de un archivo o la carga de una página.</label>
+                        <label><input type="radio" name="q7" value="d"> La calificación promedio de un restaurante.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>8. ¿Para qué tipo de escenario sería más apropiado usar <code>&lt;meter&gt;</code>?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q8" value="a"> El estado de una instalación de software.</label>
+                        <label><input type="radio" name="q8" value="b"> Un temporizador de cuenta atrás.</label>
+                        <label><input type="radio" name="q8" value="c"> Nivel de batería restante en un dispositivo.</label>
+                        <label><input type="radio" name="q8" value="d"> La subida de varias fotos a la nube.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>9. ¿Ambos elementos, <code>&lt;progress&gt;</code> y <code>&lt;meter&gt;</code>, pueden ser estilizados con CSS?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q9" value="a"> No, su estilo es fijo por el navegador.</label>
+                        <label><input type="radio" name="q9" value="b"> Solo <code>&lt;progress&gt;</code> puede ser estilizado.</label>
+                        <label><input type="radio" name="q9" value="c"> Sí, ambos pueden ser estilizados, aunque la personalización interna puede variar.</label>
+                        <label><input type="radio" name="q9" value="d"> Solo se pueden estilizar los atributos <code>value</code> y <code>max</code>.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>10. ¿Cuál es el valor por defecto del atributo <code>max</code> para <code>&lt;progress&gt;</code>?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q10" value="a"> 0</label>
+                        <label><input type="radio" name="q10" value="b"> 1</label>
+                        <label><input type="radio" name="q10" value="c"> 10</label>
+                        <label><input type="radio" name="q10" value="d"> 100</label>
+                    </div>
+                </div>
+
+                <button type="button" class="submit-quiz-button" id="checkAnswersBtn">Ver Resultados</button>
+            </form>
+
+            <div id="quizResults" class="quiz-results">
+                <p>Resultados del Test:</p>
+                <ol id="resultsList"></ol>
+                <p id="scoreSummary"></p>
+                <button type="button" class="reveal-button" id="resetQuizBtn" style="display: none;">Volver a Intentar</button>
+            </div>
+        </div>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="Ejercicios17.html">Ejercicios sobre la lección anterior.</a></li>
+                <li><a href="18ElementosDeProgresoYMedicion.html">Volver a la Clase 18: Elementos de Progreso y Medición.</a></li>
+                <li><a href="19...html">Clase 19: (Próxima Lección)</a></li> <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script>
+        // Función para mostrar/ocultar soluciones de ejercicios
+        function toggleSolution(button, solutionId) {
+            const solution = document.getElementById(solutionId);
+            if (solution.style.display === 'block') {
+                solution.style.display = 'none';
+                button.textContent = 'Mostrar Solución';
+            } else {
+                solution.style.display = 'block';
+                button.textContent = 'Ocultar Solución';
+            }
+        }
+
+        // Datos del quiz
+        const quizAnswers = {
+            q1: 'c', // <progress>
+            q2: 'c', // Un progreso indeterminado o desconocido.
+            q3: 'b', // value
+            q4: 'c', // optimum
+            q5: 'c', // optimum
+            q6: 'b', // Un valor que se considera por debajo del rango normal.
+            q7: 'c', // La descarga de un archivo o la carga de una página.
+            q8: 'c', // Nivel de batería restante en un dispositivo.
+            q9: 'c', // Sí, ambos pueden ser estilizados, aunque la personalización interna puede variar.
+            q10: 'b' // 1 (El valor predeterminado de 'max' para <progress> es 1.0, no 100).
+        };
+
+        // Asignar eventos a los botones una vez que el DOM esté completamente cargado
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            if (checkAnswersBtn) {
+                checkAnswersBtn.addEventListener('click', checkQuiz);
+            }
+            if (resetQuizBtn) {
+                resetQuizBtn.addEventListener('click', resetQuiz);
+            }
+        });
+
+        function checkQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const resultsList = document.getElementById('resultsList');
+            const scoreSummary = document.getElementById('scoreSummary');
+            const quizResultsDiv = document.getElementById('quizResults');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            resultsList.innerHTML = ''; // Limpiar resultados anteriores
+            let score = 0;
+
+            for (let i = 1; i <= 10; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = quizForm.elements[questionName] ? quizForm.elements[questionName].value : '';
+                const correctAnswer = quizAnswers[questionName];
+
+                const listItem = document.createElement('li');
+                listItem.classList.add(selectedOption === correctAnswer ? 'correct' : 'incorrect');
+
+                // Obtener el texto de la opción seleccionada (preservando <code>)
+                let selectedAnswerText = 'No respondida';
+                if (selectedOption) {
+                    const selectedLabel = quizForm.querySelector(`input[name="${questionName}"][value="${selectedOption}"]`);
+                    if (selectedLabel) {
+                        const labelClone = selectedLabel.closest('label').cloneNode(true);
+                        labelClone.querySelector('input').remove();
+                        selectedAnswerText = labelClone.innerHTML.trim();
+                    }
+                }
+
+                // Obtener el texto de la opción correcta (preservando <code>)
+                const correctLabel = quizForm.querySelector(`input[name="${questionName}"][value="${correctAnswer}"]`);
+                let correctAnswerText = 'N/A';
+                if (correctLabel) {
+                    const correctLabelClone = correctLabel.closest('label').cloneNode(true);
+                    correctLabelClone.querySelector('input').remove();
+                    correctAnswerText = correctLabelClone.innerHTML.trim();
+                }
+
+                const questionText = document.createTextNode(`Pregunta ${i}: `);
+                listItem.appendChild(questionText);
+
+                if (selectedOption !== correctAnswer) {
+                    listItem.innerHTML += ` Tu respuesta: "${selectedAnswerText}".<br>`;
+                    const correctInfoSpan = document.createElement('span');
+                    correctInfoSpan.classList.add('correct-answer-info');
+                    correctInfoSpan.innerHTML = `Respuesta correcta: "${correctAnswerText}".`;
+                    listItem.appendChild(correctInfoSpan);
+                } else {
+                    listItem.innerHTML += ` Correcta.`;
+                    score++;
+                }
+
+                resultsList.appendChild(listItem);
+            }
+
+            scoreSummary.textContent = `Tu puntuación es: ${score} de 10 preguntas correctas.`;
+            quizResultsDiv.style.display = 'block'; // Mostrar la sección de resultados
+            quizResultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Desplazarse a los resultados
+
+            // Ocultar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'none';
+            // Mostrar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'inline-block';
+        }
+
+        function resetQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            quizForm.reset(); // Reinicia todos los radio buttons
+            document.getElementById('quizResults').style.display = 'none'; // Oculta los resultados
+            document.getElementById('resultsList').innerHTML = ''; // Limpia la lista de resultados
+            document.getElementById('scoreSummary').textContent = ''; // Limpia el resumen de puntuación
+
+            // Mostrar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'inline-block';
+            // Ocultar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

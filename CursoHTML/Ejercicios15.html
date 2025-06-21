@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 15: Ejercicios de Botones y Campos de Texto Multilínea</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/ejercicios_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Clase 15: Ejercicios de Botones y Campos de Texto Multilínea</h1>
+
+        <div class="exercise-section">
+            <h3>Ejercicios Prácticos de la Clase 15</h3>
+            <p>Para consolidar tus conocimientos sobre el uso de `&lt;textarea&gt;` y los diferentes tipos de botones en HTML, te propongo los siguientes ejercicios. Intenta resolverlos por ti mismo antes de ver la solución.</p>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 1: Cuadro de Comentarios Redimensionable</h4>
+                <p>Crea un `&lt;textarea&gt;` que permita al usuario escribir comentarios. Debe tener un tamaño inicial de 4 filas y 50 columnas, y ser redimensionable por el usuario.</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution1')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution1">
+                    <pre><code>&lt;form action="#" method="POST"&gt;
+    &lt;label for="comentarios"&gt;Tus Comentarios:&lt;/label&gt;
+    &lt;textarea id="comentarios" name="comentarios" rows="4" cols="50"&gt;&lt;/textarea&gt;
+    &lt;button type="submit"&gt;Enviar Comentarios&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 2: Campo de Descripción No Redimensionable</h4>
+                <p>Implementa un `&lt;textarea&gt;` para una descripción de producto. Debe tener un tamaño inicial de 6 filas y 40 columnas, y NO debe ser redimensionable por el usuario (ni horizontal ni verticalmente).</p>
+                <ul>
+                    <li>Necesitarás CSS para controlar el redimensionamiento.</li>
+                </ul>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution2')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution2">
+                    <pre><code>&lt;!-- En el HTML --&gt;
+&lt;form action="#" method="POST"&gt;
+    &lt;label for="descripcion_producto"&gt;Descripción del Producto:&lt;/label&gt;
+    &lt;textarea id="descripcion_producto" name="descripcion_producto" rows="6" cols="40" class="no-resize-textarea"&gt;&lt;/textarea&gt;
+    &lt;button type="submit"&gt;Guardar Descripción&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;!-- En tu archivo CSS (ej. formularios.css o un nuevo styles.css) --&gt;
+&lt;style&gt;
+.no-resize-textarea {
+    resize: none;
+}
+&lt;/style&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 3: Botón de Envío Personalizado</h4>
+                <p>Crea un formulario simple con un campo de texto para el nombre y un botón de envío. El botón de envío debe ser un `&lt;button&gt;` en lugar de un `&lt;input type="submit"&gt;`, y su texto debe decir "Registrarse Ahora".</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution3')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution3">
+                    <pre><code>&lt;form action="/registro" method="POST"&gt;
+    &lt;label for="nombre_registro"&gt;Nombre:&lt;/label&gt;
+    &lt;input type="text" id="nombre_registro" name="nombre_registro" required&gt;
+    &lt;button type="submit"&gt;Registrarse Ahora&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 4: Botón de Restablecimiento de Formulario</h4>
+                <p>Crea un formulario con un campo de email prellenado y un botón para restablecer el formulario a su estado inicial. Utiliza un `&lt;input type="reset"&gt;` y un `&lt;button type="reset"&gt;` para mostrar ambos enfoques.</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution4')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution4">
+                    <pre><code>&lt;form action="#" method="POST"&gt;
+    &lt;label for="email_contacto"&gt;Email:&lt;/label&gt;
+    &lt;input type="email" id="email_contacto" name="email_contacto" value="ejemplo@dominio.com"&gt;
+    &lt;input type="reset" value="Limpiar (Input Reset)"&gt;
+    &lt;button type="reset"&gt;Limpiar (Button Reset)&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 5: Botón Genérico para Script</h4>
+                <p>Crea un botón que no envíe un formulario ni lo restablezca, sino que esté diseñado para activar una función JavaScript. Su texto debe ser "Generar Reporte" y su `type` debe ser el apropiado.</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution5')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution5">
+                    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Ejemplo Botón Genérico&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;button type="button" onclick="generarReporte()"&gt;Generar Reporte&lt;/button&gt;
+
+    &lt;script&gt;
+        function generarReporte() {
+            alert('¡Reporte generado! (Esta es una simulación JavaScript)');
+            console.log('Se ha activado la función de generación de reporte.');
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="quiz-section">
+            <h3>Quiz de la Clase 15: Botones y Campos de Texto Multilínea</h3>
+            <p>¡Pon a prueba tus conocimientos con este quiz de 10 preguntas!</p>
+            <form id="quizForm">
+                <div class="quiz-question">
+                    <h4>1. ¿Qué etiqueta HTML se utiliza para crear un campo de entrada de texto multilínea?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="a"> <code>&lt;input type="text" multiline&gt;</code></label>
+                        <label><input type="radio" name="q1" value="b"> <code>&lt;textarea&gt;</code></label>
+                        <label><input type="radio" name="q1" value="c"> <code>&lt;multitext&gt;</code></label>
+                        <label><input type="radio" name="q1" value="d"> <code>&lt;input type="textarea"&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>2. ¿Qué atributo de <code>&lt;textarea&gt;</code> define el número visible de filas de texto?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="a"> <code>lines</code></label>
+                        <label><input type="radio" name="q2" value="b"> <code>height</code></label>
+                        <label><input type="radio" name="q2" value="c"> <code>rows</code></label>
+                        <label><input type="radio" name="q2" value="d"> <code>rows-visible</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>3. ¿Cuál es el valor por defecto del atributo <code>type</code> para un botón creado con la etiqueta <code>&lt;button&gt;</code>?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="a"> <code>button</code></label>
+                        <label><input type="radio" name="q3" value="b"> <code>reset</code></label>
+                        <label><input type="radio" name="q3" value="c"> <code>submit</code></label>
+                        <label><input type="radio" name="q3" value="d"> No tiene valor por defecto</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>4. Para evitar que un <code>&lt;textarea&gt;</code> sea redimensionado por el usuario, ¿qué propiedad CSS se utiliza?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="a"> <code>overflow: hidden;</code></label>
+                        <label><input type="radio" name="q4" value="b"> <code>size: fixed;</code></label>
+                        <label><input type="radio" name="q4" value="c"> <code>resize: none;</code></label>
+                        <label><input type="radio" name="q4" value="d"> <code>scalable: false;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>5. ¿Qué tipo de botón se utiliza para enviar los datos de un formulario a un servidor?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="a"> <code>&lt;button type="button"&gt;</code></label>
+                        <label><input type="radio" name="q5" value="b"> <code>&lt;input type="reset"&gt;</code></label>
+                        <label><input type="radio" name="q5" value="c"> <code>&lt;button type="submit"&gt;</code></label>
+                        <label><input type="radio" name="q5" value="d"> <code>&lt;input type="send"&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>6. ¿Cuál es la principal ventaja de usar <code>&lt;button&gt;</code> en lugar de <code>&lt;input type="submit"&gt;</code> o <code>&lt;input type="reset"&gt;</code>?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q6" value="a"> Es más fácil de estilizar.</label>
+                        <label><input type="radio" name="q6" value="b"> Permite contenido más complejo (imágenes, HTML) dentro del botón.</label>
+                        <label><input type="radio" name="q6" value="c"> Es más compatible con navegadores antiguos.</label>
+                        <label><input type="radio" name="q6" value="d"> Envía el formulario más rápido.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>7. Si deseas un botón que simplemente ejecute una función JavaScript y no interactúe con un formulario, ¿qué <code>type</code> debería tener?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q7" value="a"> <code>submit</code></label>
+                        <label><input type="radio" name="q7" value="b"> <code>reset</code></label>
+                        <label><input type="radio" name="q7" value="c"> <code>button</code></label>
+                        <label><input type="radio" name="q7" value="d"> <code>js</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>8. ¿Qué atributo de <code>&lt;textarea&gt;</code> define el número visible de columnas de texto?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q8" value="a"> <code>cols</code></label>
+                        <label><input type="radio" name="q8" value="b"> <code>width</code></label>
+                        <label><input type="radio" name="q8" value="c"> <code>columns</code></label>
+                        <label><input type="radio" name="q8" value="d"> <code>char-width</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>9. ¿Qué sucede cuando un usuario hace clic en un <code>&lt;input type="reset"&gt;</code> dentro de un formulario?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q9" value="a"> Envía el formulario con valores vacíos.</label>
+                        <label><input type="radio" name="q9" value="b"> Borra todos los datos del formulario de la base de datos.</label>
+                        <label><input type="radio" name="q9" value="c"> Restaura todos los campos del formulario a sus valores iniciales.</label>
+                        <label><input type="radio" name="q9" value="d"> Recarga la página.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>10. ¿Es posible colocar HTML, como una imagen o un icono, dentro de un <code>&lt;input type="submit"&gt;</code>?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q10" value="a"> Sí, usando atributos especiales como <code>icon</code> o <code>image</code>.</label>
+                        <label><input type="radio" name="q10" value="b"> No, solo acepta texto como valor.</label>
+                        <label><input type="radio" name="q10" value="c"> Sí, si se usan estilos CSS específicos.</label>
+                        <label><input type="radio" name="q10" value="d"> Solo si se usa JavaScript para inyectar el HTML.</label>
+                    </div>
+                </div>
+
+                <button type="button" class="submit-quiz-button" id="checkAnswersBtn">Ver Resultados</button>
+            </form>
+
+            <div id="quizResults" class="quiz-results">
+                <p>Resultados del Test:</p>
+                <ol id="resultsList"></ol>
+                <p id="scoreSummary"></p>
+                <button type="button" class="reveal-button" id="resetQuizBtn" style="display: none;">Volver a Intentar</button>
+            </div>
+        </div>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="14OtrosTiposDeEntradaIIFechasYArchivos.html">Ejercicios sobre la lección anterior.</a></li>
+                <li><a href="15BotonesYCamposDeTextoMultilinea.html">Volver a la Clase 15: Botones y Campos de Texto Multilínea.</a></li>
+                <li><a href="16EstructuraDeFormulariosFieldsetLegend.html">Clase 16: Estructura de Formularios: `&lt;fieldset&gt;` y `&lt;legend&gt;` (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script>
+        // Función para mostrar/ocultar soluciones de ejercicios
+        function toggleSolution(button, solutionId) {
+            const solution = document.getElementById(solutionId);
+            if (solution.style.display === 'block') {
+                solution.style.display = 'none';
+                button.textContent = 'Mostrar Solución';
+            } else {
+                solution.style.display = 'block';
+                button.textContent = 'Ocultar Solución';
+            }
+        }
+
+        // Datos del quiz
+        const quizAnswers = {
+            q1: 'b', // <textarea>
+            q2: 'c', // rows
+            q3: 'c', // submit
+            q4: 'c', // resize: none;
+            q5: 'c', // <button type="submit">
+            q6: 'b', // Permite contenido más complejo (imágenes, HTML)
+            q7: 'c', // button
+            q8: 'a', // cols
+            q9: 'c', // Restaura todos los campos del formulario a sus valores iniciales.
+            q10: 'b' // No, solo acepta texto como valor.
+        };
+
+        // Asignar eventos a los botones una vez que el DOM esté completamente cargado
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            if (checkAnswersBtn) {
+                checkAnswersBtn.addEventListener('click', checkQuiz);
+            }
+            if (resetQuizBtn) {
+                resetQuizBtn.addEventListener('click', resetQuiz);
+            }
+        });
+
+        function checkQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const resultsList = document.getElementById('resultsList');
+            const scoreSummary = document.getElementById('scoreSummary');
+            const quizResultsDiv = document.getElementById('quizResults');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            resultsList.innerHTML = ''; // Limpiar resultados anteriores
+            let score = 0;
+
+            for (let i = 1; i <= 10; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = quizForm.elements[questionName] ? quizForm.elements[questionName].value : '';
+                const correctAnswer = quizAnswers[questionName];
+
+                const listItem = document.createElement('li');
+                listItem.classList.add(selectedOption === correctAnswer ? 'correct' : 'incorrect');
+
+                // Obtener el texto de la opción seleccionada (escapando HTML)
+                let selectedAnswerText = 'No respondida';
+                if (selectedOption) {
+                    const selectedLabel = quizForm.querySelector(`input[name="${questionName}"][value="${selectedOption}"]`);
+                    if (selectedLabel) {
+                         // Clonar el label y eliminar el input para obtener solo el texto con el formato <code>
+                        const labelClone = selectedLabel.closest('label').cloneNode(true);
+                        labelClone.querySelector('input').remove();
+                        selectedAnswerText = labelClone.innerHTML.trim(); // Usar innerHTML para mantener el <code>
+                    }
+                }
+
+                // Obtener el texto de la opción correcta (escapando HTML)
+                const correctLabel = quizForm.querySelector(`input[name="${questionName}"][value="${correctAnswer}"]`);
+                let correctAnswerText = 'N/A';
+                if (correctLabel) {
+                    // Clonar el label y eliminar el input para obtener solo el texto con el formato <code>
+                    const correctLabelClone = correctLabel.closest('label').cloneNode(true);
+                    correctLabelClone.querySelector('input').remove();
+                    correctAnswerText = correctLabelClone.innerHTML.trim(); // Usar innerHTML para mantener el <code>
+                }
+
+                const questionText = document.createTextNode(`Pregunta ${i}: `);
+                listItem.appendChild(questionText);
+
+                if (selectedOption !== correctAnswer) {
+                    listItem.innerHTML += ` Tu respuesta: "${selectedAnswerText}".<br>`;
+                    const correctInfoSpan = document.createElement('span');
+                    correctInfoSpan.classList.add('correct-answer-info');
+                    correctInfoSpan.innerHTML = `Respuesta correcta: "${correctAnswerText}".`;
+                    listItem.appendChild(correctInfoSpan);
+                } else {
+                    listItem.innerHTML += ` Correcta.`;
+                    score++;
+                }
+
+                resultsList.appendChild(listItem);
+            }
+
+            scoreSummary.textContent = `Tu puntuación es: ${score} de 10 preguntas correctas.`;
+            quizResultsDiv.style.display = 'block'; // Mostrar la sección de resultados
+            quizResultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Desplazarse a los resultados
+
+            // Ocultar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'none';
+            // Mostrar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'inline-block';
+        }
+
+        function resetQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            quizForm.reset(); // Reinicia todos los radio buttons
+            document.getElementById('quizResults').style.display = 'none'; // Oculta los resultados
+            document.getElementById('resultsList').innerHTML = ''; // Limpia la lista de resultados
+            document.getElementById('scoreSummary').textContent = ''; // Limpia el resumen de puntuación
+
+            // Mostrar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'inline-block';
+            // Ocultar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
