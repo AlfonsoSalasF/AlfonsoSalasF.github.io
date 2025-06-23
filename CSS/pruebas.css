@@ -5,3 +5,6 @@
     border: 1px dashed #ccc;
     color: #c3e6cb;
 }
+.noredim{
+    resize: none;
+}

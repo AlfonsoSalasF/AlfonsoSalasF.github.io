@@ -7,25 +7,40 @@
     <link rel="stylesheet" href="/CSS/pruebas.css">
 </head>
 <body>
-
-   <form action="/dias.php" method="get">
-        <label for="fecha"><strong>date: </strong>Introzca una fecha</label>
-        <input type="date" id="fecha" name="FechaEscogida">
-        <br>
-        <label for="hora"><strong>time: </strong>Introduzca una hora</label>
-        <input type="time" id="hora" name="HoraEscogida">
-        <br>
-        <label for="fechahora"><strong>datetime-local: </strong>Fecha y hora local</label>
-        <input type="datetime-local" id="fechahora" name="FechaHoraEscogida">
-        <br>
-        <label for="mes"><strong>month: </strong>Escoja un mes y un año</label>
-        <input type="month" id="mes" name="MesEscogido">
-        <br>
-        <label for="semana"><strong>week: </strong>Escoja una semana del año</label>
-        <input type="week" id="semana" name="SemanaEscogida">
-        <br>
-        <button type="submit">Subir</button>
-   </form>
-
+    <form class="intereses" action="#" method="post">
+        <label for="comentarios">Escriba un comentario: </label> <br>
+        <textarea name="coment" id="comentarios" rows="4" cols="50"></textarea><br>
+        <br><br>
+        <label for="producto">Inserta una descripción del producto: </label><br>
+        <textarea class="noredim"  name="descprod" id="producto" rows="6" cols="40"></textarea>
+        <br><br>
+        <button type="submit">Enviar comentarioss</button>
+    </form>
+    <br><br>
+    <form class="intereses" action="#" method="post">
+        <br><br>
+        <label for="texto">Introduzca su nombre</label>
+        <input type="text" id="texto" name="texto">
+        <button type="submit">Registrarse ahora</button>
+        <br><br>
+    </form>
+    <br><br>
+    <form action="#" class="intereses" method="post">
+        <br><br>
+        <label for="mail">Introduzca un mail válido</label>
+        <input type="email" id="mail" name="correo" value="alfonso@alfonso.com">
+        <input type="reset" value="Reseteo input"><button type="reset">Reseteo button</button>
+        <br><br>
+    </form>
+    <br><br>
+    <form action="#" method="post">
+        <p>Ejercicio 5.</p>
+        <button type="button" onclick="generarReporte()">Generar reporte.</button>
+        <script>
+            function generarReporte() {
+                alert('Reporte generado');
+            }
+        </script>
+    </form>
 </body>
 </html>
