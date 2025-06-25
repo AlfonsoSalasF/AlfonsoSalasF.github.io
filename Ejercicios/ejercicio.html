@@ -7,40 +7,69 @@
     <link rel="stylesheet" href="/CSS/pruebas.css">
 </head>
 <body>
+
     <form class="intereses" action="#" method="post">
-        <label for="comentarios">Escriba un comentario: </label> <br>
-        <textarea name="coment" id="comentarios" rows="4" cols="50"></textarea><br>
-        <br><br>
-        <label for="producto">Inserta una descripción del producto: </label><br>
-        <textarea class="noredim"  name="descprod" id="producto" rows="6" cols="40"></textarea>
-        <br><br>
-        <button type="submit">Enviar comentarioss</button>
+        <fieldset><!--Esto es una sección para incluir los datos personales-->
+            <legend>Datos Personales</legend>
+            <label for="strNombre">Nombre</label>
+            <input type="text" id="strNombre" name="Nombre" required>
+            <label for="strApellido1">Primer Apellido</label>
+            <input type="text" id="strApellido1" name="Apellido1">
+            <label for="strApellido2">Segundo Apellido</label>
+            <input type="text" id="strApellido2" name="Apellido2">
+            <label for="strGenero">Género</label>
+            <input type="text" id="strGenero" name="Genero">
+            <label for="strAñoNacimiento">Año de nacimiento</label>
+            <input type="date" id="strAñoNacimiento" name="AñoNacimiento">
+        </fieldset>
+        <fieldset><!--Información de contacto-->
+            <legend>Información de contacto</legend>
+            <label for="strTelefono">Teléfono</label>
+            <input type="tel" id="strTelefono" name="Telefono">
+            <label for="strMail">Email</label>
+            <input type="email" id="strMail" name="Mail">
+        </fieldset>
+        <button type="submit">Enviar</button>
+    </form>
+    <br>
+    <p>Ejercicio 1. Agrupación Básica</p>
+    <form class="intereses" action="#" method="get">
+        <br>
+        <fieldset><legend>Configuración de la cuenta</legend>
+            <label for="NombreCompleto">Nombre</label>
+            <input type="text" id="NombreCompleto" name="Nombre">
+        <fieldset><legend>Datos personales</legend>
+            <label for="Correo">Correo electrónico</label>
+            <input type="email" id="Correo" name="Mail">
+        </fieldset>
+        <fieldset><legend>Datos de Dirección</legend>
+            <label for="Calle">Calle</label>
+            <input type="text" id="Calle" name="Calle">
+            <label for="Ciudad">Localidad</label>
+            <input type="text" id="Ciudad" name="Ciudad">
+            <label for="CP">Código Postal</label>
+            <input type="text" name="CP" id="CP">
+        </fieldset>
+        <br>
+        
+        <fieldset><legend>Método de contacto preferido</legend>
+            <input type="radio" id="optMail" name="MetodoContacto" value="Mail">
+            <label for="optMail">Mail</label><br>
+            <input type="radio" name="MetodoContacto" id="optTel" value="Tel">
+            <label for="optTel">Teléfono</label><br>
+            <input type="radio" name="MetodoContacto" id="optSMS" value="SMS">
+            <label for="optSMS">SMS</label>
+        </fieldset>
+        <fieldset><legend>Éste soy yo</legend>
+            <label for="aboutme">Describe algo sobre tí que quieras contarnos...</label><br>
+            <textarea name="me" id="aboutme" cols="120" rows="5"></textarea>
+
+        </fieldset>
+        </fieldset>
+        <br>
+        <button type="submit">Incluir</button>
     </form>
     <br><br>
-    <form class="intereses" action="#" method="post">
-        <br><br>
-        <label for="texto">Introduzca su nombre</label>
-        <input type="text" id="texto" name="texto">
-        <button type="submit">Registrarse ahora</button>
-        <br><br>
-    </form>
-    <br><br>
-    <form action="#" class="intereses" method="post">
-        <br><br>
-        <label for="mail">Introduzca un mail válido</label>
-        <input type="email" id="mail" name="correo" value="alfonso@alfonso.com">
-        <input type="reset" value="Reseteo input"><button type="reset">Reseteo button</button>
-        <br><br>
-    </form>
-    <br><br>
-    <form action="#" method="post">
-        <p>Ejercicio 5.</p>
-        <button type="button" onclick="generarReporte()">Generar reporte.</button>
-        <script>
-            function generarReporte() {
-                alert('Reporte generado');
-            }
-        </script>
-    </form>
+
 </body>
 </html>

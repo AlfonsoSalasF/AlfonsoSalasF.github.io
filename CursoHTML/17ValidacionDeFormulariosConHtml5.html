@@ -53,7 +53,15 @@
             <div class="note">
                 <p><strong>Atributo <code>title</code> con <code>pattern</code>:</strong> Es una buena práctica usar el atributo <code>title</code> junto con <code>pattern</code>. El texto de <code>title</code> se mostrará al usuario como una pista cuando el patrón no coincida, mejorando la usabilidad.</p>
             </div>
-
+            <div class="instructions">
+                <ul><strong>Ejemplos de patrones que pueden usarse:</strong></ul>
+                <li>Email: "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"</li>
+                <li>Sólo números (entre 1 y 5):"\d{1,5}"</li>
+                <li>Teléfono Internacional: "\+\d{2}\s?\d{9}"</li>
+                <li>Sólo Letras (sin tildes):"[A-Za-z\s]+"</li>
+                <li>Fecha (dd/mm/aaaa): "\d{2}/\d{2}/\d{4}"</li>
+                <li>Contraseña segura:"(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}"</li>
+            </div>
             <h3>17.1.3. Atributos <code>minlength</code> y <code>maxlength</code></h3>
             <p>Controlan la longitud mínima y máxima permitida para el texto de un campo.</p>
             <ul>
@@ -136,9 +144,8 @@ input[type="email"]:invalid {
         <footer>
             <p>Continúa explorando HTML:</p>
             <ul>
-                <li><a href="Ejercicios16.html">Ejercicios sobre la lección anterior.</a></li>
                 <li><a href="Ejercicios17.html">Ejercicios sobre esta lección.</a></li>
-                <li><a href="18...html">Clase 18: (Próxima Lección)</a></li> <!-- Placeholder for next lesson -->
+                <li><a href="18ElementosDeProgresoYMedicion.html" >Clase 18: Elementos de progreso y medición(Próxima Lección)</a></li> <!-- Placeholder for next lesson -->
                 <li><a href="../CursoHTML.html">Índice del curso</a></li>
                 <li><a href="../index.html">Desarrollo Web</a></li>
             </ul>
