@@ -3,73 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curso de HTML</title>
-    <link rel="stylesheet" href="/CSS/pruebas.css">
+    <title>Ejercicios de Prueba</title>
+    <!--<link rel="stylesheet" href="/CSS/pruebas.css">-->
+    <link rel="stylesheet" href="../CSS/formularios.css">
 </head>
 <body>
-
-    <form class="intereses" action="#" method="post">
-        <fieldset><!--Esto es una sección para incluir los datos personales-->
-            <legend>Datos Personales</legend>
-            <label for="strNombre">Nombre</label>
-            <input type="text" id="strNombre" name="Nombre" required>
-            <label for="strApellido1">Primer Apellido</label>
-            <input type="text" id="strApellido1" name="Apellido1">
-            <label for="strApellido2">Segundo Apellido</label>
-            <input type="text" id="strApellido2" name="Apellido2">
-            <label for="strGenero">Género</label>
-            <input type="text" id="strGenero" name="Genero">
-            <label for="strAñoNacimiento">Año de nacimiento</label>
-            <input type="date" id="strAñoNacimiento" name="AñoNacimiento">
-        </fieldset>
-        <fieldset><!--Información de contacto-->
-            <legend>Información de contacto</legend>
-            <label for="strTelefono">Teléfono</label>
-            <input type="tel" id="strTelefono" name="Telefono">
-            <label for="strMail">Email</label>
-            <input type="email" id="strMail" name="Mail">
-        </fieldset>
-        <button type="submit">Enviar</button>
+    <form action="#" method="get">
+        <p>Ejercicio 1. Campo de Nombre obligatorio:</p>
+        <label for="nombre">Nombre</label><input type="text" required id="nombre" name="nombre">
+        <p>Ejercicio 2. Campo de correo con validación de formato</p>
+        <label for="mail">Mail</label>
+        <input type="email" name="mail" id="mail" required>
+        <p>Ejercicio 3: Contraseña con Longitud Mínima y Máxima</p>
+        <label for="contras">Contraseña</label>
+        <input type="password" name="pass" id="contras" required maxlength="16" minlength="8">
+        <p>Ejercicio 4: Número de Teléfono con Patrón Específico</p>
+        <label for="telefono">Teléfono</label>
+        <input type="tel" id="telefono" name="telef" pattern="[0-9]{9}" title="Debe contener 9 dígitos">
+        <button type="submit">Send</button>
+        <label for="edad">Edad</label>
+        <input type="number" id="edad" name="edad" required min="18" max="99">
     </form>
-    <br>
-    <p>Ejercicio 1. Agrupación Básica</p>
-    <form class="intereses" action="#" method="get">
-        <br>
-        <fieldset><legend>Configuración de la cuenta</legend>
-            <label for="NombreCompleto">Nombre</label>
-            <input type="text" id="NombreCompleto" name="Nombre">
-        <fieldset><legend>Datos personales</legend>
-            <label for="Correo">Correo electrónico</label>
-            <input type="email" id="Correo" name="Mail">
-        </fieldset>
-        <fieldset><legend>Datos de Dirección</legend>
-            <label for="Calle">Calle</label>
-            <input type="text" id="Calle" name="Calle">
-            <label for="Ciudad">Localidad</label>
-            <input type="text" id="Ciudad" name="Ciudad">
-            <label for="CP">Código Postal</label>
-            <input type="text" name="CP" id="CP">
-        </fieldset>
-        <br>
-        
-        <fieldset><legend>Método de contacto preferido</legend>
-            <input type="radio" id="optMail" name="MetodoContacto" value="Mail">
-            <label for="optMail">Mail</label><br>
-            <input type="radio" name="MetodoContacto" id="optTel" value="Tel">
-            <label for="optTel">Teléfono</label><br>
-            <input type="radio" name="MetodoContacto" id="optSMS" value="SMS">
-            <label for="optSMS">SMS</label>
-        </fieldset>
-        <fieldset><legend>Éste soy yo</legend>
-            <label for="aboutme">Describe algo sobre tí que quieras contarnos...</label><br>
-            <textarea name="me" id="aboutme" cols="120" rows="5"></textarea>
-
-        </fieldset>
-        </fieldset>
-        <br>
-        <button type="submit">Incluir</button>
+    <form action="@" method="get">
+        <progress>Cargando</progress>
+        <progress max="100" value="20"></progress>
+        <meter value="29" min="0" max="100" low="30" high="70" optimum="50"></meter>
     </form>
-    <br><br>
-
 </body>
 </html>
