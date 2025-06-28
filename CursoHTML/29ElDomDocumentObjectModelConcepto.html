@@ -1,17 +1,196 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El DOM (Document Object Model): Concepto</title>
+    <title>El DOM (Document Object Model): Concepto - Curso HTML</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
+    <style>
+        .code-example {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
+        .code-example pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .dom-tree-example {
+            background-color: #e6f7ff;
+            border: 1px solid #91d5ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .dom-tree-example ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+        .dom-tree-example ul li:before {
+            content: "└─ ";
+            color: #007bff;
+        }
+        .dom-tree-example ul ul li:before {
+            content: "  └─ ";
+        }
+    </style>
 </head>
 <body>
-    <H1>Clase 29: El DOM (Document Object Model): Concepto</H1>
-    <UL>
-        <li>Introducción al DOM como la representación en árbol de la página web.</li>
-        <li>Cómo JavaScript interactúa con el DOM.</li>
-        <li>Concepto de nodos, elementos y atributos.</li>
-    </UL>
-    <p><a href="/index.html">Vuelve a la página principal</a></p>
+    <div class="container">
+        <h1>
+            <p>CURSO DE INICIACIÓN A HTML</p>
+            <p>Clase 29: El DOM (Document Object Model): Concepto</p>
+        </h1>
+
+        <p>Hasta ahora, hemos aprendido a estructurar el contenido de nuestras páginas web con HTML y a darles estilo con CSS. Pero para crear sitios web dinámicos e interactivos, necesitamos una forma de que los scripts, principalmente JavaScript, puedan "ver" y "manipular" esa estructura y ese contenido. Aquí es donde entra en juego el Document Object Model (DOM).</p>
+
+        <hr>
+
+        <section>
+            <h2>29.1. Introducción al DOM como la representación en árbol de la página web.</h2>
+            <p>El <strong>Document Object Model (DOM)</strong> es una interfaz de programación de aplicaciones (API) para documentos HTML y XML. Proporciona una representación estructurada del documento como un árbol de objetos, donde cada objeto representa una parte del documento, como un elemento, un atributo o un texto.</p>
+
+            <p>Piensa en tu documento HTML como un texto plano. Cuando un navegador carga ese HTML, lo convierte internamente en esta estructura de árbol, que el DOM expone a JavaScript. Cada etiqueta HTML se convierte en un "nodo" en este árbol, y las relaciones entre las etiquetas (padre-hijo, hermano) se mantienen en la estructura del árbol.</p>
+
+            <h3>Ejemplo de HTML y su representación en el DOM:</h3>
+            <div class="code-example">
+                <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Mi Página&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1 id="titulo"&gt;Hola DOM&lt;/h1&gt;
+    &lt;p class="parrafo"&gt;Este es un &lt;strong&gt;párrafo&lt;/strong&gt;.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+            </div>
+
+            <p>La representación en árbol de este HTML sería algo así (simplificado):</p>
+            <div class="dom-tree-example">
+                <ul>
+                    <li>Document (Raíz del DOM)
+                        <ul>
+                            <li>HTML Element
+                                <ul>
+                                    <li>HEAD Element
+                                        <ul>
+                                            <li>TITLE Element
+                                                <ul>
+                                                    <li>"Mi Página" (Text Node)</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>BODY Element
+                                        <ul>
+                                            <li>H1 Element (id="titulo")
+                                                <ul>
+                                                    <li>"Hola DOM" (Text Node)</li>
+                                                </ul>
+                                            </li>
+                                            <li>P Element (class="parrafo")
+                                                <ul>
+                                                    <li>"Este es un " (Text Node)</li>
+                                                    <li>STRONG Element
+                                                        <ul>
+                                                            <li>"párrafo" (Text Node)</li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>"." (Text Node)</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <p>Cada caja en este árbol es un "nodo" del DOM. El DOM no es una tecnología separada como HTML o CSS; es una interfaz que permite que otros lenguajes de programación (como JavaScript) interactúen con el contenido, la estructura y el estilo de los documentos web.</p>
+        </section>
+
+        <section>
+            <h2>29.2. Cómo JavaScript interactúa con el DOM.</h2>
+            <p>JavaScript es el lenguaje principal que utilizamos para interactuar con el DOM. Permite a los desarrolladores:</p>
+            <ul>
+                <li><strong>Cambiar contenido:</strong> Modificar el texto de un encabezado, un párrafo, etc.</li>
+                <li><strong>Cambiar la estructura HTML:</strong> Añadir nuevos elementos, eliminar existentes, mover elementos.</li>
+                <li><strong>Cambiar estilos CSS:</strong> Modificar directamente el color, tamaño, o cualquier otra propiedad CSS de un elemento.</li>
+                <li><strong>Reaccionar a eventos:</strong> Responder a las acciones del usuario, como clics de botón, envío de formularios, movimientos del ratón, etc.</li>
+                <li><strong>Añadir o quitar atributos:</strong> Modificar los atributos de los elementos HTML (ej., cambiar el <code>src</code> de una imagen, el <code>href</code> de un enlace, añadir o quitar clases CSS).</li>
+            </ul>
+
+            <p>JavaScript accede a los elementos del DOM utilizando métodos del objeto global <code>document</code> (que representa todo el documento HTML cargado).</p>
+            <h3>Ejemplo de interacción básica de JavaScript con el DOM:</h3>
+            <div class="code-example">
+                <pre><code class="language-javascript">// Obtener el elemento h1 por su ID
+const titulo = document.getElementById('titulo');
+
+// Cambiar el texto del h1
+titulo.textContent = '¡El DOM ha sido modificado!';
+
+// Obtener el elemento p por su clase (el primer elemento con esa clase)
+const parrafo = document.querySelector('.parrafo');
+
+// Cambiar el color de fondo del párrafo (modificando su estilo CSS)
+parrafo.style.backgroundColor = 'yellow';
+
+// Crear un nuevo elemento de botón
+const boton = document.createElement('button');
+boton.textContent = 'Haz clic aquí';
+
+// Añadir el botón al body del documento
+document.body.appendChild(boton);
+
+// Añadir un "listener" para reaccionar a un clic en el botón
+boton.addEventListener('click', function() {
+    alert('¡Botón clicado!');
+});
+</code></pre>
+            </div>
+            <p>Este código muestra cómo JavaScript puede "seleccionar" elementos de la página y luego realizar acciones sobre ellos, demostrando el poder del DOM para hacer que las páginas web sean dinámicas.</p>
+        </section>
+
+        <section>
+            <h2>29.3. Concepto de nodos, elementos y atributos.</h2>
+            <p>Dentro del árbol DOM, todo es un "nodo", pero existen diferentes tipos de nodos con propósitos específicos:</p>
+            <ul>
+                <li><strong>Nodo (Node):</strong> Es el término genérico para cualquier objeto en el árbol DOM. Puede ser un elemento, un texto, un comentario, un atributo, etc. Todos estos son tipos de nodos.</li>
+                <li><strong>Elemento (Element Node):</strong> Es el tipo de nodo más común. Representa una etiqueta HTML, como <code>&lt;p&gt;</code>, <code>&lt;div&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;img&gt;</code>, <code>&lt;h1&gt;</code>, etc. Estos nodos pueden tener hijos (otros elementos o nodos de texto) y atributos. Los "elementos" son los bloques de construcción de la estructura de tu página.</li>
+                <li><strong>Nodo de Texto (Text Node):</strong> Representa el contenido de texto dentro de un elemento. Por ejemplo, en <code>&lt;p&gt;Hola mundo&lt;/p&gt;</code>, "Hola mundo" es un nodo de texto. Los nodos de texto no pueden tener hijos ni atributos.</li>
+                <li><strong>Atributo (Attribute Node):</strong> Representa un atributo de una etiqueta HTML, como <code>id="miId"</code>, <code>class="miClase"</code>, <code>src="imagen.jpg"</code>, etc. Aunque son nodos, los atributos no se consideran "hijos" de los elementos en el mismo sentido que los elementos o textos anidados. Se accede a ellos como propiedades del nodo del elemento al que pertenecen.</li>
+                <li><strong>Nodo de Comentario (Comment Node):</strong> Representa los comentarios HTML (<code>&lt;!-- Esto es un comentario --&gt;</code>).</li>
+            </ul>
+
+            <div class="note">
+                <p>Comprender la diferencia entre estos tipos de nodos es fundamental para manipular el DOM de manera efectiva con JavaScript. Por ejemplo, cuando usas <code>document.getElementById('id')</code>, obtienes un "Elemento" (un <code>HTMLElement</code> en JavaScript), lo que te permite acceder a sus propiedades como <code>textContent</code>, <code>style</code>, <code>classList</code>, y manipular sus atributos.</p>
+            </div>
+            <p>En las próximas clases, profundizaremos en cómo JavaScript utiliza el DOM para seleccionar, crear y modificar estos nodos, haciendo que nuestras páginas web cobren vida.</p>
+        </section>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="Ejercicios29.html">Ejercicios sobre esta lección.</a></li>
+                <li><a href="30ManipulacionDelDOMBasica.html">Clase 30: Manipulación del DOM (Básica): Selección y Modificación (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
 </body>
 </html>

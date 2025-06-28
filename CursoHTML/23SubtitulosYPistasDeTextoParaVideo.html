@@ -1,17 +1,150 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subtítulos y Pistas de Texto para Video</title>
+    <title>Subtítulos y Pistas de Texto para Video - Curso HTML</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
 </head>
 <body>
-    <H1>Clase 23: Subtítulos y Pistas de Texto para Video.</H1>
-    <UL>
-        <li>La etiqueta &lt;track&gt;.</li>
-        <li>Tipos de pista: subtitles, captions, descriptions, chapters, metadata.</li>
-        <li>Archivo de pistas (.vtt).</li>
-    </UL>
-    <p><a href="/index.html">Vuelve a la página principal</a></p>
+    <div class="container">
+        <h1>
+            <p>CURSO DE INICIACIÓN A HTML</p>
+            <p>Clase 23: Subtítulos y Pistas de Texto para Video</p>
+        </h1>
+
+        <p>La accesibilidad es un aspecto fundamental en el desarrollo web moderno. Para el contenido multimedia como los videos, HTML5 ofrece la etiqueta <code>&lt;track&gt;</code>, que permite añadir pistas de texto sincronizadas con el video. Esto es esencial para proporcionar subtítulos, leyendas, descripciones de audio y otros tipos de metadatos, mejorando la experiencia para usuarios con diversas necesidades y en diferentes contextos.</p>
+
+        <hr>
+
+        <section>
+            <h2>23.1. La etiqueta <code>&lt;track&gt;</code>.</h2>
+            <p>La etiqueta <code>&lt;track&gt;</code> se utiliza dentro de <code>&lt;audio&gt;</code> o <code>&lt;video&gt;</code> para especificar pistas de texto sincronizadas. Estas pistas pueden incluir subtítulos, leyendas, descripciones, capítulos o metadatos, y se almacenan en archivos WebVTT (.vtt).</p>
+            <p><strong>Atributos Clave de <code>&lt;track&gt;</code>:</strong></p>
+            <table>
+                <caption>Atributos de la Etiqueta <code>&lt;track&gt;</code></caption>
+                <thead>
+                    <tr>
+                        <th>Atributo</th>
+                        <th>Descripción</th>
+                        <th>Ejemplo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>src</code></td>
+                        <td>Especifica la URL del archivo de pista de texto (archivo .vtt).</td>
+                        <td><code>src="subtitulos_es.vtt"</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>kind</code></td>
+                        <td>Define el tipo de pista de texto. Es un atributo esencial para indicar la función de la pista. Ver siguiente sección para los valores.</td>
+                        <td><code>kind="subtitles"</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>srclang</code></td>
+                        <td>Especifica el idioma de la pista de texto. Este atributo es obligatorio si <code>kind</code> es "subtitles" o "captions". Se usa un código de idioma (ej. "es" para español, "en" para inglés).</td>
+                        <td><code>srclang="es"</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>label</code></td>
+                        <td>Proporciona un título legible para la pista, que el navegador puede mostrar al usuario (por ejemplo, en un menú de selección de subtítulos).</td>
+                        <td><code>label="Español"</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>default</code></td>
+                        <td>Indica que esta pista de texto debe ser la predeterminada si el usuario no ha especificado una preferencia. Solo puede haber una pista con <code>default</code> por tipo y idioma.</td>
+                        <td><code>default</code></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><strong>Ejemplo de uso básico:</strong></p>
+            <pre><code>&lt;video controls width="640" height="360" poster="img/trailer_poster.jpg"&gt;
+    &lt;source src="video/trailer.mp4" type="video/mp4"&gt;
+    &lt;track kind="subtitles" src="subtitulos/trailer_es.vtt" srclang="es" label="Español" default&gt;
+    &lt;track kind="subtitles" src="subtitulos/trailer_en.vtt" srclang="en" label="English"&gt;
+    Tu navegador no soporta el elemento de video.
+&lt;/video&gt;</code></pre>
+            <div class="note">
+                <p>La etiqueta <code>&lt;track&gt;</code> debe colocarse después de las etiquetas <code>&lt;source&gt;</code> y antes del texto de respaldo.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>23.2. Tipos de pista (<code>kind</code>).</h2>
+            <p>El atributo <code>kind</code> es fundamental para definir la función de la pista de texto. Los valores posibles son:</p>
+            <ul>
+                <li><strong><code>subtitles</code>:</strong> Traduciones de diálogos y/o texto en pantalla para cuando el audio está disponible pero el usuario no entiende el idioma, o prefiere texto.</li>
+                <li><strong><code>captions</code>:</strong> Transcripciones completas de los diálogos y de los sonidos no verbales importantes (música, efectos de sonido, risas, etc.). Destinado a usuarios sordos o con problemas de audición, o cuando el audio no está disponible (ej. entornos ruidosos).</li>
+                <li><strong><code>descriptions</code>:</strong> Descripciones de audio. Texto que describe las acciones visuales del video para usuarios con discapacidad visual. Normalmente, esto sería audio, pero el <code>&lt;track&gt;</code> puede proporcionar un texto que una tecnología de asistencia leerá.</li>
+                <li><strong><code>chapters</code>:</strong> Definiciones de capítulos para la navegación del video. Proporciona puntos de referencia en la línea de tiempo del video.</li>
+                <li><strong><code>metadata</code>:</strong> Pistas para scripts. Datos no visibles que pueden ser utilizados por JavaScript para realizar acciones o mostrar información adicional.</li>
+            </ul>
+            <p><strong>Ejemplo con diferentes tipos de pista:</strong></p>
+            <pre><code>&lt;video controls width="640" height="360"&gt;
+    &lt;source src="video/conferencia.mp4" type="video/mp4"&gt;
+    &lt;track kind="captions" src="pistas/conferencia_es_captions.vtt" srclang="es" label="Leyendas (Español)"&gt;
+    &lt;track kind="descriptions" src="pistas/conferencia_es_desc.vtt" srclang="es" label="Descripciones de Audio (Español)"&gt;
+    &lt;track kind="chapters" src="pistas/conferencia_chapters.vtt" srclang="es" label="Capítulos"&gt;
+&lt;/video&gt;</code></pre>
+        </section>
+
+        <section>
+            <h2>23.3. Archivo de pistas (.vtt).</h2>
+            <p>Los archivos de pistas de texto utilizan el formato WebVTT (Web Video Text Tracks), que es un formato simple basado en texto. Un archivo .vtt contiene marcas de tiempo y el texto correspondiente que debe mostrarse en ese momento. También puede incluir información de estilo o posicionamiento.</p>
+            <p><strong>Estructura básica de un archivo .vtt:</strong></p>
+            <pre><code>WEBVTT
+
+1
+00:00:01.000 --> 00:00:04.000
+Hola a todos y bienvenidos a la clase 23.
+
+2
+00:00:05.500 --> 00:00:09.000
+Hoy hablaremos sobre la etiqueta track
+y la accesibilidad en video.
+
+NOTE
+Esto es un comentario. No se mostrará.
+
+3
+00:00:10.000 --> 00:00:13.500 line:80%
+&lt;c.highlight&gt;Espero que disfruten la lección.&lt;/c&gt;</code></pre>
+            <ul>
+                <li>La primera línea debe ser siempre <code>WEBVTT</code>.</li>
+                <li>Cada "cue" (fragmento de texto) comienza con un identificador opcional (<code>1</code>, <code>2</code>, etc., o un nombre), seguido de un rango de tiempo <code>HH:MM:SS.mmm --> HH:MM:SS.mmm</code>.</li>
+                <li>Debajo del rango de tiempo, se escribe el texto que se mostrará.</li>
+                <li>Las líneas en blanco separan los "cues".</li>
+                <li>Se pueden añadir comentarios usando <code>NOTE</code>.</li>
+                <li>Se pueden aplicar estilos y posicionamiento directamente en el archivo .vtt (ej. <code>line:80%</code>, <code>&lt;c.highlight&gt;</code>).</li>
+            </ul>
+            <div class="note">
+                <p>Es importante que los archivos .vtt sean servidos con el tipo MIME correcto: <code>text/vtt</code>. Además, si sirves tu página web de forma local (ej. con un servidor de desarrollo), las pistas de texto podrían no cargarse debido a restricciones de seguridad del navegador (CORS). En un servidor real, esto no suele ser un problema.</p>
+            </div>
+            <p>Aquí tienes un ejemplo de un video con subtítulos en español y en inglés. Puedes seleccionar la pista de subtítulos en los controles del video.</p>
+            <video controls width="640" height="360">
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                <source src="https://www.w3schools.com/html/mov_bbb.ogg" type="video/ogg">
+                <track kind="subtitles" src="https://www.w3schools.com/html/subtitles_en.vtt" srclang="en" label="English">
+                <track kind="subtitles" src="https://www.w3schools.com/html/subtitles_no.vtt" srclang="no" label="Norsk">
+                <track kind="subtitles" src="https://www.w3schools.com/html/subtitles_en.vtt" srclang="es" label="Español (Ejemplo)">
+                Tu navegador no soporta el elemento de video.
+            </video>
+        </section>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="Ejercicios23.html">Ejercicios sobre esta lección.</a></li>
+                <li><a href="24ManejoDeMultimediaConJavaScript.html">Clase 24: Manejo de Multimedia con JavaScript (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
 </body>
 </html>

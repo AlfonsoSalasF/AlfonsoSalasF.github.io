@@ -1,18 +1,197 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SVG: Gráficos Vectoriales Escalables</title>
+    <title>SVG: Gráficos Vectoriales Escalables - Curso HTML</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
 </head>
 <body>
-    <H1>Clase 25: SVG: Gráficos Vectoriales Escalables.</H1>
-    <UL>
-        <li>¿Qué es SVG y por qué usarlo?</li>
-        <li>Ventajas de SVG sobre imágenes rasterizadas.</li>
-        <li>Inserción de SVG directamente en HTML (&lt;svg&gt;).</li>
-        <li>Ejemplos básicos: &lt;circle&gt;, &lt;rect&gt;, &lt;line&gt;.</li>
-    </UL>
-    <p><a href="/index.html">Vuelve a la página principal</a></p>
+    <div class="container">
+        <h1>
+            <p>CURSO DE INICIACIÓN A HTML</p>
+            <p>Clase 25: SVG: Gráficos Vectoriales Escalables</p>
+        </h1>
+
+        <p>En el mundo del diseño web, la calidad visual y la escalabilidad son primordiales. Los gráficos vectoriales escalables (SVG, por sus siglas en inglés) ofrecen una solución potente y flexible para integrar gráficos que se adaptan perfectamente a cualquier tamaño de pantalla o resolución sin perder calidad. En esta clase, exploraremos qué es SVG, sus ventajas y cómo puedes empezar a usarlo directamente en tu HTML.</p>
+
+        <hr>
+
+        <section>
+            <h2>25.1. ¿Qué es SVG y por qué usarlo?</h2>
+            <p><strong>SVG</strong> es un formato de imagen basado en XML para gráficos bidimensionales con soporte para interactividad y animación. A diferencia de los formatos de imagen rasterizados (como JPG, PNG, GIF) que se basan en píxeles, SVG describe imágenes mediante formas geométricas (círculos, rectángulos, líneas, rutas) y texto.</p>
+
+            <p><strong>¿Por qué usar SVG?</strong></p>
+            <ul>
+                <li><strong>Escalabilidad Perfecta:</strong> Los gráficos SVG no pierden calidad ni se pixelan, sin importar cuánto se escalen. Esto es crucial para el diseño web responsivo, donde los elementos gráficos deben verse bien en dispositivos con diversas resoluciones.</li>
+                <li><strong>Tamaño de Archivo:</strong> A menudo, los archivos SVG son más pequeños que las imágenes rasterizadas equivalentes, especialmente para gráficos simples o logotipos.</li>
+                <li><strong>Capacidad de Estilizado y Scripting:</strong> Dado que los SVG están basados en XML, pueden ser estilizados con CSS y manipulados con JavaScript, permitiendo animaciones complejas, interactividad y cambios dinámicos en el diseño.</li>
+                <li><strong>Accesibilidad:</strong> El texto dentro de los SVG es seleccionable y legible por máquinas, lo que mejora la accesibilidad y el SEO.</li>
+                <li><strong>Rendimiento:</strong> Al ser renderizados directamente por el navegador, los SVG pueden ser muy eficientes, especialmente para animaciones basadas en transformaciones.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>25.2. Ventajas de SVG sobre imágenes rasterizadas.</h2>
+            <p>Aquí hay una tabla que resume las principales ventajas de SVG frente a los formatos de imagen rasterizados:</p>
+            <table>
+                <caption>Comparación: SVG vs. Imágenes Rasterizadas (JPG, PNG)</caption>
+                <thead>
+                    <tr>
+                        <th>Característica</th>
+                        <th>SVG</th>
+                        <th>Imágenes Rasterizadas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Base</strong></td>
+                        <td>Vectorial (matemáticas, formas)</td>
+                        <td>Rasterizada (píxeles)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Escalabilidad</strong></td>
+                        <td>Escala sin pérdida de calidad (ideal para retina, pantallas de alta resolución)</td>
+                        <td>Se pixelan al escalar más allá de su tamaño original</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tamaño de Archivo</strong></td>
+                        <td>Generalmente más pequeños para gráficos simples/vectores; más grandes para fotos complejas.</td>
+                        <td>Pueden ser pequeños para fotos; grandes para gráficos con muchos detalles.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Edición</strong></td>
+                        <td>Fácilmente editable con editores de texto o software de diseño vectorial (Illustrator, Inkscape)</td>
+                        <td>Edición a nivel de píxel con software de edición de imágenes (Photoshop, GIMP)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Animación/Interactividad</strong></td>
+                        <td>Totalmente animable y manipulable con CSS/JavaScript</td>
+                        <td>Animaciones limitadas (GIF); interactividad compleja requiere JavaScript externo.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Accesibilidad/SEO</strong></td>
+                        <td>El texto es seleccionable, rastreable por motores de búsqueda.</td>
+                        <td>El texto forma parte de la imagen; no es seleccionable ni rastreable directamente.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>25.3. Inserción de SVG directamente en HTML (<code>&lt;svg&gt;</code>).</h2>
+            <p>Una de las formas más potentes de usar SVG es insertándolo directamente en tu documento HTML como código. Esto se conoce como "SVG inline" o "SVG en línea". Al hacerlo, el SVG se convierte en parte del DOM, lo que permite estilizarlo con CSS (usando selectores como <code>svg circle { fill: red; }</code>) y manipularlo con JavaScript.</p>
+            <p>La etiqueta principal para un gráfico SVG en línea es <code>&lt;svg&gt;</code>. Dentro de esta etiqueta, definirás las formas y elementos SVG.</p>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;SVG Inline Ejemplo&lt;/title&gt;
+    &lt;style&gt;
+        svg {
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+        .my-circle {
+            fill: purple;
+            stroke: black;
+            stroke-width: 2;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;h1&gt;Mi primer SVG en línea&lt;/h1&gt;
+
+    &lt;!-- El elemento SVG define un área de dibujo --&gt;
+    &lt;svg width="200" height="150"&gt;
+        &lt;!-- Un círculo --&gt;
+        &lt;circle cx="50" cy="50" r="40" fill="red" /&gt;
+
+        &lt;!-- Otro círculo con una clase CSS --&gt;
+        &lt;circle cx="150" cy="75" r="30" class="my-circle" /&gt;
+    &lt;/svg&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            <div class="note">
+                <p>Al igual que con <code>&lt;canvas&gt;</code>, los atributos <code>width</code> y <code>height</code> de la etiqueta <code>&lt;svg&gt;</code> definen el tamaño del área de visualización. Sin embargo, debido a su naturaleza vectorial, el contenido dentro del SVG escalará proporcionalmente dentro de esta área.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>25.4. Ejemplos básicos: <code>&lt;circle&gt;</code>, <code>&lt;rect&gt;</code>, <code>&lt;line&gt;</code>.</h2>
+            <p>SVG proporciona una serie de elementos para dibujar formas básicas. Los más comunes son:</p>
+
+            <h3>25.4.1. <code>&lt;circle&gt;</code> (Círculo)</h3>
+            <p>Dibuja un círculo. Atributos importantes:</p>
+            <ul>
+                <li><code>cx</code>: Coordenada X del centro del círculo.</li>
+                <li><code>cy</code>: Coordenada Y del centro del círculo.</li>
+                <li><code>r</code>: Radio del círculo.</li>
+                <li><code>fill</code>: Color de relleno.</li>
+                <li><code>stroke</code>: Color del contorno.</li>
+                <li><code>stroke-width</code>: Ancho del contorno.</li>
+            </ul>
+            <pre><code>&lt;svg width="100" height="100"&gt;
+    &lt;circle cx="50" cy="50" r="40" fill="yellow" stroke="orange" stroke-width="3" /&gt;
+&lt;/svg&gt;</code></pre>
+            <svg width="100" height="100">
+                <circle cx="50" cy="50" r="40" fill="yellow" stroke="orange" stroke-width="3" />
+            </svg>
+
+            <h3>25.4.2. <code>&lt;rect&gt;</code> (Rectángulo)</h3>
+            <p>Dibuja un rectángulo. Atributos importantes:</p>
+            <ul>
+                <li><code>x</code>: Coordenada X de la esquina superior izquierda.</li>
+                <li><code>y</code>: Coordenada Y de la esquina superior izquierda.</li>
+                <li><code>width</code>: Ancho del rectángulo.</li>
+                <li><code>height</code>: Alto del rectángulo.</li>
+                <li><code>rx</code>, <code>ry</code> (opcional): Radio de las esquinas redondeadas.</li>
+                <li><code>fill</code>, <code>stroke</code>, <code>stroke-width</code>: (Igual que en <code>&lt;circle&gt;</code>).</li>
+            </ul>
+            <pre><code>&lt;svg width="150" height="100"&gt;
+    &lt;rect x="10" y="10" width="130" height="80" fill="lightblue" stroke="darkblue" stroke-width="2" rx="10" ry="10" /&gt;
+&lt;/svg&gt;</code></pre>
+            <svg width="150" height="100">
+                <rect x="10" y="10" width="130" height="80" fill="lightblue" stroke="darkblue" stroke-width="2" rx="10" ry="10" />
+            </svg>
+
+            <h3>25.4.3. <code>&lt;line&gt;</code> (Línea)</h3>
+            <p>Dibuja una línea recta. Atributos importantes:</p>
+            <ul>
+                <li><code>x1</code>, <code>y1</code>: Coordenadas del punto inicial de la línea.</li>
+                <li><code>x2</code>, <code>y2</code>: Coordenadas del punto final de la línea.</li>
+                <li><code>stroke</code>: Color de la línea.</li>
+                <li><code>stroke-width</code>: Ancho de la línea.</li>
+            </ul>
+            <pre><code>&lt;svg width="150" height="100"&gt;
+    &lt;line x1="10" y1="10" x2="140" y2="90" stroke="black" stroke-width="4" /&gt;
+    &lt;line x1="140" y1="10" x2="10" y2="90" stroke="gray" stroke-width="2" /&gt;
+&lt;/svg&gt;</code></pre>
+            <svg width="150" height="100">
+                <line x1="10" y1="10" x2="140" y2="90" stroke="black" stroke-width="4" />
+                <line x1="140" y1="10" x2="10" y2="90" stroke="gray" stroke-width="2" />
+            </svg>
+
+            <div class="note">
+                <p>A diferencia de Canvas, donde dibujas píxeles de forma imperativa con JavaScript, SVG es declarativo. Defines las formas y sus propiedades directamente en el XML, y el navegador las renderiza.</p>
+            </div>
+        </section>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="Ejercicios25.html">Ejercicios sobre esta lección.</a></li>
+                <li><a href="26RutasEnSVG.html">Clase 26: Rutas en SVG (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
 </body>
 </html>

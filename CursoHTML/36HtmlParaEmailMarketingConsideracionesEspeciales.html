@@ -1,17 +1,193 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML para E-mail Marketing (Consideraciones Especiales)</title>
+    <title>HTML para E-mail Marketing (Consideraciones Especiales) - Curso HTML</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
+    <style>
+        .code-example {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
+        .code-example pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .email-tip {
+            background-color: #ffe0e0;
+            border: 1px solid #ffb3b3;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .best-practice {
+            background-color: #e6ffe6;
+            border: 1px solid #99e699;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+    </style>
 </head>
 <body>
-    <H1>Clase 36: HTML para E-mail Marketing (Consideraciones Especiales).</H1>
-    <UL>
-        <li>Por qué el HTML para emails es diferente.</li>
-        <li>Limitaciones y mejores prácticas (tablas, CSS inline).</li>
-        <li>Herramientas para probar HTML de email.</li>
-    </UL>
-    <p><a href="/index.html">Vuelve a la página principal</a></p>
+    <div class="container">
+        <h1>
+            <p>CURSO DE INICIACIÓN A HTML</p>
+            <p>Clase 36: HTML para E-mail Marketing (Consideraciones Especiales)</p>
+        </h1>
+
+        <p>A primera vista, crear un email HTML puede parecer similar a construir una página web. Sin embargo, el desarrollo de HTML para email marketing es un mundo aparte, lleno de desafíos y limitaciones únicas que lo hacen significativamente diferente y, a menudo, más complejo que el desarrollo web estándar.</p>
+
+        <hr>
+
+        <section>
+            <h2>36.1. Por qué el HTML para emails es diferente.</h2>
+            <p>La principal razón de estas diferencias radica en el entorno de renderizado. Mientras que los navegadores web modernos (Chrome, Firefox, Safari, Edge) se adhieren en gran medida a los estándares web y se actualizan constantemente, los clientes de correo electrónico (Outlook, Gmail, Apple Mail, Yahoo Mail) son muy diferentes:</p>
+            <ul>
+                <li><strong>Motores de renderizado variados y obsoletos:</strong> Muchos clientes de correo electrónico utilizan motores de renderizado antiguos o propietarios (ej., Outlook de escritorio usa el motor de Word para sus versiones modernas). Esto significa que no todos los estándares web modernos son compatibles.</li>
+                <li><strong>Consistencia inconsistente:</strong> Un mismo HTML puede verse drásticamente diferente entre Outlook, Gmail, Apple Mail, o incluso entre la versión web y la aplicación móvil de un mismo cliente (ej., Gmail web vs. Gmail app).</li>
+                <li><strong>Soporte CSS limitado:</strong> Muchas propiedades CSS avanzadas, flexbox, grid, animaciones, fuentes web personalizadas, y algunas pseudoclases/elementos simplemente no funcionan o tienen un soporte muy limitado.</li>
+                <li><strong>Inyección de código:</strong> Algunos clientes de correo inyectan o reescriben su propio CSS, lo que puede romper tu diseño.</li>
+                <li><strong>Seguridad:</strong> Los clientes de correo son muy estrictos con la seguridad, lo que limita el uso de JavaScript y otras funcionalidades dinámicas.</li>
+            </ul>
+            <div class="email-tip">
+                <p><strong>Piensa en el HTML para email como si estuvieras desarrollando para navegadores de hace 15-20 años.</strong> Las técnicas modernas de CSS como Flexbox o Grid son incompatibles. Se vuelve a las "viejas escuelas" de maquetación con tablas.</p>
+            </div>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>36.2. Limitaciones y mejores prácticas (tablas, CSS inline).</h2>
+            <p>Dadas las limitaciones, aquí están algunas de las mejores prácticas y técnicas fundamentales para construir HTML de email:</p>
+
+            <h3>36.2.1. Maquetación con Tablas.</h3>
+            <p>Aunque en el desarrollo web moderno las tablas se usan casi exclusivamente para datos tabulares, en el email marketing son la forma estándar de construir layouts complejos y responsivos. Esto se debe a su soporte casi universal y consistente entre clientes.</p>
+            <div class="code-example">
+                <pre><code class="language-html">&lt;table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0"&gt;
+    &lt;tr&gt;
+        &lt;td align="center"&gt;
+            &lt;table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" style="max-width:600px;"&gt;
+                &lt;tr&gt;
+                    &lt;td style="padding: 20px; text-align: left; font-family: Arial, sans-serif; font-size: 15px; line-height: 20px; color: #333;"&gt;
+                        &lt;h1 style="margin: 0 0 10px 0; font-family: Arial, sans-serif; font-size: 25px; line-height: 30px; color: #000000; font-weight: bold;"&gt;Nuestro Último Boletín&lt;/h1&gt;
+                        &lt;p style="margin: 0;"&gt;¡Hola! Te traemos las últimas noticias y ofertas.&lt;/p&gt;
+                    &lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td align="center"&gt;
+                        &lt;!-- Columna de dos elementos --&gt;
+                        &lt;table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0"&gt;
+                            &lt;tr&gt;
+                                &lt;td width="50%" valign="top" style="padding: 10px;"&gt;
+                                    &lt;p&gt;Columna Izquierda&lt;/p&gt;
+                                &lt;/td&gt;
+                                &lt;td width="50%" valign="top" style="padding: 10px;"&gt;
+                                    &lt;p&gt;Columna Derecha&lt;/p&gt;
+                                &lt;/td&gt;
+                            &lt;/tr&gt;
+                        &lt;/table&gt;
+                    &lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/table&gt;
+        &lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+            </div>
+            <p><strong>Observaciones:</strong></p>
+            <ul>
+                <li><strong>Tablas anidadas:</strong> Es común anidar tablas dentro de tablas para crear estructuras de columnas y controlar el espaciado.</li>
+                <li><strong>Atributos HTML:</strong> Usa <code>width</code>, <code>cellspacing</code>, <code>cellpadding</code>, <code>border</code> (establece a 0), <code>align</code>, <code>valign</code> directamente en las etiquetas <code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code> y <code>&lt;td&gt;</code>.</li>
+                <li><strong><code>role="presentation"</code>:</strong> Añadir este atributo a las tablas de maquetación ayuda a los lectores de pantalla a ignorarlas, ya que no contienen datos tabulares reales, mejorando la accesibilidad.</li>
+            </ul>
+
+            <h3>36.2.2. CSS Inline (en línea).</h3>
+            <p>La forma más fiable de aplicar estilos en email HTML es directamente en el atributo <code>style</code> de cada elemento HTML.</p>
+            <div class="code-example">
+                <pre><code class="language-html">&lt;p style="font-family: Arial, sans-serif; font-size: 16px; color: #333333; line-height: 1.5;"&gt;Este es un párrafo con estilos en línea.&lt;/p&gt;
+&lt;a href="https://ejemplo.com" style="color: #007bff; text-decoration: none; font-weight: bold;"&gt;Visita nuestro sitio&lt;/a&gt;
+</code></pre>
+            </div>
+            <p><strong>Por qué CSS Inline:</strong></p>
+            <ul>
+                <li>Muchos clientes de correo electrónico eliminan o ignoran las etiquetas <code>&lt;style&gt;</code> en el <code>&lt;head&gt;</code> o las hojas de estilo externas.</li>
+                <li>CSS inline asegura que los estilos se apliquen directamente al elemento y tengan la mayor especificidad.</li>
+            </ul>
+            <p><strong>Excepciones y consideraciones:</strong></p>
+            <ul>
+                <li>Algunas propiedades como <code>:hover</code> (para enlaces) o media queries para responsividad aún pueden requerir CSS incrustado en el <code>&lt;head&gt;</code>.</li>
+                <li>Existen herramientas que "inlinizan" automáticamente tu CSS de un bloque <code>&lt;style&gt;</code> a atributos <code>style</code> individuales.</li>
+            </ul>
+
+            <h3>36.2.3. Otras mejores prácticas.</h3>
+            <ul>
+                <li><strong>Imágenes:</strong>
+                    <ul>
+                        <li>Siempre usa el atributo <code>alt</code> para la accesibilidad y para cuando las imágenes no carguen.</li>
+                        <li>Especifica siempre <code>width</code> y <code>height</code> explícitamente.</li>
+                        <li>Las imágenes deben estar alojadas en un servidor externo (URLs absolutas).</li>
+                    </ul>
+                </li>
+                <li><strong>Fuentes:</strong> Limítate a fuentes "web-safe" (Arial, Helvetica, Times New Roman, Georgia, Verdana) o usa fuentes personalizadas con muchos fallbacks.</li>
+                <li><strong>Responsividad:</strong> Aunque es complejo, se puede lograr con un enfoque "móvil primero", media queries básicas y tablas fluidas.</li>
+                <li><strong>No JavaScript:</strong> El JavaScript está casi universalmente bloqueado por seguridad.</li>
+                <li><strong>URL Absolutas:</strong> Siempre usa URLs completas (<code>https://ejemplo.com/pagina.html</code>) para enlaces e imágenes.</li>
+            </ul>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>36.3. Herramientas para probar HTML de email.</h2>
+            <p>Dada la fragmentación en el soporte de HTML/CSS entre los clientes de correo, las pruebas son absolutamente esenciales. No puedes simplemente enviar un email y esperar que se vea bien en todas partes.</p>
+
+            <h3>Herramientas clave:</h3>
+            <ul>
+                <li><strong>Litmus y Email on Acid (Servicios de pago):</strong> Son las herramientas estándar de la industria. Te permiten previsualizar cómo se verá tu email en cientos de combinaciones de clientes de correo, dispositivos y sistemas operativos. Detectan errores, ofrecen validación y optimización. Son imprescindibles para campañas de email marketing serias.</li>
+                <li><strong>Cuentas de prueba reales:</strong> Si tienes un presupuesto limitado, crea cuentas en los clientes de correo más populares (Gmail, Outlook.com, Yahoo Mail, etc.) y envíate emails de prueba. Esto es laborioso pero te da una idea básica.</li>
+                <li><strong>Herramientas de "inlinización" de CSS:</strong>
+                    <ul>
+                        <li><a href="https://mailchimp.com/developer/marketing/docs/inline-css/" target="_blank" rel="noopener noreferrer">Mailchimp's CSS Inliner</a></li>
+                        <li><a href="https://htmlemail.io/css-inliner/" target="_blank" rel="noopener noreferrer">HTML Email CSS Inliner</a></li>
+                    </ul>
+                    Estas herramientas toman tu HTML con CSS en un bloque <code>&lt;style&gt;</code> y lo convierten a CSS inline.
+                </li>
+                <li><strong>Validadores de HTML/CSS para email:</strong> Algunas herramientas específicas para email también validan tu código contra las mejores prácticas de email.</li>
+            </ul>
+            <div class="best-practice">
+                <p><strong>El ciclo de trabajo para email HTML:</strong></p>
+                <ol>
+                    <li>Diseñar el email pensando en las limitaciones.</li>
+                    <li>Codificar el HTML (a menudo con tablas y CSS incrustado o con un pre-procesador que inlinice).</li>
+                    <li>Probar extensivamente con herramientas de previsualización de email (Litmus/Email on Acid) o cuentas de prueba.</li>
+                    <li>Ajustar y corregir hasta que el diseño sea aceptable en los clientes objetivo.</li>
+                </ol>
+            </div>
+            <p>Dominar el HTML para email es una habilidad especializada que requiere paciencia y una comprensión profunda de las idiosincrasias de cada cliente de correo.</p>
+        </section>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="Ejercicios36.html">Ejercicios sobre esta lección.</a></li>
+                <li><a href="37AccesibilidadWebIntroduccion.html">Clase 37: Accesibilidad Web (Introducción) (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
 </body>
 </html>

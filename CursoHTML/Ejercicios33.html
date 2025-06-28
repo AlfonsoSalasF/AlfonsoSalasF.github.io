@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 33: Ejercicios de Atributos aria- para Accesibilidad Avanzada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/ejercicios_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
+    <style>
+        .code-example-inline {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .interactive-section {
+            background-color: #f0f8ff;
+            border: 1px solid #cce7ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .interactive-section button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 10px;
+            margin-right: 10px;
+        }
+        .interactive-section button:hover {
+            background-color: #0056b3;
+        }
+        .accordion-header {
+            background-color: #f2f2f2;
+            padding: 10px;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        .accordion-content {
+            border: 1px solid #ddd;
+            border-top: none;
+            padding: 10px;
+            display: none; /* Oculto por defecto */
+        }
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Clase 33: Ejercicios de Atributos aria- para Accesibilidad Avanzada</h1>
+
+        <div class="exercise-section">
+            <h3>Ejercicios Prácticos de la Clase 33</h3>
+            <p>Estos ejercicios te ayudarán a practicar el uso de los atributos <code>aria-*</code> para mejorar la accesibilidad.</p>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 1: Botón de Icono Accesible</h4>
+                <p>Crea un botón que visualmente sea solo un icono (por ejemplo, una "X" para cerrar). Asegúrate de que un lector de pantalla pueda entender su propósito sin texto visible. Utiliza el atributo <code>aria-label</code>.</p>
+                <div class="interactive-section">
+                    <button id="closeButton" aria-label="Cerrar mensaje">❌</button>
+                    <p>Haz clic en el botón con la "X" (es un botón de icono).</p>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                            const closeButton = document.getElementById('closeButton');
+                            if (closeButton) {
+                                closeButton.addEventListener('click', () => {
+                                    alert('Botón de cerrar presionado. ¡ARIA Label funciona!');
+                                });
+                            }
+                        });
+                    </script>
+                </div>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution1')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution1">
+                    <p><strong>HTML:</strong></p>
+                    <pre><code class="language-html">&lt;button aria-label="Cerrar mensaje"&gt;❌&lt;/button&gt;
+</code></pre>
+                    <p class="explanation-text">El atributo <code>aria-label</code> proporciona una etiqueta textual para elementos que, de otra manera, solo serían gráficos o difíciles de entender para usuarios de tecnologías de asistencia. Es crucial para botones de iconos.</p>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 2: Acordeón con <code>aria-expanded</code></h4>
+                <p>Crea un elemento de "acordeón" simple. Debe tener un encabezado clicable y un contenido que se muestra/oculta. Utiliza <code>aria-expanded</code> para indicar el estado del acordeón y <code>aria-controls</code> para vincular el encabezado con el contenido.</p>
+                <div class="interactive-section">
+                    <div class="accordion-header" role="button" tabindex="0" aria-expanded="false" aria-controls="panel1">
+                        Sección 1: ¿Qué es HTML?
+                    </div>
+                    <div id="panel1" class="accordion-content">
+                        HTML (HyperText Markup Language) es el lenguaje de marcado estándar para la creación de páginas web.
+                    </div>
+
+                    <div class="accordion-header" role="button" tabindex="0" aria-expanded="false" aria-controls="panel2">
+                        Sección 2: ¿Qué son los atributos aria-?
+                    </div>
+                    <div id="panel2" class="accordion-content">
+                        Los atributos aria- (Accessible Rich Internet Applications) proporcionan información adicional a las tecnologías de asistencia.
+                    </div>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                            document.querySelectorAll('.accordion-header').forEach(header => {
+                                header.addEventListener('click', () => {
+                                    const controlsId = header.getAttribute('aria-controls');
+                                    const content = document.getElementById(controlsId);
+                                    const isExpanded = header.getAttribute('aria-expanded') === 'true';
+
+                                    header.setAttribute('aria-expanded', !isExpanded);
+                                    content.style.display = isExpanded ? 'none' : 'block';
+                                });
+
+                                header.addEventListener('keypress', (e) => {
+                                    if (e.key === 'Enter' || e.key === ' ') {
+                                        e.preventDefault(); // Previene el scroll de la página con espacio
+                                        header.click(); // Simula el clic
+                                    }
+                                });
+                            });
+                        });
+                    </script>
+                </div>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution2')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution2">
+                    <p><strong>HTML y JavaScript:</strong></p>
+                    <pre><code class="language-html">&lt;!-- Primero, los estilos CSS para los elementos del acordeón (dentro de &lt;style&gt; o un archivo CSS) --&gt;
+&lt;style&gt;
+    .accordion-header {
+        background-color: #f2f2f2;
+        padding: 10px;
+        border: 1px solid #ddd;
+        cursor: pointer;
+        margin-top: 15px;
+    }
+    .accordion-content {
+        border: 1px solid #ddd;
+        border-top: none;
+        padding: 10px;
+        display: none; /* Oculto por defecto */
+    }
+&lt;/style&gt;
+
+&lt;!-- Elementos HTML del acordeón --&gt;
+&lt;div class="accordion-header" role="button" tabindex="0" aria-expanded="false" aria-controls="panel1"&gt;
+    Sección 1: ¿Qué es HTML?
+&lt;/div&gt;
+&lt;div id="panel1" class="accordion-content"&gt;
+    HTML (HyperText Markup Language) es el lenguaje de marcado estándar para la creación de páginas web.
+&lt;/div&gt;
+
+&lt;div class="accordion-header" role="button" tabindex="0" aria-expanded="false" aria-controls="panel2"&gt;
+    Sección 2: ¿Qué son los atributos aria-?
+&lt;/div&gt;
+&lt;div id="panel2" class="accordion-content"&gt;
+    Los atributos aria- (Accessible Rich Internet Applications) proporcionan información adicional a las tecnologías de asistencia.
+&lt;/div&gt;
+
+&lt;script&gt;
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const controlsId = header.getAttribute('aria-controls');
+                const content = document.getElementById(controlsId);
+                const isExpanded = header.getAttribute('aria-expanded') === 'true'; // Obtener el estado actual
+
+                header.setAttribute('aria-expanded', !isExpanded); // Cambiar el estado ARIA
+                content.style.display = isExpanded ? 'none' : 'block'; // Alternar visibilidad
+            });
+
+            // Añadir soporte para teclado (Enter y Espacio)
+            header.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault(); // Previene el scroll de la página con espacio
+                    header.click(); // Simula el clic
+                }
+            });
+        });
+    });
+&lt;/script&gt;
+</code></pre>
+                    <p class="explanation-text">Este ejercicio muestra cómo <code>aria-expanded</code> y <code>aria-controls</code> son esenciales para que los usuarios de lectores de pantalla comprendan el estado y la relación de un componente interactivo como un acordeón. El <code>role="button"</code> y <code>tabindex="0"</code> son necesarios cuando el encabezado no es un <code>&lt;button&gt;</code> nativo, y el manejo del evento <code>keypress</code> es crucial para la accesibilidad del teclado.</p>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 3: Campo de Entrada con Mensaje de Error Accesible</h4>
+                <p>Crea un campo de entrada de texto para un nombre de usuario. Debajo del campo, añade un <code>&lt;span&gt;</code> que contenga un mensaje de error como "El nombre de usuario no puede estar vacío.". Al hacer clic en un botón de "Validar", si el campo está vacío, el mensaje de error debe hacerse visible y el campo de entrada debe vincularse al mensaje de error usando <code>aria-describedby</code> para que el lector de pantalla lo anuncie.</p>
+                <div class="interactive-section">
+                    <label for="usernameField">Nombre de Usuario:</label>
+                    <input type="text" id="usernameField" aria-describedby="username-error-message">
+                    <span id="username-error-message" class="error-message">El nombre de usuario no puede estar vacío.</span>
+                    <button id="validateBtn">Validar</button>
+                    <p id="validation-result"></p>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                            const usernameField = document.getElementById('usernameField');
+                            const errorMessage = document.getElementById('username-error-message');
+                            const validateBtn = document.getElementById('validateBtn');
+                            const validationResult = document.getElementById('validation-result');
+
+                            if (validateBtn && usernameField && errorMessage && validationResult) {
+                                validateBtn.addEventListener('click', () => {
+                                    if (usernameField.value.trim() === '') {
+                                        errorMessage.style.display = 'block';
+                                        validationResult.textContent = 'Validación fallida: Campo vacío.';
+                                        validationResult.style.color = 'red';
+                                        // No se necesita añadir aria-describedby dinámicamente si ya está en HTML
+                                        // Pero sí se debe enfocar el campo para que el lector de pantalla lo anuncie
+                                        usernameField.focus();
+                                    } else {
+                                        errorMessage.style.display = 'none';
+                                        validationResult.textContent = 'Validación exitosa.';
+                                        validationResult.style.color = 'green';
+                                    }
+                                });
+                            }
+                        });
+                    </script>
+                </div>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution3')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution3">
+                    <p><strong>HTML y JavaScript:</strong></p>
+                    <pre><code class="language-html">&lt;style&gt;
+    .error-message {
+        color: red;
+        font-size: 0.9em;
+        margin-top: 5px;
+        display: none; /* Oculto por defecto */
+    }
+&lt;/style&gt;
+
+&lt;label for="usernameField"&gt;Nombre de Usuario:&lt;/label&gt;
+&lt;input type="text" id="usernameField" aria-describedby="username-error-message"&gt;
+&lt;span id="username-error-message" class="error-message"&gt;El nombre de usuario no puede estar vacío.&lt;/span&gt;
+&lt;button id="validateBtn"&gt;Validar&lt;/button&gt;
+&lt;p id="validation-result"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    document.addEventListener('DOMContentLoaded', () => {
+        const usernameField = document.getElementById('usernameField');
+        const errorMessage = document.getElementById('username-error-message');
+        const validateBtn = document.getElementById('validateBtn');
+        const validationResult = document.getElementById('validation-result');
+
+        validateBtn.addEventListener('click', () => {
+            if (usernameField.value.trim() === '') {
+                errorMessage.style.display = 'block'; // Mostrar el mensaje de error
+                validationResult.textContent = 'Validación fallida: Campo vacío.';
+                validationResult.style.color = 'red';
+                // Opcional: enfocar el campo para que el lector de pantalla lo anuncie de nuevo
+                usernameField.focus();
+            } else {
+                errorMessage.style.display = 'none'; // Ocultar el mensaje de error
+                validationResult.textContent = 'Validación exitosa.';
+                validationResult.style.color = 'green';
+            }
+        });
+    });
+&lt;/script&gt;
+</code></pre>
+                    <p class="explanation-text">El uso de <code>aria-describedby</code> es crucial aquí. Cuando el campo de entrada obtiene el foco (o se valida), el lector de pantalla no solo leerá la etiqueta del campo, sino también el contenido del elemento al que hace referencia <code>aria-describedby</code> (en este caso, el mensaje de error), proporcionando un contexto adicional importante para los usuarios.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="quiz-section">
+            <h3>Quiz de la Clase 33: Atributos aria- para Accesibilidad Avanzada</h3>
+            <p>¡Pon a prueba tus conocimientos con este quiz de 10 preguntas!</p>
+            <form id="quizForm">
+                <div class="quiz-question">
+                    <h4>1. ¿Cuál es la "Primera Regla de ARIA"?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="a"> Usar ARIA en todos los elementos HTML para máxima accesibilidad.</label>
+                        <label><input type="radio" name="q1" value="b"> Si puedes usar un elemento HTML nativo con la semántica deseada, hazlo.</label>
+                        <label><input type="radio" name="q1" value="c"> ARIA solo debe usarse para elementos de formulario.</label>
+                        <label><input type="radio" name="q1" value="d"> Los atributos ARIA deben ir siempre antes que cualquier otro atributo.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>2. ¿Qué tipo de atributo ARIA describe la "función" o "tipo" de un elemento (ej., un botón o una navegación)?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="a"> Propiedad ARIA</label>
+                        <label><input type="radio" name="q2" value="b"> Estado ARIA</label>
+                        <label><input type="radio" name="q2" value="c"> Rol ARIA</label>
+                        <label><input type="radio" name="q2" value="d"> Atributo de datos</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>3. Si tienes un <code>&lt;div&gt;</code> que funciona como un botón y lo haces interactuable con JavaScript, ¿qué atributo ARIA le añadirías para que los lectores de pantalla lo reconozcan como tal?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="a"> <code>class="button"</code></label>
+                        <label><input type="radio" name="q3" value="b"> <code>type="button"</code></label>
+                        <label><input type="radio" name="q3" value="c"> <code>role="button"</code></label>
+                        <label><input type="radio" name="q3" value="d"> <code>aria-label="button"</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>4. ¿Qué atributo ARIA se utiliza para indicar si un elemento colapsable está actualmente visible o no?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="a"> <code>aria-visible</code></label>
+                        <label><input type="radio" name="q4" value="b"> <code>aria-hidden</code></label>
+                        <label><input type="radio" name="q4" value="c"> <code>aria-expanded</code></label>
+                        <label><input type="radio" name="q4" value="d"> <code>aria-collapsed</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>5. Para un botón que solo tiene un icono (sin texto visible), ¿qué atributo ARIA proporciona una etiqueta accesible para los lectores de pantalla?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="a"> <code>alt</code></label>
+                        <label><input type="radio" name="q5" value="b"> <code>title</code></label>
+                        <label><input type="radio" name="q5" value="c"> <code>aria-description</code></label>
+                        <label><input type="radio" name="q5" value="d"> <code>aria-label</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>6. Si un elemento y todo su contenido no deben ser accesibles para las tecnologías de asistencia (ej., contenido puramente decorativo), ¿qué atributo ARIA se usaría?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q6" value="a"> <code>aria-hidden="true"</code></label>
+                        <label><input type="radio" name="q6" value="b"> <code>display: none;</code> en CSS</label>
+                        <label><input type="radio" name="q6" value="c"> <code>visibility: hidden;</code> en CSS</label>
+                        <label><input type="radio" name="q6" value="d"> Todas las anteriores pueden lograr el ocultamiento visual, pero solo 'a' es específica para tecnologías de asistencia.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>7. ¿Qué atributo ARIA se utiliza para vincular un elemento a otro (por su <code>id</code>) que proporciona una descripción o mensaje de ayuda adicional, como un mensaje de error?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q7" value="a"> <code>aria-labelledby</code></label>
+                        <label><input type="radio" name="q7" value="b"> <code>aria-controls</code></label>
+                        <label><input type="radio" name="q7" value="c"> <code>aria-describedby</code></label>
+                        <label><input type="radio" name="q7" value="d"> <code>aria-help</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>8. ¿Es recomendable usar <code>role="main"</code> en un elemento <code>&lt;main&gt;</code>?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q8" value="a"> Sí, siempre es necesario para la accesibilidad.</label>
+                        <label><input type="radio" name="q8" value="b"> No, porque la etiqueta <code>&lt;main&gt;</code> ya tiene la semántica correcta.</label>
+                        <label><input type="radio" name="q8" value="c"> Solo si el <code>&lt;main&gt;</code> está dentro de un <code>&lt;div&gt;</code>.</label>
+                        <label><input type="radio" name="q8" value="d"> Depende del navegador del usuario.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>9. ¿Qué efecto tiene usar ARIA incorrectamente?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q9" value="a"> No tiene ningún efecto en la accesibilidad.</label>
+                        <label><input type="radio" name="q9" value="b"> Puede mejorar la accesibilidad de forma inesperada.</label>
+                        <label><input type="radio" name="q9" value="c"> Puede hacer que la página sea menos accesible de lo que sería sin ARIA.</label>
+                        <label><input type="radio" name="q9" value="d"> Solo afecta a navegadores antiguos.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>10. ¿Cuál de los siguientes es un "Estado ARIA" (es decir, puede cambiar durante la interacción del usuario)?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q10" value="a"> <code>aria-label</code></label>
+                        <label><input type="radio" name="q10" value="b"> <code>aria-labelledby</code></label>
+                        <label><input type="radio" name="q10" value="c"> <code>aria-expanded</code></label>
+                        <label><input type="radio" name="q10" value="d"> <code>aria-describedby</code></label>
+                    </div>
+                </div>
+
+                <button type="button" class="submit-quiz-button" id="checkAnswersBtn">Ver Resultados</button>
+            </form>
+
+            <div id="quizResults" class="quiz-results">
+                <p>Resultados del Test:</p>
+                <ol id="resultsList"></ol>
+                <p id="scoreSummary"></p>
+                <button type="button" class="reveal-button" id="resetQuizBtn" style="display: none;">Volver a Intentar</button>
+            </div>
+        </div>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="33AtributoAriaParaAccesibilidadAvanzada.html">Volver a la Clase 33: Atributo aria- para Accesibilidad Avanzada.</a></li>
+                <li><a href="34SEOConMicrodatosSchemaOrg.html">Clase 34: SEO con Microdatos y Schema.org (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script>
+        // Función para mostrar/ocultar soluciones de ejercicios
+        function toggleSolution(button, solutionId) {
+            const solution = document.getElementById(solutionId);
+            if (solution.style.display === 'block') {
+                solution.style.display = 'none';
+                button.textContent = 'Mostrar Solución';
+            } else {
+                solution.style.display = 'block';
+                button.textContent = 'Ocultar Solución';
+            }
+        }
+
+        // Datos del quiz
+        const quizAnswers = {
+            q1: 'b', // Si puedes usar un elemento HTML nativo con la semántica deseada, hazlo.
+            q2: 'c', // Rol ARIA
+            q3: 'c', // role="button"
+            q4: 'c', // aria-expanded
+            q5: 'd', // aria-label
+            q6: 'a', // aria-hidden="true" (aunque display/visibility ocultan visualmente, aria-hidden es específico para AT)
+            q7: 'c', // aria-describedby
+            q8: 'b', // No, porque la etiqueta <main> ya tiene la semántica correcta.
+            q9: 'c', // Puede hacer que la página sea menos accesible de lo que sería sin ARIA.
+            q10: 'c' // aria-expanded
+        };
+
+        // Asignar eventos a los botones una vez que el DOM esté completamente cargado
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            if (checkAnswersBtn) {
+                checkAnswersBtn.addEventListener('click', checkQuiz);
+            }
+            if (resetQuizBtn) {
+                resetQuizBtn.addEventListener('click', resetQuiz);
+            }
+        });
+
+        function checkQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const resultsList = document.getElementById('resultsList');
+            const scoreSummary = document.getElementById('scoreSummary');
+            const quizResultsDiv = document.getElementById('quizResults');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            resultsList.innerHTML = ''; // Limpiar resultados anteriores
+            let score = 0;
+
+            for (let i = 1; i <= 10; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = quizForm.elements[questionName] ? quizForm.elements[questionName].value : '';
+                const correctAnswer = quizAnswers[questionName];
+
+                const listItem = document.createElement('li');
+                listItem.classList.add(selectedOption === correctAnswer ? 'correct' : 'incorrect');
+
+                // Obtener el texto de la opción seleccionada (preservando <code>)
+                let selectedAnswerText = 'No respondida';
+                if (selectedOption) {
+                    const selectedLabel = quizForm.querySelector(`input[name="${questionName}"][value="${selectedOption}"]`);
+                    if (selectedLabel) {
+                        const labelClone = selectedLabel.closest('label').cloneNode(true);
+                        labelClone.querySelector('input').remove();
+                        selectedAnswerText = labelClone.innerHTML.trim();
+                    }
+                }
+
+                // Obtener el texto de la opción correcta (preservando <code>)
+                const correctLabel = quizForm.querySelector(`input[name="${questionName}"][value="${correctAnswer}"]`);
+                let correctAnswerText = 'N/A';
+                if (correctLabel) {
+                    const correctLabelClone = correctLabel.closest('label').cloneNode(true);
+                    correctLabelClone.querySelector('input').remove();
+                    correctAnswerText = correctLabelClone.innerHTML.trim();
+                }
+
+                const questionText = document.createTextNode(`Pregunta ${i}: `);
+                listItem.appendChild(questionText);
+
+                if (selectedOption !== correctAnswer) {
+                    listItem.innerHTML += ` Tu respuesta: "${selectedAnswerText}".<br>`;
+                    const correctInfoSpan = document.createElement('span');
+                    correctInfoSpan.classList.add('correct-answer-info');
+                    correctInfoSpan.innerHTML = `Respuesta correcta: "${correctAnswerText}".`;
+                    listItem.appendChild(correctInfoSpan);
+                } else {
+                    listItem.innerHTML += ` Correcta.`;
+                    score++;
+                }
+
+                resultsList.appendChild(listItem);
+            }
+
+            scoreSummary.textContent = `Tu puntuación es: ${score} de 10 preguntas correctas.`;
+            quizResultsDiv.style.display = 'block'; // Mostrar la sección de resultados
+            quizResultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Desplazarse a los resultados
+
+            // Ocultar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'none';
+            // Mostrar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'inline-block';
+        }
+
+        function resetQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            quizForm.reset(); // Reinicia todos los radio buttons
+            document.getElementById('quizResults').style.display = 'none'; // Oculta los resultados
+            document.getElementById('resultsList').innerHTML = ''; // Limpia la lista de resultados
+            document.getElementById('scoreSummary').textContent = ''; // Limpia el resumen de puntuación
+
+            // Mostrar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'inline-block';
+            // Ocultar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

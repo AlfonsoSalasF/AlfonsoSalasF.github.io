@@ -1,17 +1,180 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML y Responsividad (Introducción)</title>
+    <title>HTML y Responsividad (Introducción) - Curso HTML</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
+    <style>
+        .code-example {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
+        .code-example pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .responsive-tip {
+            background-color: #e0f7fa;
+            border: 1px solid #b2ebf2;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+    </style>
 </head>
 <body>
-    <H1>Clase 35: HTML y Responsividad (Introducción).</H1>
-    <UL>
-        <li>Concepto de diseño web responsivo.</li>
-        <li>Meta viewport: &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;.</li>
-        <li>Imágenes responsivas: &lt;picture&gt; y srcset.</li>
-    </UL>
-    <p><a href="/index.html">Vuelve a la página principal</a></p>
+    <div class="container">
+        <h1>
+            <p>CURSO DE INICIACIÓN A HTML</p>
+            <p>Clase 35: HTML y Responsividad (Introducción)</p>
+        </h1>
+
+        <p>En el mundo actual, los usuarios acceden a la web desde una vasta gama de dispositivos: ordenadores de escritorio, portátiles, tabletas, smartphones, e incluso smart TVs. Un diseño web que se vea bien y funcione de manera óptima en todas estas pantallas es fundamental. Aquí es donde entra en juego el "diseño web responsivo" o "responsive web design".</p>
+
+        <hr>
+
+        <section>
+            <h2>35.1. Concepto de diseño web responsivo.</h2>
+            <p>El diseño web responsivo es una aproximación al diseño y desarrollo web que busca crear sitios que proporcionen una experiencia de visualización y uso óptima en una amplia gama de dispositivos (desde monitores de escritorio grandes hasta teléfonos móviles). Un sitio web responsivo se "adapta" o "responde" al tamaño de la pantalla del usuario, ajustando automáticamente su diseño, imágenes y contenido para que se vean bien y sean fáciles de usar.</p>
+
+            <h3>Principios clave del diseño responsivo:</h3>
+            <ul>
+                <li><strong>Grid flexibles:</strong> El diseño no se basa en tamaños fijos de píxeles, sino en porcentajes y unidades relativas para que los elementos se redimensionen proporcionalmente.</li>
+                <li><strong>Imágenes flexibles:</strong> Las imágenes se escalan para encajar en el layout, evitando desbordamientos o tamaños excesivos.</li>
+                <li><strong>Media queries de CSS:</strong> Son reglas de CSS que permiten aplicar estilos diferentes en función de características del dispositivo como el ancho de la pantalla, la altura, la orientación, la resolución, etc. Por ejemplo, puedes ocultar un menú de navegación lateral en pantallas pequeñas y mostrar un icono de hamburguesa.</li>
+                <li><strong>Prioridad de contenido:</strong> En pantallas pequeñas, el contenido se reorganiza, y a veces se oculta contenido menos importante, para asegurar que la información clave sea accesible y legible.</li>
+            </ul>
+            <div class="responsive-tip">
+                <p><strong>¿Por qué es importante?</strong></p>
+                <ul>
+                    <li><strong>Experiencia de usuario:</strong> Mejora la usabilidad y la satisfacción del usuario al no tener que hacer zoom o desplazarse excesivamente.</li>
+                    <li><strong>SEO:</strong> Google y otros motores de búsqueda priorizan los sitios web "mobile-friendly" en sus resultados de búsqueda móvil.</li>
+                    <li><strong>Futuro a prueba:</strong> Un diseño responsivo es más adaptable a nuevos tamaños de pantalla y dispositivos que puedan surgir.</li>
+                </ul>
+            </div>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>35.2. Meta viewport: <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code>.</h2>
+            <p>El meta tag <code>viewport</code> es una pieza fundamental para el diseño web responsivo en HTML. Sin él, los navegadores móviles intentarían renderizar la página como si fuera un escritorio, luego la reducirían para ajustarla a la pantalla pequeña, lo que resultaría en texto e imágenes diminutos y difíciles de leer.</p>
+
+            <h3>Explicación del atributo:</h3>
+            <div class="code-example">
+                <pre><code class="language-html">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+</code></pre>
+            </div>
+            <ul>
+                <li><strong><code>name="viewport"</code>:</strong> Indica que esta meta etiqueta está relacionada con el viewport del navegador.</li>
+                <li><strong><code>content=""</code>:</strong> Contiene las configuraciones para el viewport.
+                    <ul>
+                        <li><strong><code>width=device-width</code>:</strong> Establece el ancho del viewport al ancho del dispositivo en píxeles CSS. Esto asegura que la página ocupe todo el ancho disponible de la pantalla, sin importar su tamaño físico.</li>
+                        <li><strong><code>initial-scale=1.0</code>:</strong> Establece el nivel de zoom inicial cuando la página se carga por primera vez. Un valor de <code>1.0</code> significa que no hay zoom y que 1 píxel CSS es igual a 1 píxel de dispositivo, lo que es óptimo para la mayoría de los diseños responsivos.</li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="responsive-tip">
+                <p><strong>Ubicación:</strong> Esta etiqueta <strong>siempre</strong> debe ir dentro de la sección <code>&lt;head&gt;</code> de tu documento HTML.</p>
+                <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Mi Página Responsiva&lt;/title&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    ...
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+            </div>
+            <div class="warning-box">
+                <p><strong>¡Crucial!</strong> No incluir el meta viewport, o configurarlo incorrectamente, es uno de los errores más comunes que causan que una página no sea "mobile-friendly". Siempre inclúyelo en todos tus documentos HTML.</p>
+            </div>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>35.3. Imágenes responsivas: <code>&lt;picture&gt;</code> y <code>srcset</code>.</h2>
+            <p>Las imágenes pueden ser un desafío en el diseño responsivo, ya que una imagen de alta resolución diseñada para un monitor de escritorio puede ser innecesariamente grande y lenta de cargar en un dispositivo móvil. HTML5 introduce soluciones para servir imágenes optimizadas para diferentes tamaños de pantalla y densidades de píxeles.</p>
+
+            <h3>35.3.1. El atributo <code>srcset</code> para <code>&lt;img&gt;</code>.</h3>
+            <p>El atributo <code>srcset</code> permite especificar una lista de fuentes de imagen diferentes junto con descriptores que le indican al navegador cuándo usar cada una. El navegador elegirá la imagen más adecuada basándose en el ancho del viewport, la densidad de píxeles de la pantalla y la densidad de píxeles del dispositivo.</p>
+            <ul>
+                <li><strong>Descriptores de ancho (<code>w</code>):</strong> Indica el ancho intrínseco de cada imagen. El navegador elegirá la imagen que mejor se ajuste al ancho del espacio que ocupará la imagen en el layout.</li>
+                <li><strong>Descriptores de densidad de píxeles (<code>x</code>):</strong> Indica la densidad de píxeles de la imagen (ej., <code>1x</code> para pantallas estándar, <code>2x</code> para pantallas Retina).</li>
+            </ul>
+            <div class="code-example">
+                <pre><code class="language-html">&lt;!-- Ejemplo con descriptores de ancho (w) --&gt;
+&lt;img srcset="imagen-pequena.jpg 480w,
+             imagen-mediana.jpg 800w,
+             imagen-grande.jpg 1200w"
+     sizes="(max-width: 600px) 480px,
+            (max-width: 1000px) 800px,
+            1200px"
+     src="imagen-grande.jpg" alt="Descripción de la imagen"&gt;
+
+&lt;!-- Ejemplo con descriptores de densidad de píxeles (x) --&gt;
+&lt;img srcset="imagen-1x.png 1x,
+             imagen-2x.png 2x"
+     src="imagen-1x.png" alt="Logotipo"&gt;
+</code></pre>
+            </div>
+            <p>El atributo <code>sizes</code> (usado con <code>w</code>) es crucial. Le dice al navegador qué tan ancha será la imagen en diferentes puntos de interrupción de CSS, lo que le ayuda a seleccionar la imagen correcta de <code>srcset</code> antes de que se cargue el CSS.</p>
+
+            <h3>35.3.2. La etiqueta <code>&lt;picture&gt;</code>.</h3>
+            <p>La etiqueta <code>&lt;picture&gt;</code> ofrece aún más control sobre las imágenes responsivas, permitiéndote especificar diferentes imágenes para diferentes condiciones, como formatos de imagen (WebP, JPEG), o arte direccional (recortes diferentes de la misma imagen).</p>
+            <p>Usa la etiqueta <code>&lt;source&gt;</code> dentro de <code>&lt;picture&gt;</code> con el atributo <code>media</code> (para media queries) o <code>type</code> (para formatos MIME). El navegador elegirá el primer <code>&lt;source&gt;</code> cuyo <code>media</code> query sea verdadero y cuyo <code>type</code> sea compatible. El <code>&lt;img&gt;</code> final es el "fallback" o la imagen por defecto si ningún <code>&lt;source&gt;</code> coincide o es compatible.</p>
+            <div class="code-example">
+                <pre><code class="language-html">&lt;picture&gt;
+    &lt;!-- Sirve una imagen WebP para pantallas grandes --&gt;
+    &lt;source srcset="imagen-grande.webp" type="image/webp" media="(min-width: 1200px)"&gt;
+    &lt;!-- Sirve una imagen WebP para pantallas medianas --&gt;
+    &lt;source srcset="imagen-mediana.webp" type="image/webp" media="(min-width: 768px)"&gt;
+    &lt;!-- Sirve una imagen JPEG para pantallas pequeñas (o si WebP no es compatible) --&gt;
+    &lt;source srcset="imagen-pequena.jpg" type="image/jpeg"&gt;
+    &lt;!-- Imagen de fallback para navegadores no compatibles con &lt;picture&gt; o si ninguna source coincide --&gt;
+    &lt;img src="imagen-pequena.jpg" alt="Descripción de la imagen responsiva"&gt;
+&lt;/picture&gt;
+</code></pre>
+            </div>
+            <div class="responsive-tip">
+                <p><strong>Recuerda:</strong> La optimización de imágenes es una parte crucial del rendimiento web. Usar <code>srcset</code> y <code>&lt;picture&gt;</code> junto con el meta viewport te ayudará a ofrecer una experiencia más rápida y adaptada a tus usuarios.</p>
+            </div>
+        </section>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="Ejercicios35.html">Ejercicios sobre esta lección.</a></li>
+                <li><a href="36MediaQueriesDeCSSParaResponsividad.html">Clase 36: Media Queries de CSS para Responsividad (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
 </body>
 </html>

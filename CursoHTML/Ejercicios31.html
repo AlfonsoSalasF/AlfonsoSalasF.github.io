@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 31: Ejercicios de Atributos Personalizados de Datos (data-*)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/ejercicios_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
+    <style>
+        .code-example-inline {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .interactive-section {
+            background-color: #f0f8ff;
+            border: 1px solid #cce7ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .interactive-section button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 10px;
+            margin-right: 10px;
+        }
+        .interactive-section button:hover {
+            background-color: #0056b3;
+        }
+        .interactive-section p {
+            margin-top: 15px;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Clase 31: Ejercicios de Atributos Personalizados de Datos (data-*)</h1>
+
+        <div class="exercise-section">
+            <h3>Ejercicios Prácticos de la Clase 31</h3>
+            <p>Estos ejercicios te ayudarán a practicar cómo almacenar y acceder a datos personalizados usando los atributos <code>data-*</code> y JavaScript.</p>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 1: Creación y Acceso Básico a <code>data-*</code></h4>
+                <p>Crea un botón con el texto "Ver Detalles del Producto". Añade los siguientes atributos <code>data-*</code>:</p>
+                <ul>
+                    <li><code>data-product-id</code> con el valor "PROD-001"</li>
+                    <li><code>data-category</code> con el valor "Electrónica"</li>
+                    <li><code>data-price</code> con el valor "499.99"</li>
+                </ul>
+                <p>Luego, escribe un script JavaScript que, al hacer clic en el botón, muestre una alerta con la siguiente información del producto:</p>
+                <p>"Producto ID: [ID], Categoría: [Categoría], Precio: [Precio]"</p>
+                <div class="interactive-section">
+                    <button id="productDetailsBtn">Ver Detalles del Producto</button>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                            const productDetailsBtn = document.getElementById('productDetailsBtn');
+                            if (productDetailsBtn) {
+                                productDetailsBtn.setAttribute('data-product-id', 'PROD-001');
+                                productDetailsBtn.setAttribute('data-category', 'Electrónica');
+                                productDetailsBtn.setAttribute('data-price', '499.99');
+
+                                productDetailsBtn.addEventListener('click', () => {
+                                    const productId = productDetailsBtn.dataset.productId;
+                                    const category = productDetailsBtn.dataset.category;
+                                    const price = productDetailsBtn.dataset.price;
+                                    alert(`Producto ID: ${productId}, Categoría: ${category}, Precio: $${price}`);
+                                });
+                            }
+                        });
+                    </script>
+                </div>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution1')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution1">
+                    <p><strong>HTML y JavaScript (dentro de un <code>&lt;body&gt;</code> o un <code>&lt;script&gt;</code> al final del <code>&lt;body&gt;</code>):</strong></p>
+                    <pre><code class="language-html">&lt;button id="productDetailsBtn"
+        data-product-id="PROD-001"
+        data-category="Electrónica"
+        data-price="499.99"&gt;
+    Ver Detalles del Producto
+&lt;/button&gt;
+
+&lt;script&gt;
+    document.addEventListener('DOMContentLoaded', () => {
+        const button = document.getElementById('productDetailsBtn');
+
+        button.addEventListener('click', () => {
+            const productId = button.dataset.productId;
+            const category = button.dataset.category;
+            const price = parseFloat(button.dataset.price); // Convertir a número para operar si fuera necesario
+
+            alert(`Producto ID: ${productId}, Categoría: ${category}, Precio: $${price.toFixed(2)}`);
+        });
+    });
+&lt;/script&gt;
+</code></pre>
+                    <p class="explanation-text">Este ejercicio demuestra cómo definir los atributos <code>data-*</code> en HTML y cómo acceder a ellos a través de la propiedad <code>.dataset</code> en JavaScript, utilizando la convención camelCase para los nombres de los atributos.</p>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 2: Cambio de Estado de un Elemento</h4>
+                <p>Crea un <code>&lt;div&gt;</code> con el texto "Contenido Oculto". Inicialmente, este <code>&lt;div&gt;</code> tendrá el atributo <code>data-visible="false"</code> y estará oculto con CSS (puedes usar <code>display: none;</code> en el CSS). Añade un botón "Mostrar/Ocultar Contenido".</p>
+                <p>Al hacer clic en el botón:</p>
+                <ol>
+                    <li>Cambia el valor del atributo <code>data-visible</code> entre "true" y "false".</li>
+                    <li>Basado en el nuevo valor de <code>data-visible</code>, alterna la visibilidad del <code>&lt;div&gt;</code> (si está oculto, que se muestre; si está visible, que se oculte).</li>
+                </ol>
+                <div class="interactive-section">
+                    <style>
+                        #toggleDiv[data-visible="false"] {
+                            display: none;
+                        }
+                        #toggleDiv[data-visible="true"] {
+                            display: block;
+                            border: 1px solid #007bff;
+                            padding: 10px;
+                            margin-top: 10px;
+                            background-color: #eaf6ff;
+                        }
+                    </style>
+                    <div id="toggleDiv" data-visible="false">Contenido Oculto</div>
+                    <button id="toggleBtn">Mostrar/Ocultar Contenido</button>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                            const toggleDiv = document.getElementById('toggleDiv');
+                            const toggleBtn = document.getElementById('toggleBtn');
+
+                            if (toggleBtn && toggleDiv) {
+                                toggleBtn.addEventListener('click', () => {
+                                    const isVisible = toggleDiv.dataset.visible === 'true';
+                                    toggleDiv.dataset.visible = isVisible ? 'false' : 'true';
+                                });
+                            }
+                        });
+                    </script>
+                </div>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution2')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution2">
+                    <p><strong>HTML con CSS y JavaScript:</strong></p>
+                    <pre><code class="language-html">&lt;style&gt;
+    /* CSS para controlar la visibilidad basado en el atributo data-visible */
+    #toggleDiv[data-visible="false"] {
+        display: none;
+    }
+    #toggleDiv[data-visible="true"] {
+        display: block;
+        border: 1px solid #007bff;
+        padding: 10px;
+        margin-top: 10px;
+        background-color: #eaf6ff;
+    }
+&lt;/style&gt;
+
+&lt;div id="toggleDiv" data-visible="false"&gt;Contenido Oculto&lt;/div&gt;
+&lt;button id="toggleBtn"&gt;Mostrar/Ocultar Contenido&lt;/button&gt;
+
+&lt;script&gt;
+    document.addEventListener('DOMContentLoaded', () => {
+        const toggleDiv = document.getElementById('toggleDiv');
+        const toggleBtn = document.getElementById('toggleBtn');
+
+        toggleBtn.addEventListener('click', () => {
+            // Verificar el estado actual
+            const isVisible = toggleDiv.dataset.visible === 'true';
+
+            // Alternar el estado
+            toggleDiv.dataset.visible = isVisible ? 'false' : 'true';
+
+            // La visibilidad se controla automáticamente con el CSS que reacciona a data-visible
+            // Si no usaras CSS, podrías hacer:
+            // toggleDiv.style.display = isVisible ? 'none' : 'block';
+        });
+    });
+&lt;/script&gt;
+</code></pre>
+                    <p class="explanation-text">Este ejercicio muestra cómo los atributos <code>data-*</code> pueden usarse para gestionar el estado de los elementos de la interfaz de usuario, permitiendo que CSS reaccione a estos estados para cambiar la apariencia, lo cual es una práctica muy común.</p>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 3: Iteración y Extracción de Datos</h4>
+                <p>Crea una lista desordenada (<code>&lt;ul&gt;</code>) de tres ítems. Cada ítem (<code>&lt;li&gt;</code>) debe representar un producto y tener los siguientes atributos <code>data-*</code>:</p>
+                <ul>
+                    <li><code>data-product-name</code> (ej. "Laptop", "Smartphone", "Monitor")</li>
+                    <li><code>data-price</code> (ej. "1200", "750", "300")</li>
+                </ul>
+                <p>Escribe un script JavaScript que recorra todos los ítems de la lista y, por cada uno, imprima en la consola (o en un elemento HTML específico) el nombre del producto y su precio.</p>
+                <div class="interactive-section">
+                    <ul id="productList">
+                        <li data-product-name="Laptop" data-price="1200">Laptop de alto rendimiento</li>
+                        <li data-product-name="Smartphone" data-price="750">Smartphone de última generación</li>
+                        <li data-product-name="Monitor" data-price="300">Monitor Ultra HD</li>
+                    </ul>
+                    <button id="displayProductsBtn">Mostrar Productos en Consola</button>
+                    <p id="outputProducts"></p>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                            const displayProductsBtn = document.getElementById('displayProductsBtn');
+                            const productList = document.getElementById('productList');
+                            const outputProducts = document.getElementById('outputProducts');
+
+                            if (displayProductsBtn && productList && outputProducts) {
+                                displayProductsBtn.addEventListener('click', () => {
+                                    const items = productList.querySelectorAll('li');
+                                    outputProducts.innerHTML = '<strong>Productos:</strong><br>';
+                                    items.forEach(item => {
+                                        const name = item.dataset.productName;
+                                        const price = parseFloat(item.dataset.price);
+                                        outputProducts.innerHTML += `- ${name}: $${price.toFixed(2)}<br>`;
+                                    });
+                                    console.log("Datos de productos:");
+                                    items.forEach(item => {
+                                        console.log(`- ${item.dataset.productName}: $${parseFloat(item.dataset.price).toFixed(2)}`);
+                                    });
+                                });
+                            }
+                        });
+                    </script>
+                </div>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution3')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution3">
+                    <p><strong>HTML y JavaScript:</strong></p>
+                    <pre><code class="language-html">&lt;ul id="productList"&gt;
+    &lt;li data-product-name="Laptop" data-price="1200"&gt;Laptop de alto rendimiento&lt;/li&gt;
+    &lt;li data-product-name="Smartphone" data-price="750"&gt;Smartphone de última generación&lt;/li&gt;
+    &lt;li data-product-name="Monitor" data-price="300"&gt;Monitor Ultra HD&lt;/li&gt;
+&lt;/ul&gt;
+&lt;button id="displayProductsBtn"&gt;Mostrar Productos en Consola&lt;/button&gt;
+&lt;p id="outputProducts"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+    document.addEventListener('DOMContentLoaded', () => {
+        const displayProductsBtn = document.getElementById('displayProductsBtn');
+        const productList = document.getElementById('productList');
+        const outputProducts = document.getElementById('outputProducts');
+
+        displayProductsBtn.addEventListener('click', () => {
+            const items = productList.querySelectorAll('li'); // Seleccionar todos los <li> dentro de #productList
+            outputProducts.innerHTML = '<strong>Productos:</strong>&lt;br&gt;'; // Limpiar y añadir título
+
+            items.forEach(item => {
+                const name = item.dataset.productName;
+                const price = parseFloat(item.dataset.price); // Convertir a número
+
+                // Imprimir en la consola (para desarrolladores)
+                console.log(`Producto: ${name}, Precio: $${price.toFixed(2)}`);
+
+                // Mostrar en la página (para el usuario)
+                outputProducts.innerHTML += `- ${name}: $${price.toFixed(2)}&lt;br&gt;`;
+            });
+        });
+    });
+&lt;/script&gt;
+</code></pre>
+                    <p class="explanation-text">Este ejemplo demuestra cómo los atributos <code>data-*</code> pueden ser usados para almacenar datos relacionados con cada ítem en una lista, lo que es útil para el filtrado, la ordenación o la visualización dinámica de información sin la necesidad de hacer llamadas adicionales al servidor.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="quiz-section">
+            <h3>Quiz de la Clase 31: Atributos Personalizados de Datos (data-*)</h3>
+            <p>¡Pon a prueba tus conocimientos con este quiz de 10 preguntas!</p>
+            <form id="quizForm">
+                <div class="quiz-question">
+                    <h4>1. ¿Cuál es la sintaxis correcta para un atributo de datos personalizado en HTML5?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="a"> <code>mydata-name="value"</code></label>
+                        <label><input type="radio" name="q1" value="b"> <code>data.name="value"</code></label>
+                        <label><input type="radio" name="q1" value="c"> <code>data-name="value"</code></label>
+                        <label><input type="radio" name="q1" value="d"> <code>custom-name="value"</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>2. ¿Dónde se recomienda colocar los atributos <code>data-*</code> en el documento HTML?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="a"> Solo en la etiqueta <code>&lt;head&gt;</code>.</label>
+                        <label><input type="radio" name="q2" value="b"> Dentro de cualquier etiqueta HTML en el <code>&lt;body&gt;</code>.</label>
+                        <label><input type="radio" name="q2" value="c"> Exclusivamente en las etiquetas <code>&lt;div&gt;</code> y <code>&lt;span&gt;</code>.</label>
+                        <label><input type="radio" name="q2" value="d"> En un archivo CSS externo.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>3. ¿Cómo se accede al valor de un atributo <code>data-product-id</code> en JavaScript?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="a"> <code>elemento.getAttribute('product-id')</code></label>
+                        <label><input type="radio" name="q3" value="b"> <code>elemento.data.productId</code></label>
+                        <label><input type="radio" name="q3" value="c"> <code>elemento.dataset.productId</code></label>
+                        <label><input type="radio" name="q3" value="d"> <code>elemento.productId</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>4. Si un atributo HTML es <code>data-user-preference</code>, ¿cómo se accede a él en JavaScript usando <code>.dataset</code>?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="a"> <code>dataset.user-preference</code></label>
+                        <label><input type="radio" name="q4" value="b"> <code>dataset.UserPreference</code></label>
+                        <label><input type="radio" name="q4" value="c"> <code>dataset.userPreference</code></label>
+                        <label><input type="radio" name="q4" value="d"> <code>dataset.User_Preference</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>5. ¿Cuál es el tipo de dato por defecto de un valor recuperado de un atributo <code>data-*</code> en JavaScript?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="a"> Número</label>
+                        <label><input type="radio" name="q5" value="b"> Booleano</label>
+                        <label><input type="radio" name="q5" value="c"> Objeto</label>
+                        <label><input type="radio" name="q5" value="d"> Cadena de texto (string)</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>6. ¿Para qué propósito común NO se utilizan los atributos <code>data-*</code>?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q6" value="a"> Almacenar ID's únicos de elementos.</label>
+                        <label><input type="radio" name="q6" value="b"> Gestionar el estado de componentes UI (por ejemplo, oculto/visible).</label>
+                        <label><input type="radio" name="q6" value="c"> Sustituir las bases de datos para almacenamiento persistente a gran escala.</label>
+                        <label><input type="radio" name="q6" value="d"> Proporcionar datos para filtrar o ordenar listas dinámicas.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>7. ¿Qué propiedad de un elemento HTML en JavaScript contiene los atributos <code>data-*</code>?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q7" value="a"> <code>attributes</code></label>
+                        <label><input type="radio" name="q7" value="b"> <code>dataset</code></label>
+                        <label><input type="radio" name="q7" value="c"> <code>dataAttributes</code></label>
+                        <label><input type="radio" name="q7" value="d"> <code>customData</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>8. ¿Cómo se establece un nuevo valor para un atributo <code>data-count</code> en JavaScript?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q8" value="a"> <code>elemento.setAttribute('data-count', nuevoValor)</code></label>
+                        <label><input type="radio" name="q8" value="b"> <code>elemento.dataset.count = nuevoValor</code></label>
+                        <label><input type="radio" name="q8" value="c"> Ambas a y b son correctas.</label>
+                        <label><input type="radio" name="q8" value="d"> Ninguna de las anteriores.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>9. Si un elemento tiene <code>data-is-active="true"</code>, ¿cómo se lee este valor en JavaScript como un booleano?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q9" value="a"> <code>Boolean(elemento.dataset.isActive)</code></label>
+                        <label><input type="radio" name="q9" value="b"> <code>elemento.dataset.isActive === 'true'</code></label>
+                        <label><input type="radio" name="q9" value="c"> <code>elemento.dataset.isActive</code> (ya es booleano)</label>
+                        <label><input type="radio" name="q9" value="d"> <code>JSON.parse(elemento.dataset.isActive)</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>10. ¿Cuál es el principal beneficio de usar <code>data-*</code> en lugar de atributos no estándar (ej., <code>myattribute="value"</code>) para datos personalizados?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q10" value="a"> Hace el HTML más corto.</label>
+                        <label><input type="radio" name="q10" value="b"> Son una forma estándar y válida de incrustar datos personalizados.</label>
+                        <label><input type="radio" name="q10" value="c"> Los navegadores antiguos los ignoran completamente.</label>
+                        <label><input type="radio" name="q10" value="d"> No requieren JavaScript para acceder a sus valores.</label>
+                    </div>
+                </div>
+
+                <button type="button" class="submit-quiz-button" id="checkAnswersBtn">Ver Resultados</button>
+            </form>
+
+            <div id="quizResults" class="quiz-results">
+                <p>Resultados del Test:</p>
+                <ol id="resultsList"></ol>
+                <p id="scoreSummary"></p>
+                <button type="button" class="reveal-button" id="resetQuizBtn" style="display: none;">Volver a Intentar</button>
+            </div>
+        </div>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="31AtributosPersonalizadosDeDatos.html">Volver a la Clase 31: Atributos Personalizados de Datos (data-*).</a></li>
+                <li><a href="32HTML5ParaMultimediaVideoYAudio.html">Clase 32: HTML5 para Multimedia: Video y Audio (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script>
+        // Función para mostrar/ocultar soluciones de ejercicios
+        function toggleSolution(button, solutionId) {
+            const solution = document.getElementById(solutionId);
+            if (solution.style.display === 'block') {
+                solution.style.display = 'none';
+                button.textContent = 'Mostrar Solución';
+            } else {
+                solution.style.display = 'block';
+                button.textContent = 'Ocultar Solución';
+            }
+        }
+
+        // Datos del quiz
+        const quizAnswers = {
+            q1: 'c', // data-name="value"
+            q2: 'b', // Dentro de cualquier etiqueta HTML en el <body>.
+            q3: 'c', // elemento.dataset.productId
+            q4: 'c', // dataset.userPreference
+            q5: 'd', // Cadena de texto (string)
+            q6: 'c', // Sustituir las bases de datos para almacenamiento persistente a gran escala.
+            q7: 'b', // dataset
+            q8: 'c', // Ambas a y b son correctas.
+            q9: 'b', // elemento.dataset.isActive === 'true'
+            q10: 'b' // Son una forma estándar y válida de incrustar datos personalizados.
+        };
+
+        // Asignar eventos a los botones una vez que el DOM esté completamente cargado
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            if (checkAnswersBtn) {
+                checkAnswersBtn.addEventListener('click', checkQuiz);
+            }
+            if (resetQuizBtn) {
+                resetQuizBtn.addEventListener('click', resetQuiz);
+            }
+        });
+
+        function checkQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const resultsList = document.getElementById('resultsList');
+            const scoreSummary = document.getElementById('scoreSummary');
+            const quizResultsDiv = document.getElementById('quizResults');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            resultsList.innerHTML = ''; // Limpiar resultados anteriores
+            let score = 0;
+
+            for (let i = 1; i <= 10; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = quizForm.elements[questionName] ? quizForm.elements[questionName].value : '';
+                const correctAnswer = quizAnswers[questionName];
+
+                const listItem = document.createElement('li');
+                listItem.classList.add(selectedOption === correctAnswer ? 'correct' : 'incorrect');
+
+                // Obtener el texto de la opción seleccionada (preservando <code>)
+                let selectedAnswerText = 'No respondida';
+                if (selectedOption) {
+                    const selectedLabel = quizForm.querySelector(`input[name="${questionName}"][value="${selectedOption}"]`);
+                    if (selectedLabel) {
+                        const labelClone = selectedLabel.closest('label').cloneNode(true);
+                        labelClone.querySelector('input').remove();
+                        selectedAnswerText = labelClone.innerHTML.trim();
+                    }
+                }
+
+                // Obtener el texto de la opción correcta (preservando <code>)
+                const correctLabel = quizForm.querySelector(`input[name="${questionName}"][value="${correctAnswer}"]`);
+                let correctAnswerText = 'N/A';
+                if (correctLabel) {
+                    const correctLabelClone = correctLabel.closest('label').cloneNode(true);
+                    correctLabelClone.querySelector('input').remove();
+                    correctAnswerText = correctLabelClone.innerHTML.trim();
+                }
+
+                const questionText = document.createTextNode(`Pregunta ${i}: `);
+                listItem.appendChild(questionText);
+
+                if (selectedOption !== correctAnswer) {
+                    listItem.innerHTML += ` Tu respuesta: "${selectedAnswerText}".<br>`;
+                    const correctInfoSpan = document.createElement('span');
+                    correctInfoSpan.classList.add('correct-answer-info');
+                    correctInfoSpan.innerHTML = `Respuesta correcta: "${correctAnswerText}".`;
+                    listItem.appendChild(correctInfoSpan);
+                } else {
+                    listItem.innerHTML += ` Correcta.`;
+                    score++;
+                }
+
+                resultsList.appendChild(listItem);
+            }
+
+            scoreSummary.textContent = `Tu puntuación es: ${score} de 10 preguntas correctas.`;
+            quizResultsDiv.style.display = 'block'; // Mostrar la sección de resultados
+            quizResultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Desplazarse a los resultados
+
+            // Ocultar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'none';
+            // Mostrar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'inline-block';
+        }
+
+        function resetQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            quizForm.reset(); // Reinicia todos los radio buttons
+            document.getElementById('quizResults').style.display = 'none'; // Oculta los resultados
+            document.getElementById('resultsList').innerHTML = ''; // Limpia la lista de resultados
+            document.getElementById('scoreSummary').textContent = ''; // Limpia el resumen de puntuación
+
+            // Mostrar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'inline-block';
+            // Ocultar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

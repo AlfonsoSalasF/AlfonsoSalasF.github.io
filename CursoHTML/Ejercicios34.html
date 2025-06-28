@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 34: Ejercicios de Optimización del Rendimiento HTML</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/ejercicios_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
+    <style>
+        .code-example-inline {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .interactive-section {
+            background-color: #f0f8ff;
+            border: 1px solid #cce7ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .interactive-section img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            margin: 10px auto;
+            display: block;
+        }
+        .long-scroll-area {
+            height: 300px; /* Para simular scroll */
+            overflow-y: scroll;
+            border: 1px dashed #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+            background-color: #fff;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+            resize: vertical; /* Permite redimensionar el área de scroll */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Clase 34: Ejercicios de Optimización del Rendimiento HTML</h1>
+
+        <div class="exercise-section">
+            <h3>Ejercicios Prácticos de la Clase 34</h3>
+            <p>Estos ejercicios te ayudarán a aplicar las técnicas de optimización del rendimiento HTML. Para ver el efecto real de estos cambios, idealmente necesitarías herramientas de desarrollo del navegador (como Lighthouse) y recursos reales, pero aquí nos centraremos en la implementación del código.</p>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 1: Carga Diferida de Imágenes</h4>
+                <p>Imagina que tienes una página web con varias imágenes. La primera imagen es visible inmediatamente, pero las siguientes están mucho más abajo en la página. Modifica el código para que las imágenes "fuera de la vista inicial" se carguen de forma diferida.</p>
+                <p>Para simular una página larga, hemos añadido un área con scroll. Intenta visualizar cómo las imágenes de abajo se cargarían solo al hacer scroll.</p>
+                <div class="interactive-section">
+                    <p>Imagen superior (debe cargar siempre):</p>
+                    <img src="https://via.placeholder.com/300x200?text=Imagen+Superior" alt="Imagen superior" width="300" height="200">
+                    
+                    <div class="long-scroll-area">
+                        <p>Desplázate hacia abajo para ver las imágenes diferidas:</p>
+                        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                        <p>Imagen media (debe cargar en diferido):</p>
+                        <img src="https://via.placeholder.com/300x200?text=Imagen+Media" alt="Imagen media" width="300" height="200" loading="lazy">
+                        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                        <p>Imagen inferior (debe cargar en diferido):</p>
+                        <img src="https://via.placeholder.com/300x200?text=Imagen+Inferior" alt="Imagen inferior" width="300" height="200" loading="lazy">
+                    </div>
+                </div>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution1')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution1">
+                    <p><strong>HTML (fíjate en los atributos <code>loading</code>):</strong></p>
+                    <pre><code class="language-html">&lt;p&gt;Imagen superior (debe cargar siempre):&lt;/p&gt;
+&lt;img src="https://via.placeholder.com/300x200?text=Imagen+Superior" alt="Imagen superior" width="300" height="200"&gt;
+
+&lt;div class="long-scroll-area"&gt;
+    &lt;p&gt;Desplázate hacia abajo para ver las imágenes diferidas:&lt;/p&gt;
+    &lt;!-- Mucho contenido para forzar el scroll --&gt;
+    &lt;br&gt;&lt;br&gt;&lt;br&gt;...&lt;br&gt;&lt;br&gt;&lt;br&gt;
+    &lt;p&gt;Imagen media (debe cargar en diferido):&lt;/p&gt;
+    &lt;img src="https://via.placeholder.com/300x200?text=Imagen+Media" alt="Imagen media" width="300" height="200" loading="lazy"&gt;
+    &lt;!-- Mucho contenido para forzar el scroll --&gt;
+    &lt;br&gt;&lt;br&gt;&lt;br&gt;...&lt;br&gt;&lt;br&gt;&lt;br&gt;
+    &lt;p&gt;Imagen inferior (debe cargar en diferido):&lt;/p&gt;
+    &lt;img src="https://via.placeholder.com/300x200?text=Imagen+Inferior" alt="Imagen inferior" width="300" height="200" loading="lazy"&gt;
+&lt;/div&gt;
+</code></pre>
+                    <p class="explanation-text">El atributo <code>loading="lazy"</code> en las etiquetas <code>&lt;img&gt;</code> de las imágenes "media" e "inferior" le indica al navegador que no las cargue hasta que estén cerca del viewport del usuario. Esto mejora la velocidad de carga inicial de la página.</p>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 2: Carga Optimizada de CSS y JavaScript</h4>
+                <p>Dada la siguiente estructura de HTML, CSS y JavaScript, optimiza la carga de los recursos:</p>
+                <ul>
+                    <li>El CSS debe cargar en la cabecera.</li>
+                    <li>El JavaScript principal (que interactúa con el DOM) debe cargar de forma diferida.</li>
+                    <li>El JavaScript de analíticas (que no depende del DOM) debe cargar de forma asíncrona.</li>
+                </ul>
+                <div class="interactive-section">
+                    <p><code>index.html</code> (Fragmento):</p>
+                    <pre class="code-example-inline"><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Mi Página&lt;/title&gt;
+    &lt;!-- Aquí debe ir el CSS --&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Bienvenido&lt;/h1&gt;
+    &lt;p id="mensaje"&gt;Cargando...&lt;/p&gt;
+    &lt;!-- Aquí deben ir los scripts --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+                    <p><code>styles.css</code>:</p>
+                    <pre class="code-example-inline"><code class="language-css">body {
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+h1 {
+    color: #0056b3;
+}
+</code></pre>
+                    <p><code>main.js</code> (Interacciona con <code>&lt;p id="mensaje"&gt;</code>):</p>
+                    <pre class="code-example-inline"><code class="language-javascript">document.addEventListener('DOMContentLoaded', () => {
+    const mensajeElement = document.getElementById('mensaje');
+    if (mensajeElement) {
+        mensajeElement.textContent = 'Contenido principal cargado.';
+    }
+});
+</code></pre>
+                    <p><code>analytics.js</code> (No interacciona con el DOM directamente, envía datos):</p>
+                    <pre class="code-example-inline"><code class="language-javascript">console.log('Script de analíticas cargado.');
+// Imagina aquí código para enviar datos a un servidor de analíticas
+</code></pre>
+                    <p><strong>Salida esperada (simulada):</strong></p>
+                    <p id="ej2-output">La página debería mostrar "Contenido principal cargado." rápidamente y el mensaje de analíticas aparecer en la consola del navegador.</p>
+                </div>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution2')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution2">
+                    <p><strong>HTML optimizado:</strong></p>
+                    <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Mi Página Optimizada&lt;/title&gt;
+    &lt;!-- CSS siempre en el head para un renderizado rápido --&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
+    
+    &lt;!-- Script de analíticas: async para no bloquear el parseo y ejecutar cuando esté listo --&gt;
+    &lt;script src="analytics.js" async&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Bienvenido&lt;/h1&gt;
+    &lt;p id="mensaje"&gt;Cargando...&lt;/p&gt;
+    
+    &lt;!-- Script principal: defer para no bloquear el parseo y ejecutar después del DOM --&gt;
+    &lt;script src="main.js" defer&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+                    <p class="explanation-text">
+                        Hemos colocado el <code>&lt;link rel="stylesheet"&gt;</code> en el <code>&lt;head&gt;</code> para que los estilos se carguen lo antes posible.
+                        El script <code>analytics.js</code> usa <code>async</code> porque no depende del DOM y puede ejecutarse tan pronto como se descarga, sin preocuparse por el orden.
+                        El script <code>main.js</code> usa <code>defer</code> porque interactúa con el DOM (<code>document.getElementById('mensaje')</code>) y necesitamos que el DOM esté parseado antes de ejecutarlo. <code>defer</code> también garantiza el orden si hubiera múltiples scripts diferidos.
+                    </p>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 3: Minificación de HTML (Concepto)</h4>
+                <p>No se te pide que uses una herramienta real de minificación aquí, sino que entiendas el concepto. Dada la siguiente estructura HTML "no minificada", escribe cómo se vería una versión "minificada" simple.</p>
+                <p>HTML original:</p>
+                <pre class="code-example-inline"><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Página de Ejemplo&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Este es un comentario --&gt;
+    &lt;div class="content"&gt;
+        &lt;h1&gt;Hola Mundo&lt;/h1&gt;
+        &lt;p&gt;Este es un párrafo de prueba.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution3')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution3">
+                    <p><strong>HTML minificado (ejemplo simple):</strong></p>
+                    <pre><code class="language-html">&lt;!DOCTYPE html&gt;&lt;html lang="es"&gt;&lt;head&gt;&lt;meta charset="UTF-8"&gt;&lt;title&gt;Página de Ejemplo&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;div class="content"&gt;&lt;h1&gt;Hola Mundo&lt;/h1&gt;&lt;p&gt;Este es un párrafo de prueba.&lt;/p&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;
+</code></pre>
+                    <p class="explanation-text">La minificación elimina espacios en blanco, saltos de línea y comentarios, reduciendo el tamaño del archivo para una descarga más rápida. Aunque el ejemplo elimina espacios entre etiquetas, una minificación real podría ser más sutil para mantener la legibilidad para depuración si es necesario.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="quiz-section">
+            <h3>Quiz de la Clase 34: Optimización del Rendimiento HTML</h3>
+            <p>¡Pon a prueba tus conocimientos con este quiz de 10 preguntas!</p>
+            <form id="quizForm">
+                <div class="quiz-question">
+                    <h4>1. ¿Cuál es el propósito principal del atributo <code>loading="lazy"</code> en las imágenes?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="a"> Forzar la carga de la imagen lo más rápido posible.</label>
+                        <label><input type="radio" name="q1" value="b"> Retrasar la carga de la imagen hasta que esté cerca del viewport.</label>
+                        <label><input type="radio" name="q1" value="c"> Aplicar un efecto de desenfoque a la imagen.</label>
+                        <label><input type="radio" name="q1" value="d"> Cambiar el formato de la imagen a un formato más eficiente.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>2. ¿Dónde se recomienda colocar las etiquetas <code>&lt;link rel="stylesheet"&gt;</code> para optimizar la carga del CSS?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="a"> Justo antes del cierre de la etiqueta <code>&lt;/body&gt;</code>.</label>
+                        <label><input type="radio" name="q2" value="b"> En cualquier lugar del documento, no importa.</label>
+                        <label><input type="radio" name="q2" value="c"> En la sección <code>&lt;head&gt;</code> del HTML.</label>
+                        <label><input type="radio" name="q2" value="d"> Dentro de la etiqueta <code>&lt;div&gt;</code> principal.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>3. ¿Qué atributo JavaScript se usa para descargar un script de forma asíncrona y ejecutarlo tan pronto como esté disponible, sin garantizar el orden de ejecución?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="a"> <code>defer</code></label>
+                        <label><input type="radio" name="q3" value="b"> <code>async</code></label>
+                        <label><input type="radio" name="q3" value="c"> <code>lazy</code></label>
+                        <label><input type="radio" name="q3" value="d"> <code>sync</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>4. ¿Qué atributo JavaScript se usa para descargar un script de forma asíncrona pero retrasar su ejecución hasta que el HTML haya terminado de parsearse?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="a"> <code>defer</code></label>
+                        <label><input type="radio" name="q4" value="b"> <code>async</code></label>
+                        <label><input type="radio" name="q4" value="c"> <code>lazy</code></label>
+                        <label><input type="radio" name="q4" value="d"> <code>blocking</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>5. ¿Qué es la "minificación" de HTML?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="a"> Convertir HTML a un formato binario.</label>
+                        <label><input type="radio" name="q5" value="b"> Eliminar caracteres innecesarios (espacios, saltos de línea, comentarios) del código fuente HTML.</label>
+                        <label><input type="radio" name="q5" value="c"> Comprimir el archivo HTML con un algoritmo de compresión.</label>
+                        <label><input type="radio" name="q5" value="d"> Convertir el HTML a un lenguaje de programación diferente.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>6. ¿Por qué es importante especificar los atributos <code>width</code> y <code>height</code> para las imágenes, incluso si se usa <code>loading="lazy"</code>?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q6" value="a"> Para mejorar la resolución de la imagen.</label>
+                        <label><input type="radio" name="q6" value="b"> Para evitar cambios inesperados en el diseño (Layout Shifts) al cargar la imagen.</label>
+                        <label><input type="radio" name="q6" value="c"> Para que la imagen sea compatible con todos los navegadores.</label>
+                        <label><input type="radio" name="q6" value="d"> Es solo una buena práctica, no afecta al rendimiento.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>7. ¿Qué herramienta de Google es útil para auditar el rendimiento, la accesibilidad y otras mejores prácticas de una página web?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q7" value="a"> Google Analytics</label>
+                        <label><input type="radio" name="q7" value="b"> Google Search Console</label>
+                        <label><input type="radio" name="q7" value="c"> Google Lighthouse</label>
+                        <label><input type="radio" name="q7" value="d"> Google Ads</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>8. ¿Cuál de las siguientes métricas de rendimiento NO se mide comúnmente con Lighthouse?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q8" value="a"> First Contentful Paint (FCP)</label>
+                        <label><input type="radio" name="q8" value="b"> Largest Contentful Paint (LCP)</label>
+                        <label><input type="radio" name="q8" value="c"> Cumulative Layout Shift (CLS)</label>
+                        <label><input type="radio" name="q8" value="d"> Velocidad de conexión a Internet del usuario (MBps)</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>9. Si un script JavaScript es esencial para el renderizado inicial y la interactividad de la parte superior de la página, ¿dónde debería colocarse para evitar bloquear el renderizado?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q9" value="a"> En el <code>&lt;head&gt;</code> sin atributos <code>async</code> o <code>defer</code>.</label>
+                        <label><input type="radio" name="q9" value="b"> Justo antes del cierre de <code>&lt;/body&gt;</code> o con <code>defer</code> en el <code>&lt;head&gt;</code>.</label>
+                        <label><input type="radio" name="q9" value="c"> Después de todas las imágenes.</label>
+                        <label><input type="radio" name="q9" value="d"> En un archivo externo cargado con AJAX.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>10. El "FOUC" (Flash of Unstyled Content) ocurre cuando:</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q10" value="a"> El JavaScript de la página se carga antes que el HTML.</label>
+                        <label><input type="radio" name="q10" value="b"> El CSS se carga demasiado tarde, y el contenido se muestra sin estilo por un momento.</label>
+                        <label><input type="radio" name="q10" value="c"> Las imágenes se cargan de forma diferida.</label>
+                        <label><input type="radio" name="q10" value="d"> La página tiene demasiados comentarios HTML.</label>
+                    </div>
+                </div>
+
+                <button type="button" class="submit-quiz-button" id="checkAnswersBtn">Ver Resultados</button>
+            </form>
+
+            <div id="quizResults" class="quiz-results">
+                <p>Resultados del Test:</p>
+                <ol id="resultsList"></ol>
+                <p id="scoreSummary"></p>
+                <button type="button" class="reveal-button" id="resetQuizBtn" style="display: none;">Volver a Intentar</button>
+            </div>
+        </div>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="34OptimizacionRendimientoHTML.html">Volver a la Clase 34: Optimización del Rendimiento HTML.</a></li>
+                <li><a href="35IntroduccionAGitYControlDeVersiones.html">Clase 35: Introducción a Git y Control de Versiones (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script>
+        // Función para mostrar/ocultar soluciones de ejercicios
+        function toggleSolution(button, solutionId) {
+            const solution = document.getElementById(solutionId);
+            if (solution.style.display === 'block') {
+                solution.style.display = 'none';
+                button.textContent = 'Mostrar Solución';
+            } else {
+                solution.style.display = 'block';
+                button.textContent = 'Ocultar Solución';
+            }
+        }
+
+        // Datos del quiz
+        const quizAnswers = {
+            q1: 'b', // Retrasar la carga de la imagen hasta que esté cerca del viewport.
+            q2: 'c', // En la sección <head> del HTML.
+            q3: 'b', // async
+            q4: 'a', // defer
+            q5: 'b', // Eliminar caracteres innecesarios (espacios, saltos de línea, comentarios) del código fuente HTML.
+            q6: 'b', // Para evitar cambios inesperados en el diseño (Layout Shifts) al cargar la imagen.
+            q7: 'c', // Google Lighthouse
+            q8: 'd', // Velocidad de conexión a Internet del usuario (MBps)
+            q9: 'b', // Justo antes del cierre de </body> o con defer en el <head>.
+            q10: 'b' // El CSS se carga demasiado tarde, y el contenido se muestra sin estilo por un momento.
+        };
+
+        // Asignar eventos a los botones una vez que el DOM esté completamente cargado
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            if (checkAnswersBtn) {
+                checkAnswersBtn.addEventListener('click', checkQuiz);
+            }
+            if (resetQuizBtn) {
+                resetQuizBtn.addEventListener('click', resetQuiz);
+            }
+        });
+
+        function checkQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const resultsList = document.getElementById('resultsList');
+            const scoreSummary = document.getElementById('scoreSummary');
+            const quizResultsDiv = document.getElementById('quizResults');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            resultsList.innerHTML = ''; // Limpiar resultados anteriores
+            let score = 0;
+
+            for (let i = 1; i <= 10; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = quizForm.elements[questionName] ? quizForm.elements[questionName].value : '';
+                const correctAnswer = quizAnswers[questionName];
+
+                const listItem = document.createElement('li');
+                listItem.classList.add(selectedOption === correctAnswer ? 'correct' : 'incorrect');
+
+                // Obtener el texto de la opción seleccionada (preservando <code>)
+                let selectedAnswerText = 'No respondida';
+                if (selectedOption) {
+                    const selectedLabel = quizForm.querySelector(`input[name="${questionName}"][value="${selectedOption}"]`);
+                    if (selectedLabel) {
+                        const labelClone = selectedLabel.closest('label').cloneNode(true);
+                        labelClone.querySelector('input').remove();
+                        selectedAnswerText = labelClone.innerHTML.trim();
+                    }
+                }
+
+                // Obtener el texto de la opción correcta (preservando <code>)
+                const correctLabel = quizForm.querySelector(`input[name="${questionName}"][value="${correctAnswer}"]`);
+                let correctAnswerText = 'N/A';
+                if (correctLabel) {
+                    const correctLabelClone = correctLabel.closest('label').cloneNode(true);
+                    correctLabelClone.querySelector('input').remove();
+                    correctAnswerText = correctLabelClone.innerHTML.trim();
+                }
+
+                const questionText = document.createTextNode(`Pregunta ${i}: `);
+                listItem.appendChild(questionText);
+
+                if (selectedOption !== correctAnswer) {
+                    listItem.innerHTML += ` Tu respuesta: "${selectedAnswerText}".<br>`;
+                    const correctInfoSpan = document.createElement('span');
+                    correctInfoSpan.classList.add('correct-answer-info');
+                    correctInfoSpan.innerHTML = `Respuesta correcta: "${correctAnswerText}".`;
+                    listItem.appendChild(correctInfoSpan);
+                } else {
+                    listItem.innerHTML += ` Correcta.`;
+                    score++;
+                }
+
+                resultsList.appendChild(listItem);
+            }
+
+            scoreSummary.textContent = `Tu puntuación es: ${score} de 10 preguntas correctas.`;
+            quizResultsDiv.style.display = 'block'; // Mostrar la sección de resultados
+            quizResultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Desplazarse a los resultados
+
+            // Ocultar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'none';
+            // Mostrar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'inline-block';
+        }
+
+        function resetQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            quizForm.reset(); // Reinicia todos los radio buttons
+            document.getElementById('quizResults').style.display = 'none'; // Oculta los resultados
+            document.getElementById('resultsList').innerHTML = ''; // Limpia la lista de resultados
+            document.getElementById('scoreSummary').textContent = ''; // Limpia el resumen de puntuación
+
+            // Mostrar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'inline-block';
+            // Ocultar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

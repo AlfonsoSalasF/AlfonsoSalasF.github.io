@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 36: Ejercicios de HTML para E-mail Marketing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/ejercicios_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
+    <style>
+        .code-example-inline {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .interactive-section {
+            background-color: #ffe0e0; /* Un color que sugiera "email" */
+            border: 1px solid #ffb3b3;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .email-preview {
+            background-color: #ffffff;
+            border: 1px dashed #ccc;
+            padding: 15px;
+            text-align: left;
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .email-preview h1 {
+            font-size: 24px;
+            color: #1a1a1a;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .email-preview p {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #333333;
+            margin-bottom: 15px;
+        }
+        .email-preview a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Clase 36: Ejercicios de HTML para E-mail Marketing</h1>
+
+        <div class="exercise-section">
+            <h3>Ejercicios Prácticos de la Clase 36</h3>
+            <p>Estos ejercicios se centran en las consideraciones especiales del HTML para email marketing. Recuerda que, para una implementación real, las pruebas en múltiples clientes de correo son esenciales.</p>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 1: Crear una estructura básica de email con tablas y CSS inline.</h4>
+                <p>Diseña un fragmento de HTML para un email que contenga un encabezado, un párrafo de texto y un enlace. Asegúrate de usar tablas para la maquetación y CSS inline para todos los estilos.</p>
+                <div class="interactive-section">
+                    <p><strong>Vista previa simulada del email:</strong></p>
+                    <div class="email-preview">
+                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                            <tr>
+                                <td align="center" style="padding: 20px;">
+                                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width:600px;">
+                                        <tr>
+                                            <td style="background-color: #f8f8f8; padding: 20px; text-align: left;">
+                                                <h1 style="font-family: Arial, sans-serif; font-size: 24px; color: #1a1a1a; margin: 0 0 10px 0;">¡Nuestro Nuevo Producto!</h1>
+                                                <p style="font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; color: #333333; margin: 0 0 15px 0;">Descubre nuestra última innovación y cómo puede transformar tu experiencia. ¡No te lo pierdas!</p>
+                                                <p style="margin: 0;"><a href="https://ejemplo.com/producto" style="color: #007bff; text-decoration: none; font-weight: bold; font-family: Arial, sans-serif;">Ver Producto Ahora</a></p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution1')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution1">
+                    <p><strong>HTML para email (fragmento):</strong></p>
+                    <pre><code class="language-html">&lt;table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0"&gt;
+    &lt;tr&gt;
+        &lt;td align="center" style="padding: 20px;"&gt; &lt;!-- Padding exterior para centrar el contenido --&gt;
+            &lt;!-- Tabla interior para el contenido, con ancho fijo/máximo --&gt;
+            &lt;table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width:600px;"&gt;
+                &lt;tr&gt;
+                    &lt;td style="background-color: #f8f8f8; padding: 20px; text-align: left;"&gt;
+                        &lt;h1 style="font-family: Arial, sans-serif; font-size: 24px; color: #1a1a1a; margin: 0 0 10px 0;"&gt;¡Nuestro Nuevo Producto!&lt;/h1&gt;
+                        &lt;p style="font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; color: #333333; margin: 0 0 15px 0;"&gt;Descubre nuestra última innovación y cómo puede transformar tu experiencia. ¡No te lo pierdas!&lt;/p&gt;
+                        &lt;p style="margin: 0;"&gt;&lt;a href="https://ejemplo.com/producto" style="color: #007bff; text-decoration: none; font-weight: bold; font-family: Arial, sans-serif;"&gt;Ver Producto Ahora&lt;/a&gt;&lt;/p&gt;
+                    &lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/table&gt;
+        &lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+                    <p class="explanation-text">Este ejercicio demuestra el uso intensivo de tablas para la maquetación (<code>&lt;table&gt;</code> anidada para el ancho del contenido y el centrado), y CSS inline en cada elemento (<code>h1</code>, <code>p</code>, <code>a</code>) para asegurar la compatibilidad con la mayoría de los clientes de correo. Se usan atributos como <code>align</code>, <code>width</code>, <code>cellspacing</code>, <code>cellpadding</code> y <code>border="0"</code>.</p>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 2: Añadir una imagen responsiva básica en email HTML.</h4>
+                <p>Modifica el código del Ejercicio 1 para incluir una imagen debajo del título. Asegúrate de que la imagen sea "responsiva" para email (usando <code>width="100%"</code> y <code>max-width</code> en CSS inline) y tenga un atributo <code>alt</code>.</p>
+                <div class="interactive-section">
+                    <p><strong>Vista previa simulada del email con imagen:</strong></p>
+                    <div class="email-preview">
+                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                            <tr>
+                                <td align="center" style="padding: 20px;">
+                                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width:600px;">
+                                        <tr>
+                                            <td style="background-color: #f8f8f8; padding: 20px; text-align: left;">
+                                                <h1 style="font-family: Arial, sans-serif; font-size: 24px; color: #1a1a1a; margin: 0 0 10px 0;">¡Nuestro Nuevo Producto!</h1>
+                                                <img src="https://via.placeholder.com/600x300?text=Imagen+Email" alt="Imagen destacada del nuevo producto" width="600" style="width: 100%; max-width: 600px; height: auto; display: block; margin-bottom: 15px;">
+                                                <p style="font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; color: #333333; margin: 0 0 15px 0;">Descubre nuestra última innovación y cómo puede transformar tu experiencia. ¡No te lo pierdas!</p>
+                                                <p style="margin: 0;"><a href="https://ejemplo.com/producto" style="color: #007bff; text-decoration: none; font-weight: bold; font-family: Arial, sans-serif;">Ver Producto Ahora</a></p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution2')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution2">
+                    <p><strong>HTML para email con imagen:</strong></p>
+                    <pre><code class="language-html">&lt;table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0"&gt;
+    &lt;tr&gt;
+        &lt;td align="center" style="padding: 20px;"&gt;
+            &lt;table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width:600px;"&gt;
+                &lt;tr&gt;
+                    &lt;td style="background-color: #f8f8f8; padding: 20px; text-align: left;"&gt;
+                        &lt;h1 style="font-family: Arial, sans-serif; font-size: 24px; color: #1a1a1a; margin: 0 0 10px 0;"&gt;¡Nuestro Nuevo Producto!&lt;/h1&gt;
+                        &lt;!-- Imagen con atributos width y estilos inline para responsividad --&gt;
+                        &lt;img src="https://via.placeholder.com/600x300?text=Imagen+Email" alt="Imagen destacada del nuevo producto" width="600" style="width: 100%; max-width: 600px; height: auto; display: block; margin-bottom: 15px;"&gt;
+                        &lt;p style="font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; color: #333333; margin: 0 0 15px 0;"&gt;Descubre nuestra última innovación y cómo puede transformar tu experiencia. ¡No te lo pierdas!&lt;/p&gt;
+                        &lt;p style="margin: 0;"&gt;&lt;a href="https://ejemplo.com/producto" style="color: #007bff; text-decoration: none; font-weight: bold; font-family: Arial, sans-serif;"&gt;Ver Producto Ahora&lt;/a&gt;&lt;/p&gt;
+                    &lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/table&gt;
+        &lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+                    <p class="explanation-text">Para las imágenes en email, es crucial usar el atributo <code>width</code> directamente en la etiqueta <code>&lt;img&gt;</code> y complementarlo con <code>style="width: 100%; max-width: [ancho original]px; height: auto; display: block;"</code>. El <code>display: block;</code> ayuda a evitar espacios inesperados debajo de la imagen.</p>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 3: Enumera 3 razones por las que el HTML para emails es diferente al HTML web estándar.</h4>
+                <div class="interactive-section">
+                    <p>Piensa en lo que hace que los clientes de correo electrónico sean un entorno de renderizado tan peculiar.</p>
+                </div>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution3')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution3">
+                    <p><strong>Razones por las que el HTML para emails es diferente:</strong></p>
+                    <ol>
+                        <li><strong>Motores de renderizado variados y obsoletos:</strong> A diferencia de los navegadores web modernos que se actualizan constantemente y siguen estándares, muchos clientes de correo (especialmente Outlook de escritorio) usan motores de renderizado antiguos o propietarios que no soportan CSS moderno o funcionalidades HTML5.</li>
+                        <li><strong>Soporte CSS limitado y comportamiento inconsistente:</strong> Numerosas propiedades CSS (Flexbox, Grid, animaciones, fuentes web, etc.) no funcionan en clientes de correo. Además, el mismo CSS puede comportarse de manera diferente en distintos clientes, o incluso ser inyectado/reescrito por ellos.</li>
+                        <li><strong>Restricciones de seguridad y funcionalidad:</strong> Los clientes de correo bloquean casi universalmente JavaScript y otras funcionalidades dinámicas por razones de seguridad, lo que elimina muchas de las herramientas interactivas del desarrollo web.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="quiz-section">
+            <h3>Quiz de la Clase 36: HTML para E-mail Marketing</h3>
+            <p>¡Pon a prueba tus conocimientos con este quiz de 10 preguntas!</p>
+            <form id="quizForm">
+                <div class="quiz-question">
+                    <h4>1. ¿Cuál es la principal razón por la que el HTML para emails es diferente al HTML para páginas web?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="a"> Los emails son más cortos que las páginas web.</label>
+                        <label><input type="radio" name="q1" value="b"> Los clientes de correo usan motores de renderizado inconsistentes y a menudo obsoletos.</label>
+                        <label><input type="radio" name="q1" value="c"> Los emails no pueden contener imágenes.</label>
+                        <label><input type="radio" name="q1" value="d"> El HTML de email se escribe en un idioma de programación diferente.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>2. ¿Qué elemento HTML se utiliza comúnmente para la maquetación (layout) en el HTML de emails?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="a"> <code>&lt;div&gt;</code> con Flexbox</label>
+                        <label><input type="radio" name="q2" value="b"> <code>&lt;section&gt;</code> con CSS Grid</label>
+                        <label><input type="radio" name="q2" value="c"> <code>&lt;table&gt;</code></label>
+                        <label><input type="radio" name="q2" value="d"> <code>&lt;ul&gt;</code> y <code>&lt;li&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>3. ¿Cómo se recomienda aplicar la mayoría de los estilos CSS en un email HTML?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="a"> Usando hojas de estilo externas (<code>.css</code>).</label>
+                        <label><input type="radio" name="q3" value="b"> Dentro de la etiqueta <code>&lt;style&gt;</code> en el <code>&lt;head&gt;</code>.</label>
+                        <label><input type="radio" name="q3" value="c"> Directamente en el atributo <code>style</code> de cada elemento HTML (inline).</label>
+                        <label><input type="radio" name="q3" value="d"> Con JavaScript dinámico.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>4. ¿Qué atributo es importante incluir en las imágenes (<code>&lt;img&gt;</code>) dentro de un email HTML para accesibilidad?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="a"> <code>src</code></label>
+                        <label><input type="radio" name="q4" value="b"> <code>alt</code></label>
+                        <label><input type="radio" name="q4" value="c"> <code>title</code></label>
+                        <label><input type="radio" name="q4" value="d"> <code>responsive</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>5. ¿Qué atributo se añade a las tablas de maquetación (no de datos) para mejorar la accesibilidad con lectores de pantalla?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="a"> <code>role="layout"</code></label>
+                        <label><input type="radio" name="q5" value="b"> <code>role="none"</code></label>
+                        <label><input type="radio" name="q5" value="c"> <code>role="presentation"</code></label>
+                        <label><input type="radio" name="q5" value="d"> <code>role="grid"</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>6. ¿Es seguro usar JavaScript en emails HTML para añadir interactividad?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q6" value="a"> Sí, es totalmente compatible con todos los clientes de correo.</label>
+                        <label><input type="radio" name="q6" value="b"> No, está casi universalmente bloqueado por razones de seguridad.</label>
+                        <label><input type="radio" name="q6" value="c"> Solo si se utiliza para animaciones CSS simples.</label>
+                        <label><input type="radio" name="q6" value="d"> Solo si se aloja en un servidor externo.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>7. ¿Qué tipo de URLs deben usarse siempre para enlaces e imágenes en un email HTML?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q7" value="a"> URLs relativas (ej., <code>/imagen.jpg</code>).</label>
+                        <label><input type="radio" name="q7" value="b"> URLs absolutas (ej., <code>https://ejemplo.com/imagen.jpg</code>).</label>
+                        <label><input type="radio" name="q7" value="c"> URLs de servidor local.</label>
+                        <label><input type="radio" name="q7" value="d"> Base64 encoded URLs.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>8. ¿Cuál de las siguientes es una herramienta de prueba de email estándar en la industria?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q8" value="a"> Google Chrome Developer Tools</label>
+                        <label><input type="radio" name="q8" value="b"> Visual Studio Code</label>
+                        <label><input type="radio" name="q8" value="c"> Litmus o Email on Acid</label>
+                        <label><input type="radio" name="q8" value="d"> Photoshop</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>9. Para asegurar que las imágenes sean responsivas en email, además de <code>width="100%"</code> en el estilo inline, ¿qué otra propiedad CSS es crucial?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q9" value="a"> <code>height: 100vh;</code></label>
+                        <label><input type="radio" name="q9" value="b"> <code>margin: auto;</code></label>
+                        <label><input type="radio" name="q9" value="c"> <code>max-width: [ancho original]px;</code></label>
+                        <label><input type="radio" name="q9" value="d"> <code>display: inline-block;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>10. ¿Cuál de los siguientes NO es una limitación común al diseñar HTML para email?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q10" value="a"> Soporte limitado para fuentes web personalizadas.</label>
+                        <label><input type="radio" name="q10" value="b"> Inconsistencia en el renderizado entre diferentes clientes de correo.</label>
+                        <label><input type="radio" name="q10" value="c"> La necesidad de usar JavaScript para la maquetación.</label>
+                        <label><input type="radio" name="q10" value="d"> El uso frecuente de tablas anidadas.</label>
+                    </div>
+                </div>
+
+                <button type="button" class="submit-quiz-button" id="checkAnswersBtn">Ver Resultados</button>
+            </form>
+
+            <div id="quizResults" class="quiz-results">
+                <p>Resultados del Test:</p>
+                <ol id="resultsList"></ol>
+                <p id="scoreSummary"></p>
+                <button type="button" class="reveal-button" id="resetQuizBtn" style="display: none;">Volver a Intentar</button>
+            </div>
+        </div>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="36HTMLParaEmailMarketing.html">Volver a la Clase 36: HTML para E-mail Marketing (Consideraciones Especiales).</a></li>
+                <li><a href="37AccesibilidadWebIntroduccion.html">Clase 37: Accesibilidad Web (Introducción) (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script>
+        // Función para mostrar/ocultar soluciones de ejercicios
+        function toggleSolution(button, solutionId) {
+            const solution = document.getElementById(solutionId);
+            if (solution.style.display === 'block') {
+                solution.style.display = 'none';
+                button.textContent = 'Mostrar Solución';
+            } else {
+                solution.style.display = 'block';
+                button.textContent = 'Ocultar Solución';
+            }
+        }
+
+        // Datos del quiz
+        const quizAnswers = {
+            q1: 'b', // Los clientes de correo usan motores de renderizado inconsistentes y a menudo obsoletos.
+            q2: 'c', // <table>
+            q3: 'c', // Directamente en el atributo style de cada elemento HTML (inline).
+            q4: 'b', // alt
+            q5: 'c', // role="presentation"
+            q6: 'b', // No, está casi universalmente bloqueado por razones de seguridad.
+            q7: 'b', // URLs absolutas (ej., https://ejemplo.com/imagen.jpg).
+            q8: 'c', // Litmus o Email on Acid
+            q9: 'c', // max-width: [ancho original]px;
+            q10: 'c' // La necesidad de usar JavaScript para la maquetación.
+        };
+
+        // Asignar eventos a los botones una vez que el DOM esté completamente cargado
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            if (checkAnswersBtn) {
+                checkAnswersBtn.addEventListener('click', checkQuiz);
+            }
+            if (resetQuizBtn) {
+                resetQuizBtn.addEventListener('click', resetQuiz);
+            }
+        });
+
+        function checkQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const resultsList = document.getElementById('resultsList');
+            const scoreSummary = document.getElementById('scoreSummary');
+            const quizResultsDiv = document.getElementById('quizResults');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            resultsList.innerHTML = ''; // Limpiar resultados anteriores
+            let score = 0;
+
+            for (let i = 1; i <= 10; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = quizForm.elements[questionName] ? quizForm.elements[questionName].value : '';
+                const correctAnswer = quizAnswers[questionName];
+
+                const listItem = document.createElement('li');
+                listItem.classList.add(selectedOption === correctAnswer ? 'correct' : 'incorrect');
+
+                // Obtener el texto de la opción seleccionada (preservando <code>)
+                let selectedAnswerText = 'No respondida';
+                if (selectedOption) {
+                    const selectedLabel = quizForm.querySelector(`input[name="${questionName}"][value="${selectedOption}"]`);
+                    if (selectedLabel) {
+                        const labelClone = selectedLabel.closest('label').cloneNode(true);
+                        labelClone.querySelector('input').remove();
+                        selectedAnswerText = labelClone.innerHTML.trim();
+                    }
+                }
+
+                // Obtener el texto de la opción correcta (preservando <code>)
+                const correctLabel = quizForm.querySelector(`input[name="${questionName}"][value="${correctAnswer}"]`);
+                let correctAnswerText = 'N/A';
+                if (correctLabel) {
+                    const correctLabelClone = correctLabel.closest('label').cloneNode(true);
+                    correctLabelClone.querySelector('input').remove();
+                    correctAnswerText = correctLabelClone.innerHTML.trim();
+                }
+
+                const questionText = document.createTextNode(`Pregunta ${i}: `);
+                listItem.appendChild(questionText);
+
+                if (selectedOption !== correctAnswer) {
+                    listItem.innerHTML += ` Tu respuesta: "${selectedAnswerText}".<br>`;
+                    const correctInfoSpan = document.createElement('span');
+                    correctInfoSpan.classList.add('correct-answer-info');
+                    correctInfoSpan.innerHTML = `Respuesta correcta: "${correctAnswerText}".`;
+                    listItem.appendChild(correctInfoSpan);
+                } else {
+                    listItem.innerHTML += ` Correcta.`;
+                    score++;
+                }
+
+                resultsList.appendChild(listItem);
+            }
+
+            scoreSummary.textContent = `Tu puntuación es: ${score} de 10 preguntas correctas.`;
+            quizResultsDiv.style.display = 'block'; // Mostrar la sección de resultados
+            quizResultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Desplazarse a los resultados
+
+            // Ocultar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'none';
+            // Mostrar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'inline-block';
+        }
+
+        function resetQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            quizForm.reset(); // Reinicia todos los radio buttons
+            document.getElementById('quizResults').style.display = 'none'; // Oculta los resultados
+            document.getElementById('resultsList').innerHTML = ''; // Limpia la lista de resultados
+            document.getElementById('scoreSummary').textContent = ''; // Limpia el resumen de puntuación
+
+            // Mostrar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'inline-block';
+            // Ocultar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

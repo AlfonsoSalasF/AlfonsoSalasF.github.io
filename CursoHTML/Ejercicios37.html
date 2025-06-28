@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 37: Ejercicios de Web Storage (Concepto)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/ejercicios_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
+    <style>
+        .concept-question {
+            background-color: #f0f8ff; /* Light blue background */
+            border-left: 5px solid #007bff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .concept-question p {
+            margin-bottom: 10px;
+        }
+        .interactive-section {
+            background-color: #e0f7fa;
+            border: 1px solid #b2ebf2;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Clase 37: Ejercicios de Web Storage (Concepto)</h1>
+
+        <div class="exercise-section">
+            <h3>Ejercicios Conceptuales de la Clase 37</h3>
+            <p>Estos ejercicios están diseñados para consolidar tu comprensión de los conceptos de <code>localStorage</code> y <code>sessionStorage</code>. No requieren escribir código JavaScript, sino entender sus diferencias y casos de uso.</p>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 1: Identificar el tipo de almacenamiento.</h4>
+                <p>Para cada escenario, indica si <code>localStorage</code> o <code>sessionStorage</code> sería la opción más adecuada y explica brevemente por qué.</p>
+                <ol>
+                    <li>El usuario selecciona un tema (claro/oscuro) para el sitio web y quieres que esta preferencia se mantenga cada vez que visite la página, incluso si cierra el navegador.</li>
+                    <li>Un usuario está completando un formulario de varias páginas. Si cierra accidentalmente la pestaña del navegador, no te importa que pierda el progreso, pero sí quieres que pueda volver a una página anterior del formulario sin perder los datos ya introducidos en la misma sesión.</li>
+                    <li>Quieres almacenar el token de autenticación de un usuario para que no tenga que iniciar sesión cada vez que abre el sitio, a menos que el token expire o el usuario cierre sesión explícitamente.</li>
+                    <li>Estás desarrollando una aplicación de compra donde el carrito de un usuario debe mantenerse solo mientras el usuario está activamente en la sesión de esa pestaña específica del navegador.</li>
+                </ol>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution1')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution1">
+                    <ol>
+                        <li><strong>Escenario 1: Preferencia de tema.</strong>
+                            <p><strong>Opción:</strong> <code>localStorage</code></p>
+                            <p><strong>Por qué:</strong> La preferencia del tema es algo que el usuario esperaría que persistiera entre visitas, incluso después de cerrar el navegador. <code>localStorage</code> es ideal para datos que no tienen fecha de caducidad y deben estar disponibles de forma permanente hasta que se eliminen manualmente o por código.</p>
+                        </li>
+                        <li><strong>Escenario 2: Formulario de varias páginas (progreso temporal).</strong>
+                            <p><strong>Opción:</strong> <code>sessionStorage</code></p>
+                            <p><strong>Por qué:</strong> El progreso del formulario solo es relevante para la sesión actual del usuario en esa pestaña. Si el usuario cierra la pestaña, el progreso no es necesario. <code>sessionStorage</code> asegura que los datos se mantengan mientras la pestaña esté abierta y se borren al cerrarse.</p>
+                        </li>
+                        <li><strong>Escenario 3: Token de autenticación persistente.</strong>
+                            <p><strong>Opción:</strong> <code>localStorage</code></p>
+                            <p><strong>Por qué:</strong> Un token de autenticación que permite al usuario permanecer logueado entre sesiones requiere persistencia. <code>localStorage</code> puede almacenar este token para que el usuario no tenga que volver a iniciar sesión cada vez que abre el sitio, siempre y cuando el token sea válido.</p>
+                        </li>
+                        <li><strong>Escenario 4: Carrito de compra temporal en una pestaña.</strong>
+                            <p><strong>Opción:</strong> <code>sessionStorage</code></p>
+                            <p><strong>Por qué:</strong> La información del carrito es específica de la sesión de compra actual en esa pestaña. Si el usuario cierra la pestaña, se asume que la compra ha sido abandonada o completada, y los datos del carrito ya no son relevantes para esa sesión específica. <code>sessionStorage</code> garantiza que se borre al cerrar la pestaña.</p>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 2: Ventajas de Web Storage sobre las Cookies (conceptos).</h4>
+                <p>Enumera al menos dos ventajas conceptuales que <code>localStorage</code> y <code>sessionStorage</code> ofrecen en comparación con las cookies tradicionales para el almacenamiento de datos en el cliente.</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution2')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution2">
+                    <p><strong>Ventajas de Web Storage sobre las Cookies:</strong></p>
+                    <ol>
+                        <li><strong>Mayor capacidad de almacenamiento:</strong> Web Storage (tanto <code>localStorage</code> como <code>sessionStorage</code>) permite almacenar una cantidad de datos significativamente mayor (típicamente 5MB por origen) en comparación con los ~4KB de las cookies. Esto es útil para almacenar más información en el cliente.</li>
+                        <li><strong>No se envían automáticamente al servidor:</strong> Los datos de Web Storage NO se adjuntan automáticamente a cada solicitud HTTP enviada al servidor. Esto reduce el tráfico de red innecesario, mejora el rendimiento y ofrece ventajas de seguridad (al no ser vulnerables a ataques como CSRF si se usan correctamente, ya que no son enviados por el navegador al servidor por defecto).</li>
+                        <li><strong>API más simple y orientada a objetos:</strong> La API de JavaScript para Web Storage es más sencilla y directa de usar para almacenar y recuperar datos de tipo clave-valor, en comparación con la manipulación de cadenas de texto de las cookies.</li>
+                        <li><strong>Mejor control sobre la duración:</strong> <code>localStorage</code> ofrece un almacenamiento persistente que no caduca (a menos que se borre programáticamente o por el usuario), lo que es más fácil de gestionar para ciertos casos de uso que las cookies, que siempre tienen una fecha de caducidad.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 3: ¿Qué pasa si duplico una pestaña del navegador con <code>sessionStorage</code>?</h4>
+                <p>Imagina que tienes una pestaña de navegador abierta con datos almacenados en <code>sessionStorage</code>. ¿Qué sucede con esos datos si duplicas la pestaña (por ejemplo, haciendo clic derecho en la pestaña y seleccionando "Duplicar")?</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution3')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution3">
+                    <p>Si duplicas una pestaña del navegador que contiene datos en <code>sessionStorage</code>, los datos de <code>sessionStorage</code> <strong>se copiarán a la nueva pestaña duplicada</strong>. Esto significa que la nueva pestaña tendrá su propia copia de los datos de la sesión de la pestaña original. Cada una de estas pestañas actuará como una sesión independiente a partir de ese momento; los cambios realizados en <code>sessionStorage</code> de una no afectarán a la otra.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="quiz-section">
+            <h3>Quiz de la Clase 37: Web Storage (Concepto)</h3>
+            <p>¡Pon a prueba tus conocimientos sobre los conceptos de Web Storage!</p>
+            <form id="quizForm">
+                <div class="quiz-question">
+                    <h4>1. ¿Cuál es el propósito principal del almacenamiento de datos en el lado del cliente (client-side storage)?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="a"> Almacenar permanentemente toda la base de datos de una aplicación.</label>
+                        <label><input type="radio" name="q1" value="b"> Guardar información directamente en el dispositivo del usuario para uso posterior por la aplicación web.</label>
+                        <label><input type="radio" name="q1" value="c"> Enviar datos sensibles al servidor de forma más segura.</label>
+                        <label><input type="radio" name="q1" value="d"> Sincronizar datos automáticamente con la nube.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>2. ¿Qué objeto de Web Storage permite almacenar datos que persisten incluso después de cerrar el navegador?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="a"> <code>sessionStorage</code></label>
+                        <label><input type="radio" name="q2" value="b"> <code>localStorage</code></label>
+                        <label><input type="radio" name="q2" value="c"> <code>cookieStorage</code></label>
+                        <label><input type="radio" name="q2" value="d"> <code>webStorage</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>3. Los datos almacenados en <code>sessionStorage</code> se eliminan cuando:</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="a"> El usuario cierra el navegador por completo.</label>
+                        <label><input type="radio" name="q3" value="b"> Se recarga la página.</label>
+                        <label><input type="radio" name="q3" value="c"> Se cierra la pestaña o ventana del navegador donde se creó la sesión.</label>
+                        <label><input type="radio" name="q3" value="d"> La conexión a Internet se pierde.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>4. ¿Cuál es la capacidad de almacenamiento típica de <code>localStorage</code> y <code>sessionStorage</code> por origen?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="a"> ~4 KB</label>
+                        <label><input type="radio" name="q4" value="b"> ~5 MB</label>
+                        <label><input type="radio" name="q4" value="c"> ~1 GB</label>
+                        <label><input type="radio" name="q4" value="d"> Ilimitada</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>5. ¿Los datos de Web Storage (<code>localStorage</code> y <code>sessionStorage</code>) se envían automáticamente al servidor con cada solicitud HTTP?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="a"> Sí, siempre.</label>
+                        <label><input type="radio" name="q5" value="b"> No, nunca.</label>
+                        <label><input type="radio" name="q5" value="c"> Solo los de <code>localStorage</code>.</label>
+                        <label><input type="radio" name="q5" value="d"> Solo los de <code>sessionStorage</code>.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>6. ¿Qué tipo de datos es más adecuado para almacenar las preferencias de idioma de un usuario que deben recordarse para futuras visitas?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q6" value="a"> Cookies con una fecha de caducidad corta.</label>
+                        <label><input type="radio" name="q6" value="b"> <code>sessionStorage</code>.</label>
+                        <label><input type="radio" name="q6" value="c"> <code>localStorage</code>.</label>
+                        <label><input type="radio" name="q6" value="d"> Datos en el servidor exclusivamente.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>7. ¿Para qué sería útil <code>sessionStorage</code> en un formulario multipaso donde el progreso no debe guardarse si el usuario cierra la pestaña?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q7" value="a"> Para guardar el progreso del formulario de forma permanente.</label>
+                        <label><input type="radio" name="q7" value="b"> Para recordar el progreso solo mientras la pestaña está abierta.</label>
+                        <label><input type="radio" name="q7" value="c"> Para sincronizar el progreso con la base de datos del servidor.</label>
+                        <label><input type="radio" name="q7" value="d"> Para almacenar archivos grandes temporalmente.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>8. ¿Cuál de las siguientes afirmaciones es VERDADERA sobre <code>localStorage</code> y <code>sessionStorage</code>?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q8" value="a"> Ambos tienen una API de JavaScript idéntica para guardar, recuperar y eliminar datos.</label>
+                        <label><input type="radio" name="q8" value="b"> Los datos de <code>sessionStorage</code> son accesibles desde cualquier pestaña del mismo origen.</label>
+                        <label><input type="radio" name="q8" value="c"> Los datos de <code>localStorage</code> se borran automáticamente después de 24 horas.</label>
+                        <label><input type="radio" name="q8" value="d"> Solo <code>localStorage</code> puede almacenar datos en el lado del cliente.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>9. Si el usuario cierra su navegador y luego lo vuelve a abrir, ¿qué sucede con los datos que se guardaron en <code>sessionStorage</code>?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q9" value="a"> Se mantienen, ya que <code>sessionStorage</code> es persistente.</label>
+                        <label><input type="radio" name="q9" value="b"> Se borran.</label>
+                        <label><input type="radio" name="q9" value="c"> Se copian automáticamente a <code>localStorage</code>.</label>
+                        <label><input type="radio" name="q9" value="d"> Se envían al servidor para ser guardados allí.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>10. ¿Cuál es una de las principales ventajas de Web Storage sobre las cookies en términos de rendimiento y tráfico de red?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q10" value="a"> Web Storage encripta los datos automáticamente.</label>
+                        <label><input type="radio" name="q10" value="b"> Los datos de Web Storage no se envían con cada solicitud HTTP al servidor.</label>
+                        <label><input type="radio" name="q10" value="c"> Web Storage permite almacenar imágenes directamente.</label>
+                        <label><input type="radio" name="q10" value="d"> Web Storage es más fácil de implementar sin JavaScript.</label>
+                    </div>
+                </div>
+
+                <button type="button" class="submit-quiz-button" id="checkAnswersBtn">Ver Resultados</button>
+            </form>
+
+            <div id="quizResults" class="quiz-results">
+                <p>Resultados del Test:</p>
+                <ol id="resultsList"></ol>
+                <p id="scoreSummary"></p>
+                <button type="button" class="reveal-button" id="resetQuizBtn" style="display: none;">Volver a Intentar</button>
+            </div>
+        </div>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="37WebStorageLocalAndSession.html">Volver a la Clase 37: Web Storage: localStorage y sessionStorage (Concepto).</a></li>
+                <li><a href="38IntroduccionAJavascript.html">Clase 38: Introducción a JavaScript (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script>
+        // Función para mostrar/ocultar soluciones de ejercicios
+        function toggleSolution(button, solutionId) {
+            const solution = document.getElementById(solutionId);
+            if (solution.style.display === 'block') {
+                solution.style.display = 'none';
+                button.textContent = 'Mostrar Solución';
+            } else {
+                solution.style.display = 'block';
+                button.textContent = 'Ocultar Solución';
+            }
+        }
+
+        // Datos del quiz
+        const quizAnswers = {
+            q1: 'b', // Guardar información directamente en el dispositivo del usuario para uso posterior por la aplicación web.
+            q2: 'b', // localStorage
+            q3: 'c', // Se cierra la pestaña o ventana del navegador donde se creó la sesión.
+            q4: 'b', // ~5 MB
+            q5: 'b', // No, nunca.
+            q6: 'c', // localStorage.
+            q7: 'b', // Para recordar el progreso solo mientras la pestaña está abierta.
+            q8: 'a', // Ambos tienen una API de JavaScript idéntica para guardar, recuperar y eliminar datos.
+            q9: 'b', // Se borran.
+            q10: 'b' // Los datos de Web Storage no se envían con cada solicitud HTTP al servidor.
+        };
+
+        // Asignar eventos a los botones una vez que el DOM esté completamente cargado
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            if (checkAnswersBtn) {
+                checkAnswersBtn.addEventListener('click', checkQuiz);
+            }
+            if (resetQuizBtn) {
+                resetQuizBtn.addEventListener('click', resetQuiz);
+            }
+        });
+
+        function checkQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const resultsList = document.getElementById('resultsList');
+            const scoreSummary = document.getElementById('scoreSummary');
+            const quizResultsDiv = document.getElementById('quizResults');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            resultsList.innerHTML = ''; // Limpiar resultados anteriores
+            let score = 0;
+
+            for (let i = 1; i <= 10; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = quizForm.elements[questionName] ? quizForm.elements[questionName].value : '';
+                const correctAnswer = quizAnswers[questionName];
+
+                const listItem = document.createElement('li');
+                listItem.classList.add(selectedOption === correctAnswer ? 'correct' : 'incorrect');
+
+                // Obtener el texto de la opción seleccionada (preservando <code>)
+                let selectedAnswerText = 'No respondida';
+                if (selectedOption) {
+                    const selectedLabel = quizForm.querySelector(`input[name="${questionName}"][value="${selectedOption}"]`);
+                    if (selectedLabel) {
+                        const labelClone = selectedLabel.closest('label').cloneNode(true);
+                        labelClone.querySelector('input').remove();
+                        selectedAnswerText = labelClone.innerHTML.trim();
+                    }
+                }
+
+                // Obtener el texto de la opción correcta (preservando <code>)
+                const correctLabel = quizForm.querySelector(`input[name="${questionName}"][value="${correctAnswer}"]`);
+                let correctAnswerText = 'N/A';
+                if (correctLabel) {
+                    const correctLabelClone = correctLabel.closest('label').cloneNode(true);
+                    correctLabelClone.querySelector('input').remove();
+                    correctAnswerText = correctLabelClone.innerHTML.trim();
+                }
+
+                const questionText = document.createTextNode(`Pregunta ${i}: `);
+                listItem.appendChild(questionText);
+
+                if (selectedOption !== correctAnswer) {
+                    listItem.innerHTML += ` Tu respuesta: "${selectedAnswerText}".<br>`;
+                    const correctInfoSpan = document.createElement('span');
+                    correctInfoSpan.classList.add('correct-answer-info');
+                    correctInfoSpan.innerHTML = `Respuesta correcta: "${correctAnswerText}".`;
+                    listItem.appendChild(correctInfoSpan);
+                } else {
+                    listItem.innerHTML += ` Correcta.`;
+                    score++;
+                }
+
+                resultsList.appendChild(listItem);
+            }
+
+            scoreSummary.textContent = `Tu puntuación es: ${score} de 10 preguntas correctas.`;
+            quizResultsDiv.style.display = 'block'; // Mostrar la sección de resultados
+            quizResultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Desplazarse a los resultados
+
+            // Ocultar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'none';
+            // Mostrar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'inline-block';
+        }
+
+        function resetQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            quizForm.reset(); // Reinicia todos los radio buttons
+            document.getElementById('quizResults').style.display = 'none'; // Oculta los resultados
+            document.getElementById('resultsList').innerHTML = ''; // Limpia la lista de resultados
+            document.getElementById('scoreSummary').textContent = ''; // Limpia el resumen de puntuación
+
+            // Mostrar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'inline-block';
+            // Ocultar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

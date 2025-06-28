@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 39: Ejercicios de Buenas Prácticas y Estándares de Codificación</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/ejercicios_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
+    <style>
+        .concept-question {
+            background-color: #f0f8ff; /* Light blue background */
+            border-left: 5px solid #007bff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .concept-question p {
+            margin-bottom: 10px;
+        }
+        .code-block {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .correct-code {
+            color: #28a745;
+            font-weight: bold;
+        }
+        .incorrect-code {
+            color: #dc3545;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Clase 39: Ejercicios de Buenas Prácticas y Estándares de Codificación</h1>
+
+        <div class="exercise-section">
+            <h3>Ejercicios Conceptuales y de Aplicación de la Clase 39</h3>
+            <p>Estos ejercicios te ayudarán a aplicar y consolidar los principios de buenas prácticas y estándares de codificación en HTML.</p>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 1: Ventajas de la Validación HTML.</h4>
+                <p>Enumera al menos tres ventajas clave de validar tu código HTML utilizando el W3C Markup Validation Service.</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution1')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution1">
+                    <p>Al menos tres ventajas clave de validar tu código HTML:</p>
+                    <ol>
+                        <li><strong>Compatibilidad entre navegadores:</strong> Un HTML válido tiene más probabilidades de ser interpretado y renderizado de manera consistente por diferentes navegadores, reduciendo los problemas de visualización y "bugs" específicos de cada navegador.</li>
+                        <li><strong>Accesibilidad mejorada:</strong> Un código HTML bien estructurado y validado es más fácil de ser comprendido por tecnologías de asistencia como los lectores de pantalla, haciendo que tu sitio sea más accesible para usuarios con discapacidades.</li>
+                        <li><strong>Facilita la depuración:</strong> El validador señala errores y advertencias específicas, lo que acelera el proceso de encontrar y corregir problemas en tu código que de otra manera serían difíciles de diagnosticar.</li>
+                        <li><strong>Mejora del SEO (indirectamente):</strong> Aunque la validación no es un factor directo importante para el SEO, un código limpio y semántico ayuda a los motores de búsqueda a rastrear e indexar tu contenido de manera más eficiente.</li>
+                        <li><strong>Mantenimiento y colaboración:</strong> Un código válido y estructurado es más fácil de leer, entender y mantener por ti mismo en el futuro o por otros desarrolladores que trabajen en el mismo proyecto.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 2: Refactorización de Código (Indentación y Semántica).</h4>
+                <p>El siguiente fragmento de código HTML tiene problemas de indentación y no utiliza etiquetas semánticas donde podría. Refactorízalo para mejorar su legibilidad y semántica.</p>
+                <div class="code-block">
+                    <pre><code class="language-html">&lt;div&gt;
+&lt;p&gt;Mi Blog&lt;/p&gt;
+    &lt;div&gt;
+        &lt;a href="#"&gt;Home&lt;/a&gt;
+    &lt;a href="#"&gt;About&lt;/a&gt;
+    &lt;a href="#"&gt;Contact&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+    &lt;div&gt;
+        &lt;p&gt;Título del post&lt;/p&gt;
+            &lt;p&gt;Este es el contenido del post.&lt;/p&gt;
+        &lt;/div&gt;
+&lt;/div&gt;
+&lt;div&gt;
+    &lt;p&gt;Copyright 2023&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution2')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution2">
+                    <p>Aquí tienes una versión refactorizada, mejorando la indentación y utilizando etiquetas semánticas:</p>
+                    <div class="code-block">
+                        <pre><code class="language-html">
+&lt;!-- Contenedor principal del sitio --&gt;
+&lt;div class="site-wrapper"&gt;
+
+    &lt;!-- Encabezado principal del sitio --&gt;
+    &lt;header class="site-header"&gt;
+        &lt;h1&gt;Mi Blog&lt;/h1&gt;
+        &lt;nav class="main-navigation"&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#"&gt;About&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+
+    &lt;!-- Contenido principal del blog --&gt;
+    &lt;main class="blog-main-content"&gt;
+        &lt;!-- Un artículo/post del blog --&gt;
+        &lt;article class="blog-post"&gt;
+            &lt;h2&gt;Título del post&lt;/h2&gt;
+            &lt;p&gt;Este es el contenido del post.&lt;/p&gt;
+        &lt;/article&gt;
+    &lt;/main&gt;
+
+    &lt;!-- Pie de página del sitio --&gt;
+    &lt;footer class="site-footer"&gt;
+        &lt;p&gt;&amp;copy; Copyright 2023&lt;/p&gt;
+    &lt;/footer&gt;
+
+&lt;/div&gt;
+</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 3: Nomenclatura de Clases e IDs.</h4>
+                <p>Para cada uno de los siguientes elementos, sugiere un nombre de clase o ID que siga las buenas prácticas (descriptivo, <code>kebab-case</code>, etc.) y explica brevemente por qué:</p>
+                <ol>
+                    <li>Un <code>&lt;button&gt;</code> que envía un formulario.</li>
+                    <li>Una <code>&lt;div&gt;</code> que contiene la barra lateral de navegación.</li>
+                    <li>Un <code>&lt;input type="text"&gt;</code> para el nombre de usuario en un formulario de registro.</li>
+                    <li>El <code>&lt;section&gt;</code> principal que contiene toda la información de contacto de la página.</li>
+                </ol>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution3')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution3">
+                    <ol>
+                        <li><strong><code>&lt;button&gt;</code> que envía un formulario.</strong>
+                            <ul>
+                                <li><strong>Nombre sugerido:</strong> <code>class="submit-button"</code> o <code>class="form-submit-btn"</code></li>
+                                <li><strong>Por qué:</strong> Descriptivo de su función, utiliza <code>kebab-case</code> y es fácilmente reusable para otros botones de envío.</li>
+                            </ul>
+                        </li>
+                        <li><strong><code>&lt;div&gt;</code> que contiene la barra lateral de navegación.</strong>
+                            <ul>
+                                <li><strong>Nombre sugerido:</strong> <code>class="sidebar-navigation"</code> o <code>class="main-sidebar"</code></li>
+                                <li><strong>Por qué:</strong> Indica claramente que es una barra lateral y contiene navegación, o que es la barra lateral principal. Usa <code>kebab-case</code>.</li>
+                            </ul>
+                        </li>
+                        <li><strong><code>&lt;input type="text"&gt;</code> para el nombre de usuario en un formulario de registro.</strong>
+                            <ul>
+                                <li><strong>Nombre sugerido:</strong> <code>id="username-input"</code> o <code>class="user-input"</code> (si hay varios)</li>
+                                <li><strong>Por qué:</strong> Es específico del campo de usuario. Si es único en la página y se usará para JavaScript o un ancla, un <code>id</code> es apropiado. Si su estilo es genérico para inputs de usuario, una <code>class</code> es mejor. Ambos siguen el estilo de nombres claros.</li>
+                            </ul>
+                        </li>
+                        <li><strong>El <code>&lt;section&gt;</code> principal que contiene toda la información de contacto de la página.</strong>
+                            <ul>
+                                <li><strong>Nombre sugerido:</strong> <code>id="contact-section"</code> o <code>class="contact-info"</code></li>
+                                <li><strong>Por qué:</strong> Claramente identifica la sección como la de contacto. Un <code>id</code> es adecuado si solo hay una sección de contacto principal en la página (como suele ser el caso). Si pudiese haber varias, una <code>class</code> sería más apropiada.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="quiz-section">
+            <h3>Quiz de la Clase 39: Buenas Prácticas y Estándares de Codificación</h3>
+            <p>¡Pon a prueba tus conocimientos sobre cómo escribir código HTML de calidad!</p>
+            <form id="quizForm">
+                <div class="quiz-question">
+                    <h4>1. ¿Cuál es el propósito principal del W3C Markup Validation Service?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="a"> Comprobar el rendimiento de la página web.</label>
+                        <label><input type="radio" name="q1" value="b"> Verificar que el código HTML cumple con los estándares del W3C.</label>
+                        <label><input type="radio" name="q1" value="c"> Validar formularios antes de enviarlos al servidor.</label>
+                        <label><input type="radio" name="q1" value="d"> Sugerir mejoras de diseño visual para la página.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>2. ¿Qué ventaja ofrece un HTML válido en relación con la compatibilidad entre navegadores?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="a"> Fuerza a todos los navegadores a mostrar el sitio exactamente igual, ignorando sus diferencias.</label>
+                        <label><input type="radio" name="q2" value="b"> Hace más probable que el sitio se renderice de manera consistente en diferentes navegadores.</label>
+                        <label><input type="radio" name="q2" value="c"> Permite usar características HTML experimentales sin problemas.</label>
+                        <label><input type="radio" name="q2" value="d"> Bloquea la carga del sitio en navegadores antiguos.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>3. ¿Para qué se utilizan los comentarios HTML (<code>&lt;!-- ... --&gt;</code>)?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="a"> Para ejecutar código JavaScript oculto.</label>
+                        <label><input type="radio" name="q3" value="b"> Para añadir notas explicativas o desactivar temporalmente código, sin que afecte la visualización.</label>
+                        <label><input type="radio" name="q3" value="c"> Para incluir CSS inline de forma segura.</label>
+                        <label><input type="radio" name="q3" value="d"> Para definir variables globales en HTML.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>4. ¿Qué significa "HTML Semántico"?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="a"> Usar solo las etiquetas más nuevas de HTML5.</label>
+                        <label><input type="radio" name="q4" value="b"> Utilizar las etiquetas HTML de manera significativa y para su propósito previsto (ej., <code>&lt;nav&gt;</code> para navegación, <code>&lt;article&gt;</code> para un artículo).</label>
+                        <label><input type="radio" name="q4" value="c"> Escribir HTML sin errores de validación.</label>
+                        <label><input type="radio" name="q4" value="d"> Que el código HTML se genera automáticamente por una IA.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>5. Es una buena práctica mantener HTML, CSS y JavaScript en archivos separados porque:</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="a"> Acelera la carga de la página al reducir el número de archivos.</label>
+                        <label><input type="radio" name="q5" value="b"> Mejora la organización, el mantenimiento y la reutilización del código.</label>
+                        <label><input type="radio" name="q5" value="c"> Permite usar características de diseño avanzadas.</label>
+                        <label><input type="radio" name="q5" value="d"> Reduce el tamaño total de los archivos del proyecto.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>6. ¿Cuál de las siguientes es una buena práctica para la indentación en HTML?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q6" value="a"> Usar indentación solo en el primer nivel de anidación.</label>
+                        <label><input type="radio" name="q6" value="b"> Cada elemento anidado debe estar indentado con respecto a su padre.</label>
+                        <label><input type="radio" name="q6" value="c"> No usar indentación para reducir el tamaño del archivo.</label>
+                        <label><input type="radio" name="q6" value="d"> Usar una combinación aleatoria de espacios y tabulaciones.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>7. ¿Qué convención de nombrado se recomienda para las clases CSS (ej., para <code>&lt;div class="..."&gt;</code>)?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q7" value="a"> <code>camelCase</code> (ej., <code>myDivClass</code>)</label>
+                        <label><input type="radio" name="q7" value="b"> <code>PascalCase</code> (ej., <code>MyDivClass</code>)</label>
+                        <label><input type="radio" name="q7" value="c"> <code>kebab-case</code> (ej., <code>my-div-class</code>)</label>
+                        <label><input type="radio" name="q7" value="d"> <code>snake_case</code> (ej., <code>my_div_class</code>)</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>8. ¿Cuál de las siguientes declaraciones sobre los IDs en HTML es verdadera?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q8" value="a"> Un ID puede repetirse varias veces en la misma página.</label>
+                        <label><input type="radio" name="q8" value="b"> Los IDs solo se usan para aplicar estilos CSS.</label>
+                        <label><input type="radio" name="q8" value="c"> Los IDs deben ser únicos por página y se usan para identificar un elemento específico.</label>
+                        <label><input type="radio" name="q8" value="d"> Los IDs siempre deben ser números.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>9. ¿Por qué se considera una mala práctica usar estilos inline (ej., <code>&lt;p style="color:red;"&gt;</code>) en HTML?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q9" value="a"> Ralentizan la carga de la página significativamente.</label>
+                        <label><input type="radio" name="q9" value="b"> Dificultan el mantenimiento, la reutilización del código y la separación de preocupaciones.</label>
+                        <label><input type="radio" name="q9" value="c"> Son ignorados por los navegadores modernos.</label>
+                        <label><input type="radio" name="q9" value="d"> Pueden causar errores de validación en el W3C.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>10. ¿Cuál es el beneficio de tener "cero errores" y pocas advertencias al validar tu HTML?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q10" value="a"> Garantiza que tu sitio será el primero en aparecer en los resultados de búsqueda.</label>
+                        <label><input type="radio" name="q10" value="b"> Asegura una mayor calidad del código, mejor compatibilidad y facilidad de depuración.</label>
+                        <label><input type="radio" name="q10" value="c"> Significa que tu código es invulnerable a ataques de seguridad.</label>
+                        <label><input type="radio" name="q10" value="d"> Permite que la página se cargue instantáneamente.</label>
+                    </div>
+                </div>
+
+                <button type="button" class="submit-quiz-button" id="checkAnswersBtn">Ver Resultados</button>
+            </form>
+
+            <div id="quizResults" class="quiz-results">
+                <p>Resultados del Test:</p>
+                <ol id="resultsList"></ol>
+                <p id="scoreSummary"></p>
+                <button type="button" class="reveal-button" id="resetQuizBtn" style="display: none;">Volver a Intentar</button>
+            </div>
+        </div>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="39GoodPracticesAndCodingStandards.html">Volver a la Clase 39: Buenas Prácticas y Estándares de Codificación.</a></li>
+                <li><a href="40ConceptosAvanzadosYProximosPasos.html">Clase 40: Conceptos Avanzados y Próximos Pasos (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script>
+        // Función para mostrar/ocultar soluciones de ejercicios
+        function toggleSolution(button, solutionId) {
+            const solution = document.getElementById(solutionId);
+            if (solution.style.display === 'block') {
+                solution.style.display = 'none';
+                button.textContent = 'Mostrar Solución';
+            } else {
+                solution.style.display = 'block';
+                button.textContent = 'Ocultar Solución';
+            }
+        }
+
+        // Datos del quiz
+        const quizAnswers = {
+            q1: 'b', // Verificar que el código HTML cumple con los estándares del W3C.
+            q2: 'b', // Hace más probable que el sitio se renderice de manera consistente en diferentes navegadores.
+            q3: 'b', // Para añadir notas explicativas o desactivar temporalmente código, sin que afecte la visualización.
+            q4: 'b', // Utilizar las etiquetas HTML de manera significativa y para su propósito previsto (ej., <nav> para navegación, <article> para un artículo).
+            q5: 'b', // Mejora la organización, el mantenimiento y la reutilización del código.
+            q6: 'b', // Cada elemento anidado debe estar indentado con respecto a su padre.
+            q7: 'c', // kebab-case (ej., my-div-class)
+            q8: 'c', // Los IDs deben ser únicos por página y se usan para identificar un elemento específico.
+            q9: 'b', // Dificultan el mantenimiento, la reutilización del código y la separación de preocupaciones.
+            q10: 'b' // Asegura una mayor calidad del código, mejor compatibilidad y facilidad de depuración.
+        };
+
+        // Asignar eventos a los botones una vez que el DOM esté completamente cargado
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            if (checkAnswersBtn) {
+                checkAnswersBtn.addEventListener('click', checkQuiz);
+            }
+            if (resetQuizBtn) {
+                resetQuizBtn.addEventListener('click', resetQuiz);
+            }
+        });
+
+        function checkQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const resultsList = document.getElementById('resultsList');
+            const scoreSummary = document.getElementById('scoreSummary');
+            const quizResultsDiv = document.getElementById('quizResults');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            resultsList.innerHTML = ''; // Limpiar resultados anteriores
+            let score = 0;
+
+            for (let i = 1; i <= 10; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = quizForm.elements[questionName] ? quizForm.elements[questionName].value : '';
+                const correctAnswer = quizAnswers[questionName];
+
+                const listItem = document.createElement('li');
+                listItem.classList.add(selectedOption === correctAnswer ? 'correct' : 'incorrect');
+
+                // Obtener el texto de la opción seleccionada (preservando <code>)
+                let selectedAnswerText = 'No respondida';
+                if (selectedOption) {
+                    const selectedLabel = quizForm.querySelector(`input[name="${questionName}"][value="${selectedOption}"]`);
+                    if (selectedLabel) {
+                        const labelClone = selectedLabel.closest('label').cloneNode(true);
+                        labelClone.querySelector('input').remove();
+                        selectedAnswerText = labelClone.innerHTML.trim();
+                    }
+                }
+
+                // Obtener el texto de la opción correcta (preservando <code>)
+                const correctLabel = quizForm.querySelector(`input[name="${questionName}"][value="${correctAnswer}"]`);
+                let correctAnswerText = 'N/A';
+                if (correctLabel) {
+                    const correctLabelClone = correctLabel.closest('label').cloneNode(true);
+                    correctLabelClone.querySelector('input').remove();
+                    correctAnswerText = correctLabelClone.innerHTML.trim();
+                }
+
+                const questionText = document.createTextNode(`Pregunta ${i}: `);
+                listItem.appendChild(questionText);
+
+                if (selectedOption !== correctAnswer) {
+                    listItem.innerHTML += ` Tu respuesta: "${selectedAnswerText}".<br>`;
+                    const correctInfoSpan = document.createElement('span');
+                    correctInfoSpan.classList.add('correct-answer-info');
+                    correctInfoSpan.innerHTML = `Respuesta correcta: "${correctAnswerText}".`;
+                    listItem.appendChild(correctInfoSpan);
+                } else {
+                    listItem.innerHTML += ` Correcta.`;
+                    score++;
+                }
+
+                resultsList.appendChild(listItem);
+            }
+
+            scoreSummary.textContent = `Tu puntuación es: ${score} de 10 preguntas correctas.`;
+            quizResultsDiv.style.display = 'block'; // Mostrar la sección de resultados
+            quizResultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Desplazarse a los resultados
+
+            // Ocultar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'none';
+            // Mostrar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'inline-block';
+        }
+
+        function resetQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            quizForm.reset(); // Reinicia todos los radio buttons
+            document.getElementById('quizResults').style.display = 'none'; // Oculta los resultados
+            document.getElementById('resultsList').innerHTML = ''; // Limpia la lista de resultados
+            document.getElementById('scoreSummary').textContent = ''; // Limpia el resumen de puntuación
+
+            // Mostrar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'inline-block';
+            // Ocultar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

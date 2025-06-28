@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 38: Ejercicios de HTML y Seguridad Web (Conceptos Básicos)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/ejercicios_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
+    <style>
+        .concept-question {
+            background-color: #fce8e6; /* Light red/pink background */
+            border-left: 5px solid #dc3545;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .concept-question p {
+            margin-bottom: 10px;
+        }
+        .interactive-section {
+            background-color: #e6ffe6;
+            border: 1px solid #99e699;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .code-snippet {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Clase 38: Ejercicios de HTML y Seguridad Web (Conceptos Básicos)</h1>
+
+        <div class="exercise-section">
+            <h3>Ejercicios Conceptuales de la Clase 38</h3>
+            <p>Estos ejercicios te ayudarán a comprender las vulnerabilidades de seguridad web más comunes y las prácticas para mitigarlas, incluso a nivel conceptual de HTML.</p>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 1: Identificar y describir una vulnerabilidad.</h4>
+                <p>Describe con tus propias palabras qué es un ataque de Cross-Site Scripting (XSS) y cómo el HTML puede ser un "vector" para este tipo de ataque.</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution1')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution1">
+                    <p>Un ataque de <strong>Cross-Site Scripting (XSS)</strong> ocurre cuando un atacante logra inyectar código malicioso (generalmente JavaScript, pero también HTML o CSS) en una página web que es vista por otros usuarios legítimos. El navegador de la víctima ejecuta este código malicioso porque lo considera parte del sitio web de confianza.</p>
+                    <p>El HTML puede ser un "vector" para el XSS cuando una aplicación web inserta directamente contenido proporcionado por el usuario (por ejemplo, comentarios, nombres de usuario, mensajes de foro) en el HTML de la página sin haber "escapado" o "sanitizado" correctamente los caracteres especiales. Si un atacante introduce algo como <code>&lt;script&gt;alert('¡Tus cookies han sido robadas!');&lt;/script&gt;</code> en un campo de texto que luego se muestra sin procesar, el navegador de la víctima interpretará <code>&lt;script&gt;</code> como una etiqueta HTML real y ejecutará el JavaScript.</p>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 2: Concepto de limpieza de inputs.</h4>
+                <p>Explica la diferencia conceptual entre "validación de inputs" y "sanitización de inputs" en el contexto de la seguridad web. ¿Cuál de las dos es más importante para prevenir un ataque XSS?</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution2')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution2">
+                    <ul>
+                        <li>La <strong>validación de inputs</strong> se refiere a verificar que los datos introducidos por el usuario cumplan con un formato o conjunto de reglas esperadas (ej., que un campo de email contenga una dirección de email válida, que una edad sea un número positivo). Su objetivo es asegurar la integridad y la coherencia de los datos.</li>
+                        <li>La <strong>sanitización de inputs</strong> (o limpieza) se refiere a eliminar o neutralizar los caracteres o secuencias de código que podrían ser maliciosos si se procesan o muestran. Esto implica convertir caracteres peligrosos (como <code>&lt;</code> y <code>&gt;</code>) en sus entidades HTML (<code>&amp;lt;</code>, <code>&amp;gt;</code>) o eliminar scripts y atributos de evento no deseados.</li>
+                    </ul>
+                    <p>Para prevenir un ataque XSS, la <strong>sanitización de inputs</strong> es la más importante. La validación asegura que el dato tenga un formato correcto, pero no necesariamente que sea inofensivo si contiene código. La sanitización es el paso crítico para neutralizar cualquier código ejecutable o marcador HTML malicioso antes de que se muestre en la página.</p>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 3: Header Content-Security-Policy (CSP).</h4>
+                <p>Un desarrollador quiere asegurarse de que su sitio web solo cargue scripts de su propio dominio y de <code>https://ajax.googleapis.com</code>. Además, quiere que las imágenes solo se carguen de su propio dominio. Escribe un ejemplo de cómo se vería la directiva <code>Content-Security-Policy</code> para lograr esto. ¿Por qué es útil el CSP contra XSS?</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution3')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution3">
+                    <p><strong>Ejemplo de directiva Content-Security-Policy (CSP):</strong></p>
+                    <div class="code-snippet">
+                        <pre><code class="language-http">Content-Security-Policy: default-src 'self'; script-src 'self' https://ajax.googleapis.com; img-src 'self'</code></pre>
+                    </div>
+                    <p><strong>Explicación:</strong></p>
+                    <ul>
+                        <li><code>default-src 'self'</code>: Establece la política predeterminada para que todos los tipos de recursos solo puedan cargarse desde el mismo origen (el dominio del sitio web).</li>
+                        <li><code>script-src 'self' https://ajax.googleapis.com</code>: Sobrescribe la política para scripts, permitiéndolos desde el propio origen y desde <code>https://ajax.googleapis.com</code>.</li>
+                        <li><code>img-src 'self'</code>: Sobrescribe la política para imágenes, permitiéndolas solo desde el propio origen.</li>
+                    </ul>
+                    <p><strong>¿Por qué es útil el CSP contra XSS?</strong></p>
+                    <p>El Content-Security-Policy es una defensa fundamental contra el XSS porque restringe los orígenes de los que el navegador puede cargar recursos (como scripts). Si un atacante logra inyectar un script XSS en la página, pero este script intenta cargar recursos (o ejecutar código) de un origen no permitido por el CSP, el navegador lo bloqueará. Esto reduce significativamente la capacidad de un atacante para ejecutar payloads XSS complejos o robar datos, incluso si logran inyectar código.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="quiz-section">
+            <h3>Quiz de la Clase 38: HTML y Seguridad Web</h3>
+            <p>¡Pon a prueba tus conocimientos sobre conceptos básicos de seguridad web!</p>
+            <form id="quizForm">
+                <div class="quiz-question">
+                    <h4>1. ¿Cuál de las siguientes vulnerabilidades ocurre cuando un atacante inyecta scripts maliciosos en una página web vista por otros usuarios?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="a"> CSRF</label>
+                        <label><input type="radio" name="q1" value="b"> SQL Injection</label>
+                        <label><input type="radio" name="q1" value="c"> XSS</label>
+                        <label><input type="radio" name="q1" value="d"> DDoS</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>2. ¿Qué significa "CSRF"?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="a"> Cross-Site Request Forgery</label>
+                        <label><input type="radio" name="q2" value="b"> Client-Side Resource Fetching</label>
+                        <label><input type="radio" name="q2" value="c"> Content Source Restriction Feature</label>
+                        <label><input type="radio" name="q2" value="d"> Code Security Remote Fix</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>3. ¿Para qué se utiliza el header HTTP <code>Content-Security-Policy</code> (CSP)?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="a"> Para cifrar toda la comunicación entre el navegador y el servidor.</label>
+                        <label><input type="radio" name="q3" value="b"> Para controlar los recursos (scripts, estilos, imágenes) que un navegador tiene permitido cargar para una página.</label>
+                        <label><input type="radio" name="q3" value="c"> Para optimizar la velocidad de carga de las imágenes.</label>
+                        <label><input type="radio" name="q3" value="d"> Para enviar los datos del formulario de forma segura.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>4. Si en tu CSP tienes <code>script-src 'self'</code>, ¿qué significa?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="a"> Solo se pueden ejecutar scripts inline.</label>
+                        <label><input type="radio" name="q4" value="b"> Se pueden ejecutar scripts de cualquier origen.</label>
+                        <label><input type="radio" name="q4" value="c"> Los scripts solo pueden cargarse y ejecutarse desde el mismo origen que la página.</label>
+                        <label><input type="radio" name="q4" value="d"> Los scripts se bloquean completamente.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>5. ¿Cuál es el objetivo principal de la "limpieza de inputs" (sanitización)?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="a"> Mejorar la legibilidad de los datos en la base de datos.</label>
+                        <label><input type="radio" name="q5" value="b"> Asegurar que cualquier dato recibido de una fuente externa sea seguro y válido antes de ser procesado o mostrado.</label>
+                        <label><input type="radio" name="q5" value="c"> Reducir el tamaño de los datos enviados por el usuario.</label>
+                        <label><input type="radio" name="q5" value="d"> Comprobar si el usuario es un robot.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>6. ¿Es suficiente la validación de formularios en el cliente (con atributos HTML como <code>required</code> o <code>type="email"</code>) para la seguridad?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q6" value="a"> Sí, es la única validación necesaria.</label>
+                        <label><input type="radio" name="q6" value="b"> No, la validación más crítica siempre debe repetirse en el servidor.</label>
+                        <label><input type="radio" name="q6" value="c"> Solo es suficiente si el sitio web usa HTTPS.</label>
+                        <label><input type="radio" name="q6" value="d"> Es suficiente para prevenir todos los ataques XSS.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>7. Para prevenir XSS al mostrar contenido generado por el usuario, ¿qué se debe hacer con caracteres como <code>&lt;</code> y <code>&gt;</code>?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q7" value="a"> Eliminarlos completamente.</label>
+                        <label><input type="radio" name="q7" value="b"> Convertirlos en sus entidades HTML (ej., <code>&amp;lt;</code> y <code>&amp;gt;</code>).</label>
+                        <label><input type="radio" name="q7" value="c"> Dejarlos tal cual, el navegador los maneja automáticamente.</label>
+                        <label><input type="radio" name="q7" value="d"> Encerrarlos entre comillas dobles.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>8. ¿Cómo puede un ataque CSRF forzar a un navegador a realizar una acción no deseada?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q8" value="a"> Inyectando JavaScript malicioso en la página del banco.</label>
+                        <label><input type="radio" name="q8" value="b"> Engañando al navegador para que envíe una solicitud a un sitio confiable donde el usuario ya está autenticado.</label>
+                        <label><input type="radio" name="q8" value="c"> Obteniendo las contraseñas del usuario directamente de la base de datos.</label>
+                        <label><input type="radio" name="q8" value="d"> Bloqueando la conexión a Internet del usuario.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>9. ¿Qué medida de seguridad se utiliza comúnmente para mitigar ataques CSRF?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q9" value="a"> Usar CSS inline.</label>
+                        <label><input type="radio" name="q9" value="b"> Implementar tokens CSRF en las solicitudes del formulario.</label>
+                        <label><input type="radio" name="q9" value="c"> Limitar el uso de imágenes en el sitio.</label>
+                        <label><input type="radio" name="q9" value="d"> Deshabilitar JavaScript en el navegador del usuario.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>10. ¿Dónde es más crítico realizar la validación y sanitización de seguridad de los inputs?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q10" value="a"> Solo en el lado del cliente (con JavaScript).</label>
+                        <label><input type="radio" name="q10" value="b"> Solo en el lado del servidor.</label>
+                        <label><input type="radio" name="q10" value="c"> Tanto en el lado del cliente como en el del servidor.</label>
+                        <label><input type="radio" name="q10" value="d"> En el CSS del sitio web.</label>
+                    </div>
+                </div>
+
+                <button type="button" class="submit-quiz-button" id="checkAnswersBtn">Ver Resultados</button>
+            </form>
+
+            <div id="quizResults" class="quiz-results">
+                <p>Resultados del Test:</p>
+                <ol id="resultsList"></ol>
+                <p id="scoreSummary"></p>
+                <button type="button" class="reveal-button" id="resetQuizBtn" style="display: none;">Volver a Intentar</button>
+            </div>
+        </div>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="38HtmlAndWebSecurity.html">Volver a la Clase 38: HTML y Seguridad Web (Conceptos Básicos).</a></li>
+                <li><a href="39HerramientasYEntornosDeDesarrollo.html">Clase 39: Herramientas y Entornos de Desarrollo (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script>
+        // Función para mostrar/ocultar soluciones de ejercicios
+        function toggleSolution(button, solutionId) {
+            const solution = document.getElementById(solutionId);
+            if (solution.style.display === 'block') {
+                solution.style.display = 'none';
+                button.textContent = 'Mostrar Solución';
+            } else {
+                solution.style.display = 'block';
+                button.textContent = 'Ocultar Solución';
+            }
+        }
+
+        // Datos del quiz
+        const quizAnswers = {
+            q1: 'c', // XSS
+            q2: 'a', // Cross-Site Request Forgery
+            q3: 'b', // Para controlar los recursos (scripts, estilos, imágenes) que un navegador tiene permitido cargar para una página.
+            q4: 'c', // Los scripts solo pueden cargarse y ejecutarse desde el mismo origen que la página.
+            q5: 'b', // Asegurar que cualquier dato recibido de una fuente externa sea seguro y válido antes de ser procesado o mostrado.
+            q6: 'b', // No, la validación más crítica siempre debe repetirse en el servidor.
+            q7: 'b', // Convertirlos en sus entidades HTML (ej., &lt; y &gt;).
+            q8: 'b', // Engañando al navegador para que envíe una solicitud a un sitio confiable donde el usuario ya está autenticado.
+            q9: 'b', // Implementar tokens CSRF en las solicitudes del formulario.
+            q10: 'c' // Tanto en el lado del cliente como en el del servidor.
+        };
+
+        // Asignar eventos a los botones una vez que el DOM esté completamente cargado
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            if (checkAnswersBtn) {
+                checkAnswersBtn.addEventListener('click', checkQuiz);
+            }
+            if (resetQuizBtn) {
+                resetQuizBtn.addEventListener('click', resetQuiz);
+            }
+        });
+
+        function checkQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const resultsList = document.getElementById('resultsList');
+            const scoreSummary = document.getElementById('scoreSummary');
+            const quizResultsDiv = document.getElementById('quizResults');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            resultsList.innerHTML = ''; // Limpiar resultados anteriores
+            let score = 0;
+
+            for (let i = 1; i <= 10; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = quizForm.elements[questionName] ? quizForm.elements[questionName].value : '';
+                const correctAnswer = quizAnswers[questionName];
+
+                const listItem = document.createElement('li');
+                listItem.classList.add(selectedOption === correctAnswer ? 'correct' : 'incorrect');
+
+                // Obtener el texto de la opción seleccionada (preservando <code>)
+                let selectedAnswerText = 'No respondida';
+                if (selectedOption) {
+                    const selectedLabel = quizForm.querySelector(`input[name="${questionName}"][value="${selectedOption}"]`);
+                    if (selectedLabel) {
+                        const labelClone = selectedLabel.closest('label').cloneNode(true);
+                        labelClone.querySelector('input').remove();
+                        selectedAnswerText = labelClone.innerHTML.trim();
+                    }
+                }
+
+                // Obtener el texto de la opción correcta (preservando <code>)
+                const correctLabel = quizForm.querySelector(`input[name="${questionName}"][value="${correctAnswer}"]`);
+                let correctAnswerText = 'N/A';
+                if (correctLabel) {
+                    const correctLabelClone = correctLabel.closest('label').cloneNode(true);
+                    correctLabelClone.querySelector('input').remove();
+                    correctAnswerText = correctLabelClone.innerHTML.trim();
+                }
+
+                const questionText = document.createTextNode(`Pregunta ${i}: `);
+                listItem.appendChild(questionText);
+
+                if (selectedOption !== correctAnswer) {
+                    listItem.innerHTML += ` Tu respuesta: "${selectedAnswerText}".<br>`;
+                    const correctInfoSpan = document.createElement('span');
+                    correctInfoSpan.classList.add('correct-answer-info');
+                    correctInfoSpan.innerHTML = `Respuesta correcta: "${correctAnswerText}".`;
+                    listItem.appendChild(correctInfoSpan);
+                } else {
+                    listItem.innerHTML += ` Correcta.`;
+                    score++;
+                }
+
+                resultsList.appendChild(listItem);
+            }
+
+            scoreSummary.textContent = `Tu puntuación es: ${score} de 10 preguntas correctas.`;
+            quizResultsDiv.style.display = 'block'; // Mostrar la sección de resultados
+            quizResultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Desplazarse a los resultados
+
+            // Ocultar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'none';
+            // Mostrar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'inline-block';
+        }
+
+        function resetQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            quizForm.reset(); // Reinicia todos los radio buttons
+            document.getElementById('quizResults').style.display = 'none'; // Oculta los resultados
+            document.getElementById('resultsList').innerHTML = ''; // Limpia la lista de resultados
+            document.getElementById('scoreSummary').textContent = ''; // Limpia el resumen de puntuación
+
+            // Mostrar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'inline-block';
+            // Ocultar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

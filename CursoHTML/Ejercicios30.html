@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 30: Ejercicios de SEO Básico y HTML</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/ejercicios_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
+    <style>
+        .exercise-preview-content {
+            background-color: #f9f9f9;
+            border: 1px dashed #ddd;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Clase 30: Ejercicios de SEO Básico y HTML</h1>
+
+        <div class="exercise-section">
+            <h3>Ejercicios Prácticos de la Clase 30</h3>
+            <p>Aplica los conceptos de SEO básico en HTML en los siguientes ejercicios. Intenta optimizar el código para mejorar su visibilidad y comprensión por parte de los motores de búsqueda.</p>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 1: Optimización de Meta Etiquetas y Título</h4>
+                <p>Crea la sección <code>&lt;head&gt;</code> para una página web que trata sobre "Recetas de Cocina Mexicana". Incluye un <code>&lt;title&gt;</code>, una <code>&lt;meta name="description"&gt;</code> relevante y una <code>&lt;meta name="keywords"&gt;</code> (aunque menos importante hoy en día).</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution1')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution1">
+                    <pre><code class="language-html">&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Recetas de Cocina Mexicana Auténtica y Fácil - ¡Prepara tus Favoritos!&lt;/title&gt;
+    &lt;meta name="description" content="Descubre un sinfín de recetas de cocina mexicana, desde tacos y enchiladas hasta platillos tradicionales. Recetas fáciles y auténticas para todos los niveles."&gt;
+    &lt;meta name="keywords" content="recetas mexicanas, cocina mexicana, tacos, enchiladas, comida tradicional, recetas fáciles"&gt;
+&lt;/head&gt;
+</code></pre>
+                    <p class="explanation-text">El título es descriptivo y contiene palabras clave. La descripción es atractiva y resume el contenido. Las palabras clave se incluyen por si acaso, aunque su impacto SEO es mínimo hoy.</p>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 2: Estructura de Encabezados (Jerarquía)</h4>
+                <p>Organiza el siguiente texto utilizando la jerarquía de encabezados (<code>&lt;h1&gt;</code> a <code>&lt;h3&gt;</code>) de forma semántica y correcta.</p>
+                <div class="exercise-preview-content">
+                    <p>Consejos para un Jardín Sostenible</p>
+                    <p>Elige Plantas Nativas</p>
+                    <p>Beneficios de las Plantas Nativas</p>
+                    <p>Dónde Comprar Plantas Nativas</p>
+                    <p>Riego Eficiente</p>
+                    <p>Técnicas de Riego por Goteo</p>
+                    <p>Recolección de Agua de Lluvia</p>
+                </div>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution2')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution2">
+                    <pre><code class="language-html">&lt;h1&gt;Consejos para un Jardín Sostenible&lt;/h1&gt;
+
+&lt;h2&gt;Elige Plantas Nativas&lt;/h2&gt;
+    &lt;h3&gt;Beneficios de las Plantas Nativas&lt;/h3&gt;
+    &lt;h3&gt;Dónde Comprar Plantas Nativas&lt;/h3&gt;
+
+&lt;h2&gt;Riego Eficiente&lt;/h2&gt;
+    &lt;h3&gt;Técnicas de Riego por Goteo&lt;/h3&gt;
+    &lt;h3&gt;Recolección de Agua de Lluvia&lt;/h3&gt;
+</code></pre>
+                    <p class="explanation-text">Se usa un solo <code>&lt;h1&gt;</code> para el tema principal. Los <code>&lt;h2&gt;</code> dividen las secciones principales, y los <code>&lt;h3&gt;</code> las subsecciones, manteniendo la jerarquía correcta.</p>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 3: Uso Correcto del Atributo <code>alt</code> y Enlaces</h4>
+                <p>Dado el siguiente HTML, añade el atributo <code>alt</code> a la imagen con una descripción adecuada para SEO y accesibilidad. Además, modifica el enlace para que el texto ancla sea más descriptivo.</p>
+                <div class="code-example">
+                    <pre><code class="language-html">&lt;img src="perro-jugando.jpg"&gt;
+&lt;p&gt;Para saber más, &lt;a href="blog-mascotas.html"&gt;haz clic aquí&lt;/a&gt;.&lt;/p&gt;
+</code></pre>
+                </div>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution3')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution3">
+                    <pre><code class="language-html">&lt;img src="perro-jugando.jpg" alt="Perro golden retriever feliz jugando con una pelota en un parque soleado"&gt;
+&lt;p&gt;Para saber más, &lt;a href="blog-mascotas.html"&gt;visita nuestro blog de consejos para mascotas&lt;/a&gt;.&lt;/p&gt;
+</code></pre>
+                    <p class="explanation-text">El <code>alt</code> describe la imagen con detalle y potencial palabras clave. El texto ancla del enlace es ahora descriptivo y relevante para el contenido de la página de destino.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="quiz-section">
+            <h3>Quiz de la Clase 30: SEO Básico y HTML</h3>
+            <p>¡Pon a prueba tus conocimientos con este quiz de 10 preguntas!</p>
+            <form id="quizForm">
+                <div class="quiz-question">
+                    <h4>1. ¿Qué meta etiqueta es más probable que Google use como fragmento descriptivo en los resultados de búsqueda?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="a"> <code>&lt;meta name="keywords"&gt;</code></label>
+                        <label><input type="radio" name="q1" value="b"> <code>&lt;meta name="description"&gt;</code></label>
+                        <label><input type="radio" name="q1" value="c"> <code>&lt;meta name="author"&gt;</code></label>
+                        <label><input type="radio" name="q1" value="d"> <code>&lt;meta name="viewport"&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>2. ¿Cuántas etiquetas <code>&lt;h1&gt;</code> se recomienda tener por página HTML para una buena práctica de SEO?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="a"> Tantas como necesites.</label>
+                        <label><input type="radio" name="q2" value="b"> Solo una.</label>
+                        <label><input type="radio" name="q2" value="c"> Dos o tres.</label>
+                        <label><input type="radio" name="q2" value="d"> Ninguna, es mejor usar <code>&lt;div&gt;</code>.</label>
+                    </div>
+                动</div>
+
+                <div class="quiz-question">
+                    <h4>3. ¿Cuál es el propósito principal del atributo <code>alt</code> en las imágenes?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="a"> Establecer el tamaño de la imagen.</label>
+                        <label><input type="radio" name="q3" value="b"> Proporcionar un texto alternativo para lectores de pantalla y cuando la imagen no carga.</label>
+                        <label><input type="radio" name="q3" value="c"> Definir la URL de la imagen.</label>
+                        <label><input type="radio" name="q3" value="d"> Añadir una sombra a la imagen.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>4. Un "enlace interno" es aquel que:</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="a"> Apunta a una página en un sitio web diferente.</label>
+                        <label><input type="radio" name="q4" value="b"> Apunta a una sección dentro de la misma página.</label>
+                        <label><input type="radio" name="q4" value="c"> Apunta a otra página dentro del mismo sitio web.</label>
+                        <label><input type="radio" name="q4" value="d"> Solo se utiliza en la navegación principal.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>5. ¿Por qué es importante el uso de HTML semántico para el SEO?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="a"> Reduce el tamaño del archivo HTML.</label>
+                        <label><input type="radio" name="q5" value="b"> Ayuda a los motores de búsqueda a comprender mejor el significado y la función del contenido.</label>
+                        <label><input type="radio" name="q5" value="c"> Acelera la descarga de imágenes.</label>
+                        <label><input type="radio" name="q5" value="d"> Es un requisito para todos los navegadores antiguos.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>6. ¿Cuál de las siguientes es una buena práctica para el texto ancla de un enlace?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q6" value="a"> "Haz clic aquí"</label>
+                        <label><input type="radio" name="q6" value="b"> "Más información"</label>
+                        <label><input type="radio" name="q6" value="c"> "Descubre nuestros productos de software" (si el enlace lleva a la página de productos de software)</label>
+                        <label><input type="radio" name="q6" value="d"> La URL completa del enlace.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>7. ¿Qué etiqueta HTML define el título que aparece en la pestaña del navegador y es el primer elemento del resultado de búsqueda?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q7" value="a"> <code>&lt;h1&gt;</code></label>
+                        <label><input type="radio" name="q7" value="b"> <code>&lt;meta name="title"&gt;</code></label>
+                        <label><input type="radio" name="q7" value="c"> <code>&lt;head&gt;&lt;title&gt;</code></label>
+                        <label><input type="radio" name="q7" value="d"> <code>&lt;strong&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>8. ¿Qué tipo de enlaces son considerados uno de los factores de ranking más importantes por Google, especialmente cuando provienen de sitios web de alta calidad?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q8" value="a"> Enlaces internos</label>
+                        <label><input type="radio" name="q8" value="b"> Enlaces salientes</label>
+                        <label><input type="radio" name="q8" value="c"> Backlinks (enlaces entrantes de otros sitios)</label>
+                        <label><input type="radio" name="q8" value="d"> Enlaces de redes sociales</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>9. ¿Cuál de los siguientes es un ejemplo de una etiqueta semántica en HTML5?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q9" value="a"> <code>&lt;div&gt;</code></label>
+                        <label><input type="radio" name="q9" value="b"> <code>&lt;span&gt;</code></label>
+                        <label><input type="radio" name="q9" value="c"> <code>&lt;article&gt;</code></label>
+                        <label><input type="radio" name="q9" value="d"> <code>&lt;b&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>10. ¿Cuál es el impacto principal de la meta etiqueta <code>&lt;meta name="keywords"&gt;</code> en el SEO moderno de Google?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q10" value="a"> Es un factor de ranking muy fuerte.</label>
+                        <label><input type="radio" name="q10" value="b"> Es ignorada por Google para fines de clasificación.</label>
+                        <label><input type="radio" name="q10" value="c"> Ayuda a mejorar la velocidad de carga de la página.</label>
+                        <label><input type="radio" name="q10" value="d"> Solo se usa para sitios web grandes.</label>
+                    </div>
+                </div>
+
+                <button type="button" class="submit-quiz-button" id="checkAnswersBtn">Ver Resultados</button>
+            </form>
+
+            <div id="quizResults" class="quiz-results">
+                <p>Resultados del Test:</p>
+                <ol id="resultsList"></ol>
+                <p id="scoreSummary"></p>
+                <button type="button" class="reveal-button" id="resetQuizBtn" style="display: none;">Volver a Intentar</button>
+            </div>
+        </div>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="30SEOBasicoYHTML.html">Volver a la Clase 30: SEO Básico y HTML.</a></li>
+                <li><a href="31ConceptosAvanzadosSEO.html">Clase 31: Conceptos Avanzados de SEO (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script>
+        // Función para mostrar/ocultar soluciones de ejercicios
+        function toggleSolution(button, solutionId) {
+            const solution = document.getElementById(solutionId);
+            if (solution.style.display === 'block') {
+                solution.style.display = 'none';
+                button.textContent = 'Mostrar Solución';
+            } else {
+                solution.style.display = 'block';
+                button.textContent = 'Ocultar Solución';
+            }
+        }
+
+        // Datos del quiz
+        const quizAnswers = {
+            q1: 'b', // <meta name="description">
+            q2: 'b', // Solo una.
+            q3: 'b', // Proporcionar un texto alternativo para lectores de pantalla y cuando la imagen no carga.
+            q4: 'c', // Apunta a otra página dentro del mismo sitio web.
+            q5: 'b', // Ayuda a los motores de búsqueda a comprender mejor el significado y la función del contenido.
+            q6: 'c', // "Descubre nuestros productos de software" (si el enlace lleva a la página de productos de software)
+            q7: 'c', // <head><title>
+            q8: 'c', // Backlinks (enlaces entrantes de otros sitios)
+            q9: 'c', // <article>
+            q10: 'b' // Es ignorada por Google para fines de clasificación.
+        };
+
+        // Asignar eventos a los botones una vez que el DOM esté completamente cargado
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            if (checkAnswersBtn) {
+                checkAnswersBtn.addEventListener('click', checkQuiz);
+            }
+            if (resetQuizBtn) {
+                resetQuizBtn.addEventListener('click', resetQuiz);
+            }
+        });
+
+        function checkQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const resultsList = document.getElementById('resultsList');
+            const scoreSummary = document.getElementById('scoreSummary');
+            const quizResultsDiv = document.getElementById('quizResults');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            resultsList.innerHTML = ''; // Limpiar resultados anteriores
+            let score = 0;
+
+            for (let i = 1; i <= 10; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = quizForm.elements[questionName] ? quizForm.elements[questionName].value : '';
+                const correctAnswer = quizAnswers[questionName];
+
+                const listItem = document.createElement('li');
+                listItem.classList.add(selectedOption === correctAnswer ? 'correct' : 'incorrect');
+
+                // Obtener el texto de la opción seleccionada (preservando <code>)
+                let selectedAnswerText = 'No respondida';
+                if (selectedOption) {
+                    const selectedLabel = quizForm.querySelector(`input[name="${questionName}"][value="${selectedOption}"]`);
+                    if (selectedLabel) {
+                        const labelClone = selectedLabel.closest('label').cloneNode(true);
+                        labelClone.querySelector('input').remove();
+                        selectedAnswerText = labelClone.innerHTML.trim();
+                    }
+                }
+
+                // Obtener el texto de la opción correcta (preservando <code>)
+                const correctLabel = quizForm.querySelector(`input[name="${questionName}"][value="${correctAnswer}"]`);
+                let correctAnswerText = 'N/A';
+                if (correctLabel) {
+                    const correctLabelClone = correctLabel.closest('label').cloneNode(true);
+                    correctLabelClone.querySelector('input').remove();
+                    correctAnswerText = correctLabelClone.innerHTML.trim();
+                }
+
+                const questionText = document.createTextNode(`Pregunta ${i}: `);
+                listItem.appendChild(questionText);
+
+                if (selectedOption !== correctAnswer) {
+                    listItem.innerHTML += ` Tu respuesta: "${selectedAnswerText}".<br>`;
+                    const correctInfoSpan = document.createElement('span');
+                    correctInfoSpan.classList.add('correct-answer-info');
+                    correctInfoSpan.innerHTML = `Respuesta correcta: "${correctAnswerText}".`;
+                    listItem.appendChild(correctInfoSpan);
+                } else {
+                    listItem.innerHTML += ` Correcta.`;
+                    score++;
+                }
+
+                resultsList.appendChild(listItem);
+            }
+
+            scoreSummary.textContent = `Tu puntuación es: ${score} de 10 preguntas correctas.`;
+            quizResultsDiv.style.display = 'block'; // Mostrar la sección de resultados
+            quizResultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Desplazarse a los resultados
+
+            // Ocultar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'none';
+            // Mostrar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'inline-block';
+        }
+
+        function resetQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            quizForm.reset(); // Reinicia todos los radio buttons
+            document.getElementById('quizResults').style.display = 'none'; // Oculta los resultados
+            document.getElementById('resultsList').innerHTML = ''; // Limpia la lista de resultados
+            document.getElementById('scoreSummary').textContent = ''; // Limpia el resumen de puntuación
+
+            // Mostrar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'inline-block';
+            // Ocultar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

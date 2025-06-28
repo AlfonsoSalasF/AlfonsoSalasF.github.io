@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 40: Ejercicios de Proyecto Final y Siguientes Pasos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/ejercicios_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
+    <style>
+        .exercise-challenge {
+            background-color: #f0f8ff; /* Light blue background */
+            border-left: 5px solid #007bff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .concept-question {
+            background-color: #e6ffe6; /* Light green background */
+            border-left: 5px solid #28a745;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .advice-box {
+            background-color: #fff3cd; /* Light yellow background */
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            color: #664d03;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Clase 40: Ejercicios de Proyecto Final y Siguientes Pasos</h1>
+
+        <div class="exercise-section">
+            <h3>Ejercicios Prácticos y Conceptuales para el Final del Curso</h3>
+            <p>Esta sección está dedicada a tu proyecto final y a la reflexión sobre tu camino en el desarrollo web. ¡Es una oportunidad para aplicar y consolidar todo lo que has aprendido!</p>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 1: ¡Tu Proyecto Final de HTML! (El más importante)</h4>
+                <div class="exercise-challenge">
+                    <p>Crea una página web completa (o un mini-sitio con varias páginas interconectadas) que demuestre tu dominio de HTML. Elige una de las ideas propuestas en la Clase 40 (portafolio, página de producto, blog simple, etc.) o una idea propia. Asegúrate de incorporar la mayor cantidad posible de los conceptos y buenas prácticas aprendidos en el curso.</p>
+                    <p><strong>Requisitos clave:</strong></p>
+                    <ul>
+                        <li><strong>Estructura Semántica:</strong> Usa <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;footer&gt;</code>, etc.</li>
+                        <li><strong>Formulario completo:</strong> Con varios tipos de input, <code>&lt;label&gt;</code>, validación HTML5, y agrupado con <code>&lt;fieldset&gt;</code>/<code>&lt;legend&gt;</code>.</li>
+                        <li><strong>Navegación:</strong> Enlaces internos y externos.</li>
+                        <li><strong>Imágenes:</strong> Con atributos <code>alt</code>.</li>
+                        <li><strong>Tablas y/o Listas:</strong> Si aplica a tu contenido.</li>
+                        <li><strong>Multimedia:</strong> Un video o audio embebido (opcional pero recomendado).</li>
+                        <li><strong>Comentarios HTML:</strong> Para organizar y explicar.</li>
+                        <li><strong>Código Limpio:</strong> Indentación consistente y nomenclatura clara (clases e IDs).</li>
+                        <li><strong>Validación W3C:</strong> Esfuérzate por obtener cero errores en el <a href="https://validator.w3.org/" target="_blank" rel="noopener noreferrer">W3C Markup Validation Service</a>.</li>
+                    </ul>
+                    <p class="advice-box"><strong>Consejo:</strong> No te preocupes demasiado por el diseño visual por ahora (aunque puedes usar CSS básico si lo deseas). El objetivo principal es la estructura HTML, la semántica y la limpieza del código. ¡Diviértete con esto!</p>
+                </div>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution1')">Guía para la Solución</button>
+                <div class="exercise-solution" id="solution1">
+                    <p>Este ejercicio no tiene una "solución" única, ya que es un proyecto creativo. Sin embargo, aquí tienes una guía para evaluar tu propio trabajo o para saber qué esperar si alguien revisa tu código:</p>
+                    <ul>
+                        <li><strong>Revisa tu archivo HTML con un validador:</strong> Utiliza el <a href="https://validator.w3.org/" target="_blank" rel="noopener noreferrer">W3C Markup Validation Service</a>. Asegúrate de que no haya errores y minimiza las advertencias.</li>
+                        <li><strong>Comprueba la semántica:</strong> ¿Usaste <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;footer&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;aside&gt;</code> de manera apropiada para el contenido? ¿Evitaste el uso excesivo de <code>&lt;div&gt;</code> cuando había una etiqueta más semántica disponible?</li>
+                        <li><strong>Accesibilidad:</strong> ¿Todas las imágenes tienen atributos <code>alt</code> descriptivos? ¿Los formularios tienen etiquetas <code>&lt;label&gt;</code> asociadas con sus inputs (usando <code>for</code> e <code>id</code>)? ¿Los grupos de radio/checkboxes están dentro de <code>&lt;fieldset&gt;</code> con un <code>&lt;legend&gt;</code>?</li>
+                        <li><strong>Limpieza del Código:</strong> ¿Está tu código bien indentado y es fácil de leer? ¿Usaste comentarios para explicar secciones importantes o complejas? ¿Las clases e IDs tienen nombres descriptivos y consistentes (ej., <code>kebab-case</code>)?</li>
+                        <li><strong>Funcionalidad del Formulario:</strong> ¿Los inputs de tu formulario tienen los tipos correctos (<code>email</code>, <code>number</code>, etc.)? ¿Utilizaste atributos de validación como <code>required</code>, <code>minlength</code>, <code>maxlength</code>, <code>pattern</code>?</li>
+                        <li><strong>Navegación:</strong> ¿Los enlaces internos y externos funcionan correctamente?</li>
+                    </ul>
+                    <p>Este proyecto es tu oportunidad para demostrar todo lo que has absorbido. ¡No subestimes el poder de un HTML bien construido!</p>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 2: Reflexión sobre los Siguientes Pasos.</h4>
+                <div class="concept-question">
+                    <p>Después de completar este curso de HTML, ¿cuáles son los dos lenguajes/tecnologías principales que considerarías aprender a continuación para continuar tu camino como desarrollador web frontend? Explica brevemente por qué cada uno es importante y qué te permitirá hacer que no puedes hacer solo con HTML.</p>
+                </div>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution2')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution2">
+                    <p>Los dos lenguajes/tecnologías principales a aprender después de HTML para el desarrollo frontend son, sin duda, <strong>CSS</strong> y <strong>JavaScript</strong>.</p>
+                    <ol>
+                        <li><strong>CSS (Cascading Style Sheets):</strong>
+                            <ul>
+                                <li><strong>Importancia:</strong> CSS es el lenguaje que controla la presentación visual de tus páginas web. Mientras HTML se encarga de la estructura del contenido, CSS se encarga de cómo se ve ese contenido: colores, fuentes, tamaño, espaciado, diseño (layouts), animaciones, etc.</li>
+                                <li><strong>Lo que te permitirá hacer:</strong> Sin CSS, tus páginas HTML serían funcionales pero muy básicas y aburridas visualmente. CSS te permitirá transformar esas páginas en diseños atractivos y responsivos que se adapten a diferentes tamaños de pantalla (móviles, tablets, ordenadores). Esencialmente, te permitirá "diseñar" tus páginas.</li>
+                            </ul>
+                        </li>
+                        <li><strong>JavaScript:</strong>
+                            <ul>
+                                <li><strong>Importancia:</strong> JavaScript es el lenguaje de programación que añade interactividad y dinamismo a tus páginas web. Es el "cerebro" del frontend.</li>
+                                <li><strong>Lo que te permitirá hacer:</strong> Con JavaScript, puedes hacer que tus páginas respondan a las acciones del usuario (clics de botón, entradas de teclado), validar formularios en tiempo real, cargar contenido dinámicamente sin recargar la página, crear animaciones complejas, interactuar con APIs (servicios web externos), y construir aplicaciones web completas y complejas (usando librerías/frameworks como React, Angular, Vue.js). Sin JavaScript, una página es estática; con él, se convierte en una aplicación interactiva.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 3: La Importancia de la Práctica Continua.</h4>
+                <div class="concept-question">
+                    <p>Imagina que un amigo te pregunta cómo puede seguir mejorando sus habilidades en desarrollo web después de un curso básico como este. Menciona al menos tres formas prácticas en las que le aconsejarías practicar continuamente.</p>
+                </div>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution3')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution3">
+                    <p>Aquí tienes tres formas prácticas de practicar continuamente:</p>
+                    <ol>
+                        <li><strong>Construir Pequeños Proyectos Personales:</strong> La mejor manera de aprender es haciendo. Anímale a construir mini-proyectos desde cero. No es necesario que sean ideas originales; replicar diseños de sitios web existentes, crear un clon simple de una aplicación conocida (como una lista de tareas) o desarrollar una página personal para practicar nuevas etiquetas o propiedades CSS. Esto refuerza los conceptos y ayuda a entender cómo encajan las piezas.</li>
+                        <li><strong>Resolver Desafíos de Codificación (Coding Challenges):</strong> Sitios como FreeCodeCamp, CodeWars, o LeetCode ofrecen problemas de programación de diferente dificultad. Aunque muchos se centran en JavaScript, hay desafíos que implican manipulación del DOM (HTML) y estilos (CSS). Esto ayuda a desarrollar habilidades de resolución de problemas y lógica.</li>
+                        <li><strong>Mantenerse Actualizado y Replicar:</strong> El ecosistema web cambia constantemente. Aconséjale seguir blogs de desarrollo web, canales de YouTube, y las cuentas de redes sociales de desarrolladores influyentes. Cuando vea una técnica nueva o un componente interesante (ej. una animación CSS, un efecto de navegación en JavaScript), que intente replicarlo por sí mismo. Esto fomenta la exploración y la aplicación de nuevos conocimientos.</li>
+                        <li><strong>Colaborar y Compartir (Opcional):</strong> Si se siente cómodo, unirse a comunidades de desarrolladores, hacer preguntas, responder a dudas de otros, o incluso contribuir a proyectos de código abierto en GitHub puede ser una forma excelente de aprender de manera colaborativa y exponerse a código de otros.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="quiz-section">
+            <h3>Quiz de la Clase 40: Repaso General del Curso</h3>
+            <p>Este quiz final abarca conceptos clave de todo el curso. ¡Es tu oportunidad para brillar!</p>
+            <form id="quizForm">
+                <div class="quiz-question">
+                    <h4>1. ¿Qué etiqueta HTML se utiliza para definir el contenido principal y único de un documento?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="a"> <code>&lt;div&gt;</code></label>
+                        <label><input type="radio" name="q1" value="b"> <code>&lt;section&gt;</code></label>
+                        <label><input type="radio" name="q1" value="c"> <code>&lt;main&gt;</code></label>
+                        <label><input type="radio" name="q1" value="d"> <code>&lt;body&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>2. ¿Qué atributo se utiliza para especificar una URL a la que el enlace debe apuntar?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="a"> <code>src</code></label>
+                        <label><input type="radio" name="q2" value="b"> <code>href</code></label>
+                        <label><input type="radio" name="q2" value="c"> <code>link</code></label>
+                        <label><input type="radio" name="q2" value="d"> <code>url</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>3. ¿Cuál es el propósito del atributo <code>alt</code> en la etiqueta <code>&lt;img&gt;</code>?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="a"> Define el ancho de la imagen.</label>
+                        <label><input type="radio" name="q3" value="b"> Especifica el texto alternativo para la imagen, útil para accesibilidad y SEO.</label>
+                        <label><input type="radio" name="q3" value="c"> Controla la alineación de la imagen en el texto.</label>
+                        <label><input type="radio" name="q3" value="d"> Establece el título que aparece al pasar el ratón por la imagen.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>4. ¿Qué tipo de input de formulario se utiliza para permitir al usuario seleccionar una o más opciones de una lista?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="a"> <code>&lt;input type="radio"&gt;</code></label>
+                        <label><input type="radio" name="q4" value="b"> <code>&lt;input type="text"&gt;</code></label>
+                        <label><input type="radio" name="q4" value="c"> <code>&lt;input type="checkbox"&gt;</code></label>
+                        <label><input type="radio" name="q4" value="d"> <code>&lt;input type="submit"&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>5. ¿Qué etiquetas se utilizan para agrupar campos relacionados en un formulario y proporcionar un título para ese grupo?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="a"> <code>&lt;group&gt;</code> y <code>&lt;title&gt;</code></label>
+                        <label><input type="radio" name="q5" value="b"> <code>&lt;div&gt;</code> y <code>&lt;h3&gt;</code></label>
+                        <label><input type="radio" name="q5" value="c"> <code>&lt;fieldset&gt;</code> y <code>&lt;legend&gt;</code></label>
+                        <label><input type="radio" name="q5" value="d"> <code>&lt;section&gt;</code> y <code>&lt;label&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>6. ¿Cuál es la forma correcta de enlazar una hoja de estilos CSS externa a un documento HTML?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q6" value="a"> <code>&lt;style src="style.css"&gt;&lt;/style&gt;</code></label>
+                        <label><input type="radio" name="q6" value="b"> <code>&lt;link rel="stylesheet" href="style.css"&gt;</code></label>
+                        <label><input type="radio" name="q6" value="c"> <code>&lt;css href="style.css"&gt;</code></label>
+                        <label><input type="radio" name="q6" value="d"> <code>&lt;stylesheet&gt;style.css&lt;/stylesheet&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>7. ¿Cuál de las siguientes es una buena práctica para la limpieza de inputs y la seguridad web?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q7" value="a"> Permitir cualquier tipo de HTML en los inputs de usuario.</label>
+                        <label><input type="radio" name="q7" value="b"> Realizar solo la validación de inputs en el lado del cliente (navegador).</label>
+                        <label><input type="radio" name="q7" value="c"> Sanitizar y validar los inputs en el servidor para neutralizar posibles códigos maliciosos.</label>
+                        <label><input type="radio" name="q7" value="d"> Desactivar JavaScript para evitar ataques.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>8. ¿Qué significa "HTML Semántico"?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q8" value="a"> Usar solo etiquetas HTML sin atributos.</label>
+                        <label><input type="radio" name="q8" value="b"> Utilizar etiquetas HTML que describen el significado de su contenido (ej., <code>&lt;nav&gt;</code> para navegación).</label>
+                        <label><input type="radio" name="q8" value="c"> Escribir HTML de forma que solo los navegadores modernos puedan interpretarlo.</label>
+                        <label><input type="radio" name="q8" value="d"> Optimizar el HTML para motores de búsqueda únicamente.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>9. ¿Qué lenguaje se utiliza principalmente para añadir interactividad y dinamismo a las páginas web?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q9" value="a"> HTML</label>
+                        <label><input type="radio" name="q9" value="b"> CSS</label>
+                        <label><input type="radio" name="q9" value="c"> SQL</label>
+                        <label><input type="radio" name="q9" value="d"> JavaScript</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>10. ¿Cuál es una de las mejores formas de asegurar la compatibilidad y detectar errores en tu código HTML?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q10" value="a"> Usar siempre el mismo navegador para probar tu sitio.</label>
+                        <label><input type="radio" name="q10" value="b"> Ejecutar el código en un editor de texto simple.</label>
+                        <label><input type="radio" name="q10" value="c"> Validar el código con el W3C Markup Validation Service.</label>
+                        <label><input type="radio" name="q10" value="d"> Compartir el código en redes sociales para que otros lo revisen.</label>
+                    </div>
+                </div>
+
+                <button type="button" class="submit-quiz-button" id="checkAnswersBtn">Ver Resultados</button>
+            </form>
+
+            <div id="quizResults" class="quiz-results">
+                <p>Resultados del Test:</p>
+                <ol id="resultsList"></ol>
+                <p id="scoreSummary"></p>
+                <button type="button" class="reveal-button" id="resetQuizBtn" style="display: none;">Volver a Intentar</button>
+            </div>
+        </div>
+
+        <hr>
+
+        <footer>
+            <p>¡Felicidades por completar el curso de iniciación a HTML!</p>
+            <ul>
+                <li><a href="40FinalProjectAndNextSteps.html">Volver a la Clase 40: Proyecto Final y Siguientes Pasos.</a></li>
+                <li><a href="../CursoHTML.html">Volver al Índice del Curso HTML</a></li>
+                <li><a href="../index.html">Volver a la Página Principal de Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script>
+        // Función para mostrar/ocultar soluciones de ejercicios
+        function toggleSolution(button, solutionId) {
+            const solution = document.getElementById(solutionId);
+            if (solution.style.display === 'block') {
+                solution.style.display = 'none';
+                button.textContent = 'Guía para la Solución'; // Cambiar texto si es un proyecto
+                if (solutionId !== 'solution1') { // Mantener texto original para otros ejercicios
+                    button.textContent = 'Mostrar Solución';
+                }
+            } else {
+                solution.style.display = 'block';
+                button.textContent = 'Ocultar Solución';
+            }
+        }
+
+        // Datos del quiz
+        const quizAnswers = {
+            q1: 'c', // <main>
+            q2: 'b', // href
+            q3: 'b', // Especifica el texto alternativo para la imagen, útil para accesibilidad y SEO.
+            q4: 'c', // <input type="checkbox">
+            q5: 'c', // <fieldset> y <legend>
+            q6: 'b', // <link rel="stylesheet" href="style.css">
+            q7: 'c', // Sanitizar y validar los inputs en el servidor para neutralizar posibles códigos maliciosos.
+            q8: 'b', // Utilizar etiquetas HTML que describen el significado de su contenido (ej., <nav> para navegación).
+            q9: 'd', // JavaScript
+            q10: 'c' // Validar el código con el W3C Markup Validation Service.
+        };
+
+        // Asignar eventos a los botones una vez que el DOM esté completamente cargado
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            if (checkAnswersBtn) {
+                checkAnswersBtn.addEventListener('click', checkQuiz);
+            }
+            if (resetQuizBtn) {
+                resetQuizBtn.addEventListener('click', resetQuiz);
+            }
+        });
+
+        function checkQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const resultsList = document.getElementById('resultsList');
+            const scoreSummary = document.getElementById('scoreSummary');
+            const quizResultsDiv = document.getElementById('quizResults');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            resultsList.innerHTML = ''; // Limpiar resultados anteriores
+            let score = 0;
+
+            for (let i = 1; i <= 10; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = quizForm.elements[questionName] ? quizForm.elements[questionName].value : '';
+                const correctAnswer = quizAnswers[questionName];
+
+                const listItem = document.createElement('li');
+                listItem.classList.add(selectedOption === correctAnswer ? 'correct' : 'incorrect');
+
+                // Obtener el texto de la opción seleccionada (preservando <code>)
+                let selectedAnswerText = 'No respondida';
+                if (selectedOption) {
+                    const selectedLabel = quizForm.querySelector(`input[name="${questionName}"][value="${selectedOption}"]`);
+                    if (selectedLabel) {
+                        const labelClone = selectedLabel.closest('label').cloneNode(true);
+                        labelClone.querySelector('input').remove();
+                        selectedAnswerText = labelClone.innerHTML.trim();
+                    }
+                }
+
+                // Obtener el texto de la opción correcta (preservando <code>)
+                const correctLabel = quizForm.querySelector(`input[name="${questionName}"][value="${correctAnswer}"]`);
+                let correctAnswerText = 'N/A';
+                if (correctLabel) {
+                    const correctLabelClone = correctLabel.closest('label').cloneNode(true);
+                    correctLabelClone.querySelector('input').remove();
+                    correctAnswerText = correctLabelClone.innerHTML.trim();
+                }
+
+                const questionText = document.createTextNode(`Pregunta ${i}: `);
+                listItem.appendChild(questionText);
+
+                if (selectedOption !== correctAnswer) {
+                    listItem.innerHTML += ` Tu respuesta: "${selectedAnswerText}".<br>`;
+                    const correctInfoSpan = document.createElement('span');
+                    correctInfoSpan.classList.add('correct-answer-info');
+                    correctInfoSpan.innerHTML = `Respuesta correcta: "${correctAnswerText}".`;
+                    listItem.appendChild(correctInfoSpan);
+                } else {
+                    listItem.innerHTML += ` Correcta.`;
+                    score++;
+                }
+
+                resultsList.appendChild(listItem);
+            }
+
+            scoreSummary.textContent = `Tu puntuación es: ${score} de 10 preguntas correctas.`;
+            quizResultsDiv.style.display = 'block'; // Mostrar la sección de resultados
+            quizResultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Desplazarse a los resultados
+
+            // Ocultar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'none';
+            // Mostrar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'inline-block';
+        }
+
+        function resetQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            quizForm.reset(); // Reinicia todos los radio buttons
+            document.getElementById('quizResults').style.display = 'none'; // Oculta los resultados
+            document.getElementById('resultsList').innerHTML = ''; // Limpia la lista de resultados
+            document.getElementById('scoreSummary').textContent = ''; // Limpia el resumen de puntuación
+
+            // Mostrar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'inline-block';
+            // Ocultar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

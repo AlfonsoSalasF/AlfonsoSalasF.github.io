@@ -1,18 +1,210 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Optimización del Rendimiento HTML</title>
+    <title>Optimización del Rendimiento HTML - Curso HTML</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
+    <style>
+        .code-example {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
+        .code-example pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .performance-tip {
+            background-color: #e6ffe6;
+            border: 1px solid #99e699;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+    </style>
 </head>
 <body>
-    <H1>Clase 34: Optimización del Rendimiento HTML.</H1>
-    <UL>
-        <li>Carga diferida de imágenes (loading="lazy").</li>
-        <li>Optimización de la carga de recursos (CSS y JavaScript).</li>
-        <li>Minificación de HTML.</li>
-        <li>Herramientas de auditoría de rendimiento (Lighthouse).</li>
-    </UL>
-    <p><a href="/index.html">Vuelve a la página principal</a></p>
+    <div class="container">
+        <h1>
+            <p>CURSO DE INICIACIÓN A HTML</p>
+            <p>Clase 34: Optimización del Rendimiento HTML</p>
+        </h1>
+
+        <p>El rendimiento de una página web es crucial para la experiencia del usuario y el SEO (Search Engine Optimization). Una página lenta puede frustrar a los usuarios y hacer que abandonen el sitio, además de ser penalizada por los motores de búsqueda. En esta clase, exploraremos técnicas y herramientas para optimizar la carga de tus páginas HTML.</p>
+
+        <hr>
+
+        <section>
+            <h2>34.1. Carga diferida de imágenes (<code>loading="lazy"</code>).</h2>
+            <p>Tradicionalmente, el navegador carga todas las imágenes de una página tan pronto como encuentra sus etiquetas <code>&lt;img&gt;</code>, incluso si están fuera de la vista inicial del usuario (por debajo del "fold"). Esto puede ralentizar significativamente la carga inicial de la página.</p>
+            <p>El atributo <code>loading="lazy"</code> es una característica nativa de HTML que le indica al navegador que retrase la carga de recursos (principalmente imágenes y <code>&lt;iframe&gt;</code>s) hasta que estén cerca de la ventana visible del usuario.</p>
+
+            <h3>¿Cómo funciona <code>loading="lazy"</code>?</h3>
+            <ul>
+                <li><strong>Carga por demanda:</strong> El navegador solo descargará el recurso (imagen o iframe) cuando el usuario se desplace lo suficiente para que el elemento esté a punto de entrar en el viewport.</li>
+                <li><strong>Mejora la velocidad inicial:</strong> Reduce la cantidad de datos que se descargan al principio, lo que acelera el tiempo de carga inicial de la página (First Contentful Paint, Largest Contentful Paint).</li>
+                <li><strong>Ahorra ancho de banda:</strong> Evita la descarga de recursos que el usuario nunca llega a ver.</li>
+            </ul>
+
+            <div class="code-example">
+                <pre><code class="language-html">&lt;!-- Imagen que se carga normalmente --&gt;
+&lt;img src="imagen-arriba.jpg" alt="Descripción de imagen importante"&gt;
+
+&lt;!-- Imagen que se carga de forma diferida (lazy load) --&gt;
+&lt;img src="imagen-abajo.jpg" alt="Descripción de imagen en la parte inferior" loading="lazy"&gt;
+
+&lt;!-- Iframe que se carga de forma diferida --&gt;
+&lt;iframe src="pagina-externa.html" loading="lazy"&gt;&lt;/iframe&gt;
+</code></pre>
+            </div>
+            <div class="performance-tip">
+                <p><strong>Consideraciones:</strong></p>
+                <ul>
+                    <li>Solo usa <code>loading="lazy"</code> para imágenes y <code>iframe</code>s que no son críticos para la carga inicial de la página (es decir, que probablemente estén "por debajo del fold").</li>
+                    <li>No lo uses para imágenes dentro del primer viewport (las que se ven al cargar la página sin hacer scroll), ya que podría retrasar su aparición.</li>
+                    <li>Asegúrate de especificar siempre los atributos <code>width</code> y <code>height</code> para las imágenes. Esto permite al navegador reservar espacio y evitar "cambios de diseño" (Layout Shifts) mientras los recursos se cargan.</li>
+                </ul>
+            </div>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>34.2. Optimización de la carga de recursos (CSS y JavaScript).</h2>
+            <p>La forma en que se cargan tus archivos CSS y JavaScript impacta enormemente el rendimiento.</p>
+
+            <h3>34.2.1. Optimización de CSS.</h3>
+            <ul>
+                <li><strong>Colocar CSS en el <code>&lt;head&gt;</code>:</strong> Los archivos CSS deben vincularse en la sección <code>&lt;head&gt;</code> del HTML usando <code>&lt;link rel="stylesheet"&gt;</code>. Esto permite al navegador empezar a renderizar la página tan pronto como el CSS esté disponible, evitando el "FOUC" (Flash of Unstyled Content).</li>
+                <li><strong>Minificación:</strong> Elimina espacios en blanco, comentarios y caracteres innecesarios para reducir el tamaño del archivo.</li>
+                <li><strong>Combinación:</strong> Si tienes muchos archivos CSS pequeños, combinarlos en uno o pocos puede reducir el número de peticiones HTTP.</li>
+                <li><strong>Crítico CSS (Inline Critical CSS):</strong> Para el CSS que es esencial para el contenido del "primer viewport", puedes incrustarlo directamente en la etiqueta <code>&lt;style&gt;</code> dentro del <code>&lt;head&gt;</code>. Esto elimina una petición HTTP y acelera la primera pintura. El resto del CSS puede cargarse de forma asíncrona.</li>
+                <div class="code-example">
+                    <pre><code class="language-html">&lt;head&gt;
+    &lt;!-- CSS crítico en línea --&gt;
+    &lt;style&gt;
+        body { font-family: sans-serif; }
+        .hero { background-color: lightblue; padding: 20px; }
+    &lt;/style&gt;
+    &lt;!-- El resto del CSS cargado asíncronamente (opcional, con JS) --&gt;
+    &lt;link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'"&gt;
+    &lt;noscript&gt;&lt;link rel="stylesheet" href="styles.css"&gt;&lt;/noscript&gt;
+&lt;/head&gt;
+</code></pre>
+                </div>
+            </ul>
+
+            <h3>34.2.2. Optimización de JavaScript.</h3>
+            <ul>
+                <li><strong>Cargar JavaScript al final del <code>&lt;body&gt;</code>:</strong> Tradicionalmente, se recomienda colocar las etiquetas <code>&lt;script&gt;</code> justo antes del cierre de la etiqueta <code>&lt;/body&gt;</code>. Esto asegura que el HTML se haya parseado y renderizado antes de que JavaScript empiece a ejecutarse, evitando que JS bloquee el renderizado de la página.</li>
+                <li><strong>Atributos <code>defer</code> y <code>async</code>:</strong> Son atributos modernos para optimizar la carga de JavaScript externo.
+                    <ul>
+                        <li><strong><code>async</code>:</strong> El script se descarga de forma asíncrona (en paralelo con el parseo del HTML) y se ejecuta tan pronto como termina la descarga. No garantiza el orden de ejecución. Útil para scripts independientes.</li>
+                        <li><strong><code>defer</code>:</strong> El script se descarga de forma asíncrona, pero su ejecución se retrasa hasta que el HTML ha terminado de parsearse completamente, justo antes del evento <code>DOMContentLoaded</code>. Garantiza el orden de ejecución de los scripts diferidos. Útil para scripts que dependen del DOM o de otros scripts.</li>
+                    </ul>
+                </li>
+                <div class="code-example">
+                    <pre><code class="language-html">&lt;!-- Script que bloquea el renderizado (evitar) --&gt;
+&lt;script src="bloqueante.js"&gt;&lt;/script&gt;
+
+&lt;!-- Script asíncrono (no bloquea el parseo ni el renderizado, ejecuta cuando listo) --&gt;
+&lt;script src="analiticas.js" async&gt;&lt;/script&gt;
+
+&lt;!-- Script diferido (no bloquea parseo, ejecuta después del HTML, mantiene orden) --&gt;
+&lt;script src="interactividad.js" defer&gt;&lt;/script&gt;
+</code></pre>
+                </div>
+                <li><strong>Minificación:</strong> Al igual que con CSS, minifica tus archivos JavaScript.</li>
+                <li><strong>Eliminación de código muerto:</strong> Usa herramientas que identifiquen y eliminen código JavaScript que no se está utilizando.</li>
+            </ul>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>34.3. Minificación de HTML.</h2>
+            <p>La minificación de HTML es el proceso de eliminar todos los caracteres innecesarios del código fuente HTML sin cambiar su funcionalidad. Esto incluye:</p>
+            <ul>
+                <li>Espacios en blanco extra.</li>
+                <li>Saltos de línea.</li>
+                <li>Comentarios.</li>
+                <li>Etiquetas opcionales de cierre (aunque esto es menos común y a veces desaconsejado para evitar errores).</li>
+            </ul>
+            <p>Aunque el ahorro de tamaño por la minificación de HTML suele ser menor que el de CSS o JavaScript, contribuye al rendimiento general al reducir el tamaño del archivo HTML que el navegador debe descargar y parsear.</p>
+            <div class="code-example">
+                <pre><code class="language-html">&lt;!-- HTML antes de minificar --&gt;
+&lt;div class="container"&gt;
+    &lt;h1&gt;Mi Título&lt;/h1&gt;
+    &lt;p&gt;Este es un párrafo de ejemplo.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- HTML minificado --&gt;
+&lt;div class="container"&gt;&lt;h1&gt;Mi Título&lt;/h1&gt;&lt;p&gt;Este es un párrafo de ejemplo.&lt;/p&gt;&lt;/div&gt;
+</code></pre>
+            </div>
+            <p>Generalmente, la minificación de HTML se realiza automáticamente en el servidor o como parte del proceso de construcción (build process) de tu sitio web (por ejemplo, con herramientas como Gulp, Webpack, o plugins de CMS).</p>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>34.4. Herramientas de auditoría de rendimiento (Lighthouse).</h2>
+            <p>Es crucial medir y monitorear el rendimiento de tus páginas web. Google Lighthouse es una herramienta de auditoría de código abierto que te ayuda a identificar y solucionar problemas de rendimiento, accesibilidad, mejores prácticas de SEO y PWA (Progressive Web App).</p>
+
+            <h3>¿Cómo usar Lighthouse?</h3>
+            <p>Lighthouse está integrado en las Herramientas para Desarrolladores de Google Chrome:</p>
+            <ol>
+                <li>Abre tu página web en Google Chrome.</li>
+                <li>Abre las Herramientas para Desarrolladores (F12 o Clic derecho &gt; Inspeccionar).</li>
+                <li>Ve a la pestaña "Lighthouse" (anteriormente "Audits").</li>
+                <li>Selecciona las categorías que quieres auditar (Performance, Accessibility, Best Practices, SEO, PWA).</li>
+                <li>Elige el tipo de dispositivo (Mobile o Desktop).</li>
+                <li>Haz clic en "Generate report".</li>
+            </ol>
+
+            <p>Lighthouse generará un informe detallado con puntuaciones y sugerencias específicas para mejorar cada categoría. Presta especial atención a la sección de "Performance", donde encontrarás métricas como:</p>
+            <ul>
+                <li><strong>First Contentful Paint (FCP):</strong> Tiempo hasta que el primer contenido se pinta en la pantalla.</li>
+                <li><strong>Largest Contentful Paint (LCP):</strong> Tiempo hasta que el elemento de contenido más grande visible se pinta. (Métrica Core Web Vitals)</li>
+                <li><strong>Total Blocking Time (TBT):</strong> Suma de todos los tiempos en que la tarea principal del navegador estuvo bloqueada, impidiendo la interactividad.</li>
+                <li><strong>Cumulative Layout Shift (CLS):</strong> Cuantifica los cambios inesperados en el diseño de la página. (Métrica Core Web Vitals)</li>
+                <li><strong>Speed Index:</strong> Mide la rapidez con la que el contenido se muestra visualmente durante la carga de la página.</li>
+                <li><strong>Time to Interactive (TTI):</strong> Tiempo hasta que la página es completamente interactiva.</li>
+            </ul>
+            <div class="warning-box">
+                <p><strong>Recuerda:</strong> Las métricas de rendimiento pueden variar ligeramente entre auditorías debido a factores de red y computación. Siempre es buena idea realizar varias auditorías y usar el promedio, o usar Lighthouse en un entorno de CI/CD para un monitoreo consistente.</p>
+            </div>
+            <p>Al abordar las recomendaciones de Lighthouse, puedes mejorar significativamente la velocidad y la calidad general de tus páginas web.</p>
+        </section>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="Ejercicios34.html">Ejercicios sobre esta lección.</a></li>
+                <li><a href="35IntroduccionAGitYControlDeVersiones.html">Clase 35: Introducción a Git y Control de Versiones (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
 </body>
 </html>

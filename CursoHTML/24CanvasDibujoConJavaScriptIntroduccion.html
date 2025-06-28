@@ -1,18 +1,146 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Canvas: Dibujo con JavaScript (Introducción)</title>
+    <title>Canvas: Dibujo con JavaScript (Introducción) - Curso HTML</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
+    <style>
+        /* Estilos específicos para el canvas en esta clase */
+        canvas {
+            border: 2px solid #333;
+            background-color: #f9f9f9;
+            display: block; /* Para centrarlo si se desea */
+            margin: 20px auto;
+        }
+    </style>
 </head>
 <body>
-    <H1>Clase 24: Canvas: Dibujo con JavaScript (Introducción).</H1>
-    <UL>
-        <li>La etiqueta &lt;canvas&gt;.</li>
-        <li>Introducción a la API de Canvas para dibujar gráficos usando JavaScript.</li>
-        <li>Concepto de contexto 2D.</li>
-        <li>Creación de formas básicas (rectángulos, líneas). (Énfasis en que es el punto de partida para JS).</li>
-    </UL>
-    <p><a href="/index.html">Vuelve a la página principal</a></p>
+    <div class="container">
+        <h1>
+            <p>CURSO DE INICIACIÓN A HTML</p>
+            <p>Clase 24: Canvas: Dibujo con JavaScript (Introducción)</p>
+        </h1>
+
+        <p>HTML5 no solo introdujo mejoras para la reproducción de multimedia, sino también una poderosa herramienta para el dibujo dinámico de gráficos: la etiqueta <code>&lt;canvas&gt;</code>. A diferencia de las imágenes estáticas, <code>&lt;canvas&gt;</code> permite renderizar gráficos y animaciones directamente en el navegador utilizando JavaScript, abriendo un mundo de posibilidades para visualizaciones de datos, juegos y aplicaciones interactivas.</p>
+
+        <hr>
+
+        <section>
+            <h2>24.1. La etiqueta <code>&lt;canvas&gt;</code>.</h2>
+            <p>La etiqueta <code>&lt;canvas&gt;</code> es un contenedor para gráficos que se dibujan sobre la marcha mediante scripts. Es importante entender que la etiqueta <code>&lt;canvas&gt;</code> por sí misma no dibuja nada; solo crea un espacio en el documento HTML donde JavaScript puede dibujar.</p>
+            <p>Para definir un canvas, simplemente usamos la etiqueta <code>&lt;canvas&gt;</code> y, opcionalmente, le asignamos un <code>id</code>, <code>width</code> (ancho) y <code>height</code> (alto). Es buena práctica definir siempre el ancho y alto con atributos HTML, ya que hacerlo por CSS puede escalar el contenido dibujado de forma inesperada.</p>
+            <p><strong>Ejemplo Básico:</strong></p>
+            <pre><code>&lt;canvas id="miCanvas" width="400" height="200"&gt;
+    Tu navegador no soporta el elemento canvas.
+&lt;/canvas&gt;</code></pre>
+            <div class="note">
+                <p>El texto dentro de la etiqueta <code>&lt;canvas&gt;</code> (en este caso, "Tu navegador no soporta el elemento canvas.") se mostrará solo si el navegador del usuario no es compatible con el elemento <code>&lt;canvas&gt;</code>.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>24.2. Introducción a la API de Canvas para dibujar gráficos usando JavaScript.</h2>
+            <p>Una vez que tenemos la etiqueta <code>&lt;canvas&gt;</code> en nuestro HTML, el verdadero poder reside en la API de JavaScript que interactúa con ella. Para dibujar en el canvas, primero necesitamos obtener una referencia al elemento canvas y luego acceder a su "contexto de dibujo".</p>
+            <pre><code>&lt;!-- En tu archivo HTML --&gt;
+&lt;canvas id="miCanvas" width="400" height="200"&gt;&lt;/canvas&gt;
+
+&lt;!-- En tu script JavaScript --&gt;
+&lt;script&gt;
+    const canvas = document.getElementById('miCanvas');
+    if (canvas.getContext) { // Comprobar si el navegador soporta canvas
+        const ctx = canvas.getContext('2d'); // Obtener el contexto 2D
+        // Aquí es donde se realizará el dibujo
+    }
+&lt;/script&gt;</code></pre>
+        </section>
+
+        <section>
+            <h2>24.3. Concepto de contexto 2D.</h2>
+            <p>El "contexto" es la herramienta con la que interactuamos para dibujar en el canvas. HTML Canvas soporta diferentes tipos de contextos, siendo el más común el contexto "2D", que se utiliza para dibujar formas bidimensionales, imágenes y texto. Hay otros contextos como "webgl" para gráficos 3D (WebGL).</p>
+            <p>Cuando llamamos a <code>canvas.getContext('2d')</code>, obtenemos un objeto que proporciona métodos y propiedades para dibujar. Por ejemplo, <code>ctx.fillRect()</code>, <code>ctx.beginPath()</code>, <code>ctx.lineTo()</code> son métodos de este objeto de contexto.</p>
+        </section>
+
+        <section>
+            <h2>24.4. Creación de formas básicas (rectángulos, líneas).</h2>
+            <p>Para esta introducción, nos centraremos en dibujar formas básicas como rectángulos y líneas. Es importante notar que, a diferencia de CSS, donde los elementos se posicionan de forma declarativa, en Canvas se dibujan los píxeles directamente. El origen (0,0) del sistema de coordenadas del canvas está en la esquina superior izquierda.</p>
+
+            <h3>24.4.1. Dibujar Rectángulos.</h3>
+            <p>El contexto 2D ofrece métodos para dibujar rectángulos:</p>
+            <ul>
+                <li><code>fillRect(x, y, width, height)</code>: Dibuja un rectángulo relleno.</li>
+                <li><code>strokeRect(x, y, width, height)</code>: Dibuja un contorno de rectángulo.</li>
+                <li><code>clearRect(x, y, width, height)</code>: Borra un área rectangular.</li>
+            </ul>
+            <p>Antes de dibujar, puedes configurar el color de relleno con <code>ctx.fillStyle</code> y el color de contorno con <code>ctx.strokeStyle</code>.</p>
+            <pre><code class="language-js">&lt;script&gt;
+    document.addEventListener('DOMContentLoaded', () => {
+        const canvas = document.getElementById('canvasRectangulos');
+        if (canvas.getContext) {
+            const ctx = canvas.getContext('2d');
+
+            // Dibujar un rectángulo relleno
+            ctx.fillStyle = 'blue';
+            ctx.fillRect(10, 10, 100, 50); // x, y, width, height
+
+            // Dibujar un contorno de rectángulo
+            ctx.strokeStyle = 'red';
+            ctx.lineWidth = 3; // Ancho de línea
+            ctx.strokeRect(120, 10, 100, 50);
+
+            // Borrar una parte del canvas
+            ctx.clearRect(50, 20, 30, 30);
+        }
+    });
+&lt;/script&gt;</code></pre>
+            <canvas id="canvasRectangulos" width="300" height="100"></canvas>
+
+            <h3>24.4.2. Dibujar Líneas.</h3>
+            <p>Para dibujar líneas y formas más complejas, se sigue un patrón general:</p>
+            <ol>
+                <li><code>beginPath()</code>: Inicia un nuevo trazado o ruta.</li>
+                <li><code>moveTo(x, y)</code>: Mueve el "lápiz" a una posición inicial sin dibujar.</li>
+                <li><code>lineTo(x, y)</code>: Dibuja una línea desde la posición actual hasta el punto especificado.</li>
+                <li><code>stroke()</code>: Dibuja la ruta (el contorno de la línea).</li>
+            </ol>
+            <p>Puedes configurar el color de la línea con <code>ctx.strokeStyle</code> y su ancho con <code>ctx.lineWidth</code>.</p>
+            <pre><code class="language-js">&lt;script&gt;
+    document.addEventListener('DOMContentLoaded', () => {
+        const canvas = document.getElementById('canvasLineas');
+        if (canvas.getContext) {
+            const ctx = canvas.getContext('2d');
+
+            ctx.strokeStyle = 'green';
+            ctx.lineWidth = 2;
+
+            ctx.beginPath();          // Iniciar una nueva ruta
+            ctx.moveTo(10, 10);       // Mover a (10, 10)
+            ctx.lineTo(100, 50);      // Dibujar línea hasta (100, 50)
+            ctx.lineTo(10, 90);       // Dibujar línea hasta (10, 90)
+            ctx.stroke();             // Trazar la línea
+        }
+    });
+&lt;/script&gt;</code></pre>
+            <canvas id="canvasLineas" width="150" height="100"></canvas>
+
+            <div class="note">
+                <p>Este es solo el punto de partida. La API de Canvas es muy extensa y permite dibujar arcos, círculos, texto, imágenes, aplicar transformaciones y mucho más. Estas formas básicas son la base para construcciones más complejas.</p>
+            </div>
+        </section>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="Ejercicios24.html">Ejercicios sobre esta lección.</a></li>
+                <li><a href="25ManejoDeTextoEImagenesEnCanvas.html">Clase 25: Manejo de Texto e Imágenes en Canvas (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
 </body>
 </html>

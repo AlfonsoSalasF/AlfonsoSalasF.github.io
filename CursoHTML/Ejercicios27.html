@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 27: Ejercicios de Web Workers (Concepto Básico)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/ejercicios_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
+    <style>
+        .exercise-live-demo {
+            background-color: #e9f5ff;
+            border: 1px solid #a8d6ff;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .exercise-live-demo button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+        .exercise-live-demo button:hover {
+            background-color: #218838;
+        }
+        .exercise-live-demo #output {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #333;
+        }
+        .explanation-text {
+            background-color: #f0f0f0;
+            border-left: 4px solid #007bff;
+            padding: 10px 15px;
+            margin-top: 15px;
+            font-style: italic;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Clase 27: Ejercicios de Web Workers (Concepto Básico)</h1>
+
+        <div class="exercise-section">
+            <h3>Ejercicios Prácticos de la Clase 27</h3>
+            <p>Dado que la implementación de Web Workers es puramente JavaScript y un poco más avanzada, estos ejercicios se enfocarán en entender el concepto y la interacción básica, más que en la implementación detallada de código complejo. Verás cómo interactúan la página principal y el worker.</p>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 1: Comunicación Básica con un Web Worker</h4>
+                <p>Crea un archivo llamado <code>my_simple_worker.js</code>. Este worker debe recibir un mensaje del hilo principal y responder con un mensaje que diga "Worker recibió: [tu mensaje] y está de vuelta!". En la página HTML, crea un botón que envíe un mensaje al worker y muestre la respuesta en un párrafo.</p>
+                <div class="exercise-live-demo">
+                    <button id="sendToWorkerBtn">Enviar mensaje al Worker</button>
+                    <p id="workerOutput">Esperando mensaje del worker...</p>
+                    <script>
+                        // my_simple_worker.js (contenido que se crearía en un archivo separado)
+                        /*
+                        // Contenido de my_simple_worker.js
+                        self.onmessage = function(e) {
+                            const receivedMessage = e.data;
+                            const response = "Worker recibió: " + receivedMessage + " y está de vuelta!";
+                            self.postMessage(response);
+                        };
+                        */
+
+                        let simpleWorker;
+                        if (window.Worker) {
+                            // Simular la carga del worker desde un archivo para el ejemplo
+                            const workerBlob = new Blob([`
+                                self.onmessage = function(e) {
+                                    const receivedMessage = e.data;
+                                    const response = "Worker recibió: " + receivedMessage + " y está de vuelta!";
+                                    self.postMessage(response);
+                                };
+                            `], { type: 'application/javascript' });
+                            const workerUrl = URL.createObjectURL(workerBlob);
+                            simpleWorker = new Worker(workerUrl);
+
+                            document.getElementById('sendToWorkerBtn').onclick = function() {
+                                simpleWorker.postMessage('Hola desde la página principal!');
+                                document.getElementById('workerOutput').textContent = 'Mensaje enviado. Esperando respuesta...';
+                            };
+
+                            simpleWorker.onmessage = function(e) {
+                                document.getElementById('workerOutput').textContent = e.data;
+                            };
+
+                            simpleWorker.onerror = function(e) {
+                                console.error('Error en el worker:', e);
+                                document.getElementById('workerOutput').textContent = 'Error en el worker. Ver consola.';
+                            };
+                        } else {
+                            document.getElementById('workerOutput').textContent = 'Tu navegador no soporta Web Workers.';
+                            document.getElementById('sendToWorkerBtn').disabled = true;
+                        }
+                    </script>
+                </div>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution1')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution1">
+                    <p><strong>Contenido de <code>my_simple_worker.js</code>:</strong></p>
+                    <pre><code class="language-javascript">// my_simple_worker.js
+self.onmessage = function(e) {
+    const receivedMessage = e.data;
+    const response = "Worker recibió: " + receivedMessage + " y está de vuelta!";
+    self.postMessage(response);
+};
+</code></pre>
+                    <p><strong>Código HTML/JavaScript en tu página principal:</strong></p>
+                    <pre><code class="language-html">&lt;button id="sendToWorkerBtn"&gt;Enviar mensaje al Worker&lt;/button&gt;
+&lt;p id="workerOutput"&gt;Esperando mensaje del worker...&lt;/p&gt;
+
+&lt;script&gt;
+    if (window.Worker) {
+        const myWorker = new Worker('my_simple_worker.js'); // Asegúrate de que la ruta es correcta
+
+        document.getElementById('sendToWorkerBtn').onclick = function() {
+            myWorker.postMessage('Hola desde la página principal!');
+            document.getElementById('workerOutput').textContent = 'Mensaje enviado. Esperando respuesta...';
+        };
+
+        myWorker.onmessage = function(e) {
+            document.getElementById('workerOutput').textContent = e.data;
+        };
+
+        myWorker.onerror = function(e) {
+            console.error('Error en el worker:', e);
+            document.getElementById('workerOutput').textContent = 'Error en el worker. Ver consola.';
+        };
+    } else {
+        document.getElementById('workerOutput').textContent = 'Tu navegador no soporta Web Workers.';
+        document.getElementById('sendToWorkerBtn').disabled = true;
+    }
+&lt;/script&gt;
+</code></pre>
+                    <p class="explanation-text">Este ejercicio demuestra la creación de un <code>Worker</code> y la comunicación bidireccional básica usando <code>postMessage</code> y <code>onmessage</code>. El worker opera en segundo plano y responde a los mensajes que le envías.</p>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 2: Simulación de Tarea Larga (Concepto)</h4>
+                <p>Este ejercicio es más conceptual. Imagina que tienes un script JavaScript que realiza un cálculo muy largo (ej. encontrar números primos muy grandes, o procesar una matriz enorme). Sin un Web Worker, esto bloquearía tu página.</p>
+                <p>En lugar de codificar la tarea larga, describe cómo usarías un Web Worker para ejecutar esta tarea sin bloquear la interfaz de usuario. ¿Qué harías en el hilo principal y qué en el worker? (No es necesario escribir código funcional, solo describir el enfoque).</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution2')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution2">
+                    <p><strong>Enfoque para la simulación de tarea larga con Web Worker:</strong></p>
+                    <ul>
+                        <li><strong>Hilo Principal (<code>index.html</code> o script principal):</strong>
+                            <ul>
+                                <li>Crearía un botón "Iniciar Cálculo Pesado" y un área para mostrar el "Estado" (ej. "Calculando...", "Cálculo Completo").</li>
+                                <li>Al hacer clic en el botón, se instanciaría un nuevo <code>Web Worker</code> (ej. <code>const worker = new Worker('heavy_task_worker.js');</code>).</li>
+                                <li>Se enviaría un mensaje al worker con los datos necesarios para el cálculo (ej. <code>worker.postMessage({ type: 'startCalculation', data: largeDataSet });</code>).</li>
+                                <li>El estado de la UI cambiaría a "Calculando..." y el botón podría deshabilitarse temporalmente.</li>
+                                <li>Se configuraría un <code>worker.onmessage</code> para escuchar cuando el worker haya terminado. Cuando el worker envíe el resultado (ej. <code>worker.onmessage = function(e) { updateUIWithResult(e.data); };</code>), la UI se actualizaría con el resultado y el estado volvería a "Cálculo Completo".</li>
+                                <li>Opcionalmente, se podría enviar un mensaje de "progreso" desde el worker para actualizar una barra de progreso en la UI.</li>
+                                <li>Se usaría <code>worker.onerror</code> para manejar posibles errores en el worker.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Web Worker (<code>heavy_task_worker.js</code>):</strong>
+                            <ul>
+                                <li>Tendría la lógica de la tarea computacionalmente intensiva.</li>
+                                <li>Configuraría un <code>self.onmessage</code> para recibir los datos de entrada del hilo principal.</li>
+                                <li>Una vez recibidos, ejecutaría el cálculo (ej. un bucle complejo, un algoritmo de ordenación de datos masivos, etc.).</li>
+                                <li>Durante el cálculo, podría enviar mensajes de progreso de vuelta al hilo principal si se desea (ej. <code>self.postMessage({ type: 'progress', value: currentPercentage });</code>).</li>
+                                <li>Al finalizar el cálculo, enviaría el resultado final de vuelta al hilo principal (ej. <code>self.postMessage({ type: 'calculationComplete', result: finalData });</code>).</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p class="explanation-text">Este enfoque asegura que, mientras el worker está ocupado con la tarea intensiva, el usuario puede seguir interactuando con otros elementos de la página, desplazarse, hacer clic en botones que no dependan del cálculo, etc., sin experimentar congelamientos o ralentizaciones.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="quiz-section">
+            <h3>Quiz de la Clase 27: Web Workers (Concepto Básico)</h3>
+            <p>¡Pon a prueba tus conocimientos con este quiz de 10 preguntas!</p>
+            <form id="quizForm">
+                <div class="quiz-question">
+                    <h4>1. ¿Cuál es el propósito principal de un Web Worker?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="a"> Acelerar la carga inicial de la página.</label>
+                        <label><input type="radio" name="q1" value="b"> Ejecutar scripts JavaScript en un hilo de fondo, sin bloquear la UI.</label>
+                        <label><input type="radio" name="q1" value="c"> Permitir la manipulación directa del DOM desde JavaScript.</label>
+                        <label><input type="radio" name="q1" value="d"> Sincronizar animaciones CSS y JavaScript.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>2. ¿Qué ocurre si se ejecuta una tarea JavaScript muy intensiva en el hilo principal sin usar Web Workers?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="a"> El navegador optimiza automáticamente la tarea para que no bloquee.</label>
+                        <label><input type="radio" name="q2" value="b"> La interfaz de usuario puede congelarse o dejar de responder.</label>
+                        <label><input type="radio" name="q2" value="c"> La tarea se ejecuta más rápido.</label>
+                        <label><input type="radio" name="q2" value="d"> Se detienen todas las peticiones de red.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>3. ¿A qué objeto no tienen acceso directo los Web Workers?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="a"> <code>Array</code></label>
+                        <label><input type="radio" name="q3" value="b"> <code>String</code></label>
+                        <label><input type="radio" name="q3" value="c"> <code>console</code></label>
+                        <label><input type="radio" name="q3" value="d"> El DOM (Document Object Model)</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>4. ¿Cómo se comunican el hilo principal de la página web y un Web Worker?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="a"> A través de funciones globales compartidas.</label>
+                        <label><input type="radio" name="q4" value="b"> Mediante la manipulación directa del DOM por parte del worker.</label>
+                        <label><input type="radio" name="q4" value="c"> Usando un sistema de mensajes (<code>postMessage</code> y <code>onmessage</code>).</label>
+                        <label><input type="radio" name="q4" value="d"> Compartiendo variables JavaScript directamente.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>5. ¿Qué constructor se utiliza para crear una nueva instancia de un Web Worker?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="a"> <code>new Thread()</code></label>
+                        <label><input type="radio" name="q5" value="b"> <code>new BackgroundScript()</code></label>
+                        <label><input type="radio" name="q5" value="c"> <code>new Worker()</code></label>
+                        <label><input type="radio" name="q5" value="d"> <code>new AsyncScript()</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>6. En el contexto de un Web Worker, ¿qué objeto representa su ámbito global (similar a <code>window</code> en el hilo principal)?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q6" value="a"> <code>this</code></label>
+                        <label><input type="radio" name="q6" value="b"> <code>global</code></label>
+                        <label><input type="radio" name="q6" value="c"> <code>self</code></label>
+                        <label><input type="radio" name="q6" value="d"> <code>workerGlobal</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>7. Si un Web Worker termina su tarea y ya no es necesario, ¿cómo se puede detener para liberar recursos?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q7" value="a"> Borrando la variable del worker.</label>
+                        <label><input type="radio" name="q7" value="b"> Llamando a <code>worker.stop()</code>.</label>
+                        <label><input type="radio" name="q7" value="c"> Llamando a <code>worker.terminate()</code>.</label>
+                        <label><input type="radio" name="q7" value="d"> El worker se detiene automáticamente.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>8. ¿Qué ventaja ofrece un Web Worker en términos de experiencia de usuario?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q8" value="a"> Permite el acceso directo a la red sin restricciones de seguridad.</label>
+                        <label><input type="radio" name="q8" value="b"> Asegura que la interfaz de usuario permanezca interactiva y responsiva.</label>
+                        <label><input type="radio" name="q8" value="c"> Elimina la necesidad de JavaScript en la página principal.</label>
+                        <label><input type="radio" name="q8" value="d"> Hace que el navegador cargue los recursos más rápido.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>9. ¿Para qué tipo de tareas son especialmente útiles los Web Workers?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q9" value="a"> Tareas que requieren manipulación directa del DOM.</label>
+                        <label><input type="radio" name="q9" value="b"> Operaciones computacionalmente intensivas o de procesamiento de datos.</label>
+                        <label><input type="radio" name="q9" value="c"> Tareas que necesitan acceder a la caché del navegador.</label>
+                        <label><input type="radio" name="q9" value="d"> Crear animaciones CSS.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>10. ¿Es la sintaxis de los Web Workers HTML puro o JavaScript?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q10" value="a"> HTML puro.</label>
+                        <label><input type="radio" name="q10" value="b"> Una combinación de HTML y CSS.</label>
+                        <label><input type="radio" name="q10" value="c"> JavaScript puro.</label>
+                        <label><input type="radio" name="q10" value="d"> Depende del navegador.</label>
+                    </div>
+                </div>
+
+                <button type="button" class="submit-quiz-button" id="checkAnswersBtn">Ver Resultados</button>
+            </form>
+
+            <div id="quizResults" class="quiz-results">
+                <p>Resultados del Test:</p>
+                <ol id="resultsList"></ol>
+                <p id="scoreSummary"></p>
+                <button type="button" class="reveal-button" id="resetQuizBtn" style="display: none;">Volver a Intentar</button>
+            </div>
+        </div>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="27WebWorkers.html">Volver a la Clase 27: Web Workers (Concepto Básico).</a></li>
+                <li><a href="28IntroduccionAJavascript.html">Clase 28: Introducción a JavaScript (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script>
+        // Función para mostrar/ocultar soluciones de ejercicios
+        function toggleSolution(button, solutionId) {
+            const solution = document.getElementById(solutionId);
+            if (solution.style.display === 'block') {
+                solution.style.display = 'none';
+                button.textContent = 'Mostrar Solución';
+            } else {
+                solution.style.display = 'block';
+                button.textContent = 'Ocultar Solución';
+            }
+        }
+
+        // Datos del quiz
+        const quizAnswers = {
+            q1: 'b', // Ejecutar scripts JavaScript en un hilo de fondo, sin bloquear la UI.
+            q2: 'b', // La interfaz de usuario puede congelarse o dejar de responder.
+            q3: 'd', // El DOM (Document Object Model)
+            q4: 'c', // Usando un sistema de mensajes (<code>postMessage</code> y <code>onmessage</code>).
+            q5: 'c', // new Worker()
+            q6: 'c', // self
+            q7: 'c', // Llamando a <code>worker.terminate()</code>.
+            q8: 'b', // Asegura que la interfaz de usuario permanezca interactiva y responsiva.
+            q9: 'b', // Operaciones computacionalmente intensivas o de procesamiento de datos.
+            q10: 'c' // JavaScript puro.
+        };
+
+        // Asignar eventos a los botones una vez que el DOM esté completamente cargado
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            if (checkAnswersBtn) {
+                checkAnswersBtn.addEventListener('click', checkQuiz);
+            }
+            if (resetQuizBtn) {
+                resetQuizBtn.addEventListener('click', resetQuiz);
+            }
+        });
+
+        function checkQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const resultsList = document.getElementById('resultsList');
+            const scoreSummary = document.getElementById('scoreSummary');
+            const quizResultsDiv = document.getElementById('quizResults');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            resultsList.innerHTML = ''; // Limpiar resultados anteriores
+            let score = 0;
+
+            for (let i = 1; i <= 10; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = quizForm.elements[questionName] ? quizForm.elements[questionName].value : '';
+                const correctAnswer = quizAnswers[questionName];
+
+                const listItem = document.createElement('li');
+                listItem.classList.add(selectedOption === correctAnswer ? 'correct' : 'incorrect');
+
+                // Obtener el texto de la opción seleccionada (preservando <code>)
+                let selectedAnswerText = 'No respondida';
+                if (selectedOption) {
+                    const selectedLabel = quizForm.querySelector(`input[name="${questionName}"][value="${selectedOption}"]`);
+                    if (selectedLabel) {
+                        const labelClone = selectedLabel.closest('label').cloneNode(true);
+                        labelClone.querySelector('input').remove();
+                        selectedAnswerText = labelClone.innerHTML.trim();
+                    }
+                }
+
+                // Obtener el texto de la opción correcta (preservando <code>)
+                const correctLabel = quizForm.querySelector(`input[name="${questionName}"][value="${correctAnswer}"]`);
+                let correctAnswerText = 'N/A';
+                if (correctLabel) {
+                    const correctLabelClone = correctLabel.closest('label').cloneNode(true);
+                    correctLabelClone.querySelector('input').remove();
+                    correctAnswerText = correctLabelClone.innerHTML.trim();
+                }
+
+                const questionText = document.createTextNode(`Pregunta ${i}: `);
+                listItem.appendChild(questionText);
+
+                if (selectedOption !== correctAnswer) {
+                    listItem.innerHTML += ` Tu respuesta: "${selectedAnswerText}".<br>`;
+                    const correctInfoSpan = document.createElement('span');
+                    correctInfoSpan.classList.add('correct-answer-info');
+                    correctInfoSpan.innerHTML = `Respuesta correcta: "${correctAnswerText}".`;
+                    listItem.appendChild(correctInfoSpan);
+                } else {
+                    listItem.innerHTML += ` Correcta.`;
+                    score++;
+                }
+
+                resultsList.appendChild(listItem);
+            }
+
+            scoreSummary.textContent = `Tu puntuación es: ${score} de 10 preguntas correctas.`;
+            quizResultsDiv.style.display = 'block'; // Mostrar la sección de resultados
+            quizResultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Desplazarse a los resultados
+
+            // Ocultar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'none';
+            // Mostrar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'inline-block';
+        }
+
+        function resetQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            quizForm.reset(); // Reinicia todos los radio buttons
+            document.getElementById('quizResults').style.display = 'none'; // Oculta los resultados
+            document.getElementById('resultsList').innerHTML = ''; // Limpia la lista de resultados
+            document.getElementById('scoreSummary').textContent = ''; // Limpia el resumen de puntuación
+
+            // Mostrar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'inline-block';
+            // Ocultar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

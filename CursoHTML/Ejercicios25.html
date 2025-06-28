@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 25: Ejercicios de SVG</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/ejercicios_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
+    <style>
+        .exercise-svg-container {
+            border: 2px dashed #007bff;
+            background-color: #f0f8ff;
+            margin: 15px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px; /* Añadir un poco de padding para que no se pegue el SVG al borde */
+        }
+        .exercise-svg-container svg {
+            display: block; /* Asegura que el SVG se comporte como un bloque */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Clase 25: Ejercicios de SVG: Gráficos Vectoriales Escalables</h1>
+
+        <div class="exercise-section">
+            <h3>Ejercicios Prácticos de la Clase 25</h3>
+            <p>Para consolidar tus conocimientos sobre SVG y sus formas básicas, te propongo los siguientes ejercicios. Intenta resolverlos por ti mismo antes de ver la solución.</p>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 1: Círculo Básico</h4>
+                <p>Crea un SVG de 100x100 píxeles. Dentro, dibuja un círculo con un radio de 40 píxeles, centrado en el SVG. Rellénalo de color "teal" (verde azulado) y dale un contorno rojo de 2 píxeles de ancho.</p>
+                <div class="exercise-preview">
+                    <div class="exercise-svg-container">
+                        <svg width="100" height="100">
+                            <circle cx="50" cy="50" r="40" fill="teal" stroke="red" stroke-width="2" />
+                        </svg>
+                    </div>
+                </div>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution1')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution1">
+                    <pre><code class="language-html">&lt;svg width="100" height="100"&gt;
+    &lt;circle cx="50" cy="50" r="40" fill="teal" stroke="red" stroke-width="2" /&gt;
+&lt;/svg&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 2: Rectángulo con Esquinas Redondeadas</h4>
+                <p>Crea un SVG de 200x100 píxeles. Dibuja un rectángulo que ocupe casi todo el espacio (x=10, y=10, ancho=180, alto=80). Rellénalo de color "orange" y dale un contorno negro de 3 píxeles de ancho. Añádele esquinas redondeadas con un radio de 15 píxeles tanto en X como en Y.</p>
+                <div class="exercise-preview">
+                    <div class="exercise-svg-container">
+                        <svg width="200" height="100">
+                            <rect x="10" y="10" width="180" height="80" fill="orange" stroke="black" stroke-width="3" rx="15" ry="15" />
+                        </svg>
+                    </div>
+                </div>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution2')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution2">
+                    <pre><code class="language-html">&lt;svg width="200" height="100"&gt;
+    &lt;rect x="10" y="10" width="180" height="80" fill="orange" stroke="black" stroke-width="3" rx="15" ry="15" /&gt;
+&lt;/svg&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 3: Líneas Cruzadas</h4>
+                <p>Crea un SVG de 150x150 píxeles. Dibuja dos líneas que se crucen formando una 'X'. Ambas líneas deben tener un ancho de 4 píxeles y ser de color "purple".</p>
+                <ul>
+                    <li>Línea 1: de (0,0) a (150,150)</li>
+                    <li>Línea 2: de (150,0) a (0,150)</li>
+                </ul>
+                <div class="exercise-preview">
+                    <div class="exercise-svg-container">
+                        <svg width="150" height="150">
+                            <line x1="0" y1="0" x2="150" y2="150" stroke="purple" stroke-width="4" />
+                            <line x1="150" y1="0" x2="0" y2="150" stroke="purple" stroke-width="4" />
+                        </svg>
+                    </div>
+                </div>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution3')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution3">
+                    <pre><code class="language-html">&lt;svg width="150" height="150"&gt;
+    &lt;line x1="0" y1="0" x2="150" y2="150" stroke="purple" stroke-width="4" /&gt;
+    &lt;line x1="150" y1="0" x2="0" y2="150" stroke="purple" stroke-width="4" /&gt;
+&lt;/svg&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 4: Dibujo Combinado (Cara Simple)</h4>
+                <p>Crea un SVG de 200x200 píxeles. Intenta dibujar una cara sonriente simple usando <code>&lt;circle&gt;</code> y <code>&lt;line&gt;</code>.</p>
+                <ul>
+                    <li>Un círculo grande para la cara (por ejemplo, centro 100,100; radio 80, relleno amarillo, contorno negro).</li>
+                    <li>Dos círculos pequeños para los ojos (por ejemplo, radio 10, relleno negro).</li>
+                    <li>Una línea curva para la boca (puedes usar un arco si ya sabes o simplemente una línea recta, aunque una curva sería mejor con <code>&lt;path&gt;</code>, ¡pero estamos limitados a las formas básicas vistas!). Para la boca, una línea que represente una sonrisa simple.</li>
+                </ul>
+                <div class="exercise-preview">
+                    <div class="exercise-svg-container">
+                        <svg width="200" height="200">
+                            <circle cx="100" cy="100" r="80" fill="yellow" stroke="black" stroke-width="2" />
+                            <circle cx="70" cy="70" r="10" fill="black" />
+                            <circle cx="130" cy="70" r="10" fill="black" />
+                            <line x1="60" y1="130" x2="140" y2="130" stroke="black" stroke-width="3" />
+                        </svg>
+                    </div>
+                </div>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution4')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution4">
+                    <pre><code class="language-html">&lt;svg width="200" height="200"&gt;
+    &lt;!-- Cara --&gt;
+    &lt;circle cx="100" cy="100" r="80" fill="yellow" stroke="black" stroke-width="2" /&gt;
+    &lt;!-- Ojo izquierdo --&gt;
+    &lt;circle cx="70" cy="70" r="10" fill="black" /&gt;
+    &lt;!-- Ojo derecho --&gt;
+    &lt;circle cx="130" cy="70" r="10" fill="black" /&gt;
+    &lt;!-- Boca (línea simple) --&gt;
+    &lt;line x1="60" y1="130" x2="140" y2="130" stroke="black" stroke-width="3" /&gt;
+&lt;/svg&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 5: Semáforo Simple</h4>
+                <p>Crea un SVG de 100x250 píxeles. Dibuja un rectángulo gris oscuro para la carcasa del semáforo. Dentro, dibuja tres círculos (rojo, amarillo, verde) apilados verticalmente.</p>
+                <ul>
+                    <li>Carcasa: rectángulo gris oscuro (x=20, y=10, ancho=60, alto=230, rx=10, ry=10).</li>
+                    <li>Círculo rojo: centro (50, 50), radio 20.</li>
+                    <li>Círculo amarillo: centro (50, 125), radio 20.</li>
+                    <li>Círculo verde: centro (50, 200), radio 20.</li>
+                </ul>
+                <div class="exercise-preview">
+                    <div class="exercise-svg-container">
+                        <svg width="100" height="250">
+                            <rect x="20" y="10" width="60" height="230" fill="#333" rx="10" ry="10" />
+                            <circle cx="50" cy="50" r="20" fill="red" />
+                            <circle cx="50" cy="125" r="20" fill="yellow" />
+                            <circle cx="50" cy="200" r="20" fill="green" />
+                        </svg>
+                    </div>
+                </div>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution5')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution5">
+                    <pre><code class="language-html">&lt;svg width="100" height="250"&gt;
+    &lt;!-- Carcasa --&gt;
+    &lt;rect x="20" y="10" width="60" height="230" fill="#333" rx="10" ry="10" /&gt;
+    &lt;!-- Luz Roja --&gt;
+    &lt;circle cx="50" cy="50" r="20" fill="red" /&gt;
+    &lt;!-- Luz Amarilla --&gt;
+    &lt;circle cx="50" cy="125" r="20" fill="yellow" /&gt;
+    &lt;!-- Luz Verde --&gt;
+    &lt;circle cx="50" cy="200" r="20" fill="green" /&gt;
+&lt;/svg&gt;</code></pre>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="quiz-section">
+            <h3>Quiz de la Clase 25: SVG: Gráficos Vectoriales Escalables</h3>
+            <p>¡Pon a prueba tus conocimientos con este quiz de 10 preguntas!</p>
+            <form id="quizForm">
+                <div class="quiz-question">
+                    <h4>1. ¿Qué significa la sigla SVG?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="a"> Standard Vector Graphics</label>
+                        <label><input type="radio" name="q1" value="b"> Scalable Vector Graphics</label>
+                        <label><input type="radio" name="q1" value="c"> Simple Visual Graphics</label>
+                        <label><input type="radio" name="q1" value="d"> Static Vector Gallery</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>2. ¿Cuál es una de las principales ventajas de SVG sobre las imágenes rasterizadas (JPG, PNG)?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="a"> Son siempre más pequeños en tamaño de archivo.</label>
+                        <label><input type="radio" name="q2" value="b"> No se pixelan al escalar sin importar el tamaño.</label>
+                        <label><input type="radio" name="q2" value="c"> Son ideales para fotografías complejas.</label>
+                        <label><input type="radio" name="q2" value="d"> Se cargan más rápido en todos los escenarios.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>3. ¿En qué lenguaje está basado el formato SVG?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="a"> HTML</label>
+                        <label><input type="radio" name="q3" value="b"> CSS</label>
+                        <label><input type="radio" name="q3" value="c"> XML</label>
+                        <label><input type="radio" name="q3" value="d"> JavaScript</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>4. ¿Qué etiqueta HTML se utiliza para insertar código SVG directamente en el documento?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="a"> <code>&lt;image&gt;</code></label>
+                        <label><input type="radio" name="q4" value="b"> <code>&lt;svg&gt;</code></label>
+                        <label><input type="radio" name="q4" value="c"> <code>&lt;graphic&gt;</code></label>
+                        <label><input type="radio" name="q4" value="d"> <code>&lt;vector&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>5. ¿Qué atributo se utiliza para especificar el color de relleno de una forma SVG como un círculo o un rectángulo?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="a"> <code>color</code></label>
+                        <label><input type="radio" name="q5" value="b"> <code>background</code></label>
+                        <label><input type="radio" name="q5" value="c"> <code>fill</code></label>
+                        <label><input type="radio" name="q5" value="d"> <code>paint</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>6. ¿Cuál de los siguientes elementos SVG se utiliza para dibujar una línea recta?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q6" value="a"> <code>&lt;path&gt;</code></label>
+                        <label><input type="radio" name="q6" value="b"> <code>&lt;line&gt;</code></label>
+                        <label><input type="radio" name="q6" value="c"> <code>&lt;stroke&gt;</code></label>
+                        <label><input type="radio" name="q6" value="d"> <code>&lt;polyline&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>7. Para dibujar un círculo en SVG, ¿qué atributos se utilizan para definir las coordenadas de su centro y su radio, respectivamente?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q7" value="a"> <code>x</code>, <code>y</code>, <code>radius</code></label>
+                        <label><input type="radio" name="q7" value="b"> <code>cx</code>, <code>cy</code>, <code>r</code></label>
+                        <label><input type="radio" name="q7" value="c"> <code>center-x</code>, <code>center-y</code>, <code>radius</code></label>
+                        <label><input type="radio" name="q7" value="d"> <code>start-x</code>, <code>start-y</code>, <code>end-x</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>8. ¿Qué atributo se utiliza para especificar el ancho del contorno (stroke) de una forma SVG?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q8" value="a"> <code>border-width</code></label>
+                        <label><input type="radio" name="q8" value="b"> <code>line-width</code></label>
+                        <label><input type="radio" name="q8" value="c"> <code>stroke-width</code></label>
+                        <label><input type="radio" name="q8" value="d"> <code>outline-width</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>9. ¿Es posible estilizar elementos SVG directamente con CSS?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q9" value="a"> No, solo con atributos inline en el SVG.</label>
+                        <label><input type="radio" name="q9" value="b"> Sí, usando selectores CSS normales (ej. <code>svg circle { ... }</code>).</label>
+                        <label><input type="radio" name="q9" value="c"> Solo si el SVG se carga como un archivo externo.</label>
+                        <label><input type="radio" name="q9" value="d"> Solo si se usa JavaScript para aplicar estilos.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>10. Para dibujar un rectángulo con esquinas redondeadas, ¿qué atributos adicionales se utilizan?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q10" value="a"> <code>corner-radius-x</code>, <code>corner-radius-y</code></label>
+                        <label><input type="radio" name="q10" value="b"> <code>border-radius-x</code>, <code>border-radius-y</code></label>
+                        <label><input type="radio" name="q10" value="c"> <code>rx</code>, <code>ry</code></label>
+                        <label><input type="radio" name="q10" value="d"> <code>round-x</code>, <code>round-y</code></label>
+                    </div>
+                </div>
+
+                <button type="button" class="submit-quiz-button" id="checkAnswersBtn">Ver Resultados</button>
+            </form>
+
+            <div id="quizResults" class="quiz-results">
+                <p>Resultados del Test:</p>
+                <ol id="resultsList"></ol>
+                <p id="scoreSummary"></p>
+                <button type="button" class="reveal-button" id="resetQuizBtn" style="display: none;">Volver a Intentar</button>
+            </div>
+        </div>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="25SVG.html">Volver a la Clase 25: SVG: Gráficos Vectoriales Escalables.</a></li>
+                <li><a href="26RutasEnSVG.html">Clase 26: Rutas en SVG (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script>
+        // Función para mostrar/ocultar soluciones de ejercicios
+        function toggleSolution(button, solutionId) {
+            const solution = document.getElementById(solutionId);
+            if (solution.style.display === 'block') {
+                solution.style.display = 'none';
+                button.textContent = 'Mostrar Solución';
+            } else {
+                solution.style.display = 'block';
+                button.textContent = 'Ocultar Solución';
+            }
+        }
+
+        // Datos del quiz
+        const quizAnswers = {
+            q1: 'b', // Scalable Vector Graphics
+            q2: 'b', // No se pixelan al escalar sin importar el tamaño.
+            q3: 'c', // XML
+            q4: 'b', // <code>&lt;svg&gt;</code>
+            q5: 'c', // fill
+            q6: 'b', // <code>&lt;line&gt;</code>
+            q7: 'b', // cx, cy, r
+            q8: 'c', // stroke-width
+            q9: 'b', // Sí, usando selectores CSS normales (ej. <code>svg circle { ... }</code>).
+            q10: 'c' // rx, ry
+        };
+
+        // Asignar eventos a los botones una vez que el DOM esté completamente cargado
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            if (checkAnswersBtn) {
+                checkAnswersBtn.addEventListener('click', checkQuiz);
+            }
+            if (resetQuizBtn) {
+                resetQuizBtn.addEventListener('click', resetQuiz);
+            }
+        });
+
+        function checkQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const resultsList = document.getElementById('resultsList');
+            const scoreSummary = document.getElementById('scoreSummary');
+            const quizResultsDiv = document.getElementById('quizResults');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            resultsList.innerHTML = ''; // Limpiar resultados anteriores
+            let score = 0;
+
+            for (let i = 1; i <= 10; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = quizForm.elements[questionName] ? quizForm.elements[questionName].value : '';
+                const correctAnswer = quizAnswers[questionName];
+
+                const listItem = document.createElement('li');
+                listItem.classList.add(selectedOption === correctAnswer ? 'correct' : 'incorrect');
+
+                // Obtener el texto de la opción seleccionada (preservando <code>)
+                let selectedAnswerText = 'No respondida';
+                if (selectedOption) {
+                    const selectedLabel = quizForm.querySelector(`input[name="${questionName}"][value="${selectedOption}"]`);
+                    if (selectedLabel) {
+                        const labelClone = selectedLabel.closest('label').cloneNode(true);
+                        labelClone.querySelector('input').remove();
+                        selectedAnswerText = labelClone.innerHTML.trim();
+                    }
+                }
+
+                // Obtener el texto de la opción correcta (preservando <code>)
+                const correctLabel = quizForm.querySelector(`input[name="${questionName}"][value="${correctAnswer}"]`);
+                let correctAnswerText = 'N/A';
+                if (correctLabel) {
+                    const correctLabelClone = correctLabel.closest('label').cloneNode(true);
+                    correctLabelClone.querySelector('input').remove();
+                    correctAnswerText = correctLabelClone.innerHTML.trim();
+                }
+
+                const questionText = document.createTextNode(`Pregunta ${i}: `);
+                listItem.appendChild(questionText);
+
+                if (selectedOption !== correctAnswer) {
+                    listItem.innerHTML += ` Tu respuesta: "${selectedAnswerText}".<br>`;
+                    const correctInfoSpan = document.createElement('span');
+                    correctInfoSpan.classList.add('correct-answer-info');
+                    correctInfoSpan.innerHTML = `Respuesta correcta: "${correctAnswerText}".`;
+                    listItem.appendChild(correctInfoSpan);
+                } else {
+                    listItem.innerHTML += ` Correcta.`;
+                    score++;
+                }
+
+                resultsList.appendChild(listItem);
+            }
+
+            scoreSummary.textContent = `Tu puntuación es: ${score} de 10 preguntas correctas.`;
+            quizResultsDiv.style.display = 'block'; // Mostrar la sección de resultados
+            quizResultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Desplazarse a los resultados
+
+            // Ocultar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'none';
+            // Mostrar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'inline-block';
+        }
+
+        function resetQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            quizForm.reset(); // Reinicia todos los radio buttons
+            document.getElementById('quizResults').style.display = 'none'; // Oculta los resultados
+            document.getElementById('resultsList').innerHTML = ''; // Limpia la lista de resultados
+            document.getElementById('scoreSummary').textContent = ''; // Limpia el resumen de puntuación
+
+            // Mostrar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'inline-block';
+            // Ocultar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

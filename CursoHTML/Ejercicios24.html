@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 24: Ejercicios de Canvas (Introducción)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/ejercicios_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
+    <style>
+        /* Estilos específicos para el canvas en los ejercicios */
+        .exercise-canvas {
+            border: 2px dashed #007bff;
+            background-color: #f0f8ff;
+            display: block;
+            margin: 15px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Clase 24: Ejercicios de Canvas: Dibujo con JavaScript (Introducción)</h1>
+
+        <div class="exercise-section">
+            <h3>Ejercicios Prácticos de la Clase 24</h3>
+            <p>Para consolidar tus conocimientos sobre la etiqueta <code>&lt;canvas&gt;</code> y el dibujo de formas básicas con JavaScript, te propongo los siguientes ejercicios. Intenta resolverlos por ti mismo antes de ver la solución.</p>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 1: Crear un Canvas Básico</h4>
+                <p>Crea un elemento <code>&lt;canvas&gt;</code> con el <code>id="ejercicio1Canvas"</code>, un ancho de 300 píxeles y una altura de 150 píxeles. Asegúrate de que tenga un texto de respaldo si el navegador no lo soporta.</p>
+                <div class="exercise-preview">
+                    <canvas id="ejercicio1Canvas" width="300" height="150" class="exercise-canvas">
+                        Tu navegador no soporta el elemento canvas.
+                    </canvas>
+                </div>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution1')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution1">
+                    <pre><code>&lt;canvas id="ejercicio1Canvas" width="300" height="150"&gt;
+    Tu navegador no soporta el elemento canvas.
+&lt;/canvas&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 2: Dibujar un Rectángulo Relleno</h4>
+                <p>En el canvas del Ejercicio 1 (o crea uno nuevo con id <code>"ejercicio2Canvas"</code>, 200x100px), utiliza JavaScript para dibujar un rectángulo relleno de color verde. Debe empezar en las coordenadas (20, 20) y tener un ancho de 100 píxeles y una altura de 50 píxeles.</p>
+                <div class="exercise-preview">
+                    <canvas id="ejercicio2Canvas" width="200" height="100" class="exercise-canvas">
+                        Tu navegador no soporta el elemento canvas.
+                    </canvas>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                            const canvas = document.getElementById('ejercicio2Canvas');
+                            if (canvas.getContext) {
+                                const ctx = canvas.getContext('2d');
+                                ctx.fillStyle = 'green';
+                                ctx.fillRect(20, 20, 100, 50);
+                            }
+                        });
+                    </script>
+                </div>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution2')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution2">
+                    <pre><code class="language-html">&lt;canvas id="ejercicio2Canvas" width="200" height="100"&gt;
+    Tu navegador no soporta el elemento canvas.
+&lt;/canvas&gt;
+&lt;script&gt;
+    document.addEventListener('DOMContentLoaded', () => {
+        const canvas = document.getElementById('ejercicio2Canvas');
+        if (canvas.getContext) {
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = 'green';
+            ctx.fillRect(20, 20, 100, 50);
+        }
+    });
+&lt;/script&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 3: Dibujar un Contorno de Rectángulo</h4>
+                <p>En un nuevo canvas (id <code>"ejercicio3Canvas"</code>, 250x120px), dibuja el contorno de un rectángulo de color azul, con un ancho de línea de 4 píxeles. El rectángulo debe empezar en (30, 30) y tener un ancho de 150 píxeles y una altura de 60 píxeles.</p>
+                <div class="exercise-preview">
+                    <canvas id="ejercicio3Canvas" width="250" height="120" class="exercise-canvas">
+                        Tu navegador no soporta el elemento canvas.
+                    </canvas>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                            const canvas = document.getElementById('ejercicio3Canvas');
+                            if (canvas.getContext) {
+                                const ctx = canvas.getContext('2d');
+                                ctx.strokeStyle = 'blue';
+                                ctx.lineWidth = 4;
+                                ctx.strokeRect(30, 30, 150, 60);
+                            }
+                        });
+                    </script>
+                </div>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution3')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution3">
+                    <pre><code class="language-html">&lt;canvas id="ejercicio3Canvas" width="250" height="120"&gt;
+    Tu navegador no soporta el elemento canvas.
+&lt;/canvas&gt;
+&lt;script&gt;
+    document.addEventListener('DOMContentLoaded', () => {
+        const canvas = document.getElementById('ejercicio3Canvas');
+        if (canvas.getContext) {
+            const ctx = canvas.getContext('2d');
+            ctx.strokeStyle = 'blue';
+            ctx.lineWidth = 4;
+            ctx.strokeRect(30, 30, 150, 60);
+        }
+    });
+&lt;/script&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 4: Dibujar una Línea Simple</h4>
+                <p>En un nuevo canvas (id <code>"ejercicio4Canvas"</code>, 180x80px), dibuja una línea simple de color rojo con un ancho de 2 píxeles. La línea debe comenzar en (10, 10) y terminar en (170, 70).</p>
+                <div class="exercise-preview">
+                    <canvas id="ejercicio4Canvas" width="180" height="80" class="exercise-canvas">
+                        Tu navegador no soporta el elemento canvas.
+                    </canvas>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                            const canvas = document.getElementById('ejercicio4Canvas');
+                            if (canvas.getContext) {
+                                const ctx = canvas.getContext('2d');
+                                ctx.strokeStyle = 'red';
+                                ctx.lineWidth = 2;
+                                ctx.beginPath();
+                                ctx.moveTo(10, 10);
+                                ctx.lineTo(170, 70);
+                                ctx.stroke();
+                            }
+                        });
+                    </script>
+                </div>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution4')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution4">
+                    <pre><code class="language-html">&lt;canvas id="ejercicio4Canvas" width="180" height="80"&gt;
+    Tu navegador no soporta el elemento canvas.
+&lt;/canvas&gt;
+&lt;script&gt;
+    document.addEventListener('DOMContentLoaded', () => {
+        const canvas = document.getElementById('ejercicio4Canvas');
+        if (canvas.getContext) {
+            const ctx = canvas.getContext('2d');
+            ctx.strokeStyle = 'red';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(10, 10);
+            ctx.lineTo(170, 70);
+            ctx.stroke();
+        }
+    });
+&lt;/script&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 5: Combinar Formas (Rectángulo y Línea)</h4>
+                <p>En un nuevo canvas (id <code>"ejercicio5Canvas"</code>, 300x200px), dibuja un rectángulo relleno de color amarillo (empieza en 50, 50; 100x80px). Luego, dibuja una línea negra con un ancho de 3 píxeles que vaya desde la esquina superior izquierda del canvas (0,0) hasta la esquina inferior derecha (300,200).</p>
+                <div class="exercise-preview">
+                    <canvas id="ejercicio5Canvas" width="300" height="200" class="exercise-canvas">
+                        Tu navegador no soporta el elemento canvas.
+                    </canvas>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                            const canvas = document.getElementById('ejercicio5Canvas');
+                            if (canvas.getContext) {
+                                const ctx = canvas.getContext('2d');
+
+                                // Rectángulo amarillo
+                                ctx.fillStyle = 'yellow';
+                                ctx.fillRect(50, 50, 100, 80);
+
+                                // Línea negra
+                                ctx.strokeStyle = 'black';
+                                ctx.lineWidth = 3;
+                                ctx.beginPath();
+                                ctx.moveTo(0, 0);
+                                ctx.lineTo(300, 200);
+                                ctx.stroke();
+                            }
+                        });
+                    </script>
+                </div>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution5')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution5">
+                    <pre><code class="language-html">&lt;canvas id="ejercicio5Canvas" width="300" height="200"&gt;
+    Tu navegador no soporta el elemento canvas.
+&lt;/canvas&gt;
+&lt;script&gt;
+    document.addEventListener('DOMContentLoaded', () => {
+        const canvas = document.getElementById('ejercicio5Canvas');
+        if (canvas.getContext) {
+            const ctx = canvas.getContext('2d');
+
+            // Rectángulo amarillo
+            ctx.fillStyle = 'yellow';
+            ctx.fillRect(50, 50, 100, 80);
+
+            // Línea negra
+            ctx.strokeStyle = 'black';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.moveTo(0, 0);
+            ctx.lineTo(300, 200);
+            ctx.stroke();
+        }
+    });
+&lt;/script&gt;</code></pre>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="quiz-section">
+            <h3>Quiz de la Clase 24: Canvas: Dibujo con JavaScript (Introducción)</h3>
+            <p>¡Pon a prueba tus conocimientos con este quiz de 10 preguntas!</p>
+            <form id="quizForm">
+                <div class="quiz-question">
+                    <h4>1. ¿Qué etiqueta HTML se utiliza para crear un área de dibujo en el documento?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="a"> <code>&lt;draw&gt;</code></label>
+                        <label><input type="radio" name="q1" value="b"> <code>&lt;graphics&gt;</code></label>
+                        <label><input type="radio" name="q1" value="c"> <code>&lt;canvas&gt;</code></label>
+                        <label><input type="radio" name="q1" value="d"> <code>&lt;svg&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>2. ¿Qué tecnología se utiliza principalmente para dibujar gráficos dentro de un elemento <code>&lt;canvas&gt;</code>?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="a"> CSS</label>
+                        <label><input type="radio" name="q2" value="b"> jQuery</label>
+                        <label><input type="radio" name="q2" value="c"> JavaScript</label>
+                        <label><input type="radio" name="q2" value="d"> PHP</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>3. ¿Cómo se obtiene el contexto de dibujo 2D de un elemento canvas en JavaScript?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="a"> <code>canvas.getGraphics('2d')</code></label>
+                        <label><input type="radio" name="q3" value="b"> <code>canvas.drawContext('2d')</code></label>
+                        <label><input type="radio" name="q3" value="c"> <code>canvas.getContext('2d')</code></label>
+                        <label><input type="radio" name="q3" value="d"> <code>canvas.getApi('2d')</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>4. ¿Cuál es el propósito del método <code>fillRect(x, y, width, height)</code> en el contexto 2D?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="a"> Dibuja el contorno de un rectángulo.</label>
+                        <label><input type="radio" name="q4" value="b"> Rellena un rectángulo con el color actual de relleno.</label>
+                        <label><input type="radio" name="q4" value="c"> Borra un área rectangular del canvas.</label>
+                        <label><input type="radio" name="q4" value="d"> Crea un nuevo trazado de rectángulo.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>5. ¿Qué método se usa para iniciar un nuevo trazado o ruta antes de dibujar líneas o formas complejas?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="a"> <code>startPath()</code></label>
+                        <label><input type="radio" name="q5" value="b"> <code>initPath()</code></label>
+                        <label><input type="radio" name="q5" value="c"> <code>beginPath()</code></label>
+                        <label><input type="radio" name="q5" value="d"> <code>newPath()</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>6. El método <code>moveTo(x, y)</code> en el contexto 2D tiene la función de:</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q6" value="a"> Dibujar una línea desde el punto actual hasta (x, y).</label>
+                        <label><input type="radio" name="q6" value="b"> Mover el punto de partida del dibujo a las coordenadas (x, y) sin dibujar una línea.</label>
+                        <label><input type="radio" name="q6" value="c"> Mover el canvas en el espacio (x, y).</label>
+                        <label><input type="radio" name="q6" value="d"> Configurar el origen del sistema de coordenadas.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>7. ¿Cuál es el valor por defecto de las coordenadas (0,0) en un canvas?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q7" value="a"> El centro del canvas.</label>
+                        <label><input type="radio" name="q7" value="b"> La esquina superior derecha del canvas.</label>
+                        <label><input type="radio" name="q7" value="c"> La esquina inferior izquierda del canvas.</label>
+                        <label><input type="radio" name="q7" value="d"> La esquina superior izquierda del canvas.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>8. Si defines el ancho y alto de un canvas solo con CSS, ¿qué problema podrías encontrar?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q8" value="a"> El canvas no se mostrará en absoluto.</label>
+                        <label><input type="radio" name="q8" value="b"> El contenido dibujado dentro del canvas podría aparecer escalado o distorsionado.</label>
+                        <label><input type="radio" name="q8" value="c"> Solo podrás dibujar líneas, no rectángulos.</label>
+                        <label><input type="radio" name="q8" value="d"> El canvas solo funcionará en navegadores específicos.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>9. ¿Qué propiedad del contexto 2D se utiliza para establecer el color de relleno para las formas?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q9" value="a"> <code>ctx.color</code></label>
+                        <label><input type="radio" name="q9" value="b"> <code>ctx.fillColor</code></label>
+                        <label><input type="radio" name="q9" value="c"> <code>ctx.backgroundColor</code></label>
+                        <label><input type="radio" name="q9" value="d"> <code>ctx.fillStyle</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>10. ¿Cuál de los siguientes métodos se utiliza para dibujar el contorno de un trazado (como una línea o una forma definida con <code>lineTo</code>)?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q10" value="a"> <code>draw()</code></label>
+                        <label><input type="radio" name="q10" value="b"> <code>trace()</code></label>
+                        <label><input type="radio" name="q10" value="c"> <code>stroke()</code></label>
+                        <label><input type="radio" name="q10" value="d"> <code>outline()</code></label>
+                    </div>
+                </div>
+
+                <button type="button" class="submit-quiz-button" id="checkAnswersBtn">Ver Resultados</button>
+            </form>
+
+            <div id="quizResults" class="quiz-results">
+                <p>Resultados del Test:</p>
+                <ol id="resultsList"></ol>
+                <p id="scoreSummary"></p>
+                <button type="button" class="reveal-button" id="resetQuizBtn" style="display: none;">Volver a Intentar</button>
+            </div>
+        </div>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="24CanvasDibujoConJavaScript.html">Volver a la Clase 24: Canvas: Dibujo con JavaScript (Introducción).</a></li>
+                <li><a href="25ManejoDeTextoEImagenesEnCanvas.html">Clase 25: Manejo de Texto e Imágenes en Canvas (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script>
+        // Función para mostrar/ocultar soluciones de ejercicios
+        function toggleSolution(button, solutionId) {
+            const solution = document.getElementById(solutionId);
+            if (solution.style.display === 'block') {
+                solution.style.display = 'none';
+                button.textContent = 'Mostrar Solución';
+            } else {
+                solution.style.display = 'block';
+                button.textContent = 'Ocultar Solución';
+            }
+        }
+
+        // Datos del quiz
+        const quizAnswers = {
+            q1: 'c', // <canvas>
+            q2: 'c', // JavaScript
+            q3: 'c', // canvas.getContext('2d')
+            q4: 'b', // Rellena un rectángulo con el color actual de relleno.
+            q5: 'c', // beginPath()
+            q6: 'b', // Mover el punto de partida del dibujo a las coordenadas (x, y) sin dibujar una línea.
+            q7: 'd', // La esquina superior izquierda del canvas.
+            q8: 'b', // El contenido dibujado dentro del canvas podría aparecer escalado o distorsionado.
+            q9: 'd', // ctx.fillStyle
+            q10: 'c' // stroke()
+        };
+
+        // Asignar eventos a los botones una vez que el DOM esté completamente cargado
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            if (checkAnswersBtn) {
+                checkAnswersBtn.addEventListener('click', checkQuiz);
+            }
+            if (resetQuizBtn) {
+                resetQuizBtn.addEventListener('click', resetQuiz);
+            }
+        });
+
+        function checkQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const resultsList = document.getElementById('resultsList');
+            const scoreSummary = document.getElementById('scoreSummary');
+            const quizResultsDiv = document.getElementById('quizResults');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            resultsList.innerHTML = ''; // Limpiar resultados anteriores
+            let score = 0;
+
+            for (let i = 1; i <= 10; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = quizForm.elements[questionName] ? quizForm.elements[questionName].value : '';
+                const correctAnswer = quizAnswers[questionName];
+
+                const listItem = document.createElement('li');
+                listItem.classList.add(selectedOption === correctAnswer ? 'correct' : 'incorrect');
+
+                // Obtener el texto de la opción seleccionada (preservando <code>)
+                let selectedAnswerText = 'No respondida';
+                if (selectedOption) {
+                    const selectedLabel = quizForm.querySelector(`input[name="${questionName}"][value="${selectedOption}"]`);
+                    if (selectedLabel) {
+                        const labelClone = selectedLabel.closest('label').cloneNode(true);
+                        labelClone.querySelector('input').remove();
+                        selectedAnswerText = labelClone.innerHTML.trim();
+                    }
+                }
+
+                // Obtener el texto de la opción correcta (preservando <code>)
+                const correctLabel = quizForm.querySelector(`input[name="${questionName}"][value="${correctAnswer}"]`);
+                let correctAnswerText = 'N/A';
+                if (correctLabel) {
+                    const correctLabelClone = correctLabel.closest('label').cloneNode(true);
+                    correctLabelClone.querySelector('input').remove();
+                    correctAnswerText = correctLabelClone.innerHTML.trim();
+                }
+
+                const questionText = document.createTextNode(`Pregunta ${i}: `);
+                listItem.appendChild(questionText);
+
+                if (selectedOption !== correctAnswer) {
+                    listItem.innerHTML += ` Tu respuesta: "${selectedAnswerText}".<br>`;
+                    const correctInfoSpan = document.createElement('span');
+                    correctInfoSpan.classList.add('correct-answer-info');
+                    correctInfoSpan.innerHTML = `Respuesta correcta: "${correctAnswerText}".`;
+                    listItem.appendChild(correctInfoSpan);
+                } else {
+                    listItem.innerHTML += ` Correcta.`;
+                    score++;
+                }
+
+                resultsList.appendChild(listItem);
+            }
+
+            scoreSummary.textContent = `Tu puntuación es: ${score} de 10 preguntas correctas.`;
+            quizResultsDiv.style.display = 'block'; // Mostrar la sección de resultados
+            quizResultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Desplazarse a los resultados
+
+            // Ocultar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'none';
+            // Mostrar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'inline-block';
+        }
+
+        function resetQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            quizForm.reset(); // Reinicia todos los radio buttons
+            document.getElementById('quizResults').style.display = 'none'; // Oculta los resultados
+            document.getElementById('resultsList').innerHTML = ''; // Limpia la lista de resultados
+            document.getElementById('scoreSummary').textContent = ''; // Limpia el resumen de puntuación
+
+            // Mostrar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'inline-block';
+            // Ocultar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

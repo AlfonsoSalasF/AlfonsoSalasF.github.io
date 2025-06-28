@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 23: Ejercicios de Subtítulos y Pistas de Texto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/ejercicios_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Clase 23: Ejercicios de Subtítulos y Pistas de Texto para Video</h1>
+
+        <div class="exercise-section">
+            <h3>Ejercicios Prácticos de la Clase 23</h3>
+            <p>Para consolidar tus conocimientos sobre la etiqueta <code>&lt;track&gt;</code> y los archivos .vtt, te propongo los siguientes ejercicios. Intenta resolverlos por ti mismo antes de ver la solución.</p>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 1: Subtítulos en Español e Inglés</h4>
+                <p>Crea un elemento de video para <code>"pelicula.mp4"</code> (ancho: 640, alto: 360, con controles). Añade dos pistas de subtítulos: una en español (<code>"pistas/pelicula_es.vtt"</code>) etiquetada como "Español" y otra en inglés (<code>"pistas/pelicula_en.vtt"</code>) etiquetada como "English". La pista en español debe ser la predeterminada.</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution1')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution1">
+                    <pre><code>&lt;video controls width="640" height="360"&gt;
+    &lt;source src="video/pelicula.mp4" type="video/mp4"&gt;
+    &lt;track kind="subtitles" src="pistas/pelicula_es.vtt" srclang="es" label="Español" default&gt;
+    &lt;track kind="subtitles" src="pistas/pelicula_en.vtt" srclang="en" label="English"&gt;
+    Tu navegador no soporta el video.
+&lt;/video&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 2: Leyendas (Captions) para Accesibilidad</h4>
+                <p>Añade un video llamado <code>"documental.mp4"</code> (ancho: 720, alto: 405, con controles). Incluye una pista de leyendas (captions) en español, con el archivo <code>"pistas/documental_captions_es.vtt"</code> y la etiqueta "Leyendas para Sordos".</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution2')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution2">
+                    <pre><code>&lt;video controls width="720" height="405"&gt;
+    &lt;source src="video/documental.mp4" type="video/mp4"&gt;
+    &lt;track kind="captions" src="pistas/documental_captions_es.vtt" srclang="es" label="Leyendas para Sordos"&gt;
+    Tu navegador no soporta el video.
+&lt;/video&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 3: Pista de Capítulos</h4>
+                <p>Inserta un video de una conferencia (<code>"conferencia.mp4"</code>, 800x450, con controles) y añade una pista de capítulos utilizando el archivo <code>"pistas/conferencia_chapters.vtt"</code>. La etiqueta para esta pista debe ser "Navegación por Capítulos".</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution3')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution3">
+                    <pre><code>&lt;video controls width="800" height="450"&gt;
+    &lt;source src="video/conferencia.mp4" type="video/mp4"&gt;
+    &lt;track kind="chapters" src="pistas/conferencia_chapters.vtt" srclang="es" label="Navegación por Capítulos"&gt;
+    Tu navegador no soporta el video.
+&lt;/video&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 4: Pista de Descripción de Audio (para scripts)</h4>
+                <p>Crea un video (<code>"tour.mp4"</code>, 960x540, sin controles) al que le añadirás una pista de "descripciones" con el archivo <code>"pistas/tour_descripciones.vtt"</code> y la etiqueta "Descripciones para lectores de pantalla". Este video se controlará por JS, así que no necesita controles nativos.</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution4')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution4">
+                    <pre><code>&lt;video src="video/tour.mp4" width="960" height="540"&gt;
+    &lt;track kind="descriptions" src="pistas/tour_descripciones.vtt" srclang="es" label="Descripciones para lectores de pantalla"&gt;
+    Tu navegador no soporta el video.
+&lt;/video&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 5: Archivo .vtt de ejemplo (solo contenido)</h4>
+                <p>Crea el contenido de un archivo <code>"saludo.vtt"</code> que contenga dos cues:</p>
+                <ul>
+                    <li>Primer cue: de 00:00:00.500 a 00:00:03.000, con el texto "¡Bienvenidos a la clase 23!".</li>
+                    <li>Segundo cue: de 00:00:04.000 a 00:00:07.500, con el texto "Hoy aprenderemos sobre subtítulos.".</li>
+                </ul>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution5')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution5">
+                    <pre><code>WEBVTT
+
+1
+00:00:00.500 --> 00:00:03.000
+¡Bienvenidos a la clase 23!
+
+2
+00:00:04.000 --> 00:00:07.500
+Hoy aprenderemos sobre subtítulos.</code></pre>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="quiz-section">
+            <h3>Quiz de la Clase 23: Subtítulos y Pistas de Texto para Video</h3>
+            <p>¡Pon a prueba tus conocimientos con este quiz de 10 preguntas!</p>
+            <form id="quizForm">
+                <div class="quiz-question">
+                    <h4>1. ¿Qué etiqueta se utiliza para añadir pistas de texto sincronizadas a elementos <code>&lt;audio&gt;</code> o <code>&lt;video&gt;</code>?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="a"> <code>&lt;subtitle&gt;</code></label>
+                        <label><input type="radio" name="q1" value="b"> <code>&lt;texttrack&gt;</code></label>
+                        <label><input type="radio" name="q1" value="c"> <code>&lt;track&gt;</code></label>
+                        <label><input type="radio" name="q1" value="d"> <code>&lt;caption&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>2. ¿Qué atributo de la etiqueta <code>&lt;track&gt;</code> define la función o propósito de la pista de texto?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="a"> <code>type</code></label>
+                        <label><input type="radio" name="q2" value="b"> <code>role</code></label>
+                        <label><input type="radio" name="q2" value="c"> <code>kind</code></label>
+                        <label><input type="radio" name="q2" value="d"> <code>purpose</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>3. ¿Qué tipo de pista (<code>kind</code>) está diseñada para usuarios sordos o con problemas de audición, incluyendo diálogos y sonidos no verbales?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="a"> <code>subtitles</code></label>
+                        <label><input type="radio" name="q3" value="b"> <code>captions</code></label>
+                        <label><input type="radio" name="q3" value="c"> <code>descriptions</code></label>
+                        <label><input type="radio" name="q3" value="d"> <code>accessibility</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>4. ¿Qué atributo se utiliza para indicar el idioma de la pista de texto?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="a"> <code>lang</code></label>
+                        <label><input type="radio" name="q4" value="b"> <code>language</code></label>
+                        <label><input type="radio" name="q4" value="c"> <code>srclang</code></label>
+                        <label><input type="radio" name="q4" value="d"> <code>charset</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>5. ¿Cuál es la extensión de archivo común para las pistas de texto WebVTT?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="a"> <code>.txt</code></label>
+                        <label><input type="radio" name="q5" value="b"> <code>.srt</code></label>
+                        <label><input type="radio" name="q5" value="c"> <code>.vtt</code></label>
+                        <label><input type="radio" name="q5" value="d"> <code>.webtext</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>6. Si deseas que una pista de subtítulos sea la seleccionada por defecto al cargar el video, ¿qué atributo añadirías a la etiqueta <code>&lt;track&gt;</code>?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q6" value="a"> <code>selected</code></label>
+                        <label><input type="radio" name="q6" value="b"> <code>default</code></label>
+                        <label><input type="radio" name="q6" value="c"> <code>primary</code></label>
+                        <label><input type="radio" name="q6" value="d"> <code>autoselect</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>7. ¿Qué tipo de pista (<code>kind</code>) se usa para proporcionar puntos de referencia para la navegación dentro del video?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q7" value="a"> <code>timestamps</code></label>
+                        <label><input type="radio" name="q7" value="b"> <code>sections</code></label>
+                        <label><input type="radio" name="q7" value="c"> <code>chapters</code></label>
+                        <label><input type="radio" name="q7" value="d"> <code>navigation</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>8. ¿Cuál es la primera línea que debe aparecer en un archivo WebVTT (.vtt)?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q8" value="a"> <code>START</code></label>
+                        <label><input type="radio" name="q8" value="b"> <code>WEBVTT</code></label>
+                        <label><input type="radio" name="q8" value="c"> <code>TRACK DATA</code></label>
+                        <label><input type="radio" name="q8" value="d"> <code>HTML5 TRACK</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>9. El atributo <code>label</code> en <code>&lt;track&gt;</code> se utiliza para:</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q9" value="a"> Dar un nombre único a la pista para JavaScript.</label>
+                        <label><input type="radio" name="q9" value="b"> Proporcionar un título legible que el navegador puede mostrar al usuario.</label>
+                        <label><input type="radio" name="q9" value="c"> Indicar el idioma de los subtítulos.</label>
+                        <label><input type="radio" name="q9" value="d"> Establecer el color de los subtítulos.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>10. ¿Dónde se debe colocar la etiqueta <code>&lt;track&gt;</code> dentro de un elemento <code>&lt;video&gt;</code> o <code>&lt;audio&gt;</code>?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q10" value="a"> Antes de las etiquetas <code>&lt;source&gt;</code>.</label>
+                        <label><input type="radio" name="q10" value="b"> Después de las etiquetas <code>&lt;source&gt;</code> y antes del texto de respaldo.</label>
+                        <label><input type="radio" name="q10" value="c"> Al final del elemento <code>&lt;video&gt;</code> o <code>&lt;audio&gt;</code>, después del texto de respaldo.</label>
+                        <label><input type="radio" name="q10" value="d"> Fuera del elemento <code>&lt;video&gt;</code> o <code>&lt;audio&gt;</code>.</label>
+                    </div>
+                </div>
+
+                <button type="button" class="submit-quiz-button" id="checkAnswersBtn">Ver Resultados</button>
+            </form>
+
+            <div id="quizResults" class="quiz-results">
+                <p>Resultados del Test:</p>
+                <ol id="resultsList"></ol>
+                <p id="scoreSummary"></p>
+                <button type="button" class="reveal-button" id="resetQuizBtn" style="display: none;">Volver a Intentar</button>
+            </div>
+        </div>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="23SubtitulosYPistasDeTextoParaVideo.html">Volver a la Clase 23: Subtítulos y Pistas de Texto para Video.</a></li>
+                <li><a href="24ManejoDeMultimediaConJavaScript.html">Clase 24: Manejo de Multimedia con JavaScript (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script>
+        // Función para mostrar/ocultar soluciones de ejercicios
+        function toggleSolution(button, solutionId) {
+            const solution = document.getElementById(solutionId);
+            if (solution.style.display === 'block') {
+                solution.style.display = 'none';
+                button.textContent = 'Mostrar Solución';
+            } else {
+                solution.style.display = 'block';
+                button.textContent = 'Ocultar Solución';
+            }
+        }
+
+        // Datos del quiz
+        const quizAnswers = {
+            q1: 'c', // <track>
+            q2: 'c', // kind
+            q3: 'b', // captions
+            q4: 'c', // srclang
+            q5: 'c', // .vtt
+            q6: 'b', // default
+            q7: 'c', // chapters
+            q8: 'b', // WEBVTT
+            q9: 'b', // Proporcionar un título legible que el navegador puede mostrar al usuario.
+            q10: 'b' // Después de las etiquetas <source> y antes del texto de respaldo.
+        };
+
+        // Asignar eventos a los botones una vez que el DOM esté completamente cargado
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            if (checkAnswersBtn) {
+                checkAnswersBtn.addEventListener('click', checkQuiz);
+            }
+            if (resetQuizBtn) {
+                resetQuizBtn.addEventListener('click', resetQuiz);
+            }
+        });
+
+        function checkQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const resultsList = document.getElementById('resultsList');
+            const scoreSummary = document.getElementById('scoreSummary');
+            const quizResultsDiv = document.getElementById('quizResults');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            resultsList.innerHTML = ''; // Limpiar resultados anteriores
+            let score = 0;
+
+            for (let i = 1; i <= 10; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = quizForm.elements[questionName] ? quizForm.elements[questionName].value : '';
+                const correctAnswer = quizAnswers[questionName];
+
+                const listItem = document.createElement('li');
+                listItem.classList.add(selectedOption === correctAnswer ? 'correct' : 'incorrect');
+
+                // Obtener el texto de la opción seleccionada (preservando <code>)
+                let selectedAnswerText = 'No respondida';
+                if (selectedOption) {
+                    const selectedLabel = quizForm.querySelector(`input[name="${questionName}"][value="${selectedOption}"]`);
+                    if (selectedLabel) {
+                        const labelClone = selectedLabel.closest('label').cloneNode(true);
+                        labelClone.querySelector('input').remove();
+                        selectedAnswerText = labelClone.innerHTML.trim();
+                    }
+                }
+
+                // Obtener el texto de la opción correcta (preservando <code>)
+                const correctLabel = quizForm.querySelector(`input[name="${questionName}"][value="${correctAnswer}"]`);
+                let correctAnswerText = 'N/A';
+                if (correctLabel) {
+                    const correctLabelClone = correctLabel.closest('label').cloneNode(true);
+                    correctLabelClone.querySelector('input').remove();
+                    correctAnswerText = correctLabelClone.innerHTML.trim();
+                }
+
+                const questionText = document.createTextNode(`Pregunta ${i}: `);
+                listItem.appendChild(questionText);
+
+                if (selectedOption !== correctAnswer) {
+                    listItem.innerHTML += ` Tu respuesta: "${selectedAnswerText}".<br>`;
+                    const correctInfoSpan = document.createElement('span');
+                    correctInfoSpan.classList.add('correct-answer-info');
+                    correctInfoSpan.innerHTML = `Respuesta correcta: "${correctAnswerText}".`;
+                    listItem.appendChild(correctInfoSpan);
+                } else {
+                    listItem.innerHTML += ` Correcta.`;
+                    score++;
+                }
+
+                resultsList.appendChild(listItem);
+            }
+
+            scoreSummary.textContent = `Tu puntuación es: ${score} de 10 preguntas correctas.`;
+            quizResultsDiv.style.display = 'block'; // Mostrar la sección de resultados
+            quizResultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Desplazarse a los resultados
+
+            // Ocultar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'none';
+            // Mostrar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'inline-block';
+        }
+
+        function resetQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            quizForm.reset(); // Reinicia todos los radio buttons
+            document.getElementById('quizResults').style.display = 'none'; // Oculta los resultados
+            document.getElementById('resultsList').innerHTML = ''; // Limpia la lista de resultados
+            document.getElementById('scoreSummary').textContent = ''; // Limpia el resumen de puntuación
+
+            // Mostrar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'inline-block';
+            // Ocultar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

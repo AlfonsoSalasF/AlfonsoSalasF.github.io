@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 32: Ejercicios de Web Components (Concepto Básico)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/ejercicios_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
+    <style>
+        .code-example-inline {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .interactive-section {
+            background-color: #eaf6ff;
+            border: 1px solid #cce7ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: flex-start;
+        }
+        .interactive-section button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .interactive-section button:hover {
+            background-color: #0056b3;
+        }
+        .component-output {
+            margin-top: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        /* Estilos para el Custom Element en Ejercicio 1 y 2 */
+        mi-saludo, mi-card {
+            display: block; /* Para que ocupen su propia línea */
+            margin-bottom: 10px;
+        }
+
+        /* Estilos dentro del Shadow DOM para Ejercicio 2 */
+        template#card-template style {
+            display: block; /* Para que el navegador lo interprete */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Clase 32: Ejercicios de Web Components (Concepto Básico)</h1>
+
+        <div class="exercise-section">
+            <h3>Ejercicios Prácticos de la Clase 32</h3>
+            <p>Estos ejercicios te ayudarán a entender los conceptos básicos de los Web Components, aunque su implementación completa requiere JavaScript avanzado. Nos centraremos en la estructura HTML y la idea detrás de ellos.</p>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 1: Creación de un Custom Element Básico</h4>
+                <p>Crea un Custom Element llamado <code>&lt;mi-saludo&gt;</code> que simplemente muestre el texto "¡Hola desde un Web Component!" dentro de un párrafo. No necesitas usar Shadow DOM para este ejercicio, solo la base de Custom Elements.</p>
+                <div class="interactive-section">
+                    <mi-saludo></mi-saludo>
+                    <script>
+                        // Asegúrate de que el script se ejecuta después de que el custom element es definido
+                        class MiSaludo extends HTMLElement {
+                            constructor() {
+                                super();
+                                this.innerHTML = '<p>¡Hola desde un Web Component!</p>';
+                            }
+                        }
+                        customElements.define('mi-saludo', MiSaludo);
+                    </script>
+                </div>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution1')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution1">
+                    <p><strong>HTML y JavaScript (en el <code>&lt;body&gt;</code> o en un archivo JS importado):</strong></p>
+                    <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Ejercicio 1 - Web Component&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;mi-saludo&gt;&lt;/mi-saludo&gt;
+
+    &lt;script&gt;
+        class MiSaludo extends HTMLElement {
+            constructor() {
+                super(); // Siempre llamar a super()
+                this.innerHTML = '&lt;p&gt;¡Hola desde un Web Component!&lt;/p&gt;';
+            }
+        }
+        // Definir el elemento personalizado
+        customElements.define('mi-saludo', MiSaludo);
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+                    <p class="explanation-text">Este ejercicio demuestra la definición más básica de un Custom Element, donde el contenido se inserta directamente en el elemento principal sin encapsulación de Shadow DOM.</p>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 2: Uso de <code>&lt;template&gt;</code> y Shadow DOM</h4>
+                <p>Crea un Custom Element llamado <code>&lt;mi-card&gt;</code> que utilice un <code>&lt;template&gt;</code> para su estructura y adjunte un Shadow DOM. La tarjeta debe tener un título y un párrafo de contenido. Utiliza <code>&lt;slot&gt;</code> para permitir que el título y el contenido se pasen desde el HTML.</p>
+                <div class="interactive-section">
+                    <template id="card-template">
+                        <style>
+                            .card {
+                                border: 1px solid #ccc;
+                                padding: 15px;
+                                border-radius: 8px;
+                                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                                background-color: white;
+                            }
+                            h3 { color: #333; margin-top: 0; margin-bottom: 10px; }
+                            p { margin-bottom: 0; }
+                        </style>
+                        <div class="card">
+                            <h3><slot name="card-title">Título por Defecto</slot></h3>
+                            <p><slot name="card-content">Contenido por Defecto de la Tarjeta.</slot></p>
+                        </div>
+                    </template>
+                    <mi-card>
+                        <span slot="card-title">Mi Primera Tarjeta</span>
+                        <p slot="card-content">Este es el contenido de una tarjeta creada con Web Components.</p>
+                    </mi-card>
+                    <mi-card>
+                        <span slot="card-title">Otra Tarjeta</span>
+                        <p slot="card-content">Aquí va más información interesante sobre otro tema. Los componentes son reutilizables.</p>
+                    </mi-card>
+                    <script>
+                        class MiCard extends HTMLElement {
+                            constructor() {
+                                super();
+                                const shadowRoot = this.attachShadow({ mode: 'open' });
+                                const template = document.getElementById('card-template');
+                                // Clonar el contenido del template e insertarlo en el Shadow DOM
+                                shadowRoot.appendChild(template.content.cloneNode(true));
+                            }
+                        }
+                        customElements.define('mi-card', MiCard);
+                    </script>
+                </div>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution2')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution2">
+                    <p><strong>HTML con <code>&lt;template&gt;</code> y JavaScript para el Custom Element:</strong></p>
+                    <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Ejercicio 2 - Web Component con Shadow DOM&lt;/title&gt;
+    &lt;!-- Estilos para el custom element si no están en el Shadow DOM, o para el contenedor --&gt;
+    &lt;style&gt;
+        mi-card {
+            display: block; /* Asegura que el elemento ocupe su propio espacio */
+            margin-bottom: 20px;
+            max-width: 400px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Definición del template para la tarjeta --&gt;
+    &lt;template id="card-template"&gt;
+        &lt;style&gt;
+            /* Estilos encapsulados dentro del Shadow DOM */
+            .card {
+                border: 1px solid #ccc;
+                padding: 15px;
+                border-radius: 8px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                background-color: white;
+            }
+            h3 { color: #333; margin-top: 0; margin-bottom: 10px; }
+            p { margin-bottom: 0; }
+        &lt;/style&gt;
+        &lt;div class="card"&gt;
+            &lt;h3&gt;&lt;slot name="card-title"&gt;Título por Defecto&lt;/slot&gt;&lt;/h3&gt;
+            &lt;p&gt;&lt;slot name="card-content"&gt;Contenido por Defecto de la Tarjeta.&lt;/slot&gt;&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/template&gt;
+
+    &lt;!-- Uso del Custom Element --&gt;
+    &lt;mi-card&gt;
+        &lt;span slot="card-title"&gt;Mi Primera Tarjeta&lt;/span&gt;
+        &lt;p slot="card-content"&gt;Este es el contenido de una tarjeta creada con Web Components.&lt;/p&gt;
+    &lt;/mi-card&gt;
+
+    &lt;mi-card&gt;
+        &lt;span slot="card-title"&gt;Otra Tarjeta&lt;/span&gt;
+        &lt;p slot="card-content"&gt;Aquí va más información interesante sobre otro tema. Los componentes son reutilizables.&lt;/p&gt;
+    &lt;/mi-card&gt;
+
+    &lt;script&gt;
+        class MiCard extends HTMLElement {
+            constructor() {
+                super();
+                // Adjuntar el Shadow DOM al elemento
+                const shadowRoot = this.attachShadow({ mode: 'open' }); // 'open' para que sea accesible desde JS externo
+                
+                // Obtener el contenido del template
+                const template = document.getElementById('card-template');
+                
+                // Clonar el contenido del template e insertarlo en el Shadow DOM
+                shadowRoot.appendChild(template.content.cloneNode(true));
+            }
+        }
+        // Definir el elemento personalizado
+        customElements.define('mi-card', MiCard);
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+                    <p class="explanation-text">Este ejercicio demuestra cómo usar <code>&lt;template&gt;</code> para definir la estructura del componente y <code>Shadow DOM</code> para encapsularlo. Los <code>&lt;slot&gt;</code> permiten que el contenido se inyecte desde el HTML principal.</p>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 3: Comprendiendo la Modularidad y Reutilización</h4>
+                <p>Reflexiona sobre los dos ejercicios anteriores. Sin escribir código adicional, describe brevemente con tus propias palabras cómo los conceptos de <strong>Custom Elements</strong>, <strong>Shadow DOM</strong> y <strong>HTML Templates</strong> (a pesar de la obsolescencia de HTML Imports) contribuyen a:</p>
+                <ol>
+                    <li>La modularidad del código HTML, CSS y JavaScript.</li>
+                    <li>La reutilización de componentes en diferentes partes de una aplicación o incluso en diferentes proyectos.</li>
+                </ol>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution3')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution3">
+                    <p><strong>Respuesta de Ejemplo:</strong></p>
+                    <p><strong>1. Modularidad del código HTML, CSS y JavaScript:</strong></p>
+                    <ul>
+                        <li><strong>Custom Elements:</strong> Permiten agrupar un conjunto de elementos HTML, estilos y lógica JavaScript bajo una única etiqueta personalizada (ej. <code>&lt;mi-card&gt;</code>). Esto convierte una sección compleja de UI en una unidad autónoma y manejable, facilitando la organización del código.</li>
+                        <li><strong>Shadow DOM:</strong> Es clave para la modularidad al encapsular el CSS y el HTML dentro del componente. Esto significa que los estilos definidos dentro de un Web Component no afectarán al resto de la página, y los estilos globales de la página tampoco lo sobrescribirán por defecto. Esto previene conflictos y hace que cada componente sea independiente. La lógica JavaScript del componente también puede estar contenida, interactuando principalmente con su propio Shadow DOM.</li>
+                        <li><strong>HTML Templates:</strong> Aunque no son directamente sobre modularidad en tiempo de ejecución, permiten definir la estructura HTML de un componente en un lugar centralizado (el <code>&lt;template&gt;</code>). Esto significa que la "plantilla" de un componente puede ser reutilizada y clonada sin afectar otras instancias, manteniendo el HTML modular y separado de la lógica de renderizado.</li>
+                    </ul>
+                    <p><strong>2. Reutilización de componentes en diferentes partes/proyectos:</strong></p>
+                    <ul>
+                        <li><strong>Custom Elements:</strong> Una vez definido un <code>&lt;mi-card&gt;</code> o <code>&lt;mi-boton&gt;</code>, puedes simplemente usar esa etiqueta personalizada en cualquier parte de tu HTML, tantas veces como quieras, como si fuera un elemento HTML nativo. Esto elimina la necesidad de copiar y pegar grandes bloques de HTML repetidamente.</li>
+                        <li><strong>Encapsulación (Shadow DOM):</strong> Al tener estilos y estructura aislados, un componente se comporta de manera predecible dondequiera que se coloque. No tienes que preocuparte de que los estilos de una página interfieran con él, lo que lo hace "plug-and-play" y altamente reutilizable en diferentes contextos o incluso en proyectos totalmente distintos.</li>
+                        <li><strong>HTML Templates:</strong> La estructura definida en el <code>&lt;template&gt;</code> puede ser reutilizada para instanciar múltiples copias del componente. Esto es especialmente útil cuando tienes muchas instancias del mismo componente que necesitan una estructura idéntica pero con contenido variable (gracias a los <code>&lt;slot&gt;</code>).</li>
+                        <li><strong>Exportación/Importación con Módulos JS:</strong> Aunque HTML Imports está obsoleto, la capacidad de exportar las definiciones de Custom Elements como módulos JavaScript (<code>export class MyComponent { ... }</code>) y luego importarlas en otros archivos HTML o JS (<code>import './my-component.js';</code>) es lo que realmente permite la reutilización de estos componentes en cualquier proyecto web moderno.</li>
+                    </ul>
+                    <p class="explanation-text">Los Web Components, en conjunto, forman una base sólida para construir un sistema de diseño basado en componentes, facilitando la creación de interfaces de usuario complejas y su mantenimiento a largo plazo.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="quiz-section">
+            <h3>Quiz de la Clase 32: Web Components (Concepto Básico)</h3>
+            <p>¡Pon a prueba tus conocimientos con este quiz de 10 preguntas!</p>
+            <form id="quizForm">
+                <div class="quiz-question">
+                    <h4>1. ¿Cuál de las siguientes tecnologías NO es parte fundamental de los Web Components (en su implementación actual y relevante)?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="a"> Custom Elements</label>
+                        <label><input type="radio" name="q1" value="b"> Shadow DOM</label>
+                        <label><input type="radio" name="q1" value="c"> HTML Templates</label>
+                        <label><input type="radio" name="q1" value="d"> HTML Imports</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>2. ¿Qué característica permite definir tus propias etiquetas HTML personalizadas y con lógica?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="a"> Shadow DOM</label>
+                        <label><input type="radio" name="q2" value="b"> HTML Templates</label>
+                        <label><input type="radio" name="q2" value="c"> Custom Elements</label>
+                        <label><input type="radio" name="q2" value="d"> HTML Forms</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>3. El propósito principal de Shadow DOM es:</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="a"> Definir plantillas HTML que no se renderizan al cargar la página.</label>
+                        <label><input type="radio" name="q3" value="b"> Proporcionar encapsulación de estilos y estructura a un componente.</label>
+                        <label><input type="radio" name="q3" value="c"> Importar archivos HTML externos a tu documento.</label>
+                        <label><input type="radio" name="q3" value="d"> Crear animaciones complejas con JavaScript.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>4. ¿Qué etiqueta HTML se utiliza para definir fragmentos de HTML que no se renderizan inmediatamente pero pueden ser activados por JavaScript?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="a"> <code>&lt;fragment&gt;</code></label>
+                        <label><input type="radio" name="q4" value="b"> <code>&lt;template&gt;</code></label>
+                        <label><input type="radio" name="q4" value="c"> <code>&lt;content&gt;</code></label>
+                        <label><input type="radio" name="q4" value="d"> <code>&lt;script&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>5. ¿Cuál de las siguientes es una convención de nombres obligatoria para los Custom Elements?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="a"> Deben empezar con una letra mayúscula.</label>
+                        <label><input type="radio" name="q5" value="b"> Deben contener al menos un número.</label>
+                        <label><input type="radio" name="q5" value="c"> Deben contener al menos un guion (<code>-</code>).</label>
+                        <label><input type="radio" name="q5" value="d"> Deben tener un nombre único de una sola palabra.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>6. Si un Custom Element está usando Shadow DOM, ¿cómo se "proyecta" el contenido colocado entre sus etiquetas de apertura y cierre dentro del Shadow DOM?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q6" value="a"> Usando el atributo <code>innerhtml</code>.</label>
+                        <label><input type="radio" name="q6" value="b"> A través de la etiqueta <code>&lt;slot&gt;</code>.</label>
+                        <label><input type="radio" name="q6" value="c"> Se hace automáticamente sin necesidad de etiquetas especiales.</label>
+                        <label><input type="radio" name="q6" value="d"> Con una función JavaScript llamada <code>projectContent()</code>.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>7. ¿Qué método JavaScript se utiliza para adjuntar un Shadow DOM a un elemento?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q7" value="a"> <code>createElement()</code></label>
+                        <label><input type="radio" name="q7" value="b"> <code>createShadowRoot()</code></label>
+                        <label><input type="radio" name="q7" value="c"> <code>attachShadow()</code></label>
+                        <label><input type="radio" name="q7" value="d"> <code>appendShadow()</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>8. ¿Cuál es el principal beneficio de la "modularidad" que ofrecen los Web Components?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q8" value="a"> Reducir el número de archivos JavaScript.</label>
+                        <label><input type="radio" name="q8" value="b"> Crear unidades de código independientes y manejables.</label>
+                        <label><input type="radio" name="q8" value="c"> Eliminar la necesidad de CSS.</label>
+                        <label><input type="radio" name="q8" value="d"> Mejorar el rendimiento de carga de la página en un 50%.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>9. ¿Por qué se dice que los Web Components son "interoperables" con frameworks como React o Angular?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q9" value="a"> Porque fueron creados por los mismos equipos de desarrollo.</label>
+                        <label><input type="radio" name="q9" value="b"> Porque utilizan una sintaxis de componente idéntica.</label>
+                        <label><input type="radio" name="q9" value="c"> Porque son estándares nativos del navegador, no dependen de librerías específicas.</label>
+                        <label><input type="radio" name="q9" value="d"> Solo pueden interoperar si usas la misma versión de JavaScript.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>10. ¿Qué se utiliza ahora para importar Web Components definidos en archivos JavaScript, en lugar de HTML Imports (que está obsoleto)?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q10" value="a"> Etiquetas <code>&lt;link rel="stylesheet"&gt;</code></label>
+                        <label><input type="radio" name="q10" value="b"> Peticiones AJAX</label>
+                        <label><input type="radio" name="q10" value="c"> Módulos de JavaScript (<code>import</code>/<code>export</code>)</label>
+                        <label><input type="radio" name="q10" value="d"> XMLHttpRequests</label>
+                    </div>
+                </div>
+
+                <button type="button" class="submit-quiz-button" id="checkAnswersBtn">Ver Resultados</button>
+            </form>
+
+            <div id="quizResults" class="quiz-results">
+                <p>Resultados del Test:</p>
+                <ol id="resultsList"></ol>
+                <p id="scoreSummary"></p>
+                <button type="button" class="reveal-button" id="resetQuizBtn" style="display: none;">Volver a Intentar</button>
+            </div>
+        </div>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="32WebComponentsConceptoBasico.html">Volver a la Clase 32: Web Components (Concepto Básico).</a></li>
+                <li><a href="33SEOConWebComponentsYSPA.html">Clase 33: SEO con Web Components y SPA (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script>
+        // Función para mostrar/ocultar soluciones de ejercicios
+        function toggleSolution(button, solutionId) {
+            const solution = document.getElementById(solutionId);
+            if (solution.style.display === 'block') {
+                solution.style.display = 'none';
+                button.textContent = 'Mostrar Solución';
+            } else {
+                solution.style.display = 'block';
+                button.textContent = 'Ocultar Solución';
+            }
+        }
+
+        // Datos del quiz
+        const quizAnswers = {
+            q1: 'd', // HTML Imports
+            q2: 'c', // Custom Elements
+            q3: 'b', // Proporcionar encapsulación de estilos y estructura a un componente.
+            q4: 'b', // <template>
+            q5: 'c', // Deben contener al menos un guion (-).
+            q6: 'b', // A través de la etiqueta <slot>.
+            q7: 'c', // attachShadow()
+            q8: 'b', // Crear unidades de código independientes y manejables.
+            q9: 'c', // Porque son estándares nativos del navegador, no dependen de librerías específicas.
+            q10: 'c' // Módulos de JavaScript (import/export)
+        };
+
+        // Asignar eventos a los botones una vez que el DOM esté completamente cargado
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            if (checkAnswersBtn) {
+                checkAnswersBtn.addEventListener('click', checkQuiz);
+            }
+            if (resetQuizBtn) {
+                resetQuizBtn.addEventListener('click', resetQuiz);
+            }
+        });
+
+        function checkQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const resultsList = document.getElementById('resultsList');
+            const scoreSummary = document.getElementById('scoreSummary');
+            const quizResultsDiv = document.getElementById('quizResults');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            resultsList.innerHTML = ''; // Limpiar resultados anteriores
+            let score = 0;
+
+            for (let i = 1; i <= 10; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = quizForm.elements[questionName] ? quizForm.elements[questionName].value : '';
+                const correctAnswer = quizAnswers[questionName];
+
+                const listItem = document.createElement('li');
+                listItem.classList.add(selectedOption === correctAnswer ? 'correct' : 'incorrect');
+
+                // Obtener el texto de la opción seleccionada (preservando <code>)
+                let selectedAnswerText = 'No respondida';
+                if (selectedOption) {
+                    const selectedLabel = quizForm.querySelector(`input[name="${questionName}"][value="${selectedOption}"]`);
+                    if (selectedLabel) {
+                        const labelClone = selectedLabel.closest('label').cloneNode(true);
+                        labelClone.querySelector('input').remove();
+                        selectedAnswerText = labelClone.innerHTML.trim();
+                    }
+                }
+
+                // Obtener el texto de la opción correcta (preservando <code>)
+                const correctLabel = quizForm.querySelector(`input[name="${questionName}"][value="${correctAnswer}"]`);
+                let correctAnswerText = 'N/A';
+                if (correctLabel) {
+                    const correctLabelClone = correctLabel.closest('label').cloneNode(true);
+                    correctLabelClone.querySelector('input').remove();
+                    correctAnswerText = correctLabelClone.innerHTML.trim();
+                }
+
+                const questionText = document.createTextNode(`Pregunta ${i}: `);
+                listItem.appendChild(questionText);
+
+                if (selectedOption !== correctAnswer) {
+                    listItem.innerHTML += ` Tu respuesta: "${selectedAnswerText}".<br>`;
+                    const correctInfoSpan = document.createElement('span');
+                    correctInfoSpan.classList.add('correct-answer-info');
+                    correctInfoSpan.innerHTML = `Respuesta correcta: "${correctAnswerText}".`;
+                    listItem.appendChild(correctInfoSpan);
+                } else {
+                    listItem.innerHTML += ` Correcta.`;
+                    score++;
+                }
+
+                resultsList.appendChild(listItem);
+            }
+
+            scoreSummary.textContent = `Tu puntuación es: ${score} de 10 preguntas correctas.`;
+            quizResultsDiv.style.display = 'block'; // Mostrar la sección de resultados
+            quizResultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Desplazarse a los resultados
+
+            // Ocultar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'none';
+            // Mostrar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'inline-block';
+        }
+
+        function resetQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            quizForm.reset(); // Reinicia todos los radio buttons
+            document.getElementById('quizResults').style.display = 'none'; // Oculta los resultados
+            document.getElementById('resultsList').innerHTML = ''; // Limpia la lista de resultados
+            document.getElementById('scoreSummary').textContent = ''; // Limpia el resumen de puntuación
+
+            // Mostrar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'inline-block';
+            // Ocultar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

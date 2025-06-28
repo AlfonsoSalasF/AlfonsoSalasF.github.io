@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 22: Ejercicios de Video</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/ejercicios_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Clase 22: Ejercicios de Video: Reproducción de Video</h1>
+
+        <div class="exercise-section">
+            <h3>Ejercicios Prácticos de la Clase 22</h3>
+            <p>Para consolidar tus conocimientos sobre la etiqueta <code>&lt;video&gt;</code> y sus atributos, te propongo los siguientes ejercicios. Intenta resolverlos por ti mismo antes de ver la solución.</p>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 1: Reproducción de Video Básica con Controles</h4>
+                <p>Inserta un archivo de video llamado <code>"presentacion.mp4"</code> en la página. Asegúrate de que los usuarios puedan controlarlo y que tenga un ancho de 640 píxeles y una altura de 360 píxeles.</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution1')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution1">
+                    <pre><code>&lt;video src="video/presentacion.mp4" controls width="640" height="360"&gt;
+    Tu navegador no soporta la reproducción de video.
+&lt;/video&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 2: Video de Fondo Silenciado, en Bucle y Auto-reproducción</h4>
+                <p>Añade un archivo de video llamado <code>"fondo_animado.webm"</code> que se reproduzca automáticamente en bucle y silenciado al cargar la página. No debe mostrar controles.</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution2')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution2">
+                    <pre><code>&lt;video src="video/fondo_animado.webm" autoplay loop muted&gt;
+    Tu navegador no soporta la reproducción de video de fondo.
+&lt;/video&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 3: Múltiples Fuentes de Video con Imagen de Poster</h4>
+                <p>Inserta un video que ofrezca dos formatos para mayor compatibilidad: <code>"tutorial.webm"</code> y <code>"tutorial.mp4"</code>. Debe tener controles de reproducción y una imagen de poster llamada <code>"img/tutorial_preview.jpg"</code>. Establece el ancho en 720 y el alto en 405 píxeles.</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution3')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution3">
+                    <pre><code>&lt;video controls poster="img/tutorial_preview.jpg" width="720" height="405"&gt;
+    &lt;source src="video/tutorial.webm" type="video/webm"&gt;
+    &lt;source src="video/tutorial.mp4" type="video/mp4"&gt;
+    Tu navegador no soporta el elemento de video ni los formatos proporcionados.
+&lt;/video&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 4: Video con Preload "metadata" y Sin Controles</h4>
+                <p>Incluye un video llamado <code>"clip_corto.mp4"</code> que solo precargue sus metadatos y no muestre controles visuales. (Asume que se controlará con JavaScript más adelante). Establece un ancho de 320px y una altura de 180px.</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution4')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution4">
+                    <pre><code>&lt;video src="video/clip_corto.mp4" preload="metadata" width="320" height="180"&gt;
+    Tu navegador no soporta el video.
+&lt;/video&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 5: Mensaje Alternativo con Formato no Soportado</h4>
+                <p>Crea un elemento de video que intente cargar <code>"conferencia.avi"</code> (un formato que generalmente no es compatible con HTML5) y proporciona un mensaje alternativo claro si el navegador no puede reproducirlo.</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution5')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution5">
+                    <pre><code>&lt;video src="video/conferencia.avi" controls&gt;
+    Lo sentimos, tu navegador no soporta el formato AVI. Por favor, actualiza tu navegador o intenta con otro.
+&lt;/video&gt;</code></pre>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="quiz-section">
+            <h3>Quiz de la Clase 22: Video: Reproducción de Video</h3>
+            <p>¡Pon a prueba tus conocimientos con este quiz de 10 preguntas!</p>
+            <form id="quizForm">
+                <div class="quiz-question">
+                    <h4>1. ¿Qué etiqueta HTML se utiliza para incrustar contenido de video en una página web?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="a"> <code>&lt;media&gt;</code></label>
+                        <label><input type="radio" name="q1" value="b"> <code>&lt;video&gt;</code></label>
+                        <label><input type="radio" name="q1" value="c"> <code>&lt;movie&gt;</code></label>
+                        <label><input type="radio" name="q1" value="d"> <code>&lt;clip&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>2. ¿Qué atributo permite mostrar una imagen de vista previa del video antes de su reproducción?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="a"> <code>preview</code></label>
+                        <label><input type="radio" name="q2" value="b"> <code>thumbnail</code></label>
+                        <label><input type="radio" name="q2" value="c"> <code>poster</code></label>
+                        <label><input type="radio" name="q2" value="d"> <code>image</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>3. Si deseas que un video se reproduzca automáticamente y en bucle, además de estar silenciado, ¿qué atributos usarías?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="a"> <code>autoplay</code>, <code>loop</code>, <code>silent</code></label>
+                        <label><input type="radio" name="q3" value="b"> <code>auto</code>, <code>repeat</code>, <code>mute</code></label>
+                        <label><input type="radio" name="q3" value="c"> <code>autoplay</code>, <code>loop</code>, <code>muted</code></label>
+                        <label><input type="radio" name="q3" value="d"> <code>play</code>, <code>infinite</code>, <code>volume="0"</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>4. ¿Qué atributos se utilizan para definir las dimensiones de un reproductor de video en píxeles?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="a"> <code>size</code> y <code>dimension</code></label>
+                        <label><input type="radio" name="q4" value="b"> <code>width</code> y <code>height</code></label>
+                        <label><input type="radio" name="q4" value="c"> <code>x</code> y <code>y</code></label>
+                        <label><input type="radio" name="q4" value="d"> <code>max-width</code> y <code>max-height</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>5. ¿Cuál es el propósito principal de proporcionar múltiples etiquetas <code>&lt;source&gt;</code> dentro de <code>&lt;video&gt;</code>?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="a"> Ofrecer diferentes calidades de video para el usuario.</label>
+                        <label><input type="radio" name="q5" value="b"> Proporcionar subtítulos en diferentes idiomas.</label>
+                        <label><input type="radio" name="q5" value="c"> Asegurar la compatibilidad con diferentes navegadores y sus formatos de video soportados.</label>
+                        <label><input type="radio" name="q5" value="d"> Permitir que el usuario elija la banda sonora preferida.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>6. Si deseas que el navegador solo precargue los metadatos del video (duración, dimensiones, etc.), ¿qué valor usarías para el atributo <code>preload</code>?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q6" value="a"> <code>info</code></label>
+                        <label><input type="radio" name="q6" value="b"> <code>data</code></label>
+                        <label><input type="radio" name="q6" value="c"> <code>metadata</code></label>
+                        <label><input type="radio" name="q6" value="d"> <code>lazy</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>7. ¿Cuál de los siguientes formatos de video es una opción de código abierto desarrollada por Google, ideal para la web?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q7" value="a"> AVI</label>
+                        <label><input type="radio" name="q7" value="b"> WMV</label>
+                        <label><input type="radio" name="q7" value="c"> MOV</label>
+                        <label><input type="radio" name="q7" value="d"> WebM</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>8. ¿Cuál es la razón principal por la que muchos navegadores bloquean la reproducción automática de videos con sonido?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q8" value="a"> Para ahorrar ancho de banda.</label>
+                        <label><input type="radio" name="q8" value="b"> Por razones de privacidad del usuario.</label>
+                        <label><input type="radio" name="q8" value="c"> Para evitar una experiencia de usuario intrusiva.</label>
+                        <label><input type="radio" name="q8" value="d"> Porque el video no ha terminado de cargarse.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>9. Si un navegador no soporta el elemento <code>&lt;video&gt;</code>, ¿qué se mostrará en su lugar?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q9" value="a"> Un espacio en blanco.</label>
+                        <label><input type="radio" name="q9" value="b"> Un icono de error del navegador.</label>
+                        <label><input type="radio" name="q9" value="c"> El texto de respaldo proporcionado dentro de la etiqueta <code>&lt;video&gt;</code>.</label>
+                        <label><input type="radio" name="q9" value="d"> Se intentará cargar el video en un reproductor Flash.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>10. ¿Qué atributo se utilizaría si el video se va a controlar completamente mediante JavaScript y no se desean los controles nativos del navegador?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q10" value="a"> <code>nocontrols</code></label>
+                        <label><input type="radio" name="q10" value="b"> <code>js-controlled</code></label>
+                        <label><input type="radio" name="q10" value="c"> Ninguno (simplemente no se incluye el atributo <code>controls</code>)</label>
+                        <label><input type="radio" name="q10" value="d"> <code>hidden-controls</code></label>
+                    </div>
+                </div>
+
+                <button type="button" class="submit-quiz-button" id="checkAnswersBtn">Ver Resultados</button>
+            </form>
+
+            <div id="quizResults" class="quiz-results">
+                <p>Resultados del Test:</p>
+                <ol id="resultsList"></ol>
+                <p id="scoreSummary"></p>
+                <button type="button" class="reveal-button" id="resetQuizBtn" style="display: none;">Volver a Intentar</button>
+            </div>
+        </div>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="22VideoReproduccionDeVideo.html">Volver a la Clase 22: Video: Reproducción de Video.</a></li>
+                <li><a href="23ControlesPersonalizadosConJavaScript.html">Clase 23: Controles Personalizados con JavaScript (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script>
+        // Función para mostrar/ocultar soluciones de ejercicios
+        function toggleSolution(button, solutionId) {
+            const solution = document.getElementById(solutionId);
+            if (solution.style.display === 'block') {
+                solution.style.display = 'none';
+                button.textContent = 'Mostrar Solución';
+            } else {
+                solution.style.display = 'block';
+                button.textContent = 'Ocultar Solución';
+            }
+        }
+
+        // Datos del quiz
+        const quizAnswers = {
+            q1: 'b', // <video>
+            q2: 'c', // poster
+            q3: 'c', // autoplay, loop, muted
+            q4: 'b', // width y height
+            q5: 'c', // Asegurar la compatibilidad con diferentes navegadores y sus formatos de video soportados.
+            q6: 'c', // metadata
+            q7: 'd', // WebM
+            q8: 'c', // Para evitar una experiencia de usuario intrusiva.
+            q9: 'c', // El texto de respaldo proporcionado dentro de la etiqueta <video>.
+            q10: 'c' // Ninguno (simplemente no se incluye el atributo controls)
+        };
+
+        // Asignar eventos a los botones una vez que el DOM esté completamente cargado
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            if (checkAnswersBtn) {
+                checkAnswersBtn.addEventListener('click', checkQuiz);
+            }
+            if (resetQuizBtn) {
+                resetQuizBtn.addEventListener('click', resetQuiz);
+            }
+        });
+
+        function checkQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const resultsList = document.getElementById('resultsList');
+            const scoreSummary = document.getElementById('scoreSummary');
+            const quizResultsDiv = document.getElementById('quizResults');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            resultsList.innerHTML = ''; // Limpiar resultados anteriores
+            let score = 0;
+
+            for (let i = 1; i <= 10; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = quizForm.elements[questionName] ? quizForm.elements[questionName].value : '';
+                const correctAnswer = quizAnswers[questionName];
+
+                const listItem = document.createElement('li');
+                listItem.classList.add(selectedOption === correctAnswer ? 'correct' : 'incorrect');
+
+                // Obtener el texto de la opción seleccionada (preservando <code>)
+                let selectedAnswerText = 'No respondida';
+                if (selectedOption) {
+                    const selectedLabel = quizForm.querySelector(`input[name="${questionName}"][value="${selectedOption}"]`);
+                    if (selectedLabel) {
+                        const labelClone = selectedLabel.closest('label').cloneNode(true);
+                        labelClone.querySelector('input').remove();
+                        selectedAnswerText = labelClone.innerHTML.trim();
+                    }
+                }
+
+                // Obtener el texto de la opción correcta (preservando <code>)
+                const correctLabel = quizForm.querySelector(`input[name="${questionName}"][value="${correctAnswer}"]`);
+                let correctAnswerText = 'N/A';
+                if (correctLabel) {
+                    const correctLabelClone = correctLabel.closest('label').cloneNode(true);
+                    correctLabelClone.querySelector('input').remove();
+                    correctAnswerText = correctLabelClone.innerHTML.trim();
+                }
+
+                const questionText = document.createTextNode(`Pregunta ${i}: `);
+                listItem.appendChild(questionText);
+
+                if (selectedOption !== correctAnswer) {
+                    listItem.innerHTML += ` Tu respuesta: "${selectedAnswerText}".<br>`;
+                    const correctInfoSpan = document.createElement('span');
+                    correctInfoSpan.classList.add('correct-answer-info');
+                    correctInfoSpan.innerHTML = `Respuesta correcta: "${correctAnswerText}".`;
+                    listItem.appendChild(correctInfoSpan);
+                } else {
+                    listItem.innerHTML += ` Correcta.`;
+                    score++;
+                }
+
+                resultsList.appendChild(listItem);
+            }
+
+            scoreSummary.textContent = `Tu puntuación es: ${score} de 10 preguntas correctas.`;
+            quizResultsDiv.style.display = 'block'; // Mostrar la sección de resultados
+            quizResultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Desplazarse a los resultados
+
+            // Ocultar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'none';
+            // Mostrar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'inline-block';
+        }
+
+        function resetQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            quizForm.reset(); // Reinicia todos los radio buttons
+            document.getElementById('quizResults').style.display = 'none'; // Oculta los resultados
+            document.getElementById('resultsList').innerHTML = ''; // Limpia la lista de resultados
+            document.getElementById('scoreSummary').textContent = ''; // Limpia el resumen de puntuación
+
+            // Mostrar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'inline-block';
+            // Ocultar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

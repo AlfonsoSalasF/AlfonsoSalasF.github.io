@@ -1,17 +1,135 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Workers (Concepto Básico)</title>
+    <title>Web Workers: Concepto Básico - Curso HTML</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
+    <style>
+        .code-example {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
+        .code-example pre {
+            margin: 0;
+            white-space: pre-wrap; /* Permite el salto de línea en código */
+            word-wrap: break-word; /* Rompe palabras largas */
+        }
+    </style>
 </head>
 <body>
-    <H1>Clase 27: Web Workers (Concepto Básico).</H1>
-    <UL>
-        <li>¿Qué son los Web Workers y por qué son útiles?</li>
-        <li>Ejecución de scripts en segundo plano.</li>
-        <li>Mejora del rendimiento de la interfaz de usuario. (Concepto para enlazar con JavaScript).</li>
-    </UL>
-    <p><a href="/index.html">Vuelve a la página principal</a></p>
+    <div class="container">
+        <h1>
+            <p>CURSO DE INICIACIÓN A HTML</p>
+            <p>Clase 27: Web Workers (Concepto Básico)</p>
+        </h1>
+
+        <p>En el desarrollo web moderno, la capacidad de ejecutar tareas complejas sin bloquear la interfaz de usuario es fundamental para una experiencia de usuario fluida. Los Web Workers son una tecnología que nos permite hacer precisamente eso, llevando el procesamiento en segundo plano al navegador. Aunque su implementación es más avanzada y requiere JavaScript, es crucial entender su concepto desde las bases de HTML para apreciar sus beneficios.</p>
+
+        <hr>
+
+        <section>
+            <h2>27.1. ¿Qué son los Web Workers y por qué son útiles?</h2>
+            <p>Tradicionalmente, JavaScript en el navegador se ejecuta en un "hilo" (thread) único, el mismo hilo que se encarga de renderizar la interfaz de usuario (UI), manejar eventos y animaciones. Esto significa que si ejecutas una tarea JavaScript intensiva (como cálculos complejos, procesamiento de imágenes grandes, o manejo de grandes volúmenes de datos) en este hilo principal, la UI se "congelará" o dejará de responder hasta que la tarea termine.</p>
+
+            <p>Aquí es donde entran los <strong>Web Workers</strong>.</p>
+            <ul>
+                <li><strong>Definición:</strong> Un Web Worker es un script JavaScript que se ejecuta en segundo plano, separado del hilo principal de ejecución de la página web.</li>
+                <li><strong>Utilidad:</strong> Su principal utilidad radica en permitir que las operaciones que consumen mucho tiempo se ejecuten en un hilo separado, liberando el hilo principal para que la interfaz de usuario siga siendo interactiva y responsiva.</li>
+            </ul>
+
+            <div class="note">
+                <p>Piensa en el hilo principal como un único empleado que tiene que atender a los clientes (interfaz de usuario) y hacer el papeleo (tareas JavaScript). Si el papeleo es demasiado, los clientes tienen que esperar. Un Web Worker es como contratar a otro empleado que se encarga del papeleo en una oficina trasera, mientras el primer empleado sigue atendiendo a los clientes sin interrupciones.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>27.2. Ejecución de scripts en segundo plano.</h2>
+            <p>Cuando creas un Web Worker, le pasas la URL de un archivo JavaScript. Este archivo se carga y se ejecuta en un hilo separado. Los Web Workers no tienen acceso directo al DOM (el árbol de elementos HTML de tu página), lo que es una medida de seguridad y también lo que les permite operar en un hilo separado sin afectar la UI.</p>
+            <p>La comunicación entre el hilo principal (tu página web) y el Web Worker se realiza a través de un sistema de mensajes. Puedes enviar datos al worker con <code>postMessage()</code>, y el worker puede enviar resultados de vuelta a la página principal de la misma manera. El worker escucha mensajes a través de su manejador de eventos <code>onmessage</code>, y la página principal escucha las respuestas del worker con su propio <code>onmessage</code>.</p>
+
+            <h3>Ejemplo conceptual de comunicación:</h3>
+            <h4>En tu archivo HTML (o script principal):</h4>
+            <div class="code-example">
+                <pre><code class="language-javascript">// Crear una instancia de un Web Worker
+const myWorker = new Worker('worker.js');
+
+// Enviar un mensaje al worker
+myWorker.postMessage('¡Hola, trabajador!');
+
+// Escuchar mensajes del worker
+myWorker.onmessage = function(e) {
+    console.log('Mensaje recibido del worker:', e.data);
+    // e.data contendrá lo que el worker haya enviado de vuelta
+};
+
+// Manejo de errores
+myWorker.onerror = function(e) {
+    console.error('Error en el worker:', e);
+};
+
+// Para detener el worker cuando ya no sea necesario
+// myWorker.terminate();
+</code></pre>
+            </div>
+
+            <h4>En el archivo `worker.js` (el script del Web Worker):</h4>
+            <div class="code-example">
+                <pre><code class="language-javascript">// Escuchar mensajes del hilo principal
+self.onmessage = function(e) {
+    console.log('Mensaje recibido del hilo principal:', e.data);
+    const result = e.data + ' ¡Mensaje procesado!';
+    // Enviar un resultado de vuelta al hilo principal
+    self.postMessage(result);
+};
+</code></pre>
+            </div>
+
+            <div class="important">
+                <p><strong>Limitaciones clave de los Web Workers:</strong></p>
+                <ul>
+                    <li><strong>No acceso al DOM:</strong> Un worker no puede manipular directamente los elementos HTML de tu página.</li>
+                    <li><strong>No acceso a <code>window</code>:</strong> No tiene acceso al objeto <code>window</code>, <code>document</code>, etc.</li>
+                    <li><strong>Ámbito global diferente:</strong> Dentro del worker, el objeto global es <code>self</code>, no <code>window</code>.</li>
+                    <li><strong>Comunicación por mensajes:</strong> Toda interacción con el hilo principal debe ser a través de <code>postMessage()</code>.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>27.3. Mejora del rendimiento de la interfaz de usuario. (Concepto para enlazar con JavaScript).</h2>
+            <p>La mejora del rendimiento de la interfaz de usuario es la razón principal para utilizar Web Workers.</p>
+            <ul>
+                <li><strong>Mantiene la UI responsiva:</strong> Al descargar tareas computacionalmente intensivas a un hilo de fondo, el hilo principal permanece libre para manejar la interacción del usuario (clics, desplazamientos, entrada de teclado) y las actualizaciones visuales. Esto evita que la página se "congele" o parezca no responder, lo que es frustrante para el usuario.</li>
+                <li><strong>Experiencia de usuario fluida:</strong> Asegura que animaciones, transiciones y efectos visuales continúen ejecutándose sin problemas, incluso cuando hay trabajo pesado en segundo plano.</li>
+                <li><strong>Carga asíncrona de datos:</strong> Pueden usarse para fetching y procesamiento de grandes volúmenes de datos JSON o XML sin bloquear la UI mientras se espera la respuesta o se procesa.</li>
+                <li><strong>Mejora de la interactividad:</strong> Permite que aplicaciones web complejas, como editores de imágenes en el navegador, juegos o aplicaciones de visualización de datos, funcionen de manera más eficiente y sin interrupciones perceptibles.</li>
+            </ul>
+            <p>Aunque la sintaxis de los Web Workers es JavaScript puro, su existencia y el problema que resuelven (la limitación del hilo único del navegador) es un concepto fundamental en el desarrollo web front-end que impacta directamente la calidad de la experiencia del usuario de cualquier página HTML.</p>
+            <div class="note">
+                <p>Entender los Web Workers te da una visión más profunda de cómo funcionan los navegadores y cómo puedes optimizar tus aplicaciones web para que sean más rápidas y fluidas para el usuario final. Son una pieza clave para crear experiencias de usuario de alta calidad en la web.</p>
+            </div>
+        </section>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="Ejercicios27.html">Ejercicios sobre esta lección.</a></li>
+                <li><a href="28IntroduccionAJavascript.html">Clase 28: Introducción a JavaScript (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
 </body>
 </html>

@@ -1,17 +1,166 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML y Seguridad Web (Conceptos Básicos)</title>
+    <title>HTML y Seguridad Web (Conceptos Básicos) - Curso HTML</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
+    <style>
+        .code-example {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
+        .code-example pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .security-alert {
+            background-color: #fce8e6;
+            border: 1px solid #fbc4bb;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            color: #d8000c;
+        }
+        .best-practice {
+            background-color: #e6ffe6;
+            border: 1px solid #99e699;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .security-concept {
+            background-color: #e0f7fa;
+            border: 1px solid #b2ebf2;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+    </style>
 </head>
 <body>
-    <H1>Clase 38: HTML y Seguridad Web (Conceptos Básicos).</H1>
-    <UL>
-        <li>Vulnerabilidades comunes: XSS, CSRF (muy breve introducción).</li>
-        <li>Headers de seguridad (Content-Security-Policy).</li>
-        <li>Limpieza de inputs.</li>
-    </UL>
-    <p><a href="/index.html">Vuelve a la página principal</a></p>
+    <div class="container">
+        <h1>
+            <p>CURSO DE INICIACIÓN A HTML</p>
+            <p>Clase 38: HTML y Seguridad Web (Conceptos Básicos)</p>
+        </h1>
+
+        <p>En el desarrollo web, la seguridad es una preocupación primordial. Aunque HTML por sí solo no es un lenguaje de programación y no ejecuta código malicioso, es el punto de entrada para muchas vulnerabilidades si no se maneja correctamente el contenido que se inserta en él. Entender los conceptos básicos de seguridad es crucial para cualquier desarrollador.</p>
+
+        <hr>
+
+        <section>
+            <h2>38.1. Vulnerabilidades comunes: XSS y CSRF (muy breve introducción).</h2>
+            <p>HTML puede ser el vector de ataque para vulnerabilidades conocidas como Cross-Site Scripting (XSS) y Cross-Site Request Forgery (CSRF). No son fallos en HTML per se, sino en cómo las aplicaciones web interactúan con los datos y los presentan en HTML.</p>
+
+            <h3>38.1.1. Cross-Site Scripting (XSS).</h3>
+            <p>El XSS ocurre cuando un atacante inyecta scripts maliciosos (generalmente JavaScript) en una página web que es vista por otros usuarios. El navegador de la víctima ejecuta el script, pensando que proviene de una fuente confiable.</p>
+            <div class="security-alert">
+                <p><strong>Ejemplo (conceptual):</strong> Si un sitio web permite a los usuarios publicar comentarios sin validación adecuada y un atacante escribe <code>&lt;script&gt;alert('¡Hackeado!');&lt;/script&gt;</code>, otros usuarios verán una ventana emergente de alerta cuando vean ese comentario. Pero el script podría robar cookies de sesión, redirigir a sitios maliciosos, o desfigurar la página.</p>
+                <p><strong>Vector HTML:</strong> Esto suele ocurrir cuando el contenido generado por el usuario (o datos de la URL) se inserta directamente en el HTML sin "escapar" o "sanear" correctamente los caracteres especiales (como <code>&lt;</code>, <code>&gt;</code>, <code>"</code>, <code>'</code>, <code>&amp;</code>).</p>
+            </div>
+
+            <h3>38.1.2. Cross-Site Request Forgery (CSRF).</h3>
+            <p>El CSRF (también conocido como "ataque de un clic") fuerza al navegador web de una víctima a realizar una solicitud no deseada a una aplicación web en la que el usuario ya ha iniciado sesión.</p>
+            <div class="security-alert">
+                <p><strong>Ejemplo (conceptual):</strong> Un atacante envía un email a la víctima con un enlace o una imagen oculta. Si la víctima ha iniciado sesión en su banco y hace clic en el enlace (o la imagen se carga automáticamente), el banco podría ejecutar una transferencia de dinero sin que la víctima lo sepa, porque la solicitud se envía con las credenciales de sesión de la víctima.</p>
+                <p><strong>Vector HTML:</strong> Esto a menudo implica el uso de etiquetas HTML como <code>&lt;img&gt;</code> o <code>&lt;form&gt;</code> para enviar solicitudes a un dominio de confianza sin el consentimiento del usuario.</p>
+                <pre><code class="language-html">&lt;!-- Formulario CSRF oculto --&gt;
+&lt;form action="https://banco.com/transferencia" method="POST" style="display:none;"&gt;
+    &lt;input type="hidden" name="destino" value="cuenta_atacante"&gt;
+    &lt;input type="hidden" name="cantidad" value="1000"&gt;
+    &lt;input type="submit" value="Enviar"&gt;
+&lt;/form&gt;
+&lt;script&gt;document.forms[0].submit();&lt;/script&gt;
+</code></pre>
+            </div>
+            <p class="security-concept">Para contrarrestar el CSRF, los frameworks web suelen usar "tokens CSRF" (valores únicos que el servidor genera y espera en cada solicitud).</p>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>38.2. Headers de seguridad (Content-Security-Policy - CSP).</h2>
+            <p>Los "headers de seguridad" son directivas HTTP que el servidor web envía al navegador del cliente para mejorar la seguridad. Aunque no son HTML directamente, afectan la forma en que el navegador renderiza y ejecuta el contenido HTML y los recursos asociados. Uno de los más importantes es Content-Security-Policy (CSP).</p>
+
+            <h3>Content-Security-Policy (CSP).</h3>
+            <p>CSP es un header de seguridad HTTP que permite a los administradores de sitios web controlar los recursos (scripts, hojas de estilo, imágenes, etc.) que un navegador tiene permitido cargar para una página determinada. Esto ayuda a mitigar ataques como XSS y la inyección de datos.</p>
+            <div class="code-example">
+                <pre><code class="language-http">Content-Security-Policy: default-src 'self'; script-src 'self' https://cdn.example.com; img-src 'self' data:; style-src 'self' 'unsafe-inline'</code></pre>
+            </div>
+            <p><strong>Explicación del ejemplo:</strong></p>
+            <ul>
+                <li><code>default-src 'self'</code>: Solo permite cargar recursos del mismo origen que la página.</li>
+                <li><code>script-src 'self' https://cdn.example.com</code>: Solo permite ejecutar scripts del mismo origen o de <code>https://cdn.example.com</code>.</li>
+                <li><code>img-src 'self' data:</code>: Permite cargar imágenes del mismo origen o imágenes incrustadas con base64 (<code>data:</code> URIs).</li>
+                <li><code>style-src 'self' 'unsafe-inline'</code>: Permite estilos del mismo origen y estilos inline (<code>'unsafe-inline'</code> a menudo se usa para compatibilidad, pero es una debilidad si no se usa con cuidado).</li>
+            </ul>
+            <p class="security-concept"><strong>Importancia:</strong> Un CSP bien configurado es una defensa fundamental contra la inyección de código y reduce el impacto de posibles vulnerabilidades XSS.</p>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>38.3. Limpieza de inputs (sanitización y validación).</h2>
+            <p>La "limpieza de inputs" es el proceso de asegurar que cualquier dato recibido de una fuente externa (especialmente de usuarios) sea seguro y válido antes de ser procesado o mostrado. Este es el paso más crucial para prevenir XSS y otras inyecciones.</p>
+
+            <h3>38.3.1. Validación.</h3>
+            <p>Asegurarse de que el input cumple con el formato esperado (ej., un email es un email válido, un número es realmente un número).</p>
+            <div class="best-practice">
+                <p><strong>En HTML:</strong> Los atributos de validación de formularios de HTML5 (<code>required</code>, <code>pattern</code>, <code>type="email"</code>, etc.) son una primera línea de defensa útil para la experiencia de usuario, pero <strong>NUNCA deben considerarse suficientes para la seguridad</strong>. La validación siempre debe repetirse en el servidor.</p>
+            </div>
+
+            <h3>38.3.2. Sanitización (limpieza).</h3>
+            <p>Eliminar o escapar caracteres que podrían ser maliciosos. Esto es vital cuando se inserta contenido generado por el usuario en el HTML de la página.</p>
+            <div class="code-example">
+                <pre><code class="language-js">// Ejemplo conceptual de sanitización (esto se haría en el servidor, o con librerías JavaScript seguras)
+// NO USAR ESTO DIRECTAMENTE SIN ENTENDER LAS LIBRERÍAS DE SEGURIDAD
+
+// Input malicioso (simulado)
+let userInput = "&lt;script&gt;alert('XSS!');&lt;/script&gt;&lt;img src=x onerror=alert('Image XSS')&gt;Hola";
+
+// Función de sanitización (ejemplo muy simplificado)
+function sanitizeHtml(html) {
+    let div = document.createElement('div');
+    div.appendChild(document.createTextNode(html)); // Convierte &lt; a &amp;lt;, &gt; a &amp;gt; etc.
+    return div.innerHTML;
+}
+
+let sanitizedInput = sanitizeHtml(userInput);
+console.log(sanitizedInput);
+// Output: &amp;lt;script&amp;gt;alert('XSS!');&amp;lt;/script&amp;gt;&amp;lt;img src=x onerror=alert('Image XSS')&amp;gt;Hola
+// Los caracteres &lt; y &gt; se han convertido en sus entidades HTML, por lo que el navegador no los interpretará como código.
+</code></pre>
+            </div>
+            <p><strong>Puntos clave de la limpieza de inputs:</strong></p>
+            <ul>
+                <li><strong>Escapar HTML:</strong> Convertir caracteres como <code>&lt;</code>, <code>&gt;</code>, <code>&amp;</code>, <code>"</code>, <code>'</code> en sus entidades HTML (<code>&amp;lt;</code>, <code>&amp;gt;</code>, <code>&amp;amp;</code>, <code>&amp;quot;</code>, <code>&amp;#x27;</code>). Esto es fundamental para prevenir XSS cuando se muestra contenido de usuario.</li>
+                <li><strong>Eliminar código:</strong> Si se permite HTML limitado (ej., negrita, cursiva), se deben usar librerías de sanitización robustas (en el servidor) para eliminar todo lo que no esté explícitamente permitido (etiquetas <code>&lt;script&gt;</code>, atributos <code>onload</code>/<code>onerror</code>, etc.).</li>
+                <li><strong>Siempre en el servidor:</strong> Aunque se puede hacer validación y pre-sanitización en el cliente para mejorar la experiencia de usuario, la validación y sanitización de seguridad más crítica <strong>siempre debe realizarse en el servidor</strong>. El cliente puede ser fácilmente manipulado.</li>
+            </ul>
+            <p>La seguridad web es un campo vasto y en constante evolución. Como desarrollador HTML, comprender estos conceptos básicos te ayudará a escribir código más seguro y a colaborar mejor con ingenieros de seguridad y desarrolladores back-end.</p>
+        </section>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="Ejercicios38.html">Ejercicios sobre esta lección.</a></li>
+                <li><a href="39HerramientasYEntornosDeDesarrollo.html">Clase 39: Herramientas y Entornos de Desarrollo (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
 </body>
 </html>

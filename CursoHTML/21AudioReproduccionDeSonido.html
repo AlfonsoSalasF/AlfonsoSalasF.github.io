@@ -1,18 +1,144 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clase 21: Audio: Reproducción de Sonido</title>
+    <title>Audio: Reproducción de Sonido - Curso HTML</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
 </head>
 <body>
-    <H1>Audio: Reproducción de Sonido</H1>
-    <UL>
-        <li>La etiqueta &lt;audio&gt;.</li>
-        <li>Atributos: src, controls, autoplay, loop, muted, preload.</li>
-        <li>Formato de audio compatibles (.mp3, .wav, .ogg).</li>
-        <li>Múltiples fuentes con &lt;source&gt;.</li>
-    </UL>
-<p><a href="/index.html">Vuelve a la página principal</a></p>
+    <div class="container">
+        <h1>
+            <p>CURSO DE INICIACIÓN A HTML</p>
+            <p>Clase 21: Audio: Reproducción de Sonido</p>
+        </h1>
+
+        <p>HTML5 introdujo la etiqueta <code>&lt;audio&gt;</code>, que permite incrustar contenido de audio directamente en las páginas web sin necesidad de plugins externos como Flash. Esto ha simplificado enormemente la inclusión de sonido y música, mejorando la experiencia del usuario y la compatibilidad entre dispositivos.</p>
+
+        <hr>
+
+        <section>
+            <h2>21.1. La etiqueta <code>&lt;audio&gt;</code>.</h2>
+            <p>La etiqueta <code>&lt;audio&gt;</code> se utiliza para incrustar contenido de sonido, como música o grabaciones de voz, en un documento HTML. Es un elemento de nivel de bloque que por sí solo no muestra ningún control de reproducción a menos que se especifique el atributo <code>controls</code>.</p>
+            <p><strong>Ejemplo Básico:</strong></p>
+            <pre><code>&lt;audio src="audio/ejemplo.mp3" controls&gt;
+    Tu navegador no soporta el elemento de audio.
+&lt;/audio&gt;</code></pre>
+            <div class="note">
+                <p>El texto dentro de la etiqueta <code>&lt;audio&gt;</code> (en este caso, "Tu navegador no soporta el elemento de audio.") se mostrará solo si el navegador del usuario no es compatible con la etiqueta <code>&lt;audio&gt;</code>.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>21.2. Atributos de <code>&lt;audio&gt;</code>.</h2>
+            <p>La etiqueta <code>&lt;audio&gt;</code> soporta varios atributos que permiten controlar el comportamiento de la reproducción y la apariencia del reproductor.</p>
+            <table>
+                <caption>Atributos Comunes de la Etiqueta <code>&lt;audio&gt;</code></caption>
+                <thead>
+                    <tr>
+                        <th>Atributo</th>
+                        <th>Descripción</th>
+                        <th>Ejemplo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>src</code></td>
+                        <td>Especifica la URL del archivo de audio que se va a incrustar. Es el método más sencillo para definir la fuente.</td>
+                        <td><code>&lt;audio src="cancion.mp3"&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>controls</code></td>
+                        <td>Muestra los controles de reproducción estándar del navegador (como el botón de reproducir/pausar, la barra de volumen y el control de progreso). Si no se incluye, el audio se reproducirá sin controles visibles a menos que se controle con JavaScript.</td>
+                        <td><code>&lt;audio src="sonido.wav" controls&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>autoplay</code></td>
+                        <td>Indica que el audio debe comenzar a reproducirse automáticamente tan pronto como sea posible. Se debe usar con precaución, ya que puede ser intrusivo para los usuarios. Muchos navegadores modernos bloquean la reproducción automática con sonido.</td>
+                        <td><code>&lt;audio src="fondo.ogg" autoplay&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>loop</code></td>
+                        <td>Especifica que el audio debe reproducirse en bucle, es decir, se reiniciará automáticamente cada vez que llegue al final.</td>
+                        <td><code>&lt;audio src="ambiente.mp3" loop&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>muted</code></td>
+                        <td>Indica que el audio debe silenciarse por defecto al cargarse. El usuario puede desmutearlo manualmente a través de los controles si están presentes.</td>
+                        <td><code>&lt;audio src="intro.mp3" muted&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>preload</code></td>
+                        <td>Define cómo se debe cargar el archivo de audio al cargar la página. Puede tener los siguientes valores:
+                            <ul>
+                                <li><code>none</code>: El audio no se precarga.</li>
+                                <li><code>metadata</code>: Solo se precargan los metadatos (duración, etc.).</li>
+                                <li><code>auto</code>: El navegador decide si precarga el audio completo (valor por defecto).</li>
+                            </ul>
+                        </td>
+                        <td><code>&lt;audio src="podcast.mp3" preload="none"&gt;</code></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><strong>Ejemplo de atributos combinados:</strong></p>
+            <pre><code>&lt;audio src="audio/musica_fondo.mp3" autoplay loop muted&gt;
+    Tu navegador no soporta el elemento de audio.
+&lt;/audio&gt;</code></pre>
+            <audio src="https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3" controls>
+                Tu navegador no soporta el elemento de audio.
+            </audio>
+        </section>
+
+        <section>
+            <h2>21.3. Formatos de audio compatibles.</h2>
+            <p>No todos los navegadores soportan los mismos formatos de audio. Los formatos más comunes y recomendados para la web son:</p>
+            <ul>
+                <li><strong>MP3 (MPEG-1 Audio Layer III):</strong> Es el formato más ampliamente soportado y ofrece una buena calidad con tamaños de archivo relativamente pequeños.</li>
+                <li><strong>WAV (Waveform Audio File Format):</strong> Formato sin compresión, lo que resulta en archivos de muy alta calidad pero también de gran tamaño. No es ideal para streaming web.</li>
+                <li><strong>OGG (Ogg Vorbis):</strong> Un formato de código abierto y libre de patentes que ofrece buena compresión y calidad. Es un buen complemento para MP3, ya que algunos navegadores pueden tener mejor soporte para OGG.</li>
+                <li><strong>AAC (Advanced Audio Coding):</strong> Utilizado a menudo en dispositivos Apple y en la codificación de video (como en archivos MP4). Ofrece buena calidad con una compresión eficiente.</li>
+            </ul>
+            <div class="note">
+                <p>Para asegurar la máxima compatibilidad, es una buena práctica proporcionar el audio en múltiples formatos, lo cual se logra con la etiqueta <code>&lt;source&gt;</code>.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>21.4. Múltiples fuentes con <code>&lt;source&gt;</code>.</h2>
+            <p>Para ofrecer compatibilidad con diferentes navegadores y sus distintos soportes de formatos, puedes usar la etiqueta <code>&lt;source&gt;</code> dentro de <code>&lt;audio&gt;</code>. El navegador intentará cargar el primer formato que reconozca y pueda reproducir.</p>
+            <p>La etiqueta <code>&lt;source&gt;</code> tiene dos atributos importantes:</p>
+            <ul>
+                <li><code>src</code>: La URL del archivo de audio.</li>
+                <li><code>type</code>: El tipo MIME del archivo de audio (por ejemplo, <code>"audio/mpeg"</code> para MP3, <code>"audio/ogg"</code> para OGG, <code>"audio/wav"</code> para WAV). Esto permite al navegador decidir si puede reproducir el archivo antes de intentar descargarlo.</li>
+            </ul>
+            <p><strong>Ejemplo con múltiples fuentes:</strong></p>
+            <pre><code>&lt;audio controls&gt;
+    &lt;source src="audio/musica.ogg" type="audio/ogg"&gt;
+    &lt;source src="audio/musica.mp3" type="audio/mpeg"&gt;
+    &lt;!-- Texto alternativo si el navegador no soporta &lt;audio&gt; o ninguno de los formatos --&gt;
+    Tu navegador no soporta el elemento de audio ni los formatos proporcionados.
+&lt;/audio&gt;</code></pre>
+            <audio controls>
+                <source src="https://www.w3schools.com/html/horse.ogg" type="audio/ogg">
+                <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+                Tu navegador no soporta el elemento de audio ni los formatos proporcionados.
+            </audio>
+            <p>En este ejemplo, el navegador intentará reproducir <code>musica.ogg</code>. Si no puede, intentará con <code>musica.mp3</code>. Si ninguno de los formatos es soportado o el elemento <code>&lt;audio&gt;</code> en sí no es soportado, se mostrará el mensaje de texto alternativo.</p>
+        </section>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="Ejercicios21.html">Ejercicios sobre esta lección.</a></li>
+                <li><a href="22VideoReproduccionDeVideo.html">Clase 22: Video: Reproducción de Video (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
 </body>
 </html>

@@ -1,17 +1,178 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atributos Personalizados de Datos (data-*)</title>
+    <title>Atributos Personalizados de Datos (data-*) - Curso HTML</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
+    <style>
+        .code-example {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
+        .code-example pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .data-attribute-tip {
+            background-color: #f0f7ff;
+            border: 1px solid #cce7ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+    </style>
 </head>
 <body>
-    <H1>Clase 31: Atributos Personalizados de Datos (data-*).</H1>
-    <UL>
-        <li>Almacenar datos personalizados en elementos HTML.</li>
-        <li>Acceso a datos con JavaScript.</li>
-        <li>Usos comunes.</li>
-    </UL>
-    <p><a href="/index.html">Vuelve a la página principal</a></p>
+    <div class="container">
+        <h1>
+            <p>CURSO DE INICIACIÓN A HTML</p>
+            <p>Clase 31: Atributos Personalizados de Datos (data-*)</p>
+        </h1>
+
+        <p>A menudo, al desarrollar interfaces web interactivas, necesitamos almacenar información adicional sobre un elemento HTML que no tiene un atributo HTML estándar correspondiente. Antes de HTML5, los desarrolladores solían usar atributos no estándar (lo que no era válido) o almacenar estos datos en JavaScript de forma separada, lo que complicaba la relación entre el DOM y los datos. HTML5 introdujo los atributos <code>data-*</code> para resolver este problema de manera elegante y válida.</p>
+
+        <hr>
+
+        <section>
+            <h2>31.1. Almacenar datos personalizados en elementos HTML.</h2>
+            <p>Los atributos <code>data-*</code> permiten a los autores de páginas web incrustar datos personalizados y propietarios en el código HTML de cualquier elemento. El asterisco (<code>*</code>) se reemplaza por cualquier nombre de tu elección que comience con <code>data-</code>. Esto crea un espacio para almacenar datos que son privados para la página o aplicación, sin afectar el diseño o el comportamiento del elemento si el atributo no es reconocido por un navegador.</p>
+
+            <h3>Sintaxis:</h3>
+            <p>La sintaxis es sencilla: <code>data-nombre-del-atributo="valor"</code>.</p>
+            <ul>
+                <li>El nombre del atributo debe comenzar con <code>data-</code>.</li>
+                <li>Después de <code>data-</code>, puedes usar guiones (<code>-</code>) para separar palabras, lo cual es útil para la legibilidad. Por ejemplo, <code>data-producto-id</code>, <code>data-precio</code>, <code>data-categoria-articulo</code>.</li>
+                <li>El valor puede ser cualquier cadena de texto.</li>
+            </ul>
+
+            <h3>Ejemplos de cómo almacenar datos:</h3>
+            <div class="code-example">
+                <pre><code class="language-html">&lt;!-- Almacenar un ID de producto --&gt;
+&lt;button data-product-id="12345" data-product-name="Camiseta Azul"&gt;Añadir al Carrito&lt;/button&gt;
+
+&lt;!-- Almacenar un estado o configuración --&gt;
+&lt;div id="modal" data-status="hidden"&gt;Este es un modal oculto.&lt;/div&gt;
+
+&lt;!-- Almacenar múltiples valores relacionados --&gt;
+&lt;li data-item-type="electronico" data-item-weight="0.5kg" data-stock-level="low"&gt;Ratón Inalámbrico&lt;/li&gt;
+
+&lt;!-- Nombres de atributos con guiones se convierten a camelCase en JavaScript --&gt;
+&lt;article data-post-id="abcde" data-author-name="Juan Perez"&gt;
+    &lt;h2&gt;Mi Primer Artículo&lt;/h2&gt;
+&lt;/article&gt;
+</code></pre>
+            </div>
+            <div class="data-attribute-tip">
+                <p><strong>Recuerda:</strong> Los atributos <code>data-*</code> están diseñados para almacenar pequeños fragmentos de información personalizada. No son un reemplazo para las bases de datos o el almacenamiento persistente a gran escala (como <code>localStorage</code> o <code>sessionStorage</code>).</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>31.2. Acceso a datos con JavaScript.</h2>
+            <p>La verdadera potencia de los atributos <code>data-*</code> se revela al acceder a ellos y manipularlos con JavaScript. Cada elemento HTML tiene una propiedad especial llamada <code>dataset</code>, que es un objeto <code>DOMStringMap</code>. Este objeto contiene una entrada por cada atributo <code>data-*</code> del elemento.</p>
+
+            <h3>Convención de nombres:</h3>
+            <ul>
+                <li>Los nombres de los atributos <code>data-*</code> escritos con guiones (<code>data-product-id</code>) se convierten automáticamente a nombres de propiedades camelCase en el objeto <code>dataset</code> (<code>productId</code>).</li>
+                <li>Por ejemplo, <code>data-post-id</code> se convierte en <code>dataset.postId</code>.</li>
+            </ul>
+
+            <h3>Ejemplos de acceso y manipulación con JavaScript:</h3>
+            <div class="code-example">
+                <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;title&gt;Demo data-*&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;button id="addToCartBtn" data-product-id="78901" data-price="29.99" data-currency="EUR"&gt;
+        Añadir Auriculares al Carrito
+    &lt;/button&gt;
+
+    &lt;div id="infoDiv" data-user-status="active" data-last-login="2025-06-27"&gt;
+        Información del usuario.
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        // Acceder al botón
+        const button = document.getElementById('addToCartBtn');
+
+        // Leer datos del atributo data-*
+        const productId = button.dataset.productId;   // "78901"
+        const price = button.dataset.price;         // "29.99" (¡es un string!)
+        const currency = button.dataset.currency;   // "EUR"
+
+        console.log(`Producto ID: ${productId}, Precio: ${price} ${currency}`);
+
+        // Convertir el precio a número si es necesario
+        const numericPrice = parseFloat(price);
+        console.log(`Precio numérico: ${numericPrice}`);
+
+        // Acceder al div de información
+        const infoDiv = document.getElementById('infoDiv');
+
+        // Leer y modificar datos
+        let userStatus = infoDiv.dataset.userStatus; // "active"
+        console.log(`Estado del usuario: ${userStatus}`);
+
+        // Cambiar un valor de data-*
+        infoDiv.dataset.userStatus = 'inactive';
+        console.log(`Nuevo estado del usuario: ${infoDiv.dataset.userStatus}`);
+
+        // Añadir un nuevo atributo data-*
+        infoDiv.dataset.darkMode = 'true';
+        console.log(`Modo oscuro: ${infoDiv.dataset.darkMode}`);
+
+        // Eliminar un atributo data-*
+        // delete infoDiv.dataset.lastLogin;
+        // console.log(infoDiv.dataset.lastLogin); // undefined
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+            </div>
+            <div class="data-attribute-tip">
+                <p><strong>¡Importante!</strong> Los valores de los atributos <code>data-*</code> siempre se recuperan como <strong>cadenas de texto (strings)</strong>. Si necesitas usarlos como números, booleanos o cualquier otro tipo de dato, deberás convertirlos explícitamente en JavaScript (por ejemplo, con <code>parseInt()</code>, <code>parseFloat()</code>, o <code>JSON.parse()</code> para objetos/arrays JSON).</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>31.3. Usos comunes.</h2>
+            <p>Los atributos <code>data-*</code> son increíblemente versátiles y se utilizan en una amplia variedad de escenarios:</p>
+            <ul>
+                <li><strong>Almacenar ID's:</strong> Para identificar elementos en una lista, productos en un carrito, usuarios, etc., sin necesidad de usar atributos <code>id</code> para cada caso.</li>
+                <li><strong>Filtrado y Ordenación:</strong> Almacenar categorías, etiquetas, precios, o cualquier otro criterio para filtrar o ordenar elementos en una interfaz dinámica.</li>
+                <li><strong>Activación de Componentes JavaScript:</strong> Indicar a un script qué tipo de componente debe inicializar en un elemento específico (ej., <code>data-component="carousel"</code>).</li>
+                <li><strong>Estados UI:</strong> Mantener el estado de elementos de la interfaz de usuario, como si un panel está colapsado o expandido (<code>data-expanded="true"</code>).</li>
+                <li><strong>Puntuaciones y Calificaciones:</strong> Almacenar el número de estrellas, votos, etc., para elementos interactivos.</li>
+                <li><strong>Análisis y Seguimiento:</strong> Incrustar datos para herramientas de análisis o para rastrear interacciones específicas del usuario.</li>
+                <li><strong>Tooltip o Popover Content:</strong> Almacenar el contenido que se mostrará en un tooltip o popover generado dinámicamente por JavaScript.</li>
+            </ul>
+
+            <p>Los atributos <code>data-*</code> son una herramienta poderosa para desacoplar la lógica JavaScript del contenido HTML, permitiendo que la información necesaria para el script resida directamente con el elemento DOM al que pertenece, mejorando la mantenibilidad y la claridad del código.</p>
+        </section>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="Ejercicios31.html">Ejercicios sobre esta lección.</a></li>
+                <li><a href="32HTML5ParaMultimediaVideoYAudio.html">Clase 32: HTML5 para Multimedia: Video y Audio (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
 </body>
 </html>

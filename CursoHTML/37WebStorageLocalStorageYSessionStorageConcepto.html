@@ -1,17 +1,201 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Storage: localStorage y sessionStorage (Concepto)</title>
+    <title>Web Storage: localStorage y sessionStorage (Concepto) - Curso HTML</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
+    <style>
+        .code-example {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
+        .code-example pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .storage-concept {
+            background-color: #e0f7fa;
+            border: 1px solid #b2ebf2;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .important-note {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            color: #856404;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
-    <H1>Clase 37: Web Storage: localStorage y sessionStorage (Concepto).</H1>
-    <UL>
-        <li>Introducción al almacenamiento de datos en el lado del cliente.</li>
-        <li>Diferencias entre localStorage y sessionStorage.</li>
-        <li>Casos de uso. (Concepto para enlazar con JavaScript).</li>
-    </UL>
-    <p><a href="/index.html">Vuelve a la página principal</a></p>
+    <div class="container">
+        <h1>
+            <p>CURSO DE INICIACIÓN A HTML</p>
+            <p>Clase 37: Web Storage: <code>localStorage</code> y <code>sessionStorage</code> (Concepto)</p>
+        </h1>
+
+        <p>Hasta ahora, hemos visto cómo HTML estructura el contenido y cómo CSS lo estiliza. Sin embargo, para crear experiencias web más dinámicas y personalizadas, a menudo necesitamos que el navegador "recuerde" información sobre el usuario o la sesión. Aquí es donde entra en juego el almacenamiento de datos en el lado del cliente, y específicamente, Web Storage con <code>localStorage</code> y <code>sessionStorage</code>.</p>
+
+        <hr>
+
+        <section>
+            <h2>37.1. Introducción al almacenamiento de datos en el lado del cliente.</h2>
+            <p>El almacenamiento de datos en el lado del cliente se refiere a la capacidad de los navegadores web de guardar información directamente en el dispositivo del usuario. Esto permite a las aplicaciones web almacenar datos para usarlos más tarde, sin tener que enviarlos al servidor en cada ocasión. Históricamente, las "cookies" eran la forma principal de hacer esto, pero Web Storage (introducido con HTML5) ofrece una alternativa más moderna y potente para muchos casos de uso.</p>
+
+            <h3>¿Por qué almacenar datos en el cliente?</h3>
+            <ul>
+                <li><strong>Rendimiento:</strong> Reducir las solicitudes al servidor puede acelerar la carga de páginas y mejorar la fluidez de la aplicación.</li>
+                <li><strong>Experiencia de usuario:</strong> Personalizar la interfaz de usuario, recordar las preferencias del usuario o mantener el estado de la aplicación incluso después de cerrar el navegador.</li>
+                <li><strong>Aplicaciones offline:</strong> En combinación con otras tecnologías, permite que algunas partes de la aplicación funcionen sin conexión a Internet (aunque esto es más avanzado y a menudo implica Service Workers).</li>
+            </ul>
+            <div class="storage-concept">
+                <p><strong>Diferencia clave con las cookies:</strong></p>
+                <ul>
+                    <li><strong>Capacidad:</strong> Web Storage tiene una capacidad mucho mayor (normalmente 5MB por dominio) en comparación con los ~4KB de las cookies.</li>
+                    <li><strong>Envío al servidor:</strong> Los datos de Web Storage NO se envían automáticamente al servidor con cada solicitud HTTP, lo que reduce el tráfico de red y mejora la seguridad (ya que no son vulnerables a CSRF si se usan correctamente).</li>
+                    <li><strong>API más simple:</strong> Web Storage ofrece una API de JavaScript más sencilla para almacenar y recuperar datos clave-valor.</li>
+                </ul>
+            </div>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>37.2. Diferencias entre <code>localStorage</code> y <code>sessionStorage</code>.</h2>
+            <p>HTML5 Web Storage proporciona dos objetos principales para almacenar datos: <code>localStorage</code> y <code>sessionStorage</code>. Ambos tienen una API idéntica, pero difieren en su duración y alcance.</p>
+
+            <h3><code>localStorage</code>: Almacenamiento persistente.</h3>
+            <ul>
+                <li><strong>Duración:</strong> Los datos almacenados en <code>localStorage</code> no tienen fecha de caducidad. Permanecen disponibles incluso después de que el usuario cierre el navegador o apague el ordenador. Los datos solo se eliminan mediante JavaScript, borrando el caché/datos del navegador, o por la misma aplicación web.</li>
+                <li><strong>Alcance:</strong> Los datos son accesibles desde cualquier ventana o pestaña del mismo origen (dominio y protocolo).</li>
+                <li><strong>Uso:</strong> Ideal para almacenar datos que deben persistir entre sesiones de navegación.</li>
+            </ul>
+
+            <h3><code>sessionStorage</code>: Almacenamiento por sesión.</h3>
+            <ul>
+                <li><strong>Duración:</strong> Los datos almacenados en <code>sessionStorage</code> se eliminan cuando se cierra la pestaña o ventana del navegador donde se creó la sesión. Si el usuario duplica una pestaña, los datos de <code>sessionStorage</code> se copian a la nueva pestaña.</li>
+                <li><strong>Alcance:</strong> Los datos están vinculados a la sesión de la pestaña o ventana específica en la que se crearon. No son accesibles desde otras pestañas o ventanas, incluso si son del mismo origen.</li>
+                <li><strong>Uso:</strong> Ideal para almacenar datos temporales que solo son relevantes para la sesión actual del usuario.</li>
+            </ul>
+
+            <h3>Tabla comparativa:</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Característica</th>
+                        <th><code>localStorage</code></th>
+                        <th><code>sessionStorage</code></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Duración</strong></td>
+                        <td>Persistente (sin fecha de caducidad)</td>
+                        <td>Por sesión (se elimina al cerrar la pestaña/ventana)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Alcance</strong></td>
+                        <td>Global para el origen (disponible en todas las pestañas/ventanas del mismo origen)</td>
+                        <td>Limitado a la pestaña/ventana actual</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Capacidad</strong></td>
+                        <td>~5 MB por origen</td>
+                        <td>~5 MB por origen</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Envío al servidor</strong></td>
+                        <td>No automático</td>
+                        <td>No automático</td>
+                    </tr>
+                    <tr>
+                        <td><strong>API</strong></td>
+                        <td><code>localStorage.setItem()</code>, <code>getItem()</code>, <code>removeItem()</code>, <code>clear()</code></td>
+                        <td><code>sessionStorage.setItem()</code>, <code>getItem()</code>, <code>removeItem()</code>, <code>clear()</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>37.3. Casos de uso (Concepto para enlazar con JavaScript).</h2>
+            <p>Aunque Web Storage es una característica de HTML5, su uso práctico se realiza casi exclusivamente a través de JavaScript, ya que no hay etiquetas HTML directas para interactuar con él. En esta clase, nos centramos en el <strong>concepto</strong> y los <strong>casos de uso</strong>.</p>
+
+            <h3>Casos de uso para <code>localStorage</code>:</h3>
+            <ul>
+                <li><strong>Preferencias del usuario:</strong> Recordar el tema oscuro/claro, idioma preferido, tamaño de fuente, etc., entre visitas.</li>
+                <li><strong>Estado de formularios:</strong> Guardar el contenido de un formulario a medida que el usuario lo rellena, para que no pierda su progreso si cierra el navegador accidentalmente.</li>
+                <li><strong>Datos de aplicación offline (básicos):</strong> Almacenar pequeños conjuntos de datos que no necesitan ser sincronizados con el servidor inmediatamente.</li>
+                <li><strong>Configuraciones de la UI:</strong> Recordar el estado de paneles contraíbles, orden de columnas en tablas, etc.</li>
+            </ul>
+
+            <h3>Casos de uso para <code>sessionStorage</code>:</h3>
+            <ul>
+                <li><strong>Datos de una única transacción:</strong> Por ejemplo, la información de un carrito de compras temporal que no debe persistir si el usuario cierra la pestaña.</li>
+                <li><strong>Estado de navegación entre páginas:</strong> Mantener el estado de un asistente o un formulario multipaso a medida que el usuario avanza por diferentes páginas de la aplicación en la misma sesión.</li>
+                <li><strong>Datos de sesión de usuario:</strong> Información sobre el usuario que solo es relevante mientras la pestaña está abierta.</li>
+            </ul>
+
+            <div class="important-note">
+                <p><strong>Nota importante para el futuro:</strong></p>
+                <p>La interacción con <code>localStorage</code> y <code>sessionStorage</code> se realiza a través de una API de JavaScript muy sencilla. Por ejemplo, para guardar un dato:</p>
+                <pre><code class="language-js">// Guardar un dato en localStorage
+localStorage.setItem('nombreUsuario', 'Juan Perez');
+
+// Guardar un dato en sessionStorage
+sessionStorage.setItem('idTransaccion', 'XYZ123');
+</code></pre>
+                <p>Y para recuperarlo:</p>
+                <pre><code class="language-js">// Recuperar un dato de localStorage
+let nombre = localStorage.getItem('nombreUsuario');
+
+// Recuperar un dato de sessionStorage
+let transaccionId = sessionStorage.getItem('idTransaccion');
+</code></pre>
+                <p>Veremos esto en detalle cuando abordemos JavaScript en un curso posterior. Por ahora, es fundamental entender el <strong>concepto</strong> de almacenamiento de datos en el cliente y las <strong>diferencias clave</strong> entre estas dos opciones.</p>
+            </div>
+            <p>Web Storage es una herramienta poderosa para mejorar la experiencia del usuario y el rendimiento de las aplicaciones web, permitiendo a los desarrolladores controlar cómo y cuándo se guardan los datos en el navegador del usuario.</p>
+        </section>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="Ejercicios37.html">Ejercicios sobre esta lección.</a></li>
+                <li><a href="38IntroduccionAJavascript.html">Clase 38: Introducción a JavaScript (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
 </body>
 </html>

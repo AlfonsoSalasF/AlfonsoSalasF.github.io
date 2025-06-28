@@ -1,18 +1,143 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iframes: Insertando Contenido Externo</title>
+    <title>Iframes: Insertando Contenido Externo - Curso HTML</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
+    <style>
+        iframe {
+            border: 1px solid #ccc;
+            margin: 20px 0;
+            display: block; /* Para centrarlo si es necesario */
+            max-width: 100%;
+        }
+    </style>
 </head>
 <body>
-    <H1>Clase 26: Iframes: Insertando Contenido Externo.</H1>
-    <UL>
-        <li>La etiqueta &lt;iframe&gt;.</li>
-        <li>Atributos: src, width, height, frameborder, allowfullscreen.</li>
-        <li>Consideraciones de seguridad y rendimiento.</li>
-        <li>Ejemplos: Google Maps, videos de YouTube.</li>
-    </UL>
-    <p><a href="/index.html">Vuelve a la página principal</a></p>
+    <div class="container">
+        <h1>
+            <p>CURSO DE INICIACIÓN A HTML</p>
+            <p>Clase 26: Iframes: Insertando Contenido Externo</p>
+        </h1>
+
+        <p>A veces, necesitamos incrustar contenido de otra fuente directamente en nuestra página web, como un mapa interactivo, un video o incluso otra página web completa. Para esto, HTML nos proporciona la etiqueta <code>&lt;iframe&gt;</code>, que permite incrustar un documento HTML dentro de otro documento HTML.</p>
+
+        <hr>
+
+        <section>
+            <h2>26.1. La etiqueta <code>&lt;iframe&gt;</code>.</h2>
+            <p>El elemento HTML <code>&lt;iframe&gt;</code> representa un marco en línea, es decir, un documento HTML incrustado dentro de otro documento HTML. Es como una "ventana" a otra página web dentro de la tuya.</p>
+            <p>Es importante entender que el contenido dentro de un <code>&lt;iframe&gt;</code> es un documento completamente separado del documento padre, con su propio DOM, sus propios estilos y sus propios scripts. Esto lo hace muy potente para incrustar contenido de terceros.</p>
+            <pre><code>&lt;iframe src="URL_del_contenido_externo" width="600" height="400"&gt;&lt;/iframe&gt;</code></pre>
+            <div class="note">
+                <p>El contenido de respaldo entre las etiquetas de apertura y cierre del <code>&lt;iframe&gt;</code> (similar a <code>&lt;canvas&gt;</code>) se mostrará solo si el navegador no soporta iframes.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>26.2. Atributos: <code>src</code>, <code>width</code>, <code>height</code>, <code>frameborder</code>, <code>allowfullscreen</code>.</h2>
+            <p>Los iframes tienen varios atributos importantes para controlar su comportamiento y apariencia:</p>
+            <ul>
+                <li><strong><code>src</code> (obligatorio):</strong> Especifica la URL del documento que se va a incrustar. Sin este atributo, el iframe estará vacío.</li>
+                <li><strong><code>width</code> y <code>height</code>:</strong> Definen el ancho y la altura del iframe en píxeles. También se pueden usar porcentajes. Es buena práctica definirlos para evitar cambios de diseño.</li>
+                <li><strong><code>frameborder</code> (obsoleto):</strong> Este atributo, usado para controlar si el iframe tiene un borde, está obsoleto en HTML5. En su lugar, debes usar CSS para estilizar el borde del iframe (<code>border: 0;</code> para quitarlo).</li>
+                <li><strong><code>allowfullscreen</code>:</strong> Un atributo booleano (simplemente presente o ausente) que, si se especifica, permite que el iframe se muestre en modo de pantalla completa. Esto es crucial para incrustar videos que los usuarios puedan querer ver en pantalla completa. Sin este atributo, la opción de pantalla completa puede no estar disponible dentro del contenido incrustado.</li>
+                <li><strong><code>loading</code>:</strong> (Nuevo en HTML5) Indica cómo debe cargar el navegador el iframe. Valores posibles:
+                    <ul>
+                        <li><code>eager</code> (predeterminado): Carga el iframe inmediatamente.</li>
+                        <li><code>lazy</code>: Retrasa la carga del iframe hasta que esté cerca del viewport del usuario (útil para iframes que no son visibles de inmediato y mejorar el rendimiento inicial de la página).</li>
+                    </ul>
+                </li>
+                <li><strong><code>sandbox</code>:</strong> (Muy importante para seguridad) Permite deshabilitar ciertas funcionalidades del iframe, aislando el contenido incrustado. Por ejemplo, puedes impedir que el iframe ejecute scripts, envíe formularios, acceda al almacenamiento local, etc. Si el atributo <code>sandbox</code> está presente sin ningún valor, todas las restricciones se aplican. Puedes especificar valores para permitir ciertas funciones (ej. <code>allow-scripts</code>, <code>allow-same-origin</code>, <code>allow-popups</code>).</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>26.3. Consideraciones de seguridad y rendimiento.</h2>
+            <p>Aunque los iframes son muy útiles, es crucial tener en cuenta sus implicaciones en seguridad y rendimiento:</p>
+            <h3>26.3.1. Seguridad:</h3>
+            <ul>
+                <li><strong>Riesgo de Clickjacking:</strong> Un atacante podría cargar tu sitio web en un iframe y superponer elementos invisibles para engañar a los usuarios y hacer clic en algo que no desean.</li>
+                <li><strong>Contenido no confiable:</strong> Si incrustas contenido de una fuente no confiable, podrías exponer a tus usuarios a malware, phishing o contenido inapropiado.</li>
+                <li><strong>Políticas de Seguridad de Contenido (CSP):</strong> Puedes usar una CSP en tu servidor para controlar qué sitios pueden ser incrustados en iframes o qué sitios pueden incrustar tu contenido.</li>
+                <li><strong>Atributo <code>sandbox</code>:</strong> Como se mencionó, el atributo <code>sandbox</code> es tu primera línea de defensa para aislar el contenido del iframe y limitar lo que puede hacer. Siempre úsalo cuando incrustes contenido de terceros, especialmente si no confías completamente en la fuente.</li>
+            </ul>
+
+            <h3>26.3.2. Rendimiento:</h3>
+            <ul>
+                <li><strong>Mayor tiempo de carga:</strong> Cada iframe carga un documento HTML completo, lo que puede aumentar significativamente el tiempo de carga de tu página, ya que el navegador tiene que hacer peticiones HTTP adicionales.</li>
+                <li><strong>Consumo de recursos:</strong> Los iframes consumen recursos de CPU y memoria, ya que son como una instancia separada del navegador.</li>
+                <li><strong>SEO:</strong> El contenido dentro de un iframe generalmente no es indexado directamente por los motores de búsqueda como parte de tu página.</li>
+                <li><strong>Atributo <code>loading="lazy"</code>:</strong> Utiliza este atributo para mejorar el rendimiento de carga inicial, especialmente si tienes muchos iframes o si no son visibles inmediatamente al cargar la página.</li>
+            </ul>
+            <div class="important">
+                <p><strong>Recomendación:</strong> Usa iframes con cautela y solo cuando sea necesario. Siempre prefiere incrustar contenido de fuentes confiables y utiliza el atributo <code>sandbox</code> para aplicar restricciones de seguridad. Para mejorar el rendimiento, considera <code>loading="lazy"</code>.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>26.4. Ejemplos: Google Maps, videos de YouTube.</h2>
+            <p>Los iframes son extremadamente comunes para incrustar servicios populares como mapas y videos.</p>
+
+            <h3>26.4.1. Google Maps:</h3>
+            <p>Puedes obtener el código de incrustación de un mapa directamente desde Google Maps. Ir a un lugar, hacer clic en "Compartir" y luego en "Insertar un mapa".</p>
+            <pre><code>&lt;iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.1651370216265!2d-3.7037902!3d40.4167754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd422997800a7479%3A0xc4324400e6284f1b!2sPuerta%20del%20Sol%2C%2028013%20Madrid!5e0!3m2!1ses!2ses!4v1678912345678!5m2!1ses!2ses"
+    width="600"
+    height="450"
+    style="border:0;"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"&gt;
+&lt;/iframe&gt;</code></pre>
+            <p><strong>Ejemplo en vivo:</strong></p>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.1651370216265!2d-3.7037902!3d40.4167754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd422997800a7479%3A0xc4324400e6284f1b!2sPuerta%20del%20Sol%2C%2028013%20Madrid!5e0!3m2!1ses!2ses!4v1678912345678!5m2!1ses!2ses"
+                width="600"
+                height="450"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+
+            <h3>26.4.2. Videos de YouTube:</h3>
+            <p>YouTube también proporciona un código de incrustación (Embed code) que usa un iframe. Ve a un video, haz clic en "Compartir" y luego en "Insertar".</p>
+            <pre><code>&lt;iframe width="560" height="315"
+    src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen&gt;
+&lt;/iframe&gt;</code></pre>
+            <p><strong>Ejemplo en vivo:</strong></p>
+            <iframe width="560" height="315"
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen>
+            </iframe>
+
+            <div class="note">
+                <p>Observa cómo YouTube y Google Maps incluyen el atributo <code>allowfullscreen</code> y otros atributos importantes para la política de seguridad (<code>referrerpolicy</code>, <code>sandbox</code> implícito o explícito en las API). Esto es vital para asegurar que el contenido incrustado funcione correctamente y de forma segura.</p>
+            </div>
+        </section>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="Ejercicios26.html">Ejercicios sobre esta lección.</a></li>
+                <li><a href="27ResponsiveDesignYMetaViewport.html">Clase 27: Responsive Design y Meta Viewport (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
 </body>
 </html>

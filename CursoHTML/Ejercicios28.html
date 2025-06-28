@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 28: Ejercicios de Microdatos y Datos Estructurados</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/ejercicios_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
+    <style>
+        .exercise-preview {
+            background-color: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 8px;
+            font-family: 'Georgia', serif; /* Para simular un contenido */
+            line-height: 1.6;
+        }
+        .exercise-preview h3, .exercise-preview p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Clase 28: Ejercicios de Microdatos y Datos Estructurados (Introducción)</h1>
+
+        <div class="exercise-section">
+            <h3>Ejercicios Prácticos de la Clase 28</h3>
+            <p>Para practicar la implementación de microdatos, marca el siguiente contenido según las instrucciones. Recuerda usar los atributos <code>itemscope</code>, <code>itemtype</code> y <code>itemprop</code>.</p>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 1: Marcar una Receta</h4>
+                <p>Marca el siguiente bloque de HTML como una "Receta" (<code>http://schema.org/Recipe</code>) e identifica el <code>name</code> (nombre), <code>cookTime</code> (tiempo de cocción) y <code>ingredients</code> (ingredientes).</p>
+                <div class="exercise-preview">
+                    <p><strong>Receta de Galletas de Avena</strong></p>
+                    <p>Tiempo de cocción: <strong>20 minutos</strong></p>
+                    <p>Ingredientes:</p>
+                    <ul>
+                        <li>1 taza de harina</li>
+                        <li>1/2 taza de avena</li>
+                        <li>1 huevo</li>
+                        <li>1/4 taza de azúcar</li>
+                    </ul>
+                </div>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution1')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution1">
+                    <pre><code class="language-html">&lt;div itemscope itemtype="http://schema.org/Recipe"&gt;
+    &lt;h3 itemprop="name"&gt;Receta de Galletas de Avena&lt;/h3&gt;
+    &lt;p&gt;Tiempo de cocción: &lt;strong itemprop="cookTime" content="PT20M"&gt;20 minutos&lt;/strong&gt;&lt;/p&gt;
+    &lt;p&gt;Ingredientes:&lt;/p&gt;
+    &lt;ul&gt;
+        &lt;li itemprop="ingredients"&gt;1 taza de harina&lt;/li&gt;
+        &lt;li itemprop="ingredients"&gt;1/2 taza de avena&lt;/li&gt;
+        &lt;li itemprop="ingredients"&gt;1 huevo&lt;/li&gt;
+        &lt;li itemprop="ingredients"&gt;1/4 taza de azúcar&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+</code></pre>
+                    <p class="explanation-text">Nota el uso del atributo <code>content</code> en <code>cookTime</code> para proporcionar el valor en un formato estándar (ISO 8601 duración: PT20M significa "Period Time 20 Minutes"), lo cual es ideal para máquinas.</p>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 2: Marcar un Evento</h4>
+                <p>Marca el siguiente bloque como un "Evento" (<code>http://schema.org/Event</code>) e identifica el <code>name</code> (nombre), <code>startDate</code> (fecha de inicio) y <code>location</code> (ubicación). La ubicación debe ser de tipo <code>http://schema.org/Place</code> con su <code>name</code>.</p>
+                <div class="exercise-preview">
+                    <p><strong>Conferencia de Desarrollo Web 2024</strong></p>
+                    <p>Fecha: <strong>15 de Noviembre de 2024</strong></p>
+                    <p>Ubicación: <strong>Centro de Convenciones Principal</strong></p>
+                </div>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution2')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution2">
+                    <pre><code class="language-html">&lt;div itemscope itemtype="http://schema.org/Event"&gt;
+    &lt;h3 itemprop="name"&gt;Conferencia de Desarrollo Web 2024&lt;/h3&gt;
+    &lt;p&gt;Fecha: &lt;strong itemprop="startDate" content="2024-11-15"&gt;15 de Noviembre de 2024&lt;/strong&gt;&lt;/p&gt;
+    &lt;p&gt;Ubicación: &lt;span itemprop="location" itemscope itemtype="http://schema.org/Place"&gt;
+        &lt;span itemprop="name"&gt;Centro de Convenciones Principal&lt;/span&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+                    <p class="explanation-text">Este ejemplo muestra cómo anidar diferentes tipos de esquemas. El <code>Event</code> tiene una <code>location</code> que es un <code>Place</code>, y ese <code>Place</code> tiene su propio <code>name</code>.</p>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 3: Marcar un Producto Simple</h4>
+                <p>Marca el siguiente producto como un "Producto" (<code>http://schema.org/Product</code>) e identifica su <code>name</code> (nombre), <code>description</code> (descripción) y <code>brand</code> (marca).</p>
+                <div class="exercise-preview">
+                    <p><strong>Smartphone Ultra Pro X</strong></p>
+                    <p>Un teléfono de última generación con cámara de 108MP y batería de larga duración.</p>
+                    <p>Marca: <strong>TechInnovate</strong></p>
+                </div>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution3')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution3">
+                    <pre><code class="language-html">&lt;div itemscope itemtype="http://schema.org/Product"&gt;
+    &lt;h3 itemprop="name"&gt;Smartphone Ultra Pro X&lt;/h3&gt;
+    &lt;p itemprop="description"&gt;Un teléfono de última generación con cámara de 108MP y batería de larga duración.&lt;/p&gt;
+    &lt;p&gt;Marca: &lt;span itemprop="brand"&gt;TechInnovate&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+                    <p class="explanation-text">Aquí se muestra cómo marcar las propiedades básicas de un producto. Para un e-commerce real, se añadirían propiedades como <code>offers</code> (ofertas), <code>aggregateRating</code> (calificación agregada), etc.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="quiz-section">
+            <h3>Quiz de la Clase 28: Microdatos y Datos Estructurados</h3>
+            <p>¡Pon a prueba tus conocimientos con este quiz de 10 preguntas!</p>
+            <form id="quizForm">
+                <div class="quiz-question">
+                    <h4>1. ¿Cuál es el objetivo principal de los datos estructurados?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="a"> Mejorar la velocidad de carga de la página.</label>
+                        <label><input type="radio" name="q1" value="b"> Facilitar a los motores de búsqueda la comprensión del contenido de la página.</label>
+                        <label><input type="radio" name="q1" value="c"> Definir estilos CSS más complejos.</label>
+                        <label><input type="radio" name="q1" value="d"> Crear animaciones interactivas.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>2. ¿Qué atributo HTML se utiliza para declarar que un elemento (y su contenido) describe una entidad o "ítem"?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="a"> <code>itemdata</code></label>
+                        <label><input type="radio" name="q2" value="b"> <code>itemtype</code></label>
+                        <label><input type="radio" name="q2" value="c"> <code>itemscope</code></label>
+                        <label><input type="radio" name="q2" value="d"> <code>itemdef</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>3. El atributo <code>itemtype</code> se usa para:</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="a"> Especificar el color del ítem.</label>
+                        <label><input type="radio" name="q3" value="b"> Indicar la URL de la imagen principal del ítem.</label>
+                        <label><input type="radio" name="q3" value="c"> Definir el tipo de entidad que se está describiendo (ej. Persona, Receta, Producto).</label>
+                        <label><input type="radio" name="q3" value="d"> Establecer la propiedad principal del ítem.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>4. ¿Qué atributo se utiliza para definir una propiedad específica de la entidad declarada con <code>itemscope</code> y <code>itemtype</code>?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="a"> <code>property</code></label>
+                        <label><input type="radio" name="q4" value="b"> <code>propname</code></label>
+                        <label><input type="radio" name="q4" value="c"> <code>itemprop</code></label>
+                        <label><input type="radio" name="q4" value="d"> <code>data-prop</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>5. ¿Qué es Schema.org?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="a"> Un lenguaje de programación para bases de datos.</label>
+                        <label><input type="radio" name="q5" value="b"> Una herramienta de Google para medir el rendimiento web.</label>
+                        <label><input type="radio" name="q5" value="c"> Un vocabulario colaborativo de datos estructurados para la web.</label>
+                        <label><input type="radio" name="q5" value="d"> Una biblioteca JavaScript para animaciones.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>6. ¿Cuál es el principal beneficio de los datos estructurados para el SEO de una página?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q6" value="a"> Reducen el tamaño del archivo HTML.</label>
+                        <label><input type="radio" name="q6" value="b"> Aseguran que la página cargue instantáneamente.</label>
+                        <label><input type="radio" name="q6" value="c"> Permiten mostrar Fragmentos Enriquecidos (Rich Snippets) en los resultados de búsqueda.</label>
+                        <label><input type="radio" name="q6" value="d"> Obligan al navegador a usar una fuente específica.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>7. Si marcas un elemento con <code>itemscope itemtype="http://schema.org/Product"</code>, ¿cuál de las siguientes sería una propiedad <code>itemprop</code> válida para ese elemento?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q7" value="a"> <code>author</code></label>
+                        <label><input type="radio" name="q7" value="b"> <code>name</code></label>
+                        <label><input type="radio" name="q7" value="c"> <code>datePublished</code></label>
+                        <label><input type="radio" name="q7" value="d"> <code>headline</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>8. ¿Cuál de las siguientes es la sintaxis de datos estructurados más recomendada por Google hoy en día, aunque no es Microdatos?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q8" value="a"> RDFa</label>
+                        <label><input type="radio" name="q8" value="b"> Microformatos</label>
+                        <label><input type="radio" name="q8" value="c"> JSON-LD</label>
+                        <label><input type="radio" name="q8" value="d"> XML</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>9. ¿Los datos estructurados son un factor de ranking directo para Google?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q9" value="a"> Sí, son uno de los factores más importantes.</label>
+                        <label><input type="radio" name="q9" value="b"> No, pero influyen indirectamente en el SEO al mejorar la visibilidad y el CTR.</label>
+                        <label><input type="radio" name="q9" value="c"> Solo para sitios de e-commerce.</label>
+                        <label><input type="radio" name="q9" value="d"> Solo para búsquedas móviles.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>10. ¿Qué herramienta de Google es indispensable para verificar la implementación de tus datos estructurados?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q10" value="a"> Google Analytics</label>
+                        <label><input type="radio" name="q10" value="b"> Google Ads</label>
+                        <label><input type="radio" name="q10" value="c"> Herramienta de Prueba de Resultados Enriquecidos</label>
+                        <label><input type="radio" name="q10" value="d"> PageSpeed Insights</label>
+                    </div>
+                </div>
+
+                <button type="button" class="submit-quiz-button" id="checkAnswersBtn">Ver Resultados</button>
+            </form>
+
+            <div id="quizResults" class="quiz-results">
+                <p>Resultados del Test:</p>
+                <ol id="resultsList"></ol>
+                <p id="scoreSummary"></p>
+                <button type="button" class="reveal-button" id="resetQuizBtn" style="display: none;">Volver a Intentar</button>
+            </div>
+        </div>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="28MicrodatosYDatosEstructurados.html">Volver a la Clase 28: Microdatos y Datos Estructurados (Introducción).</a></li>
+                <li><a href="29ConceptosAvanzadosSEO.html">Clase 29: Conceptos Avanzados de SEO (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script>
+        // Función para mostrar/ocultar soluciones de ejercicios
+        function toggleSolution(button, solutionId) {
+            const solution = document.getElementById(solutionId);
+            if (solution.style.display === 'block') {
+                solution.style.display = 'none';
+                button.textContent = 'Mostrar Solución';
+            } else {
+                solution.style.display = 'block';
+                button.textContent = 'Ocultar Solución';
+            }
+        }
+
+        // Datos del quiz
+        const quizAnswers = {
+            q1: 'b', // Facilitar a los motores de búsqueda la comprensión del contenido de la página.
+            q2: 'c', // itemscope
+            q3: 'c', // Definir el tipo de entidad que se está describiendo (ej. Persona, Receta, Producto).
+            q4: 'c', // itemprop
+            q5: 'c', // Un vocabulario colaborativo de datos estructurados para la web.
+            q6: 'c', // Permiten mostrar Fragmentos Enriquecidos (Rich Snippets) en los resultados de búsqueda.
+            q7: 'b', // name
+            q8: 'c', // JSON-LD
+            q9: 'b', // No, pero influyen indirectamente en el SEO al mejorar la visibilidad y el CTR.
+            q10: 'c' // Herramienta de Prueba de Resultados Enriquecidos
+        };
+
+        // Asignar eventos a los botones una vez que el DOM esté completamente cargado
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            if (checkAnswersBtn) {
+                checkAnswersBtn.addEventListener('click', checkQuiz);
+            }
+            if (resetQuizBtn) {
+                resetQuizBtn.addEventListener('click', resetQuiz);
+            }
+        });
+
+        function checkQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const resultsList = document.getElementById('resultsList');
+            const scoreSummary = document.getElementById('scoreSummary');
+            const quizResultsDiv = document.getElementById('quizResults');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            resultsList.innerHTML = ''; // Limpiar resultados anteriores
+            let score = 0;
+
+            for (let i = 1; i <= 10; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = quizForm.elements[questionName] ? quizForm.elements[questionName].value : '';
+                const correctAnswer = quizAnswers[questionName];
+
+                const listItem = document.createElement('li');
+                listItem.classList.add(selectedOption === correctAnswer ? 'correct' : 'incorrect');
+
+                // Obtener el texto de la opción seleccionada (preservando <code>)
+                let selectedAnswerText = 'No respondida';
+                if (selectedOption) {
+                    const selectedLabel = quizForm.querySelector(`input[name="${questionName}"][value="${selectedOption}"]`);
+                    if (selectedLabel) {
+                        const labelClone = selectedLabel.closest('label').cloneNode(true);
+                        labelClone.querySelector('input').remove();
+                        selectedAnswerText = labelClone.innerHTML.trim();
+                    }
+                }
+
+                // Obtener el texto de la opción correcta (preservando <code>)
+                const correctLabel = quizForm.querySelector(`input[name="${questionName}"][value="${correctAnswer}"]`);
+                let correctAnswerText = 'N/A';
+                if (correctLabel) {
+                    const correctLabelClone = correctLabel.closest('label').cloneNode(true);
+                    correctLabelClone.querySelector('input').remove();
+                    correctAnswerText = correctLabelClone.innerHTML.trim();
+                }
+
+                const questionText = document.createTextNode(`Pregunta ${i}: `);
+                listItem.appendChild(questionText);
+
+                if (selectedOption !== correctAnswer) {
+                    listItem.innerHTML += ` Tu respuesta: "${selectedAnswerText}".<br>`;
+                    const correctInfoSpan = document.createElement('span');
+                    correctInfoSpan.classList.add('correct-answer-info');
+                    correctInfoSpan.innerHTML = `Respuesta correcta: "${correctAnswerText}".`;
+                    listItem.appendChild(correctInfoSpan);
+                } else {
+                    listItem.innerHTML += ` Correcta.`;
+                    score++;
+                }
+
+                resultsList.appendChild(listItem);
+            }
+
+            scoreSummary.textContent = `Tu puntuación es: ${score} de 10 preguntas correctas.`;
+            quizResultsDiv.style.display = 'block'; // Mostrar la sección de resultados
+            quizResultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Desplazarse a los resultados
+
+            // Ocultar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'none';
+            // Mostrar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'inline-block';
+        }
+
+        function resetQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            quizForm.reset(); // Reinicia todos los radio buttons
+            document.getElementById('quizResults').style.display = 'none'; // Oculta los resultados
+            document.getElementById('resultsList').innerHTML = ''; // Limpia la lista de resultados
+            document.getElementById('scoreSummary').textContent = ''; // Limpia el resumen de puntuación
+
+            // Mostrar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'inline-block';
+            // Ocultar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

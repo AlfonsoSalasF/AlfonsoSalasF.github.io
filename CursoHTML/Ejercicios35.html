@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 35: Ejercicios de HTML y Responsividad</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/ejercicios_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
+    <style>
+        .code-example-inline {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .interactive-section {
+            background-color: #f0f8ff;
+            border: 1px solid #cce7ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .interactive-section img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            margin: 10px auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Clase 35: Ejercicios de HTML y Responsividad</h1>
+
+        <div class="exercise-section">
+            <h3>Ejercicios Prácticos de la Clase 35</h3>
+            <p>Estos ejercicios te ayudarán a aplicar los conceptos de responsividad en HTML.</p>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 1: Configuración del Viewport</h4>
+                <p>Modifica la estructura básica de HTML para incluir la meta etiqueta <code>viewport</code> esencial para el diseño responsivo. No necesitas crear un archivo CSS o JS para este ejercicio, solo la estructura HTML.</p>
+                <p>Estructura inicial:</p>
+                <pre class="code-example-inline"><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Mi Página&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Hola Responsivo&lt;/h1&gt;
+    &lt;p&gt;Este es el contenido de la página.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution1')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution1">
+                    <p><strong>HTML con meta viewport:</strong></p>
+                    <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt; &lt;!-- ¡Aquí está! --&gt;
+    &lt;title&gt;Mi Página&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Hola Responsivo&lt;/h1&gt;
+    &lt;p&gt;Este es el contenido de la página.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+                    <p class="explanation-text">La etiqueta <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code> es fundamental para indicar a los navegadores móviles que la página debe adaptarse al ancho del dispositivo y tener un zoom inicial de 1.0, lo que permite que el diseño responsivo funcione correctamente.</p>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 2: Imágenes Responsivas con <code>srcset</code></h4>
+                <p>Crea una imagen que use el atributo <code>srcset</code> para servir diferentes versiones de la misma imagen basándose en el ancho del viewport. Usa los siguientes tamaños de imagen simulados (puedes usar <code>via.placeholder.com</code>):</p>
+                <ul>
+                    <li><code>imagen-pequena.jpg</code>: 400px de ancho</li>
+                    <li><code>imagen-mediana.jpg</code>: 800px de ancho</li>
+                    <li><code>imagen-grande.jpg</code>: 1200px de ancho</li>
+                </ul>
+                <p>Haz que la imagen ocupe:</p>
+                <ul>
+                    <li>100% del ancho del viewport si el ancho es menor o igual a 600px.</li>
+                    <li>80% del ancho del viewport si el ancho es entre 601px y 1000px.</li>
+                    <li>70% del ancho del viewport si el ancho es mayor a 1000px.</li>
+                </ul>
+                <div class="interactive-section">
+                    <p>Redimensiona la ventana del navegador para ver cómo la imagen cambia de tamaño (y el navegador elegiría una fuente diferente si fueran imágenes reales).</p>
+                    <img srcset="https://via.placeholder.com/400x200?text=Small+400w 400w,
+                                 https://via.placeholder.com/800x400?text=Medium+800w 800w,
+                                 https://via.placeholder.com/1200x600?text=Large+1200w 1200w"
+                         sizes="(max-width: 600px) 100vw,
+                                (max-width: 1000px) 80vw,
+                                70vw"
+                         src="https://via.placeholder.com/1200x600?text=Default+Image"
+                         alt="Imagen responsiva de ejemplo"
+                         style="width: 100%; height: auto; max-width: 1200px;">
+                    <p>Nota: Para ver la carga de diferentes imágenes en Lighthouse, estas imágenes deberían ser diferentes archivos reales en tu servidor.</p>
+                </div>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution2')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution2">
+                    <p><strong>HTML con <code>srcset</code> y <code>sizes</code>:</strong></p>
+                    <pre><code class="language-html">&lt;img srcset="https://via.placeholder.com/400x200?text=Small+400w 400w,
+             https://via.placeholder.com/800x400?text=Medium+800w 800w,
+             https://via.placeholder.com/1200x600?text=Large+1200w 1200w"
+     sizes="(max-width: 600px) 100vw,
+            (max-width: 1000px) 80vw,
+            70vw"
+     src="https://via.placeholder.com/1200x600?text=Default+Image"
+     alt="Imagen responsiva de ejemplo"&gt;
+</code></pre>
+                    <p class="explanation-text">El atributo <code>srcset</code> le indica al navegador las diferentes versiones de imagen disponibles con sus anchos. El atributo <code>sizes</code> le dice al navegador el ancho que ocupará la imagen en el layout en diferentes tamaños de pantalla (usando unidades de viewport <code>vw</code>). Esto permite al navegador elegir la imagen más adecuada y eficiente para la pantalla actual del usuario.</p>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 3: Imágenes Responsivas con <code>&lt;picture&gt;</code></h4>
+                <p>Crea una imagen responsiva usando la etiqueta <code>&lt;picture&gt;</code>. La idea es servir diferentes formatos de imagen y/o "arte direccional" (imágenes diferentes) para distintas condiciones.</p>
+                <ul>
+                    <li>Si la pantalla es de al menos 800px de ancho, muestra una versión WebP horizontal.</li>
+                    <li>Si la pantalla es de al menos 400px de ancho, muestra una versión WebP cuadrada.</li>
+                    <li>Como fallback, usa una versión JPG pequeña.</li>
+                </ul>
+                <div class="interactive-section">
+                    <p>Redimensiona la ventana del navegador. Idealmente, verías diferentes imágenes o formatos cargarse.</p>
+                    <picture>
+                        <source srcset="https://via.placeholder.com/1200x400/87CEEB/FFFFFF?text=Horizontal+WebP+Large" type="image/webp" media="(min-width: 800px)">
+                        <source srcset="https://via.placeholder.com/600x600/FFD700/000000?text=Square+WebP+Medium" type="image/webp" media="(min-width: 400px)">
+                        <img src="https://via.placeholder.com/300x200/FF6347/FFFFFF?text=JPG+Small" alt="Imagen responsiva variada" style="width: 100%; height: auto; max-width: 1200px;">
+                    </picture>
+                    <p>Nota: Para probar formatos WebP, tu navegador debe soportarlo. La URL de placeholder siempre devolverá JPG, pero simula cómo se especificarían los tipos.</p>
+                </div>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution3')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution3">
+                    <p><strong>HTML con <code>&lt;picture&gt;</code> y <code>&lt;source&gt;</code>:</strong></p>
+                    <pre><code class="language-html">&lt;picture&gt;
+    &lt;!-- Si la pantalla es de al menos 800px de ancho, muestra una versión WebP horizontal --&gt;
+    &lt;source srcset="https://via.placeholder.com/1200x400/87CEEB/FFFFFF?text=Horizontal+WebP+Large" type="image/webp" media="(min-width: 800px)"&gt;
+    &lt;!-- Si la pantalla es de al menos 400px de ancho, muestra una versión WebP cuadrada --&gt;
+    &lt;source srcset="https://via.placeholder.com/600x600/FFD700/000000?text=Square+WebP+Medium" type="image/webp" media="(min-width: 400px)"&gt;
+    &lt;!-- Imagen de fallback (JPG pequeña) para navegadores no compatibles o si ninguna source coincide --&gt;
+    &lt;img src="https://via.placeholder.com/300x200/FF6347/FFFFFF?text=JPG+Small" alt="Imagen responsiva variada"&gt;
+&lt;/picture&gt;
+</code></pre>
+                    <p class="explanation-text">La etiqueta <code>&lt;picture&gt;</code> permite al navegador elegir la imagen más adecuada de entre las etiquetas <code>&lt;source&gt;</code> según las condiciones de <code>media</code> (tamaño de pantalla) y <code>type</code> (formato de imagen). Si ninguna <code>&lt;source&gt;</code> coincide o el navegador no las soporta, se carga la imagen especificada en la etiqueta <code>&lt;img&gt;</code> como fallback. Esto es ideal para "arte direccional" o para servir formatos de imagen más modernos.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="quiz-section">
+            <h3>Quiz de la Clase 35: HTML y Responsividad (Introducción)</h3>
+            <p>¡Pon a prueba tus conocimientos con este quiz de 10 preguntas!</p>
+            <form id="quizForm">
+                <div class="quiz-question">
+                    <h4>1. ¿Cuál es el objetivo principal del diseño web responsivo?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="a"> Crear versiones separadas del sitio para cada dispositivo.</label>
+                        <label><input type="radio" name="q1" value="b"> Adaptar el diseño y el contenido de un sitio web a diferentes tamaños de pantalla y dispositivos.</label>
+                        <label><input type="radio" name="q1" value="c"> Hacer que los sitios web carguen más rápido en todas las pantallas.</label>
+                        <label><input type="radio" name="q1" value="d"> Utilizar exclusivamente imágenes vectoriales (SVG).</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>2. ¿Qué atributo del <code>&lt;meta&gt;</code> tag es esencial para que un sitio web se vea correctamente en dispositivos móviles?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="a"> <code>charset</code></label>
+                        <label><input type="radio" name="q2" value="b"> <code>viewport</code></label>
+                        <label><input type="radio" name="q2" value="c"> <code>description</code></label>
+                        <label><input type="radio" name="q2" value="d"> <code>keywords</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>3. ¿Qué valor del atributo <code>content</code> en la meta etiqueta viewport establece el ancho del viewport al ancho del dispositivo?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="a"> <code>width=auto</code></label>
+                        <label><input type="radio" name="q3" value="b"> <code>width=100%</code></label>
+                        <label><input type="radio" name="q3" value="c"> <code>width=device-width</code></label>
+                        <label><input type="radio" name="q3" value="d"> <code>width=max-content</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>4. ¿Qué hace <code>initial-scale=1.0</code> en la meta etiqueta viewport?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="a"> Establece la escala inicial de la página a un zoom del 100%.</label>
+                        <label><input type="radio" name="q4" value="b"> Bloquea la capacidad del usuario para hacer zoom.</label>
+                        <label><input type="radio" name="q4" value="c"> Define el tamaño de fuente inicial.</label>
+                        <label><input type="radio" name="q4" value="d"> Es obsoleto y no tiene efecto.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>5. ¿Qué atributo de la etiqueta <code>&lt;img&gt;</code> permite al navegador elegir entre múltiples fuentes de imagen basadas en el ancho o la densidad de píxeles?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="a"> <code>src</code></label>
+                        <label><input type="radio" name="q5" value="b"> <code>responsive</code></label>
+                        <label><input type="radio" name="q5" value="c"> <code>srcset</code></label>
+                        <label><input type="radio" name="q5" value="d"> <code>media</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>6. ¿Qué etiqueta HTML permite especificar diferentes imágenes para diferentes condiciones (ej., formatos de imagen o arte direccional)?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q6" value="a"> <code>&lt;figure&gt;</code></label>
+                        <label><input type="radio" name="q6" value="b"> <code>&lt;canvas&gt;</code></label>
+                        <label><input type="radio" name="q6" value="c"> <code>&lt;picture&gt;</code></label>
+                        <label><input type="radio" name="q6" value="d"> <code>&lt;source&gt;</code> (solo)</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>7. Dentro de una etiqueta <code>&lt;picture&gt;</code>, ¿qué etiqueta se utiliza para definir las diferentes fuentes de imagen condicionales?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q7" value="a"> <code>&lt;img&gt;</code></label>
+                        <label><input type="radio" name="q7" value="b"> <code>&lt;link&gt;</code></label>
+                        <label><input type="radio" name="q7" value="c"> <code>&lt;source&gt;</code></label>
+                        <label><input type="radio" name="q7" value="d"> <code>&lt;media&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>8. ¿Qué atributo se usa en las etiquetas <code>&lt;source&gt;</code> dentro de <code>&lt;picture&gt;</code> para especificar media queries (ej., ancho de pantalla)?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q8" value="a"> <code>query</code></label>
+                        <label><input type="radio" name="q8" value="b"> <code>match</code></label>
+                        <label><input type="radio" name="q8" value="c"> <code>media</code></label>
+                        <label><input type="radio" name="q8" value="d"> <code>screen</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>9. El atributo <code>sizes</code> en una etiqueta <code>&lt;img&gt;</code> con <code>srcset</code> es útil porque:</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q9" value="a"> Define el ancho y alto exactos de la imagen en píxeles.</label>
+                        <label><input type="radio" name="q9" value="b"> Le dice al navegador cuánto espacio ocupará la imagen en diferentes viewports.</label>
+                        <label><input type="radio" name="q9" value="c"> Especifica el tamaño de la fuente de la imagen.</label>
+                        <label><input type="radio" name="q9" value="d"> Es redundante si ya se usa <code>srcset</code>.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>10. ¿Por qué es importante para el SEO que un sitio web sea responsivo?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q10" value="a"> Los sitios responsivos obtienen más backlinks automáticamente.</label>
+                        <label><input type="radio" name="q10" value="b"> Google penaliza los sitios no optimizados para móviles en sus resultados de búsqueda móvil.</label>
+                        <label><input type="radio" name="q10" value="c"> Los sitios responsivos usan menos JavaScript.</label>
+                        <label><input type="radio" name="q10" value="d"> Los sitios responsivos cargan siempre más rápido que los no responsivos.</label>
+                    </div>
+                </div>
+
+                <button type="button" class="submit-quiz-button" id="checkAnswersBtn">Ver Resultados</button>
+            </form>
+
+            <div id="quizResults" class="quiz-results">
+                <p>Resultados del Test:</p>
+                <ol id="resultsList"></ol>
+                <p id="scoreSummary"></p>
+                <button type="button" class="reveal-button" id="resetQuizBtn" style="display: none;">Volver a Intentar</button>
+            </div>
+        </div>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="35HTMLyResponsividadIntroduccion.html">Volver a la Clase 35: HTML y Responsividad (Introducción).</a></li>
+                <li><a href="36MediaQueriesDeCSSParaResponsividad.html">Clase 36: Media Queries de CSS para Responsividad (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script>
+        // Función para mostrar/ocultar soluciones de ejercicios
+        function toggleSolution(button, solutionId) {
+            const solution = document.getElementById(solutionId);
+            if (solution.style.display === 'block') {
+                solution.style.display = 'none';
+                button.textContent = 'Mostrar Solución';
+            } else {
+                solution.style.display = 'block';
+                button.textContent = 'Ocultar Solución';
+            }
+        }
+
+        // Datos del quiz
+        const quizAnswers = {
+            q1: 'b', // Adaptar el diseño y el contenido de un sitio web a diferentes tamaños de pantalla y dispositivos.
+            q2: 'b', // viewport
+            q3: 'c', // width=device-width
+            q4: 'a', // Establece la escala inicial de la página a un zoom del 100%.
+            q5: 'c', // srcset
+            q6: 'c', // <picture>
+            q7: 'c', // <source>
+            q8: 'c', // media
+            q9: 'b', // Le dice al navegador cuánto espacio ocupará la imagen en diferentes viewports.
+            q10: 'b' // Google penaliza los sitios no optimizados para móviles en sus resultados de búsqueda móvil.
+        };
+
+        // Asignar eventos a los botones una vez que el DOM esté completamente cargado
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            if (checkAnswersBtn) {
+                checkAnswersBtn.addEventListener('click', checkQuiz);
+            }
+            if (resetQuizBtn) {
+                resetQuizBtn.addEventListener('click', resetQuiz);
+            }
+        });
+
+        function checkQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const resultsList = document.getElementById('resultsList');
+            const scoreSummary = document.getElementById('scoreSummary');
+            const quizResultsDiv = document.getElementById('quizResults');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            resultsList.innerHTML = ''; // Limpiar resultados anteriores
+            let score = 0;
+
+            for (let i = 1; i <= 10; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = quizForm.elements[questionName] ? quizForm.elements[questionName].value : '';
+                const correctAnswer = quizAnswers[questionName];
+
+                const listItem = document.createElement('li');
+                listItem.classList.add(selectedOption === correctAnswer ? 'correct' : 'incorrect');
+
+                // Obtener el texto de la opción seleccionada (preservando <code>)
+                let selectedAnswerText = 'No respondida';
+                if (selectedOption) {
+                    const selectedLabel = quizForm.querySelector(`input[name="${questionName}"][value="${selectedOption}"]`);
+                    if (selectedLabel) {
+                        const labelClone = selectedLabel.closest('label').cloneNode(true);
+                        labelClone.querySelector('input').remove();
+                        selectedAnswerText = labelClone.innerHTML.trim();
+                    }
+                }
+
+                // Obtener el texto de la opción correcta (preservando <code>)
+                const correctLabel = quizForm.querySelector(`input[name="${questionName}"][value="${correctAnswer}"]`);
+                let correctAnswerText = 'N/A';
+                if (correctLabel) {
+                    const correctLabelClone = correctLabel.closest('label').cloneNode(true);
+                    correctLabelClone.querySelector('input').remove();
+                    correctAnswerText = correctLabelClone.innerHTML.trim();
+                }
+
+                const questionText = document.createTextNode(`Pregunta ${i}: `);
+                listItem.appendChild(questionText);
+
+                if (selectedOption !== correctAnswer) {
+                    listItem.innerHTML += ` Tu respuesta: "${selectedAnswerText}".<br>`;
+                    const correctInfoSpan = document.createElement('span');
+                    correctInfoSpan.classList.add('correct-answer-info');
+                    correctInfoSpan.innerHTML = `Respuesta correcta: "${correctAnswerText}".`;
+                    listItem.appendChild(correctInfoSpan);
+                } else {
+                    listItem.innerHTML += ` Correcta.`;
+                    score++;
+                }
+
+                resultsList.appendChild(listItem);
+            }
+
+            scoreSummary.textContent = `Tu puntuación es: ${score} de 10 preguntas correctas.`;
+            quizResultsDiv.style.display = 'block'; // Mostrar la sección de resultados
+            quizResultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Desplazarse a los resultados
+
+            // Ocultar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'none';
+            // Mostrar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'inline-block';
+        }
+
+        function resetQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            quizForm.reset(); // Reinicia todos los radio buttons
+            document.getElementById('quizResults').style.display = 'none'; // Oculta los resultados
+            document.getElementById('resultsList').innerHTML = ''; // Limpia la lista de resultados
+            document.getElementById('scoreSummary').textContent = ''; // Limpia el resumen de puntuación
+
+            // Mostrar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'inline-block';
+            // Ocultar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

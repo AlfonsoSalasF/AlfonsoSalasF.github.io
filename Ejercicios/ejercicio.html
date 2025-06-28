@@ -4,30 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejercicios de Prueba</title>
-    <!--<link rel="stylesheet" href="/CSS/pruebas.css">-->
-    <link rel="stylesheet" href="../CSS/formularios.css">
+     <link rel="stylesheet" href="../CSS/formularios.css">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
 </head>
 <body>
-    <form action="#" method="get">
-        <p>Ejercicio 1. Campo de Nombre obligatorio:</p>
-        <label for="nombre">Nombre</label><input type="text" required id="nombre" name="nombre">
-        <p>Ejercicio 2. Campo de correo con validación de formato</p>
-        <label for="mail">Mail</label>
-        <input type="email" name="mail" id="mail" required>
-        <p>Ejercicio 3: Contraseña con Longitud Mínima y Máxima</p>
-        <label for="contras">Contraseña</label>
-        <input type="password" name="pass" id="contras" required maxlength="16" minlength="8">
-        <p>Ejercicio 4: Número de Teléfono con Patrón Específico</p>
-        <label for="telefono">Teléfono</label>
-        <input type="tel" id="telefono" name="telef" pattern="[0-9]{9}" title="Debe contener 9 dígitos">
-        <button type="submit">Send</button>
-        <label for="edad">Edad</label>
-        <input type="number" id="edad" name="edad" required min="18" max="99">
-    </form>
-    <form action="@" method="get">
-        <progress>Cargando</progress>
-        <progress max="100" value="20"></progress>
-        <meter value="29" min="0" max="100" low="30" high="70" optimum="50"></meter>
-    </form>
+    <table>
+        <caption>Mi nombre muchas veces</caption>
+        <thead>
+            <tr>
+                <th>Nombre</th><th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><th scope="row">Alfonso</th><td>alfonso@alfonsosalas.com</td></tr>
+            <tr><th scope="row">Alfonso</th><td>alfonso@alfonsosalas.com</td></tr>
+            <tr><th scope="row">Alfonso</th><td>alfonso@alfonsosalas.com</td></tr>
+            <tr><th scope="row">Alfonso</th><td>alfonso@alfonsosalas.com</td></tr>
+            <tr><th scope="row">Alfonso</th><td>alfonso@alfonsosalas.com</td></tr>
+            
+        </tbody>
+
+    </table>
+      
 </body>
 </html>

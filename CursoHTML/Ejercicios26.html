@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 26: Ejercicios de Iframes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/ejercicios_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
+    <style>
+        .exercise-iframe-container {
+            border: 2px dashed #007bff;
+            background-color: #f0f8ff;
+            margin: 15px auto;
+            padding: 10px;
+            text-align: center; /* Para centrar el iframe visualmente */
+        }
+        .exercise-iframe-container iframe {
+            display: block; /* Asegura que el iframe se comporte como un bloque */
+            margin: 0 auto; /* Para centrarlo horizontalmente */
+            max-width: 100%; /* Asegura que el iframe no se desborde */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Clase 26: Ejercicios de Iframes: Insertando Contenido Externo</h1>
+
+        <div class="exercise-section">
+            <h3>Ejercicios Prácticos de la Clase 26</h3>
+            <p>Para consolidar tus conocimientos sobre la etiqueta <code>&lt;iframe&gt;</code> y sus atributos, te propongo los siguientes ejercicios. Intenta resolverlos por ti mismo antes de ver la solución.</p>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 1: Incrustar un Video de YouTube</h4>
+                <p>Incrusta un video de YouTube de tu elección en un <code>&lt;iframe&gt;</code>. Asegúrate de que el video tenga una anchura de 560 píxeles y una altura de 315 píxeles y que se pueda ver en pantalla completa.</p>
+                <div class="exercise-preview">
+                    <div class="exercise-iframe-container">
+                        <iframe width="560" height="315"
+                            src="https://www.youtube.com/embed/M9s_yK9a0t8"
+                            title="Video de Ejemplo"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution1')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution1">
+                    <pre><code class="language-html">&lt;iframe width="560" height="315"
+    src="https://www.youtube.com/embed/M9s_yK9a0t8"
+    title="Video de Ejemplo"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen&gt;
+&lt;/iframe&gt;</code></pre>
+                    <p><em>Nota: La URL <code>src</code> y el <code>title</code> pueden variar dependiendo del video elegido.</em></p>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 2: Incrustar un Mapa de Google Maps</h4>
+                <p>Incrusta un mapa de Google Maps de un lugar de tu elección (por ejemplo, tu ciudad o un monumento famoso). El mapa debe tener un ancho de 600 píxeles y una altura de 450 píxeles. Asegúrate de que no tenga borde visible y que se cargue de forma "lazy" (perezosa).</p>
+                <div class="exercise-preview">
+                    <div class="exercise-iframe-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.1651370216265!2d-3.7037902!3d40.4167754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd422997800a7479%3A0xc4324400e6284f1b!2sPuerta%20del%20Sol%2C%2028013%20Madrid!5e0!3m2!1ses!2ses!4v1678912345678!5m2!1ses!2ses"
+                            width="600"
+                            height="450"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution2')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution2">
+                    <pre><code class="language-html">&lt;iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.1651370216265!2d-3.7037902!3d40.4167754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd422997800a7479%3A0xc4324400e6284f1b!2sPuerta%20del%20Sol%2C%2028013%20Madrid!5e0!3m2!1ses!2ses!4v1678912345678!5m2!1ses!2ses"
+    width="600"
+    height="450"
+    style="border:0;"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"&gt;
+&lt;/iframe&gt;</code></pre>
+                    <p><em>Nota: La URL <code>src</code> puede variar dependiendo del lugar elegido.</em></p>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 3: Incrustar una Página Web Simple con Restricciones (Sandbox)</h4>
+                <p>Crea un iframe que intente incrustar la página principal de un sitio web (ej. <code>https://www.google.com</code> o <code>https://www.bing.com</code>). Dale un ancho de 800px y un alto de 500px. Aplica el atributo <code>sandbox</code> para que <strong>no se puedan ejecutar scripts</strong> y <strong>no se pueda acceder al mismo origen</strong> (es decir, el contenido incrustado no podrá interactuar con tu página ni usar sus cookies/almacenamiento como si fueran del mismo dominio).</p>
+                <div class="exercise-preview">
+                    <div class="exercise-iframe-container">
+                        <iframe src="https://www.bing.com"
+                            width="800"
+                            height="500"
+                            sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
+                            title="Bing.com incrustado con sandbox">
+                        </iframe>
+                        <p><em>(Nota: Algunos sitios, como Google, pueden bloquear su incrustación en iframes por razones de seguridad. Es posible que veas una página en blanco o un mensaje de error dentro del iframe.)</em></p>
+                    </div>
+                </div>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution3')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution3">
+                    <pre><code class="language-html">&lt;iframe src="https://www.bing.com"
+    width="800"
+    height="500"
+    sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
+    title="Bing.com incrustado con sandbox"&gt;
+&lt;/iframe&gt;</code></pre>
+                    <p><em>Nota: Para bloquear la ejecución de scripts, deberías quitar <code>allow-scripts</code>. Para bloquear el acceso al mismo origen, si el contenido *fuera* del mismo origen, deberías quitar <code>allow-same-origin</code>. Sin embargo, para sitios como Google/Bing, que son de diferente origen, las restricciones por defecto de <code>sandbox</code> ya los aíslan bastante. La solución completa de <code>sandbox</code> para permitir *solo* lo necesario (formularios, popups, etc.) mientras se restringen otras cosas (como top-navigation o scripts maliciosos si el origen fuera confiable pero los scripts no) es más compleja y depende de los permisos específicos que quieras otorgar. Para este ejercicio, la clave es entender que <code>sandbox</code> permite controlar estos permisos. Si solo pones <code>sandbox=""</code>, todas las restricciones se aplican.</em></p>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 4: Iframe con Mensaje de Respaldo</h4>
+                <p>Crea un iframe con un <code>src</code> inválido o vacío para que el mensaje de respaldo sea visible si el navegador no lo soporta o si hay un error de carga. Dale un ancho y alto de 400x300 píxeles. El mensaje de respaldo debe ser: "Lo sentimos, tu navegador no puede mostrar este contenido incrustado."</p>
+                <div class="exercise-preview">
+                    <div class="exercise-iframe-container">
+                        <iframe src="" width="400" height="300" title="Iframe de ejemplo con mensaje de respaldo">
+                            Lo sentimos, tu navegador no puede mostrar este contenido incrustado.
+                        </iframe>
+                    </div>
+                </div>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution4')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution4">
+                    <pre><code class="language-html">&lt;iframe src="" width="400" height="300" title="Iframe de ejemplo con mensaje de respaldo"&gt;
+    Lo sentimos, tu navegador no puede mostrar este contenido incrustado.
+&lt;/iframe&gt;</code></pre>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="quiz-section">
+            <h3>Quiz de la Clase 26: Iframes: Insertando Contenido Externo</h3>
+            <p>¡Pon a prueba tus conocimientos con este quiz de 10 preguntas!</p>
+            <form id="quizForm">
+                <div class="quiz-question">
+                    <h4>1. ¿Qué etiqueta HTML se utiliza para incrustar un documento HTML dentro de otro documento HTML?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="a"> <code>&lt;embed&gt;</code></label>
+                        <label><input type="radio" name="q1" value="b"> <code>&lt;include&gt;</code></label>
+                        <label><input type="radio" name="q1" value="c"> <code>&lt;iframe&gt;</code></label>
+                        <label><input type="radio" name="q1" value="d"> <code>&lt;frame&gt;</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>2. ¿Cuál es el atributo obligatorio para especificar la URL del contenido que se va a incrustar en un <code>&lt;iframe&gt;</code>?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="a"> <code>href</code></label>
+                        <label><input type="radio" name="q2" value="b"> <code>link</code></label>
+                        <label><input type="radio" name="q2" value="c"> <code>source</code></label>
+                        <label><input type="radio" name="q2" value="d"> <code>src</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>3. El atributo <code>frameborder</code> para controlar el borde de un iframe está:</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="a"> Completamente eliminado en HTML5.</label>
+                        <label><input type="radio" name="q3" value="b"> Obsoleto en HTML5; se recomienda usar CSS.</label>
+                        <label><input type="radio" name="q3" value="c"> Todavía es el método principal para controlar el borde.</label>
+                        <label><input type="radio" name="q3" value="d"> Solo funciona en navegadores antiguos.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>4. ¿Qué atributo permite que el contenido incrustado en un iframe se muestre en modo de pantalla completa?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="a"> <code>fullscreen</code></label>
+                        <label><input type="radio" name="q4" value="b"> <code>allowfullscreen</code></label>
+                        <label><input type="radio" name="q4" value="c"> <code>expand</code></label>
+                        <label><input type="radio" name="q4" value="d"> <code>maximize</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>5. ¿Cuál es el principal objetivo del atributo <code>sandbox</code> en un <code>&lt;iframe&gt;</code>?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="a"> Mejorar el rendimiento de carga del iframe.</label>
+                        <label><input type="radio" name="q5" value="b"> Aislar el contenido del iframe para mejorar la seguridad.</label>
+                        <label><input type="radio" name="q5" value="c"> Definir un estilo visual predeterminado para el iframe.</label>
+                        <label><input type="radio" name="q5" value="d"> Especificar las dimensiones del iframe.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>6. ¿Qué valor del atributo <code>loading</code> retrasará la carga de un iframe hasta que esté cerca del viewport del usuario?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q6" value="a"> <code>delay</code></label>
+                        <label><input type="radio" name="q6" value="b"> <code>lazy</code></label>
+                        <label><input type="radio" name="q6" value="c"> <code>defer</code></label>
+                        <label><input type="radio" name="q6" value="d"> <code>async</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>7. El contenido dentro de un <code>&lt;iframe&gt;</code> es:</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q7" value="a"> Parte del DOM del documento padre.</label>
+                        <label><input type="radio" name="q7" value="b"> Un documento HTML completamente separado.</label>
+                        <label><input type="radio" name="q7" value="c"> Un script que se ejecuta en el contexto del documento padre.</label>
+                        <label><input type="radio" name="q7" value="d"> Una imagen rasterizada del contenido.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>8. ¿Cuál es una desventaja de rendimiento al usar muchos iframes en una página?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q8" value="a"> Reducen el consumo de CPU y memoria.</label>
+                        <label><input type="radio" name="q8" value="b"> Disminuyen el tiempo de carga de la página.</label>
+                        <label><input type="radio" name="q8" value="c"> Aumentan el tiempo de carga y el consumo de recursos.</label>
+                        <label><input type="radio" name="q8" value="d"> Mejoran la indexación SEO de la página.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>9. Si quieres que un iframe no ejecute scripts ni acceda a cookies, ¿qué atributo <code>sandbox</code> aplicarías para conseguir el mayor aislamiento?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q9" value="a"> <code>sandbox="allow-scripts allow-same-origin"</code></label>
+                        <label><input type="radio" name="q9" value="b"> <code>sandbox="allow-top-navigation"</code></label>
+                        <label><input type="radio" name="q9" value="c"> <code>sandbox=""</code> (vacío)</label>
+                        <label><input type="radio" name="q9" value="d"> <code>sandbox="no-scripts no-cookies"</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>10. ¿Para qué tipo de contenido es muy común el uso de iframes?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q10" value="a"> Imágenes estáticas y texto simple.</label>
+                        <label><input type="radio" name="q10" value="b"> Mapas interactivos y videos incrustados de plataformas como YouTube.</label>
+                        <label><input type="radio" name="q10" value="c"> Formularios de contacto y tablas de datos.</label>
+                        <label><input type="radio" name="q10" value="d"> Iconos y logotipos escalables.</label>
+                    </div>
+                </div>
+
+                <button type="button" class="submit-quiz-button" id="checkAnswersBtn">Ver Resultados</button>
+            </form>
+
+            <div id="quizResults" class="quiz-results">
+                <p>Resultados del Test:</p>
+                <ol id="resultsList"></ol>
+                <p id="scoreSummary"></p>
+                <button type="button" class="reveal-button" id="resetQuizBtn" style="display: none;">Volver a Intentar</button>
+            </div>
+        </div>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="26Iframes.html">Volver a la Clase 26: Iframes: Insertando Contenido Externo.</a></li>
+                <li><a href="27ResponsiveDesignYMetaViewport.html">Clase 27: Responsive Design y Meta Viewport (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script>
+        // Función para mostrar/ocultar soluciones de ejercicios
+        function toggleSolution(button, solutionId) {
+            const solution = document.getElementById(solutionId);
+            if (solution.style.display === 'block') {
+                solution.style.display = 'none';
+                button.textContent = 'Mostrar Solución';
+            } else {
+                solution.style.display = 'block';
+                button.textContent = 'Ocultar Solución';
+            }
+        }
+
+        // Datos del quiz
+        const quizAnswers = {
+            q1: 'c', // <iframe>
+            q2: 'd', // src
+            q3: 'b', // Obsoleto en HTML5; se recomienda usar CSS.
+            q4: 'b', // allowfullscreen
+            q5: 'b', // Aislar el contenido del iframe para mejorar la seguridad.
+            q6: 'b', // lazy
+            q7: 'b', // Un documento HTML completamente separado.
+            q8: 'c', // Aumentan el tiempo de carga y el consumo de recursos.
+            q9: 'c', // sandbox="" (vacío)
+            q10: 'b' // Mapas interactivos y videos incrustados de plataformas como YouTube.
+        };
+
+        // Asignar eventos a los botones una vez que el DOM esté completamente cargado
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            if (checkAnswersBtn) {
+                checkAnswersBtn.addEventListener('click', checkQuiz);
+            }
+            if (resetQuizBtn) {
+                resetQuizBtn.addEventListener('click', resetQuiz);
+            }
+        });
+
+        function checkQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const resultsList = document.getElementById('resultsList');
+            const scoreSummary = document.getElementById('scoreSummary');
+            const quizResultsDiv = document.getElementById('quizResults');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            resultsList.innerHTML = ''; // Limpiar resultados anteriores
+            let score = 0;
+
+            for (let i = 1; i <= 10; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = quizForm.elements[questionName] ? quizForm.elements[questionName].value : '';
+                const correctAnswer = quizAnswers[questionName];
+
+                const listItem = document.createElement('li');
+                listItem.classList.add(selectedOption === correctAnswer ? 'correct' : 'incorrect');
+
+                // Obtener el texto de la opción seleccionada (preservando <code>)
+                let selectedAnswerText = 'No respondida';
+                if (selectedOption) {
+                    const selectedLabel = quizForm.querySelector(`input[name="${questionName}"][value="${selectedOption}"]`);
+                    if (selectedLabel) {
+                        const labelClone = selectedLabel.closest('label').cloneNode(true);
+                        labelClone.querySelector('input').remove();
+                        selectedAnswerText = labelClone.innerHTML.trim();
+                    }
+                }
+
+                // Obtener el texto de la opción correcta (preservando <code>)
+                const correctLabel = quizForm.querySelector(`input[name="${questionName}"][value="${correctAnswer}"]`);
+                let correctAnswerText = 'N/A';
+                if (correctLabel) {
+                    const correctLabelClone = correctLabel.closest('label').cloneNode(true);
+                    correctLabelClone.querySelector('input').remove();
+                    correctAnswerText = correctLabelClone.innerHTML.trim();
+                }
+
+                const questionText = document.createTextNode(`Pregunta ${i}: `);
+                listItem.appendChild(questionText);
+
+                if (selectedOption !== correctAnswer) {
+                    listItem.innerHTML += ` Tu respuesta: "${selectedAnswerText}".<br>`;
+                    const correctInfoSpan = document.createElement('span');
+                    correctInfoSpan.classList.add('correct-answer-info');
+                    correctInfoSpan.innerHTML = `Respuesta correcta: "${correctAnswerText}".`;
+                    listItem.appendChild(correctInfoSpan);
+                } else {
+                    listItem.innerHTML += ` Correcta.`;
+                    score++;
+                }
+
+                resultsList.appendChild(listItem);
+            }
+
+            scoreSummary.textContent = `Tu puntuación es: ${score} de 10 preguntas correctas.`;
+            quizResultsDiv.style.display = 'block'; // Mostrar la sección de resultados
+            quizResultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Desplazarse a los resultados
+
+            // Ocultar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'none';
+            // Mostrar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'inline-block';
+        }
+
+        function resetQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            quizForm.reset(); // Reinicia todos los radio buttons
+            document.getElementById('quizResults').style.display = 'none'; // Oculta los resultados
+            document.getElementById('resultsList').innerHTML = ''; // Limpia la lista de resultados
+            document.getElementById('scoreSummary').textContent = ''; // Limpia el resumen de puntuación
+
+            // Mostrar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'inline-block';
+            // Ocultar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

@@ -1,16 +1,232 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atributo aria- para Accesibilidad Avanzada</title>
+    <title>Atributos aria- para Accesibilidad Avanzada - Curso HTML</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
+    <style>
+        .code-example {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
+        .code-example pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .aria-tip {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            color: #664d03;
+        }
+        .warning {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
-    <H1>Clase 33: Atributo aria- para Accesibilidad Avanzada.</H1>
-    <UL>
-        <li>Introducción a ARIA (Accessible Rich Internet Applications).</li>
-        <li>Roles ARIA comunes: role="button", role="navigation", etc.</li>
-        <li>Estados y propiedades ARIA: aria-label, aria-hidden, aria-expanded.</li>
-    </UL>
-<p><a href="/index.html">Vuelve a la página principal</a></p></body>
+    <div class="container">
+        <h1>
+            <p>CURSO DE INICIACIÓN A HTML</p>
+            <p>Clase 33: Atributo aria- para Accesibilidad Avanzada</p>
+        </h1>
+
+        <p>La accesibilidad web es fundamental para asegurar que todas las personas, incluidas aquellas con discapacidades, puedan percibir, entender, navegar e interactuar con la web. Aunque HTML semántico es la base para la accesibilidad, no siempre es suficiente para elementos de interfaz de usuario complejos y dinámicos (widgets) que no tienen un equivalente semántico nativo en HTML. Aquí es donde entra en juego WAI-ARIA (Web Accessibility Initiative - Accessible Rich Internet Applications), comúnmente conocido como ARIA.</p>
+
+        <hr>
+
+        <section>
+            <h2>33.1. Introducción a ARIA (Accessible Rich Internet Applications).</h2>
+            <p>ARIA es un conjunto de atributos especiales que puedes añadir a los elementos HTML para proporcionar información adicional a las tecnologías de asistencia (como lectores de pantalla, magnificadores, dispositivos de entrada de voz) sobre el propósito, estado y propiedades de elementos de la interfaz de usuario que no son inherentemente accesibles o cuya semántica no es clara para estas tecnologías.</p>
+
+            <div class="aria-tip">
+                <p><strong>Regla de oro de ARIA:</strong> "Si puedes usar un elemento HTML nativo con la semántica y el comportamiento de accesibilidad deseados, hazlo." Esto se conoce como la "Primera Regla de ARIA". ARIA está diseñado para <strong>aumentar</strong> la semántica existente, no para reemplazarla. Por ejemplo, siempre usa un <code>&lt;button&gt;</code> en lugar de un <code>&lt;div&gt;</code> con <code>role="button"</code> si el elemento es un botón.</p>
+            </div>
+
+            <p>ARIA consta de tres tipos principales de atributos:</p>
+            <ul>
+                <li><strong>Roles:</strong> Describen el tipo de elemento de interfaz de usuario. (ej., <code>role="button"</code>, <code>role="navigation"</code>).</li>
+                <li><strong>Estados (States):</strong> Describen el estado actual del elemento. Los estados pueden cambiar (ej., <code>aria-expanded="true/false"</code>, <code>aria-disabled="true/false"</code>).</li>
+                <li><strong>Propiedades (Properties):</strong> Describen las características del elemento que generalmente no cambian durante la vida de una aplicación. (ej., <code>aria-label="Cerrar"</code>, <code>aria-describedby="mensaje-error"</code>).</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>33.2. Roles ARIA comunes.</h2>
+            <p>Los roles ARIA informan a las tecnologías de asistencia sobre la función o "tipo" de un elemento. Se usan cuando la etiqueta HTML nativa no transmite la semántica correcta.</p>
+
+            <h3>Ejemplos de Roles ARIA:</h3>
+            <ul>
+                <li><strong><code>role="button"</code>:</strong> Se usa cuando un elemento (ej., un <code>&lt;span&gt;</code> o <code>&lt;div&gt;</code>) se comporta como un botón pero no es un <code>&lt;button&gt;</code> nativo. Debería tener eventos de teclado para ser accesible (Enter/Espacio).</li>
+                <div class="code-example">
+                    <pre><code class="language-html">&lt;!-- MAL: Usar un div en lugar de un button --&gt;
+&lt;div role="button" tabindex="0"&gt;Enviar&lt;/div&gt;
+
+&lt;!-- MEJOR: Usar el elemento semántico nativo --&gt;
+&lt;button&gt;Enviar&lt;/button&gt;
+</code></pre>
+                </div>
+                <p><strong>Nota:</strong> Aunque se muestra el ejemplo de <code>div</code> con <code>role="button"</code>, es un anti-patrón si puedes usar un <code>&lt;button&gt;</code>. El <code>tabindex="0"</code> hace que el <code>div</code> sea enfocable con el teclado.</p>
+
+                <li><strong><code>role="link"</code>:</strong> Para elementos que funcionan como enlaces pero no son <code>&lt;a&gt;</code>. Igual que con el botón, el <code>&lt;a&gt;</code> nativo es preferible.</li>
+                <div class="code-example">
+                    <pre><code class="language-html">&lt;span role="link" tabindex="0" onclick="navigateToPage()"&gt;Ir a Inicio&lt;/span&gt;
+&lt;!-- Prefiere &lt;a href="#"&gt;Ir a Inicio&lt;/a&gt; --&gt;
+</code></pre>
+                </div>
+
+                <li><strong><code>role="navigation"</code>:</strong> Identifica un grupo de enlaces que forman una navegación principal del sitio.</li>
+                <div class="code-example">
+                    <pre><code class="language-html">&lt;nav role="navigation"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="/"&gt;Inicio&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/productos"&gt;Productos&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;!-- La etiqueta &lt;nav&gt; ya tiene la semántica de navegación, por lo que role="navigation" es redundante pero no perjudicial. --&gt;
+</code></pre>
+                </div>
+
+                <li><strong><code>role="main"</code>:</strong> Define el contenido principal de la página. Solo debe haber un <code>role="main"</code> por documento.</li>
+                <div class="code-example">
+                    <pre><code class="language-html">&lt;main role="main"&gt;
+    &lt;h1&gt;Bienvenido a nuestra página principal&lt;/h1&gt;
+    &lt;p&gt;Este es el contenido principal de la página.&lt;/p&gt;
+&lt;/main&gt;
+&lt;!-- La etiqueta &lt;main&gt; ya tiene la semántica correcta. --&gt;
+</code></pre>
+                </div>
+
+                <li><strong><code>role="dialog"</code>:</strong> Se usa para ventanas modales o diálogos. Ayuda a las tecnologías de asistencia a entender que un contenido interactivo temporal ha aparecido.</li>
+                <div class="code-example">
+                    <pre><code class="language-html">&lt;div role="dialog" aria-modal="true" aria-labelledby="dialog-title"&gt;
+    &lt;h2 id="dialog-title"&gt;Confirmar Acción&lt;/h2&gt;
+    &lt;p&gt;¿Estás seguro de que quieres continuar?&lt;/p&gt;
+    &lt;button&gt;Sí&lt;/button&gt;
+    &lt;button&gt;No&lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
+            </ul>
+        </section>
+
+        <section>
+            <h2>33.3. Estados y propiedades ARIA.</h2>
+            <p>Los estados y propiedades ARIA proporcionan información dinámica y descriptiva sobre los elementos.</p>
+
+            <h3>Estados ARIA (cambian con la interacción del usuario):</h3>
+            <ul>
+                <li><strong><code>aria-expanded</code>:</strong> Indica si un elemento controlable está expandido o colapsado (<code>true</code>/<code>false</code>). Común en acordeones, menús desplegables.</li>
+                <div class="code-example">
+                    <pre><code class="language-html">&lt;button aria-expanded="false" aria-controls="menu-dropdown"&gt;
+    Mostrar Menú
+&lt;/button&gt;
+&lt;ul id="menu-dropdown" style="display: none;"&gt;
+    &lt;li&gt;Opción 1&lt;/li&gt;
+    &lt;li&gt;Opción 2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- Cuando el menú se abre, el script cambia aria-expanded a "true" --&gt;
+</code></pre>
+                </div>
+
+                <li><strong><code>aria-hidden</code>:</strong> Indica que un elemento y todo su contenido no son visibles o no están disponibles para ninguna tecnología de asistencia (<code>true</code>/<code>false</code>). No usar para ocultar contenido del que queremos que el usuario sepa que existe pero está oculto (ej., un campo de formulario que se muestra/oculta).</li>
+                <div class="code-example">
+                    <pre><code class="language-html">&lt;div aria-hidden="true"&gt;
+    Este contenido está oculto para lectores de pantalla.
+&lt;/div&gt;
+&lt;!-- Usar cuando el contenido es puramente decorativo o está duplicado en otro lugar --&gt;
+</code></pre>
+                </div>
+
+                <li><strong><code>aria-disabled</code>:</strong> Indica que un elemento está deshabilitado y no es interactuable (<code>true</code>/<code>false</code>). Diferente del atributo HTML <code>disabled</code> para inputs y buttons.</li>
+                <div class="code-example">
+                    <pre><code class="language-html">&lt;div role="button" aria-disabled="true"&gt;
+    Botón Deshabilitado
+&lt;/div&gt;
+</code></pre>
+                </div>
+            </ul>
+
+            <h3>Propiedades ARIA (generalmente estáticas o cambian menos frecuentemente):</h3>
+            <ul>
+                <li><strong><code>aria-label</code>:</strong> Proporciona una etiqueta accesible para un elemento cuando no hay un texto visible que lo describa adecuadamente. Se usa comúnmente en botones de iconos.</li>
+                <div class="code-example">
+                    <pre><code class="language-html">&lt;!-- Botón con icono, sin texto visible --&gt;
+&lt;button aria-label="Cerrar notificación"&gt;❌&lt;/button&gt;
+
+&lt;!-- O en un input sin &lt;label&gt; visible (no recomendado si se puede usar &lt;label&gt;) --&gt;
+&lt;input type="search" aria-label="Buscar productos"&gt;
+</code></pre>
+                </div>
+
+                <li><strong><code>aria-labelledby</code>:</strong> Hace referencia al <code>id</code> de otro elemento en la página para proporcionar una etiqueta accesible. Útil cuando la etiqueta ya existe visualmente.</li>
+                <div class="code-example">
+                    <pre><code class="language-html">&lt;h2 id="section-title"&gt;Acerca de Nosotros&lt;/h2&gt;
+&lt;div role="region" aria-labelledby="section-title"&gt;
+    &lt;p&gt;Contenido de la sección de Acerca de Nosotros.&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
+
+                <li><strong><code>aria-describedby</code>:</strong> Hace referencia al <code>id</code> de uno o más elementos que proporcionan una descripción adicional para el elemento actual. Común para mensajes de error o descripciones de ayuda.</li>
+                <div class="code-example">
+                    <pre><code class="language-html">&lt;input type="text" id="username" aria-describedby="username-hint"&gt;
+&lt;p id="username-hint"&gt;Tu nombre de usuario debe tener al menos 6 caracteres.&lt;/p&gt;
+
+&lt;input type="email" id="email-field" aria-describedby="email-error"&gt;
+&lt;p id="email-error" style="color: red; display: none;"&gt;Formato de email inválido.&lt;/p&gt;
+</code></pre>
+                </div>
+            </ul>
+
+            <div class="warning">
+                <p><strong>¡Cuidado con ARIA!</strong> Usar ARIA incorrectamente puede hacer que una página sea menos accesible en lugar de más. Siempre prueba tu implementación con lectores de pantalla y sigue las directrices WCAG (Web Content Accessibility Guidelines) y los patrones de diseño de ARIA. Recuerda: "No ARIA is better than bad ARIA."</p>
+            </div>
+
+            <p>ARIA es una herramienta potente, pero su uso debe ser considerado y basado en la necesidad real de mejorar la accesibilidad de elementos complejos que HTML por sí solo no puede manejar.</p>
+        </section>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="Ejercicios33.html">Ejercicios sobre esta lección.</a></li>
+                <li><a href="34SEOConMicrodatosSchemaOrg.html">Clase 34: SEO con Microdatos y Schema.org (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
+</body>
 </html>

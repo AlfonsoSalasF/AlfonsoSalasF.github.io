@@ -1,19 +1,196 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SEO Básico y HTML</title>
+    <title>SEO Básico y HTML - Curso HTML</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
+    <style>
+        .code-example {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
+        .code-example pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .seo-tip {
+            background-color: #e6ffe6;
+            border: 1px solid #99e699;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+    </style>
 </head>
 <body>
-    <H1>Clase 30: SEO Básico y HTML.</H1>
-    <UL>
-        <li>Meta etiquetas importantes para SEO (description, keywords).</li>
-        <li>Uso de encabezados (&lt;h1&gt; a &lt;h6&gt;) para la estructura de contenido.</li>
-        <li>Atributo alt en imágenes.</li>
-        <li>Enlaces internos y externos.</li>
-        <li>Importancia de la semántica.</li>
-    </UL>
-    <p><a href="/index.html">Vuelve a la página principal</a></p>
+    <div class="container">
+        <h1>
+            <p>CURSO DE INICIACIÓN A HTML</p>
+            <p>Clase 30: SEO Básico y HTML</p>
+        </h1>
+
+        <p>Hemos aprendido a construir la estructura de nuestras páginas web con HTML y a darles estilo con CSS. Ahora es el momento de considerar cómo los motores de búsqueda "ven" nuestras páginas y cómo podemos optimizarlas para que aparezcan en los resultados de búsqueda. Esto es lo que se conoce como SEO (Search Engine Optimization) básico, y HTML juega un papel fundamental en ello.</p>
+
+        <hr>
+
+        <section>
+            <h2>30.1. Meta etiquetas importantes para SEO (<code>description</code>, <code>keywords</code>).</h2>
+            <p>Las meta etiquetas proporcionan metadatos sobre el documento HTML, que no se muestran directamente en la página web, pero son interpretados por los navegadores y los motores de búsqueda. Se colocan en la sección <code>&lt;head&gt;</code> del documento.</p>
+            <ul>
+                <li><strong><code>&lt;meta name="description" content="..."&gt;</code>:</strong>
+                    <ul>
+                        <li><strong>Propósito:</strong> Ofrece un breve resumen del contenido de la página.</li>
+                        <li><strong>Importancia para SEO:</strong> Aunque no es un factor de ranking directo tan fuerte como antes, es crucial porque Google (y otros motores) a menudo lo usan como el "fragmento" descriptivo que aparece debajo del título en los resultados de búsqueda. Una descripción atractiva puede aumentar la tasa de clics (CTR). Debe ser relevante, concisa (idealmente entre 150-160 caracteres) y contener palabras clave importantes.</li>
+                    </ul>
+                </li>
+                <li><strong><code>&lt;meta name="keywords" content="..."&gt;</code>:</strong>
+                    <ul>
+                        <li><strong>Propósito:</strong> Solía contener una lista de palabras clave relacionadas con el contenido de la página.</li>
+                        <li><strong>Importancia para SEO:</strong> Google ha declarado que ignora esta meta etiqueta para fines de clasificación. Sin embargo, algunos otros motores de búsqueda minoritarios aún podrían darle alguna consideración, por lo que su inclusión no es perjudicial, aunque ya no es esencial. Se recomienda enfocarse en la descripción y el contenido real.</li>
+                    </ul>
+                </li>
+            </ul>
+            <h3>Ejemplo:</h3>
+            <div class="code-example">
+                <pre><code class="language-html">&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Mi Blog de Recetas Saludables - Comida Sana y Fácil&lt;/title&gt;
+    &lt;meta name="description" content="Descubre recetas saludables y fáciles de preparar para toda la familia. Comida sana, rápida y deliciosa para tu día a día."&gt;
+    &lt;meta name="keywords" content="recetas saludables, comida sana, recetas fáciles, cocina saludable, nutrición"&gt;
+&lt;/head&gt;
+</code></pre>
+            </div>
+            <div class="seo-tip">
+                <p><strong>Consejo SEO:</strong> El <code>&lt;title&gt;</code> de tu página (que aparece en la pestaña del navegador y es el primer elemento del resultado de búsqueda) es una de las meta etiquetas más importantes para el SEO. Debe ser único, descriptivo y contener tus palabras clave principales.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>30.2. Uso de encabezados (<code>&lt;h1&gt;</code> a <code>&lt;h6&gt;</code>) para la estructura de contenido.</h2>
+            <p>Los encabezados HTML no solo dan un formato visual a tu contenido, sino que también proporcionan una estructura semántica vital para los motores de búsqueda y los usuarios. Organizan el contenido en secciones lógicas, como si fuera el esquema de un libro.</p>
+            <ul>
+                <li><strong><code>&lt;h1&gt;</code>:</strong> Debe haber <strong>solo un <code>&lt;h1&gt;</code></strong> por página. Representa el título principal o el tema central de la página. Es crucial que contenga tus palabras clave más importantes.</li>
+                <li><strong><code>&lt;h2&gt;</code> a <code>&lt;h6&gt;</code>:</strong> Se utilizan para subtítulos y sub-secciones, siguiendo un orden jerárquico. Un <code>&lt;h2&gt;</code> introduce una sección principal, un <code>&lt;h3&gt;</code> una sub-sección de un <code>&lt;h2&gt;</code>, y así sucesivamente.</li>
+            </ul>
+            <p>Los motores de búsqueda utilizan la estructura de encabezados para entender la relevancia y la relación entre las diferentes partes de tu contenido. Una estructura clara mejora la legibilidad para los usuarios y ayuda a los bots a indexar mejor tu página.</p>
+            <h3>Ejemplo de estructura de encabezados:</h3>
+            <div class="code-example">
+                <pre><code class="language-html">&lt;body&gt;
+    &lt;h1&gt;Guía Completa para Viajar a Japón&lt;/h1&gt;
+    &lt;p&gt;Una introducción al destino...&lt;/p&gt;
+
+    &lt;h2&gt;1. Planificación del Viaje&lt;/h2&gt;
+        &lt;h3&gt;1.1. Mejor Época para Visitar&lt;/h3&gt;
+        &lt;p&gt;Detalles sobre estaciones y eventos.&lt;/p&gt;
+        &lt;h3&gt;1.2. Visados y Documentación&lt;/h3&gt;
+        &lt;p&gt;Requisitos de entrada.&lt;/p&gt;
+
+    &lt;h2&gt;2. Principales Ciudades&lt;/h2&gt;
+        &lt;h3&gt;2.1. Tokio: Capital y Metrópolis&lt;/h3&gt;
+        &lt;p&gt;Qué ver en Tokio.&lt;/p&gt;
+        &lt;h3&gt;2.2. Kioto: Tradición y Cultura&lt;/h3&gt;
+        &lt;p&gt;Templos y jardines.&lt;/p&gt;
+&lt;/body&gt;
+</code></pre>
+            </div>
+        </section>
+
+        <section>
+            <h2>30.3. Atributo <code>alt</code> en imágenes.</h2>
+            <p>El atributo <code>alt</code> (texto alternativo) es fundamental para las imágenes. No solo mejora la accesibilidad, sino que también tiene un impacto directo en el SEO.</p>
+            <ul>
+                <li><strong>Propósito:</strong> Proporciona una descripción textual de la imagen para cuando esta no se puede mostrar (por ejemplo, por una conexión lenta, un error o si el usuario utiliza un lector de pantalla).</li>
+                <li><strong>Importancia para SEO:</strong>
+                    <ul>
+                        <li><strong>Accesibilidad:</strong> Es crucial para usuarios con discapacidad visual, ya que los lectores de pantalla leen el texto <code>alt</code>.</li>
+                        <li><strong>Comprensión del Contenido:</strong> Los motores de búsqueda no pueden "ver" las imágenes, pero pueden leer el texto <code>alt</code>. Este texto les ayuda a entender de qué trata la imagen y, por extensión, de qué trata la página.</li>
+                        <li><strong>Búsqueda de Imágenes:</strong> Las imágenes con texto <code>alt</code> descriptivo son más propensas a aparecer en los resultados de búsqueda de imágenes, lo que puede generar tráfico adicional.</li>
+                    </ul>
+                </li>
+            </ul>
+            <p>El texto <code>alt</code> debe ser descriptivo, conciso y, si es relevante, contener palabras clave relacionadas con la imagen y el contenido de la página.</p>
+            <h3>Ejemplo:</h3>
+            <div class="code-example">
+                <pre><code class="language-html">&lt;img src="paisaje-montana.jpg" alt="Montañas nevadas al amanecer con un lago tranquilo en primer plano"&gt;
+&lt;img src="tarta-chocolate.png" alt="Tarta de chocolate con fresas frescas y glaseado cremoso"&gt;
+&lt;img src="logo.svg" alt="Logotipo de la empresa XYZ"&gt; &lt;!-- Describe lo que es la imagen --&gt;
+</code></pre>
+            </div>
+            <div class="note">
+                <p><strong>Diferencia con <code>title</code>:</strong> El atributo <code>title</code> (que no es lo mismo que la etiqueta <code>&lt;title&gt;</code> en el <code>&lt;head&gt;</code>) es un texto que aparece como un "tooltip" al pasar el ratón sobre la imagen. No tiene la misma importancia SEO o de accesibilidad que <code>alt</code>.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>30.4. Enlaces internos y externos.</h2>
+            <p>Los enlaces son el "pegamento" de la web y son cruciales para el SEO.</p>
+            <ul>
+                <li><strong>Enlaces Internos:</strong> Son enlaces que apuntan a otras páginas dentro del mismo sitio web.
+                    <ul>
+                        <li><strong>Importancia para SEO:</strong>
+                            <ul>
+                                <li><strong>Navegación:</strong> Ayudan a los usuarios a navegar por tu sitio.</li>
+                                <li><strong>Distribución de Autoridad (Link Juice):</strong> Transfieren "autoridad" de las páginas más fuertes a las más débiles dentro de tu sitio.</li>
+                                <li><strong>Indexación:</strong> Ayudan a los motores de búsqueda a descubrir y rastrear todas las páginas de tu sitio.</li>
+                                <li><strong>Contexto:</strong> El texto ancla (el texto visible del enlace) proporciona contexto sobre la página enlazada.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>Enlaces Externos:</strong> Son enlaces que apuntan a páginas en otros sitios web. Pueden ser entrantes (backlinks, desde otros sitios al tuyo) o salientes (desde tu sitio a otros).
+                    <ul>
+                        <li><strong>Importancia para SEO:</strong>
+                            <ul>
+                                <li><strong>Autoridad (Salientes):</strong> Enlazar a fuentes de autoridad relevantes puede mostrar a los motores de búsqueda que tu contenido es fiable y bien investigado.</li>
+                                <li><strong>Backlinks (Entrantes):</strong> Los backlinks de alta calidad desde otros sitios web son uno de los factores de ranking más importantes. Indican que otros sitios confían en tu contenido.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="seo-tip">
+                <p><strong>Consejo de Texto Ancla:</strong> Utiliza texto ancla descriptivo y rico en palabras clave para tus enlaces. Evita "Haz clic aquí" o "Más información". Por ejemplo, en lugar de <code>&lt;a href="pagina.html"&gt;Haz clic aquí&lt;/a&gt;</code>, usa <code>&lt;a href="pagina.html"&gt;Aprende más sobre diseño responsivo&lt;/a&gt;</code>.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>30.5. Importancia de la semántica.</h2>
+            <p>La semántica en HTML se refiere al uso de etiquetas HTML que transmiten significado sobre el contenido que encierran, en lugar de simplemente aplicar estilo. Hemos visto etiquetas como <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;footer&gt;</code>, etc.</p>
+            <ul>
+                <li><strong>Propósito:</strong> Proporcionar una estructura lógica y significativa al contenido.</li>
+                <li><strong>Importancia para SEO:</strong>
+                    <ul>
+                        <li><strong>Comprensión del Contenido:</strong> Los motores de búsqueda entienden mejor la función de cada parte de tu página cuando utilizas etiquetas semánticas. Por ejemplo, saben que el contenido dentro de <code>&lt;nav&gt;</code> es navegación y el contenido dentro de <code>&lt;article&gt;</code> es el contenido principal e independiente.</li>
+                        <li><strong>Accesibilidad:</strong> Mejora la experiencia para usuarios con tecnologías de asistencia, ya que estas herramientas pueden navegar y presentar el contenido de forma más inteligente.</li>
+                        <li><strong>Mantenibilidad:</strong> Hace que tu código sea más fácil de leer y mantener para otros desarrolladores.</li>
+                    </ul>
+                </li>
+            </ul>
+            <p>Aunque un <code>&lt;div&gt;</code> con CSS puede parecerse a un <code>&lt;nav&gt;</code>, el <code>&lt;nav&gt;</code> tiene un significado intrínseco para los navegadores y motores de búsqueda. Utiliza siempre la etiqueta más semánticamente apropiada para el contenido que estás estructurando.</p>
+        </section>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="Ejercicios30.html">Ejercicios sobre esta lección.</a></li>
+                <li><a href="31ConceptosAvanzadosSEO.html">Clase 31: Conceptos Avanzados de SEO (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
 </body>
 </html>

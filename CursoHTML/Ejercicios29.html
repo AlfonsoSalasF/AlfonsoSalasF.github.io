@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 29: Ejercicios del DOM (Concepto)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/ejercicios_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
+    <style>
+        .dom-diagram-example {
+            background-color: #f0f0f0;
+            border: 1px dashed #ccc;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .dom-diagram-example ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+        .dom-diagram-example li {
+            margin-bottom: 5px;
+        }
+        .dom-diagram-example ul li:before {
+            content: "└─ ";
+            color: #555;
+        }
+        .dom-diagram-example ul ul li:before {
+            content: "  └─ ";
+        }
+        .dom-diagram-example ul ul ul li:before {
+            content: "    └─ ";
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Clase 29: Ejercicios del DOM (Concepto)</h1>
+
+        <div class="exercise-section">
+            <h3>Ejercicios Prácticos de la Clase 29</h3>
+            <p>Estos ejercicios son de naturaleza conceptual y teórica, diseñados para reforzar tu comprensión del DOM como una estructura de árbol y la relación entre HTML y JavaScript. No requieren escribir mucho código funcional, sino analizar y describir.</p>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 1: Representación en Árbol de un HTML Simple</h4>
+                <p>Dado el siguiente fragmento HTML, dibuja o describe su representación en el árbol DOM, identificando los tipos de nodos (Elemento, Texto, Atributo) principales.</p>
+                <div class="code-example">
+                    <pre><code class="language-html">&lt;div id="container"&gt;
+    &lt;h2&gt;Mi Título&lt;/h2&gt;
+    &lt;p&gt;Contenido de &lt;em&gt;ejemplo&lt;/em&gt;.&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+                </div>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution1')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution1">
+                    <p><strong>Representación del Árbol DOM:</strong></p>
+                    <div class="dom-diagram-example">
+                        <ul>
+                            <li>Document (Root Node - implícito)
+                                <ul>
+                                    <li>HTML Element (implícito)
+                                        <ul>
+                                            <li>BODY Element (implícito, si es un fragmento, sería el padre del div)
+                                                <ul>
+                                                    <li>DIV Element (id="container")
+                                                        <ul>
+                                                            <li>Attribute Node: id="container"</li>
+                                                            <li>H2 Element
+                                                                <ul>
+                                                                    <li>Text Node: "Mi Título"</li>
+                                                                </ul>
+                                                            </li>
+                                                            <li>P Element
+                                                                <ul>
+                                                                    <li>Text Node: "Contenido de "</li>
+                                                                    <li>EM Element
+                                                                        <ul>
+                                                                            <li>Text Node: "ejemplo"</li>
+                                                                        </ul>
+                                                                    </li>
+                                                                    <li>Text Node: "."</li>
+                                                                </ul>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <p class="explanation-text">Este diagrama muestra cómo cada etiqueta HTML se convierte en un nodo de tipo "Elemento", los atributos son nodos asociados a esos elementos, y el texto dentro de las etiquetas son "Nodos de Texto". Las relaciones jerárquicas (padre-hijo) se mantienen.</p>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 2: Descripción de Interacción JavaScript con el DOM</h4>
+                <p>Imagina que tienes un botón con el ID "cambiarTextoBtn" y un párrafo con el ID "parrafoDinamico". Describe en tus propias palabras cómo usarías JavaScript para que, al hacer clic en el botón, el texto del párrafo cambie de "Texto original" a "¡Texto cambiado por JavaScript!".</p>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution2')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution2">
+                    <p><strong>Descripción de la Interacción JavaScript:</strong></p>
+                    <ol>
+                        <li><strong>Obtener referencias:</strong> Primero, usaría <code>document.getElementById()</code> para obtener una referencia a ambos elementos HTML: el botón (<code>cambiarTextoBtn</code>) y el párrafo (<code>parrafoDinamico</code>). Estas referencias son objetos JavaScript que representan esos elementos en el DOM.</li>
+                        <li><strong>Añadir un "escuchador de eventos":</strong> Luego, le añadiría un "escuchador de eventos" (event listener) al objeto del botón. Esto se hace con <code>.addEventListener('click', function() { ... });</code>. Esta función le dice al navegador que "escuche" el evento 'click' en ese botón.</li>
+                        <li><strong>Modificar el párrafo dentro del evento:</strong> Dentro de la función que se ejecuta cuando se hace clic en el botón, accedería a la referencia del párrafo (<code>parrafoDinamico</code>) y cambiaría su propiedad <code>textContent</code> (o <code>innerHTML</code>) al nuevo texto deseado: "¡Texto cambiado por JavaScript!".</li>
+                    </ol>
+                    <p>En resumen, JavaScript "selecciona" los elementos del DOM y luego usa métodos y propiedades de esos objetos para manipular su contenido o comportamiento en respuesta a acciones del usuario.</p>
+                </div>
+            </div>
+
+            <div class="exercise-item">
+                <h4>Ejercicio 3: Identificación de Nodos y Atributos</h4>
+                <p>En el siguiente fragmento, identifica los Nodos Elemento, Nodos de Texto y Atributos:</p>
+                <div class="code-example">
+                    <pre><code class="language-html">&lt;a href="pagina.html" class="enlace-primario"&gt;Ir a Página&lt;/a&gt;
+</code></pre>
+                </div>
+                <button class="reveal-button" onclick="toggleSolution(this, 'solution3')">Mostrar Solución</button>
+                <div class="exercise-solution" id="solution3">
+                    <ul>
+                        <li><strong>Nodo Elemento:</strong>
+                            <ul>
+                                <li><code>&lt;a&gt;</code> (etiqueta de anclaje)</li>
+                            </ul>
+                        </li>
+                        <li><strong>Nodos de Texto:</strong>
+                            <ul>
+                                <li>"Ir a Página" (el texto visible del enlace)</li>
+                            </ul>
+                        </li>
+                        <li><strong>Atributos:</strong>
+                            <ul>
+                                <li><code>href="pagina.html"</code></li>
+                                <li><code>class="enlace-primario"</code></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p class="explanation-text">Este ejercicio subraya la distinción entre el elemento (la etiqueta HTML), su contenido de texto y los atributos que modifican el comportamiento o la apariencia del elemento.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="quiz-section">
+            <h3>Quiz de la Clase 29: El DOM (Document Object Model)</h3>
+            <p>¡Pon a prueba tus conocimientos con este quiz de 10 preguntas!</p>
+            <form id="quizForm">
+                <div class="quiz-question">
+                    <h4>1. ¿Qué significa la sigla DOM?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="a"> Data Object Management</label>
+                        <label><input type="radio" name="q1" value="b"> Document Object Model</label>
+                        <label><input type="radio" name="q1" value="c"> Dynamic Output Module</label>
+                        <label><input type="radio" name="q1" value="d"> Design Object Markup</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>2. ¿Cómo representa el DOM un documento HTML?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="a"> Como un archivo de texto plano.</label>
+                        <label><input type="radio" name="q2" value="b"> Como un árbol de objetos.</label>
+                        <label><input type="radio" name="q2" value="c"> Como una base de datos relacional.</label>
+                        <label><input type="radio" name="q2" value="d"> Como una hoja de estilos.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>3. ¿Cuál es el lenguaje de programación principal que interactúa con el DOM para hacer una página web dinámica?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="a"> HTML</label>
+                        <label><input type="radio" name="q3" value="b"> CSS</label>
+                        <label><input type="radio" name="q3" value="c"> JavaScript</label>
+                        <label><input type="radio" name="q3" value="d"> Python</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>4. En el contexto del DOM, ¿qué es un "Elemento"?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="a"> Cualquier objeto en el árbol DOM.</label>
+                        <label><input type="radio" name="q4" value="b"> Un atributo de una etiqueta HTML.</label>
+                        <label><input type="radio" name="q4" value="c"> Una etiqueta HTML específica (como <code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>, etc.).</label>
+                        <label><input type="radio" name="q4" value="d"> El texto dentro de una etiqueta HTML.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>5. ¿Cuál de los siguientes no es un tipo de interacción que JavaScript puede realizar con el DOM?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="a"> Cambiar el contenido de texto de un párrafo.</label>
+                        <label><input type="radio" name="q5" value="b"> Modificar el código fuente del servidor web.</label>
+                        <label><input type="radio" name="q5" value="c"> Añadir nuevos elementos HTML a la página.</label>
+                        <label><input type="radio" name="q5" value="d"> Reaccionar a un clic de botón del usuario.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>6. Si tienes el HTML <code>&lt;img src="foto.jpg" alt="Mi foto"&gt;</code>, ¿cuántos "Nodos de Atributo" hay aquí?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q6" value="a"> Cero</label>
+                        <label><input type="radio" name="q6" value="b"> Uno</label>
+                        <label><input type="radio" name="q6" value="c"> Dos</label>
+                        <label><input type="radio" name="q6" value="d"> Tres</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>7. ¿Qué representa un "Nodo de Texto" en el DOM?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q7" value="a"> Una imagen.</label>
+                        <label><input type="radio" name="q7" value="b"> El contenido de texto dentro de un elemento HTML.</label>
+                        <label><input type="radio" name="q7" value="c"> Un enlace.</label>
+                        <label><input type="radio" name="q7" value="d"> Una sección completa del documento.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>8. ¿Cuál es el objeto global en JavaScript que representa todo el documento HTML y es el punto de entrada para manipular el DOM?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q8" value="a"> <code>window</code></label>
+                        <label><input type="radio" name="q8" value="b"> <code>html</code></label>
+                        <label><input type="radio" name="q8" value="c"> <code>document</code></label>
+                        <label><input type="radio" name="q8" value="d"> <code>body</code></label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>9. ¿Es el DOM una tecnología separada como HTML o CSS?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q9" value="a"> Sí, es una tecnología independiente.</label>
+                        <label><input type="radio" name="q9" value="b"> No, es una API que permite a los lenguajes de programación interactuar con documentos HTML/XML.</label>
+                        <label><input type="radio" name="q9" value="c"> Es un framework CSS.</label>
+                        <label><input type="radio" name="q9" value="d"> Es un tipo de base de datos.</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>10. ¿Cuál de las siguientes afirmaciones sobre los Nodos de Atributo es verdadera?</h4>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q10" value="a"> Pueden tener nodos hijos.</label>
+                        <label><input type="radio" name="q10" value="b"> Son el tipo de nodo más común en el DOM.</label>
+                        <label><input type="radio" name="q10" value="c"> Se accede a ellos como propiedades del nodo del elemento al que pertenecen.</label>
+                        <label><input type="radio" name="q10" value="d"> Siempre contienen solo texto numérico.</label>
+                    </div>
+                </div>
+
+                <button type="button" class="submit-quiz-button" id="checkAnswersBtn">Ver Resultados</button>
+            </form>
+
+            <div id="quizResults" class="quiz-results">
+                <p>Resultados del Test:</p>
+                <ol id="resultsList"></ol>
+                <p id="scoreSummary"></p>
+                <button type="button" class="reveal-button" id="resetQuizBtn" style="display: none;">Volver a Intentar</button>
+            </div>
+        </div>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="29ElDOMConcepto.html">Volver a la Clase 29: El DOM (Document Object Model): Concepto.</a></li>
+                <li><a href="30ManipulacionDelDOMBasica.html">Clase 30: Manipulación del DOM (Básica): Selección y Modificación (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script>
+        // Función para mostrar/ocultar soluciones de ejercicios
+        function toggleSolution(button, solutionId) {
+            const solution = document.getElementById(solutionId);
+            if (solution.style.display === 'block') {
+                solution.style.display = 'none';
+                button.textContent = 'Mostrar Solución';
+            } else {
+                solution.style.display = 'block';
+                button.textContent = 'Ocultar Solución';
+            }
+        }
+
+        // Datos del quiz
+        const quizAnswers = {
+            q1: 'b', // Document Object Model
+            q2: 'b', // Como un árbol de objetos.
+            q3: 'c', // JavaScript
+            q4: 'c', // Una etiqueta HTML específica (como <div>, <p>, etc.).
+            q5: 'b', // Modificar el código fuente del servidor web.
+            q6: 'c', // Dos (src y alt)
+            q7: 'b', // El contenido de texto dentro de un elemento HTML.
+            q8: 'c', // document
+            q9: 'b', // No, es una API que permite a los lenguajes de programación interactuar con documentos HTML/XML.
+            q10: 'c' // Se accede a ellos como propiedades del nodo del elemento al que pertenecen.
+        };
+
+        // Asignar eventos a los botones una vez que el DOM esté completamente cargado
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            if (checkAnswersBtn) {
+                checkAnswersBtn.addEventListener('click', checkQuiz);
+            }
+            if (resetQuizBtn) {
+                resetQuizBtn.addEventListener('click', resetQuiz);
+            }
+        });
+
+        function checkQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const resultsList = document.getElementById('resultsList');
+            const scoreSummary = document.getElementById('scoreSummary');
+            const quizResultsDiv = document.getElementById('quizResults');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            resultsList.innerHTML = ''; // Limpiar resultados anteriores
+            let score = 0;
+
+            for (let i = 1; i <= 10; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = quizForm.elements[questionName] ? quizForm.elements[questionName].value : '';
+                const correctAnswer = quizAnswers[questionName];
+
+                const listItem = document.createElement('li');
+                listItem.classList.add(selectedOption === correctAnswer ? 'correct' : 'incorrect');
+
+                // Obtener el texto de la opción seleccionada (preservando <code>)
+                let selectedAnswerText = 'No respondida';
+                if (selectedOption) {
+                    const selectedLabel = quizForm.querySelector(`input[name="${questionName}"][value="${selectedOption}"]`);
+                    if (selectedLabel) {
+                        const labelClone = selectedLabel.closest('label').cloneNode(true);
+                        labelClone.querySelector('input').remove();
+                        selectedAnswerText = labelClone.innerHTML.trim();
+                    }
+                }
+
+                // Obtener el texto de la opción correcta (preservando <code>)
+                const correctLabel = quizForm.querySelector(`input[name="${questionName}"][value="${correctAnswer}"]`);
+                let correctAnswerText = 'N/A';
+                if (correctLabel) {
+                    const correctLabelClone = correctLabel.closest('label').cloneNode(true);
+                    correctLabelClone.querySelector('input').remove();
+                    correctAnswerText = correctLabelClone.innerHTML.trim();
+                }
+
+                const questionText = document.createTextNode(`Pregunta ${i}: `);
+                listItem.appendChild(questionText);
+
+                if (selectedOption !== correctAnswer) {
+                    listItem.innerHTML += ` Tu respuesta: "${selectedAnswerText}".<br>`;
+                    const correctInfoSpan = document.createElement('span');
+                    correctInfoSpan.classList.add('correct-answer-info');
+                    correctInfoSpan.innerHTML = `Respuesta correcta: "${correctAnswerText}".`;
+                    listItem.appendChild(correctInfoSpan);
+                } else {
+                    listItem.innerHTML += ` Correcta.`;
+                    score++;
+                }
+
+                resultsList.appendChild(listItem);
+            }
+
+            scoreSummary.textContent = `Tu puntuación es: ${score} de 10 preguntas correctas.`;
+            quizResultsDiv.style.display = 'block'; // Mostrar la sección de resultados
+            quizResultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Desplazarse a los resultados
+
+            // Ocultar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'none';
+            // Mostrar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'inline-block';
+        }
+
+        function resetQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            const checkAnswersBtn = document.getElementById('checkAnswersBtn');
+            const resetQuizBtn = document.getElementById('resetQuizBtn');
+
+            quizForm.reset(); // Reinicia todos los radio buttons
+            document.getElementById('quizResults').style.display = 'none'; // Oculta los resultados
+            document.getElementById('resultsList').innerHTML = ''; // Limpia la lista de resultados
+            document.getElementById('scoreSummary').textContent = ''; // Limpia el resumen de puntuación
+
+            // Mostrar el botón "Ver Resultados"
+            checkAnswersBtn.style.display = 'inline-block';
+            // Ocultar el botón "Volver a Intentar"
+            resetQuizBtn.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

@@ -1,17 +1,173 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proyecto Final y Siguientes Pasos</title>
+    <title>Clase 40: Proyecto Final y Siguientes Pasos - Curso HTML</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
+    <style>
+        .project-section {
+            background-color: #f0f8ff; /* Light blue */
+            border-left: 5px solid #007bff;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        .project-section h3 {
+            color: #007bff;
+        }
+        .resource-list {
+            list-style: none;
+            padding: 0;
+        }
+        .resource-list li {
+            background-color: #e6ffe6; /* Light green */
+            border: 1px solid #99e699;
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+        }
+        .resource-list li::before {
+            content: "📚"; /* Emoji for book */
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        .important-note {
+            background-color: #fff3cd; /* Light yellow */
+            border-left: 5px solid #ffc107;
+            padding: 18px;
+            border-radius: 8px;
+            margin: 30px 0;
+            color: #664d03;
+        }
+        .important-note strong {
+            color: #ffc107;
+        }
+        .roadmap-section {
+            background-color: #f3e5f5; /* Light purple */
+            border-left: 5px solid #9c27b0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        .roadmap-section h3 {
+            color: #9c27b0;
+        }
+    </style>
 </head>
 <body>
-    <H1>Clase 40: Proyecto Final y Siguientes Pasos</H1>
-    <UL>
-        <li>Diseño y desarrollo de una página web completa aplicando todo lo aprendido.</li>
-        <li>Recursos adicionales para seguir aprendiendo (CSS, JavaScript, frameworks).</li>
-        <li>La importancia de practicar continuamente.</li>
-    </UL>
-    <p><a href="/index.html">Vuelve a la página principal</a></p>
+    <div class="container">
+        <h1>
+            <p>CURSO DE INICIACIÓN A HTML</p>
+            <p>Clase 40: Proyecto Final y Siguientes Pasos</p>
+        </h1>
+
+        <p>¡Felicidades! Has llegado al último capítulo de este curso intensivo de HTML. A lo largo de estas 40 clases, has construido una sólida base en el lenguaje fundamental de la web. Desde las etiquetas más básicas hasta conceptos avanzados de semántica, formularios, multimedia, y seguridad, ahora posees las herramientas necesarias para estructurar contenido web de manera profesional.</p>
+        <p>Pero el aprendizaje en el desarrollo web nunca termina. Este capítulo final está diseñado para consolidar todo lo aprendido a través de un proyecto práctico y para guiarte en tus próximos pasos en este emocionante viaje.</p>
+
+        <hr>
+
+        <section class="project-section">
+            <h2>40.1. Proyecto Final: Diseño y desarrollo de una página web completa.</h2>
+            <p>Es el momento de poner en práctica todo lo que has aprendido. Tu proyecto final consistirá en diseñar y desarrollar una página web completa, aplicando la mayor cantidad posible de conceptos vistos en el curso. No tiene que ser un sitio web complejo o interactivo aún (eso vendrá con JavaScript), pero debe ser una demostración sólida de tus habilidades en HTML.</p>
+
+            <h3>40.1.1. Propuesta del Proyecto.</h3>
+            <p>Crea una página web que podría ser:</p>
+            <ul>
+                <li><strong>Tu portafolio personal:</strong> Una página que te describa, muestre algunos de tus proyectos y contenga un formulario de contacto.</li>
+                <li><strong>Una página de producto/servicio:</strong> Describe un producto o servicio ficticio, con secciones de características, precios, testimonios y un formulario de compra/solicitud de información.</li>
+                <li><strong>Un blog simple:</strong> Una página principal con enlaces a varios "artículos" (cada uno una página HTML separada), utilizando estructuras semánticas para posts.</li>
+                <li><strong>Una página de un negocio local ficticio:</strong> Incluye información sobre el negocio, servicios, horario, ubicación (posiblemente un iframe de mapa), y un formulario de reserva/contacto.</li>
+            </ul>
+
+            <h3>40.1.2. Requisitos y Características a Incorporar.</h3>
+            <p>Tu proyecto debe incluir (al menos):</p>
+            <ul>
+                <li><strong>Estructura HTML5 semántica:</strong> Usa <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;footer&gt;</code> según sea apropiado.</li>
+                <li><strong>Uso de encabezados (<code>h1</code>-<code>h6</code>):</strong> Jerarquía correcta de títulos.</li>
+                <li><strong>Listas:</strong> Ordenadas (<code>ol</code>) y/o desordenadas (<code>ul</code>).</li>
+                <li><strong>Enlaces internos y externos:</strong> Navegación clara dentro del sitio y enlaces a otros recursos.</li>
+                <li><strong>Imágenes:</strong> Con atributos <code>alt</code> descriptivos.</li>
+                <li><strong>Elementos multimedia:</strong> (Opcional, pero recomendado) Un video o audio embebido (<code>&lt;video&gt;</code>, <code>&lt;audio&gt;</code> o <code>&lt;iframe&gt;</code> de YouTube/Vimeo).</li>
+                <li><strong>Tablas:</strong> Si el contenido lo requiere, usa tablas para datos tabulares.</li>
+                <li><strong>Formularios completos:</strong> Con diferentes tipos de input (texto, email, password, radio, checkbox, textarea, select), etiquetas <code>&lt;label&gt;</code>, atributos de validación HTML5, y agrupados con <code>&lt;fieldset&gt;</code> y <code>&lt;legend&gt;</code>.</li>
+                <li><strong>Comentarios HTML:</strong> Para organizar secciones y explicar código complejo.</li>
+                <li><strong>Indentación y consistencia:</strong> Código limpio, bien indentado y con una nomenclatura consistente (<code>kebab-case</code> para clases).</li>
+                <li><strong>Validación HTML:</strong> Pasa tu código por el <a href="https://validator.w3.org/" target="_blank" rel="noopener noreferrer">W3C Markup Validation Service</a> y corrige todos los errores y advertencias posibles.</li>
+            </ul>
+            <div class="important-note">
+                <p><strong>Importante:</strong> Aunque este curso se centra en HTML, te animo a usar CSS básico (colores, fuentes, espaciado) para que tu página sea más atractiva. ¡No tienes que ser un experto en CSS aún!</p>
+            </div>
+        </section>
+
+        <hr>
+
+        <section class="roadmap-section">
+            <h2>40.2. Recursos adicionales para seguir aprendiendo.</h2>
+            <p>HTML es solo el punto de partida. Para convertirte en un desarrollador web completo, necesitarás dominar otras tecnologías. Aquí tienes una hoja de ruta y recursos recomendados:</p>
+
+            <h3>40.2.1. El Próximo Paso Lógico: CSS.</h3>
+            <p><strong>CSS (Cascading Style Sheets)</strong> es el lenguaje que te permite darle estilo a tu HTML: colores, fuentes, diseño, animaciones, y mucho más. Es indispensable para crear páginas atractivas y responsivas.</p>
+            <ul class="resource-list">
+                <li><a href="https://developer.mozilla.org/es/docs/Web/CSS" target="_blank" rel="noopener noreferrer"><strong>MDN Web Docs - CSS:</strong></a> La referencia definitiva para CSS. Completa y detallada.</li>
+                <li><a href="https://css-tricks.com/" target="_blank" rel="noopener noreferrer"><strong>CSS-Tricks:</strong></a> Un recurso fantástico con artículos, tutoriales y snippets de código sobre CSS (y desarrollo web en general).</li>
+                <li><a href="https://flexboxfroggy.com/" target="_blank" rel="noopener noreferrer"><strong>Flexbox Froggy:</strong></a> Un juego interactivo para aprender Flexbox, una herramienta esencial para el diseño de layouts.</li>
+                <li><a href="https://gridgarden.com/" target="_blank" rel="noopener noreferrer"><strong>Grid Garden:</strong></a> Otro juego interactivo para dominar CSS Grid, el sistema de layout más potente.</li>
+                <li><strong>Cursos en plataformas:</strong> Busca cursos de CSS en Udemy, Coursera, freeCodeCamp, The Odin Project.</li>
+            </ul>
+            <p>Una vez que domines CSS, podrás explorar <strong>frameworks CSS</strong> como Tailwind CSS o Bootstrap, que aceleran el desarrollo web al proporcionar componentes y estilos predefinidos.</p>
+
+            <h3>40.2.2. Dando Vida a tus Páginas: JavaScript.</h3>
+            <p><strong>JavaScript</strong> es el lenguaje de programación del lado del cliente. Te permite crear interactividad en tus páginas: validación de formularios en tiempo real, sliders de imágenes, botones dinámicos, cargar contenido sin recargar la página, y mucho más. Es lo que convierte una página estática en una aplicación web dinámica.</p>
+            <ul class="resource-list">
+                <li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript" target="_blank" rel="noopener noreferrer"><strong>MDN Web Docs - JavaScript:</strong></a> La documentación oficial de JavaScript, muy completa.</li>
+                <li><a href="https://javascript.info/" target="_blank" rel="noopener noreferrer"><strong>The Modern JavaScript Tutorial:</strong></a> Un tutorial exhaustivo y fácil de seguir, desde los fundamentos hasta temas avanzados.</li>
+                <li><a href="https://www.freecodecamp.org/news/tag/javascript/" target="_blank" rel="noopener noreferrer"><strong>freeCodeCamp:</strong></a> Ofrece un currículo completo y gratuito para aprender JavaScript.</li>
+                <li><a href="https://www.codewars.com/" target="_blank" rel="noopener noreferrer"><strong>CodeWars / LeetCode:</strong></a> Plataformas para practicar tus habilidades de resolución de problemas con JavaScript a través de desafíos de codificación.</li>
+            </ul>
+            <p>Después de JavaScript puro, querrás aprender un <strong>framework/librería de JavaScript</strong> como React, Angular o Vue.js, que son esenciales para construir aplicaciones web modernas y complejas.</p>
+
+            <h3>40.2.3. Otras áreas a explorar.</h3>
+            <ul>
+                <li><strong>Control de Versiones (Git y GitHub):</strong> Esencial para colaborar en proyectos y gestionar el historial de tu código.</li>
+                <li><strong>Desarrollo Back-end:</strong> Aprender un lenguaje de programación de servidor (Python con Django/Flask, Node.js con Express, PHP con Laravel, Ruby con Rails) y bases de datos para construir aplicaciones web completas.</li>
+                <li><strong>Despliegue (Deployment):</strong> Cómo subir tu sitio web a un servidor para que esté disponible en Internet (Netlify, Vercel, GitHub Pages para sitios estáticos; o proveedores de hosting con bases de datos para aplicaciones dinámicas).</li>
+                <li><strong>Accesibilidad (A11y):</strong> Profundizar en cómo hacer que tus sitios sean utilizables por personas con diversas discapacidades.</li>
+                <li><strong>Rendimiento Web:</strong> Optimizar la velocidad de carga de tus páginas.</li>
+            </ul>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>40.3. La importancia de practicar continuamente.</h2>
+            <p>El desarrollo web es una habilidad que se perfecciona con la práctica constante. Leer y ver tutoriales es útil, pero la verdadera retención y comprensión se logran al escribir código y resolver problemas por tu cuenta.</p>
+            <ul>
+                <li><strong>Construye pequeños proyectos:</strong> Cada nueva tecnología que aprendas, intenta aplicarla en un pequeño proyecto personal. No necesitas reinventar la rueda; replicar interfaces o funcionalidades de sitios existentes es una excelente forma de practicar.</li>
+                <li><strong>Contribuye a proyectos de código abierto:</strong> Una vez que te sientas cómodo, busca proyectos de código abierto en GitHub donde puedas contribuir. Es una forma fantástica de aprender de otros y construir tu portafolio.</li>
+                <li><strong>Mantente actualizado:</strong> La web evoluciona rápidamente. Suscríbete a blogs de tecnología, sigue a desarrolladores en redes sociales y explora las últimas tendencias y herramientas.</li>
+                <li><strong>No tengas miedo de cometer errores:</strong> Los errores son oportunidades de aprendizaje. Depurar y resolver problemas es una parte fundamental del trabajo de un desarrollador.</li>
+                <li><strong>Colabora y comparte:</strong> Únete a comunidades de desarrolladores, haz preguntas, ayuda a otros. La enseñanza es una de las mejores formas de aprender.</li>
+            </ul>
+            <div class="important-note">
+                <p><strong>Recuerda:</strong> Este curso te ha dado las bases para ser un constructor en la web. La web es tu lienzo, y HTML es tu primera herramienta para dibujar. ¡El potencial es ilimitado!</p>
+            </div>
+        </section>
+
+        <hr>
+
+        <footer>
+            <p>¡Has completado el curso de iniciación a HTML!</p>
+            <ul>
+                <li><a href="Ejercicios40.html">Ejercicios sobre esta lección (¡y del curso completo!).</a></li>
+                <li><a href="../CursoHTML.html">Volver al Índice del Curso HTML</a></li>
+                <li><a href="../index.html">Volver a la Página Principal de Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
 </body>
 </html>

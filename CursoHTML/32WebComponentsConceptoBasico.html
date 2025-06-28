@@ -1,16 +1,207 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Components (Concepto Básico)</title>
+    <title>Web Components (Concepto Básico) - Curso HTML</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
+    <style>
+        .code-example {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
+        .code-example pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .web-component-info {
+            background-color: #e6ffe6;
+            border: 1px solid #99e699;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+    </style>
 </head>
 <body>
-    <H1>Clase 32: Web Components (Concepto Básico).</H1>
-    <UL>
-        <li>Introducción a los Web Components: Custom Elements, Shadow DOM, HTML Templates, HTML Imports.</li>
-        <li>Modularidad y reutilización de código. (Concepto para enlazar con frameworks y librerías).</li>
-    </UL>
-    <p><a href="/index.html">Vuelve a la página principal</a></p>
+    <div class="container">
+        <h1>
+            <p>CURSO DE INICIACIÓN A HTML</p>
+            <p>Clase 32: Web Components (Concepto Básico)</p>
+        </h1>
+
+        <p>A medida que las aplicaciones web se vuelven más complejas, la gestión del código HTML, CSS y JavaScript puede volverse abrumadora. Las empresas tecnológicas como Google y Facebook desarrollaron soluciones como Polymer, React, Angular o Vue para ayudar a organizar el código en componentes reutilizables. Sin embargo, los Web Components son un conjunto de estándares W3C que permiten a los desarrolladores crear sus propios elementos HTML personalizados y reutilizables, de forma nativa en el navegador, sin necesidad de librerías o frameworks externos. Son una base fundamental para entender la modularidad en el desarrollo web moderno.</p>
+
+        <hr>
+
+        <section>
+            <h2>32.1. Introducción a los Web Components.</h2>
+            <p>Los Web Components consisten en cuatro tecnologías principales que trabajan juntas para permitir la creación de componentes personalizados y encapsulados:</p>
+
+            <h3>32.1.1. Custom Elements (Elementos Personalizados).</h3>
+            <p>Permiten definir tus propias etiquetas HTML. Puedes crear elementos con funcionalidades y estilos personalizados que el navegador reconocerá y renderizará como cualquier otra etiqueta HTML (<code>&lt;div&gt;</code>, <code>&lt;button&gt;</code>, etc.).</p>
+            <ul>
+                <li><strong>Sintaxis:</strong> El nombre de un custom element debe contener siempre un guion (<code>-</code>) para evitar conflictos con elementos HTML futuros o existentes (ej., <code>&lt;mi-boton&gt;</code>, <code>&lt;tarjeta-producto&gt;</code>).</li>
+                <li><strong>Definición:</strong> Se definen con JavaScript, extendiendo la interfaz <code>HTMLElement</code>.</li>
+            </ul>
+            <div class="code-example">
+                <pre><code class="language-html">&lt;!-- Ejemplo de uso en HTML --&gt;
+&lt;mi-boton tipo="primario"&gt;Clic aquí&lt;/mi-boton&gt;
+&lt;tarjeta-producto id="p123" nombre="Portátil X" precio="999"&gt;&lt;/tarjeta-producto&gt;
+
+&lt;script&gt;
+    class MiBoton extends HTMLElement {
+        constructor() {
+            super(); // Siempre llamar a super() primero en el constructor
+            this.innerHTML = `&lt;button&gt;${this.textContent || 'Botón'}&lt;/button&gt;`;
+            // Puedes añadir más lógica, como observar atributos o manejar eventos
+        }
+    }
+    // Definir el nuevo elemento personalizado
+    customElements.define('mi-boton', MiBoton);
+&lt;/script&gt;
+</code></pre>
+            </div>
+
+            <h3>32.1.2. Shadow DOM (Modelo de Objetos del Documento en Sombra).</h3>
+            <p>Proporciona encapsulación. Permite adjuntar un "árbol DOM" oculto y separado a un elemento. El contenido dentro del Shadow DOM está aislado del resto del documento principal, lo que significa que su CSS no afectará el DOM principal y el CSS del DOM principal no afectará al Shadow DOM. Esto previene conflictos de estilos y lógica.</p>
+            <ul>
+                <li><strong>Encapsulación:</strong> Aísla el HTML y CSS del componente del resto de la página.</li>
+                <li><strong>Modo:</strong> Puede ser <code>open</code> (accesible desde JavaScript del documento) o <code>closed</code> (inaccesible).</li>
+            </ul>
+            <div class="code-example">
+                <pre><code class="language-html">&lt;template id="mi-boton-template"&gt;
+    &lt;style&gt;
+        button {
+            padding: 10px 20px;
+            background-color: var(--button-bg, #007bff); /* Usando CSS Custom Properties */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: var(--button-hover-bg, #0056b3);
+        }
+    &lt;/style&gt;
+    &lt;button&gt;&lt;slot&gt;Botón por Defecto&lt;/slot&gt;&lt;/button&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+    class MiBotonConShadow extends HTMLElement {
+        constructor() {
+            super();
+            const shadowRoot = this.attachShadow({ mode: 'open' }); // Crear Shadow DOM
+            const template = document.getElementById('mi-boton-template');
+            shadowRoot.appendChild(template.content.cloneNode(true)); // Clonar contenido del template
+
+            // Obtener el slot y su contenido si existe
+            const slot = shadowRoot.querySelector('slot');
+            if (slot && this.textContent.trim() !== '') {
+                 // Si hay contenido directamente en el custom element, se irá al slot por defecto
+            }
+        }
+    }
+    customElements.define('mi-boton-con-shadow', MiBotonConShadow);
+&lt;/script&gt;
+
+&lt;mi-boton-con-shadow&gt;Haz Clic&lt;/mi-boton-con-shadow&gt;
+&lt;mi-boton-con-shadow style="--button-bg: #28a745; --button-hover-bg: #218838;"&gt;Aceptar&lt;/mi-boton-con-shadow&gt;
+</code></pre>
+            </div>
+            <div class="web-component-info">
+                <p><strong>Slots:</strong> Dentro del Shadow DOM, la etiqueta <code>&lt;slot&gt;</code> permite que el contenido que se coloca entre las etiquetas de apertura y cierre de tu custom element (ej., <code>&lt;mi-boton&gt;Aquí va el contenido&lt;/mi-boton&gt;</code>) se "proyecte" dentro del Shadow DOM. Esto hace que los componentes sean flexibles.</p>
+            </div>
+
+            <h3>32.1.3. HTML Templates (Plantillas HTML).</h3>
+            <p>Las etiquetas <code>&lt;template&gt;</code> y <code>&lt;slot&gt;</code> son una forma de definir fragmentos de HTML que no se renderizan inmediatamente al cargar la página, pero que pueden ser "activados" y clonados posteriormente por JavaScript. Son ideales para definir la estructura de un Web Component.</p>
+            <ul>
+                <li><strong><code>&lt;template&gt;</code>:</strong> Contiene un fragmento de HTML que no es visible ni interactivo hasta que es instanciado por JavaScript.</li>
+                <li><strong><code>&lt;slot&gt;</code>:</strong> Usado dentro de un <code>&lt;template&gt;</code> dentro de un Shadow DOM para proyectar contenido.</li>
+            </ul>
+            <div class="code-example">
+                <pre><code class="language-html">&lt;template id="card-template"&gt;
+    &lt;style&gt;
+        .card {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h3 { color: #333; }
+    &lt;/style&gt;
+    &lt;div class="card"&gt;
+        &lt;h3&gt;&lt;slot name="titulo"&gt;Título por Defecto&lt;/slot&gt;&lt;/h3&gt;
+        &lt;p&gt;&lt;slot name="contenido"&gt;Contenido por Defecto.&lt;/slot&gt;&lt;/p&gt;
+        &lt;footer&gt;&lt;slot name="pie"&gt;&lt;/slot&gt;&lt;/footer&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+    class MiTarjeta extends HTMLElement {
+        constructor() {
+            super();
+            const shadowRoot = this.attachShadow({ mode: 'open' });
+            const template = document.getElementById('card-template');
+            shadowRoot.appendChild(template.content.cloneNode(true));
+        }
+    }
+    customElements.define('mi-tarjeta', MiTarjeta);
+&lt;/script&gt;
+
+&lt;!-- Uso de la tarjeta con slots nombrados --&gt;
+&lt;mi-tarjeta&gt;
+    &lt;span slot="titulo"&gt;Tarjeta de Noticia&lt;/span&gt;
+    &lt;p slot="contenido"&gt;Este es el contenido de la noticia. Muy interesante.&lt;/p&gt;
+    &lt;span slot="pie"&gt;Fecha: 27/06/2025&lt;/span&gt;
+&lt;/mi-tarjeta&gt;
+
+&lt;!-- Uso con contenido por defecto --&gt;
+&lt;mi-tarjeta&gt;&lt;/mi-tarjeta&gt;
+</code></pre>
+            </div>
+
+            <h3>32.1.4. HTML Imports (Importaciones HTML) - Obsoleto.</h3>
+            <p>Originalmente, HTML Imports era parte de la especificación de Web Components, diseñado para importar y reutilizar documentos HTML en otros documentos HTML. Sin embargo, esta parte de la especificación ha sido <strong>descontinuada y eliminada</strong> de los navegadores modernos. En su lugar, se utilizan los Módulos de JavaScript (<code>import</code> y <code>export</code>) para importar y exportar los Custom Elements definidos en archivos JavaScript.</p>
+            <div class="web-component-info">
+                <p><strong>Nota importante:</strong> Ya no se utilizan HTML Imports. Los módulos de JavaScript son la forma actual y recomendada de importar Web Components. Esto es un concepto clave para entender cómo se estructuran las aplicaciones modernas con JavaScript.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>32.2. Modularidad y reutilización de código.</h2>
+            <p>El principal beneficio de los Web Components es su capacidad para promover la modularidad y la reutilización de código. Una vez que has definido un componente web:</p>
+            <ul>
+                <li><strong>Encapsulación:</strong> Su lógica, estructura y estilos están encapsulados y no interfieren con el resto de la página.</li>
+                <li><strong>Reutilización:</strong> Puedes usarlo múltiples veces en la misma página, o exportarlo e importarlo en diferentes proyectos web.</li>
+                <li><strong>Interoperabilidad:</strong> Funcionan con cualquier librería o framework de JavaScript porque son estándares nativos del navegador. Puedes tener un componente React o Vue usando un Web Component, o viceversa.</li>
+                <li><strong>Mantenimiento:</strong> Facilita el mantenimiento, ya que cada componente es una unidad autónoma.</li>
+            </ul>
+
+            <p>Este concepto de construir interfaces de usuario a partir de piezas pequeñas, independientes y reutilizables es fundamental en el desarrollo web moderno. Es el mismo principio que subyace a frameworks y librerías como React, Angular y Vue. Los Web Components ofrecen una forma nativa del navegador de lograr esto, lo que los convierte en una tecnología poderosa para el futuro del desarrollo front-end.</p>
+        </section>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="Ejercicios32.html">Ejercicios sobre esta lección.</a></li>
+                <li><a href="33SEOConWebComponentsYSPA.html">Clase 33: SEO con Web Components y SPA (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
 </body>
 </html>

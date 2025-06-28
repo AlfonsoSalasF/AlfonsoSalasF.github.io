@@ -1,18 +1,159 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video: Reproducción de Video</title>
+    <title>Video: Reproducción de Video - Curso HTML</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/common_styles.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
 </head>
 <body>
-    <H1>Clase 22: Video: Reproducción de Video.</H1>
-    <UL>
-        <li>La etiqueta &lt;video&gt;.</li>
-        <li>Atributos: src, controls, autoplay, loop, muted, poster, width, height, preload.</li>
-        <li>Formatos de video compatibles (.mp4, .webm, .ogg).</li>
-        <li>Múltiples fuentes con &lt;source&gt;.</li>
-    </UL>
-    <p><a href="/index.html">Vuelve a la página principal</a></p>
+    <div class="container">
+        <h1>
+            <p>CURSO DE INICIACIÓN A HTML</p>
+            <p>Clase 22: Video: Reproducción de Video</p>
+        </h1>
+
+        <p>Al igual que la etiqueta <code>&lt;audio&gt;</code>, HTML5 introdujo la etiqueta <code>&lt;video&gt;</code> para permitir la incrustación de contenido de video directamente en las páginas web sin la necesidad de plugins externos. Esto ha revolucionado la forma en que el contenido multimedia se presenta en línea, ofreciendo mayor flexibilidad, accesibilidad y compatibilidad entre dispositivos.</p>
+
+        <hr>
+
+        <section>
+            <h2>22.1. La etiqueta <code>&lt;video&gt;</code>.</h2>
+            <p>La etiqueta <code>&lt;video&gt;</code> se utiliza para incrustar contenido de video en un documento HTML. Similar a <code>&lt;audio&gt;</code>, por sí sola no muestra controles de reproducción a menos que se especifique el atributo <code>controls</code>.</p>
+            <p><strong>Ejemplo Básico:</strong></p>
+            <pre><code>&lt;video src="video/ejemplo.mp4" controls width="640" height="360"&gt;
+    Tu navegador no soporta el elemento de video.
+&lt;/video&gt;</code></pre>
+            <div class="note">
+                <p>El texto dentro de la etiqueta <code>&lt;video&gt;</code> (en este caso, "Tu navegador no soporta el elemento de video.") se mostrará solo si el navegador del usuario no es compatible con la etiqueta <code>&lt;video&gt;</code>.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>22.2. Atributos de <code>&lt;video&gt;</code>.</h2>
+            <p>La etiqueta <code>&lt;video&gt;</code> soporta varios atributos que permiten controlar el comportamiento de la reproducción, la apariencia y la carga del video.</p>
+            <table>
+                <caption>Atributos Comunes de la Etiqueta <code>&lt;video&gt;</code></caption>
+                <thead>
+                    <tr>
+                        <th>Atributo</th>
+                        <th>Descripción</th>
+                        <th>Ejemplo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>src</code></td>
+                        <td>Especifica la URL del archivo de video que se va a incrustar. Es el método más sencillo para definir la fuente.</td>
+                        <td><code>&lt;video src="pelicula.mp4"&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>controls</code></td>
+                        <td>Muestra los controles de reproducción estándar del navegador (como reproducir/pausar, volumen, barra de progreso, pantalla completa). Si no se incluye, el video se reproducirá sin controles visibles a menos que se controle con JavaScript.</td>
+                        <td><code>&lt;video src="clip.webm" controls&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>autoplay</code></td>
+                        <td>Indica que el video debe comenzar a reproducirse automáticamente tan pronto como sea posible. Se debe usar con precaución, ya que puede ser intrusivo. Muchos navegadores modernos bloquean la reproducción automática con sonido a menos que el video esté silenciado.</td>
+                        <td><code>&lt;video src="intro.mp4" autoplay&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>loop</code></td>
+                        <td>Especifica que el video debe reproducirse en bucle, es decir, se reiniciará automáticamente cada vez que llegue al final.</td>
+                        <td><code>&lt;video src="animacion.mp4" loop&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>muted</code></td>
+                        <td>Indica que el video debe silenciarse por defecto al cargarse. Esto a menudo es necesario para que el atributo <code>autoplay</code> funcione en la mayoría de los navegadores.</td>
+                        <td><code>&lt;video src="fondo.mp4" muted autoplay&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>poster</code></td>
+                        <td>Especifica la URL de una imagen que se mostrará como un fotograma "miniatura" del video antes de que el video se cargue o se reproduzca. Es útil para dar una vista previa del contenido.</td>
+                        <td><code>&lt;video src="viaje.mp4" poster="img/viaje_preview.jpg"&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>width</code></td>
+                        <td>Define el ancho del reproductor de video en píxeles.</td>
+                        <td><code>&lt;video src="video.mp4" width="800"&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>height</code></td>
+                        <td>Define la altura del reproductor de video en píxeles.</td>
+                        <td><code>&lt;video src="video.mp4" height="450"&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>preload</code></td>
+                        <td>Define cómo se debe cargar el archivo de video al cargar la página. Puede tener los siguientes valores:
+                            <ul>
+                                <li><code>none</code>: El video no se precarga.</li>
+                                <li><code>metadata</code>: Solo se precargan los metadatos (duración, dimensiones, etc.).</li>
+                                <li><code>auto</code>: El navegador decide si precarga el video completo (valor por defecto).</li>
+                            </ul>
+                        </td>
+                        <td><code>&lt;video src="clase.mp4" preload="metadata"&gt;</code></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><strong>Ejemplo de atributos combinados:</strong></p>
+            <pre><code>&lt;video src="video/playa.mp4" controls autoplay loop muted poster="img/playa_thumb.jpg" width="720" height="405"&gt;
+    Tu navegador no soporta el elemento de video.
+&lt;/video&gt;</code></pre>
+            <video controls muted autoplay loop poster="https://peach.blender.org/wp-content/uploads/title_rot01.jpg?x11270" width="720" height="405">
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+        </section>
+
+        <section>
+            <h2>22.3. Formatos de video compatibles.</h2>
+            <p>Al igual que con el audio, no todos los navegadores soportan los mismos formatos de video. Los formatos más comunes y recomendados para la web son:</p>
+            <ul>
+                <li><strong>MP4 (MPEG-4 Part 14):</strong> Es el formato más ampliamente soportado y suele usar el códec H.264 para video y AAC para audio. Ofrece buena calidad y compresión.</li>
+                <li><strong>WebM:</strong> Un formato de código abierto y libre de patentes desarrollado por Google. Utiliza el códec VP8/VP9 para video y Vorbis/Opus para audio. Es un buen complemento para MP4, especialmente en navegadores basados en Chromium y Firefox.</li>
+                <li><strong>Ogg (Ogg Theora):</strong> Otro formato de código abierto. Utiliza el códec Theora para video y Vorbis para audio. Su soporte ha disminuido un poco en favor de WebM, pero aún puede ser útil para una compatibilidad más amplia en navegadores antiguos.</li>
+            </ul>
+            <div class="note">
+                <p>Para asegurar la máxima compatibilidad, es crucial proporcionar el video en múltiples formatos, lo cual se logra con la etiqueta <code>&lt;source&gt;</code>.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>22.4. Múltiples fuentes con <code>&lt;source&gt;</code>.</h2>
+            <p>Para ofrecer compatibilidad con diferentes navegadores y sus distintos soportes de formatos, puedes usar la etiqueta <code>&lt;source&gt;</code> dentro de <code>&lt;video&gt;</code>. El navegador intentará cargar el primer formato que reconozca y pueda reproducir.</p>
+            <p>La etiqueta <code>&lt;source&gt;</code> tiene dos atributos importantes:</p>
+            <ul>
+                <li><code>src</code>: La URL del archivo de video.</li>
+                <li><code>type</code>: El tipo MIME del archivo de video (por ejemplo, <code>"video/mp4"</code> para MP4, <code>"video/webm"</code> para WebM, <code>"video/ogg"</code> para Ogg). Esto permite al navegador decidir si puede reproducir el archivo antes de intentar descargarlo.</li>
+            </ul>
+            <p><strong>Ejemplo con múltiples fuentes:</strong></p>
+            <pre><code>&lt;video controls poster="img/video_preview.jpg" width="720" height="405"&gt;
+    &lt;source src="video/pelicula.webm" type="video/webm"&gt;
+    &lt;source src="video/pelicula.mp4" type="video/mp4"&gt;
+    &lt;!-- Texto alternativo si el navegador no soporta &lt;video&gt; o ninguno de los formatos --&gt;
+    Tu navegador no soporta el elemento de video ni los formatos proporcionados.
+&lt;/video&gt;</code></pre>
+            <video controls poster="https://i.ytimg.com/vi/aqz-KE-bpDs/maxresdefault.jpg" width="720" height="405">
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                <source src="https://www.w3schools.com/html/mov_bbb.ogg" type="video/ogg">
+                Tu navegador no soporta el elemento de video ni los formatos proporcionados.
+            </video>
+            <p>En este ejemplo, el navegador intentará reproducir <code>pelicula.webm</code>. Si no puede, intentará con <code>pelicula.mp4</code>. Si ninguno de los formatos es soportado o el elemento <code>&lt;video&gt;</code> en sí no es soportado, se mostrará el mensaje de texto alternativo.</p>
+        </section>
+
+        <hr>
+
+        <footer>
+            <p>Continúa explorando HTML:</p>
+            <ul>
+                <li><a href="Ejercicios22.html">Ejercicios sobre esta lección.</a></li>
+                <li><a href="23ControlesPersonalizadosConJavaScript.html">Clase 23: Controles Personalizados con JavaScript (Siguiente)</a></li>
+                <li><a href="../CursoHTML.html">Índice del curso</a></li>
+                <li><a href="../index.html">Desarrollo Web</a></li>
+            </ul>
+        </footer>
+    </div>
 </body>
 </html>
