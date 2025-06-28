@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reproductor de Partituras</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        textarea {
+            width: 80%;
+            max-width: 600px;
+            height: 200px;
+            margin-bottom: 20px;
+            padding: 10px;
+            font-size: 1.1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: vertical;
+        }
+        button {
+            padding: 10px 25px;
+            font-size: 1.2em;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #message {
+            margin-top: 20px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Mi Reproductor de Partituras</h1>
+    <p>Introduce tu partitura siguiendo las reglas:</p>
+    <ul>
+        <li>**Notas:** a, b, c, d, e, f, g (la, si, do, re, mi, fa, sol)</li>
+        <li>**Octava:** `(n)` antes de la nota (ej: `(5)c` para Do en octava 5). Por defecto es octava 4. **Si cambias la octava, las siguientes notas se mantendrán en esa octava hasta un nuevo cambio.**</li>
+        <li>**Duración:** 1 (redonda), 2 (blanca), 3 (negra), 4 (corchea), 5 (semicorchea), 6 (fusa).</li>
+        <li>**Ligaduras:** `_` (ej: `c3_c4` para Do negra ligada a Do corchea)</li>
+        <li>**Silencio:** `s` (ej: `s3` para silencio de negra)</li>
+        <li>**Alteraciones:** `#` (sostenido), `$` (bemol) después de la nota (ej: `c#3`, `d$4`)</li>
+        <li>**Separador:** `,` para separar notas.</li>
+    </ul>
+
+    <textarea id="scoreInput" placeholder="Ej: (4)c3,d3,e3,(5)f3,g3,a3,b3,c3"></textarea>
+    <button id="playButton">Reproducir</button>
+    <div id="message"></div>
+
+    <script>
+        let audioContext;
+
+        const noteFrequencies = {
+            'c': 261.63,
+            'd': 293.66,
+            'e': 329.63,
+            'f': 349.23,
+            'g': 392.00,
+            'a': 440.00,
+            'b': 493.88
+        };
+
+        const noteDurations = {
+            '1': 2.0,
+            '2': 1.0,
+            '3': 0.5,
+            '4': 0.25,
+            '5': 0.125,
+            '6': 0.0625
+        };
+
+        function getFrequency(noteChar, octave, accidental) {
+            let baseFreq = noteFrequencies[noteChar];
+            if (!baseFreq) return null;
+
+            const octaveDifference = octave - 4;
+            let freq = baseFreq * Math.pow(2, octaveDifference);
+
+            if (accidental === '#') {
+                freq *= Math.pow(2, 1/12);
+            } else if (accidental === '$') {
+                freq /= Math.pow(2, 1/12);
+            }
+
+            return freq;
+        }
+
+        function playNote(frequency, duration, startTime) {
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
+
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+
+            oscillator.type = 'sine';
+            oscillator.frequency.setValueAtTime(frequency, startTime);
+
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+
+            gainNode.gain.setValueAtTime(0, startTime);
+            gainNode.gain.linearRampToValueAtTime(0.5, startTime + 0.01);
+            gainNode.gain.linearRampToValueAtTime(0, startTime + duration - 0.01);
+
+            oscillator.start(startTime);
+            oscillator.stop(startTime + duration);
+        }
+
+        async function playScore() {
+            const scoreInput = document.getElementById('scoreInput').value.trim();
+            const messageDiv = document.getElementById('message');
+            messageDiv.textContent = '';
+
+            if (!scoreInput) {
+                messageDiv.textContent = 'Por favor, introduce una partitura.';
+                return;
+            }
+
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
+
+            const notes = scoreInput.split(',');
+            let currentTime = audioContext.currentTime;
+            // ¡Aquí está el cambio clave! currentOctave se inicializa una vez
+            // y se mantiene a menos que se cambie explícitamente.
+            let currentOctave = 4; // Octava por defecto al inicio
+
+            for (let i = 0; i < notes.length; i++) {
+                let noteString = notes[i].trim();
+                if (!noteString) continue;
+
+                let match;
+
+                // 1. Manejar el cambio de octava
+                match = noteString.match(/^\((\d)\)(.*)/);
+                if (match) {
+                    const newOctave = parseInt(match[1]);
+                    if (newOctave >= 1 && newOctave <= 8) {
+                        currentOctave = newOctave; // Actualiza la octava actual
+                        noteString = match[2]; // El resto de la cadena después de la octava
+                    } else {
+                        messageDiv.textContent = `Error: Octava inválida "${match[1]}". Debe ser entre 1 y 8.`;
+                        return;
+                    }
+                }
+
+                // 2. Manejar silencios
+                if (noteString.startsWith('s')) {
+                    const durationMatch = noteString.match(/^s(\d)$/);
+                    if (durationMatch) {
+                        const durationType = durationMatch[1];
+                        const duration = noteDurations[durationType];
+                        if (duration) {
+                            currentTime += duration;
+                        } else {
+                            messageDiv.textContent = `Error: Duración de silencio inválida "${durationType}".`;
+                            return;
+                        }
+                    } else {
+                        messageDiv.textContent = `Error: Formato de silencio inválido "${noteString}". Usa 's' seguido de un número.`;
+                        return;
+                    }
+                    continue;
+                }
+
+                // 3. Manejar notas
+                match = noteString.match(/^([a-g])([#$])?([1-6])$/);
+                let tiedNotesMatch = noteString.match(/^([a-g][#$]?\d)(?:_([a-g][#$]?\d))+$/);
+
+
+                if (match) {
+                    const noteChar = match[1];
+                    const accidental = match[2];
+                    const durationType = match[3];
+
+                    const frequency = getFrequency(noteChar, currentOctave, accidental); // Usa la octava actual
+                    const duration = noteDurations[durationType];
+
+                    if (frequency && duration) {
+                        playNote(frequency, duration, currentTime);
+                        currentTime += duration;
+                    } else {
+                        messageDiv.textContent = `Error: Nota o duración inválida "${noteString}".`;
+                        return;
+                    }
+                } else if (tiedNotesMatch) {
+                    const tiedNotesParts = noteString.split('_');
+                    let totalTiedDuration = 0;
+                    let firstNoteFreq = null;
+
+                    for (const part of tiedNotesParts) {
+                        const partMatch = part.match(/^([a-g])([#$])?([1-6])$/);
+                        if (partMatch) {
+                            const noteChar = partMatch[1];
+                            const accidental = partMatch[2];
+                            const durationType = partMatch[3];
+
+                            const freq = getFrequency(noteChar, currentOctave, accidental); // Usa la octava actual
+                            const dur = noteDurations[durationType];
+
+                            if (freq && dur) {
+                                if (firstNoteFreq === null) {
+                                    firstNoteFreq = freq;
+                                }
+                                totalTiedDuration += dur;
+                            } else {
+                                messageDiv.textContent = `Error: Parte de ligadura inválida "${part}".`;
+                                return;
+                            }
+                        } else {
+                            messageDiv.textContent = `Error: Formato de ligadura inválido "${part}".`;
+                            return;
+                        }
+                    }
+                    if (firstNoteFreq !== null && totalTiedDuration > 0) {
+                        playNote(firstNoteFreq, totalTiedDuration, currentTime);
+                        currentTime += totalTiedDuration;
+                    }
+
+                } else {
+                    messageDiv.textContent = `Error: Formato de nota inválido "${noteString}".`;
+                    return;
+                }
+
+                await new Promise(resolve => setTimeout(resolve, 50));
+            }
+        }
+
+        document.getElementById('playButton').addEventListener('click', playScore);
+    </script>
+
+</body>
+</html>
