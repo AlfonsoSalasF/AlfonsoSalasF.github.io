@@ -34,78 +34,78 @@
         <section>
             <h2>22.2. Atributos de <code>&lt;video&gt;</code>.</h2>
             <p>La etiqueta <code>&lt;video&gt;</code> soporta varios atributos que permiten controlar el comportamiento de la reproducción, la apariencia y la carga del video.</p>
-            <table>
-                <caption>Atributos Comunes de la Etiqueta <code>&lt;video&gt;</code></caption>
-                <thead>
-                    <tr>
-                        <th>Atributo</th>
-                        <th>Descripción</th>
-                        <th>Ejemplo</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><code>src</code></td>
-                        <td>Especifica la URL del archivo de video que se va a incrustar. Es el método más sencillo para definir la fuente.</td>
-                        <td><code>&lt;video src="pelicula.mp4"&gt;</code></td>
-                    </tr>
-                    <tr>
-                        <td><code>controls</code></td>
-                        <td>Muestra los controles de reproducción estándar del navegador (como reproducir/pausar, volumen, barra de progreso, pantalla completa). Si no se incluye, el video se reproducirá sin controles visibles a menos que se controle con JavaScript.</td>
-                        <td><code>&lt;video src="clip.webm" controls&gt;</code></td>
-                    </tr>
-                    <tr>
-                        <td><code>autoplay</code></td>
-                        <td>Indica que el video debe comenzar a reproducirse automáticamente tan pronto como sea posible. Se debe usar con precaución, ya que puede ser intrusivo. Muchos navegadores modernos bloquean la reproducción automática con sonido a menos que el video esté silenciado.</td>
-                        <td><code>&lt;video src="intro.mp4" autoplay&gt;</code></td>
-                    </tr>
-                    <tr>
-                        <td><code>loop</code></td>
-                        <td>Especifica que el video debe reproducirse en bucle, es decir, se reiniciará automáticamente cada vez que llegue al final.</td>
-                        <td><code>&lt;video src="animacion.mp4" loop&gt;</code></td>
-                    </tr>
-                    <tr>
-                        <td><code>muted</code></td>
-                        <td>Indica que el video debe silenciarse por defecto al cargarse. Esto a menudo es necesario para que el atributo <code>autoplay</code> funcione en la mayoría de los navegadores.</td>
-                        <td><code>&lt;video src="fondo.mp4" muted autoplay&gt;</code></td>
-                    </tr>
-                    <tr>
-                        <td><code>poster</code></td>
-                        <td>Especifica la URL de una imagen que se mostrará como un fotograma "miniatura" del video antes de que el video se cargue o se reproduzca. Es útil para dar una vista previa del contenido.</td>
-                        <td><code>&lt;video src="viaje.mp4" poster="img/viaje_preview.jpg"&gt;</code></td>
-                    </tr>
-                    <tr>
-                        <td><code>width</code></td>
-                        <td>Define el ancho del reproductor de video en píxeles.</td>
-                        <td><code>&lt;video src="video.mp4" width="800"&gt;</code></td>
-                    </tr>
-                    <tr>
-                        <td><code>height</code></td>
-                        <td>Define la altura del reproductor de video en píxeles.</td>
-                        <td><code>&lt;video src="video.mp4" height="450"&gt;</code></td>
-                    </tr>
-                    <tr>
-                        <td><code>preload</code></td>
-                        <td>Define cómo se debe cargar el archivo de video al cargar la página. Puede tener los siguientes valores:
-                            <ul>
-                                <li><code>none</code>: El video no se precarga.</li>
-                                <li><code>metadata</code>: Solo se precargan los metadatos (duración, dimensiones, etc.).</li>
-                                <li><code>auto</code>: El navegador decide si precarga el video completo (valor por defecto).</li>
-                            </ul>
-                        </td>
-                        <td><code>&lt;video src="clase.mp4" preload="metadata"&gt;</code></td>
-                    </tr>
-                </tbody>
-            </table>
-            <p><strong>Ejemplo de atributos combinados:</strong></p>
+            <div class="table-responsive"> <table>
+                    <caption>Atributos Comunes de la Etiqueta <code>&lt;video&gt;</code></caption>
+                    <thead>
+                        <tr>
+                            <th>Atributo</th>
+                            <th>Descripción</th>
+                            <th>Ejemplo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>src</code></td>
+                            <td>Especifica la URL del archivo de video que se va a incrustar. Es el método más sencillo para definir la fuente.</td>
+                            <td><code>&lt;video src="pelicula.mp4"&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>controls</code></td>
+                            <td>Muestra los controles de reproducción estándar del navegador (como reproducir/pausar, volumen, barra de progreso, pantalla completa). Si no se incluye, el video se reproducirá sin controles visibles a menos que se controle con JavaScript.</td>
+                            <td><code>&lt;video src="clip.webm" controls&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>autoplay</code></td>
+                            <td>Indica que el video debe comenzar a reproducirse automáticamente tan pronto como sea posible. Se debe usar con precaución, ya que puede ser intrusivo. Muchos navegadores modernos bloquean la reproducción automática con sonido a menos que el video esté silenciado.</td>
+                            <td><code>&lt;video src="intro.mp4" autoplay&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>loop</code></td>
+                            <td>Especifica que el video debe reproducirse en bucle, es decir, se reiniciará automáticamente cada vez que llegue al final.</td>
+                            <td><code>&lt;video src="animacion.mp4" loop&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>muted</code></td>
+                            <td>Indica que el video debe silenciarse por defecto al cargarse. Esto a menudo es necesario para que el atributo <code>autoplay</code> funcione en la mayoría de los navegadores.</td>
+                            <td><code>&lt;video src="fondo.mp4" muted autoplay&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>poster</code></td>
+                            <td>Especifica la URL de una imagen que se mostrará como un fotograma "miniatura" del video antes de que el video se cargue o se reproduzca. Es útil para dar una vista previa del contenido.</td>
+                            <td><code>&lt;video src="viaje.mp4" poster="img/viaje_preview.jpg"&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>width</code></td>
+                            <td>Define el ancho del reproductor de video en píxeles.</td>
+                            <td><code>&lt;video src="video.mp4" width="800"&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>height</code></td>
+                            <td>Define la altura del reproductor de video en píxeles.</td>
+                            <td><code>&lt;video src="video.mp4" height="450"&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>preload</code></td>
+                            <td>Define cómo se debe cargar el archivo de video al cargar la página. Puede tener los siguientes valores:
+                                <ul>
+                                    <li><code>none</code>: El video no se precarga.</li>
+                                    <li><code>metadata</code>: Solo se precargan los metadatos (duración, dimensiones, etc.).</li>
+                                    <li><code>auto</code>: El navegador decide si precarga el video completo (valor por defecto).</li>
+                                </ul>
+                            </td>
+                            <td><code>&lt;video src="clase.mp4" preload="metadata"&gt;</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div> <p><strong>Ejemplo de atributos combinados:</strong></p>
             <pre><code>&lt;video src="video/playa.mp4" controls autoplay loop muted poster="img/playa_thumb.jpg" width="720" height="405"&gt;
     Tu navegador no soporta el elemento de video.
 &lt;/video&gt;</code></pre>
-            <video controls muted autoplay loop poster="https://peach.blender.org/wp-content/uploads/title_rot01.jpg?x11270" width="720" height="405">
-                <source src="https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4" type="video/mp4">
-                Tu navegador no soporta el elemento de video.
-            </video>
-        </section>
+            <div class="video-responsive"> <video controls muted autoplay loop poster="https://peach.blender.org/wp-content/uploads/title_rot01.jpg?x11270">
+                    <source src="https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4" type="video/mp4">
+                    Tu navegador no soporta el elemento de video.
+                </video>
+            </div> </section>
 
         <section>
             <h2>22.3. Formatos de video compatibles.</h2>
@@ -135,12 +135,12 @@
     &lt;!-- Texto alternativo si el navegador no soporta &lt;video&gt; o ninguno de los formatos --&gt;
     Tu navegador no soporta el elemento de video ni los formatos proporcionados.
 &lt;/video&gt;</code></pre>
-            <video controls poster="../Images/VideoDefault.png" width="720" height="405">
-                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-                <source src="https://www.w3schools.com/html/mov_bbb.ogg" type="video/ogg">
-                Tu navegador no soporta el elemento de video ni los formatos proporcionados.
-            </video>
-            <p>En este ejemplo, el navegador intentará reproducir <code>pelicula.webm</code>. Si no puede, intentará con <code>pelicula.mp4</code>. Si ninguno de los formatos es soportado o el elemento <code>&lt;video&gt;</code> en sí no es soportado, se mostrará el mensaje de texto alternativo.</p>
+            <div class="video-responsive"> <video controls poster="../Images/VideoDefault.png">
+                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                    <source src="https://www.w3schools.com/html/mov_bbb.ogg" type="video/ogg">
+                    Tu navegador no soporta el elemento de video ni los formatos proporcionados.
+                </video>
+            </div> <p>En este ejemplo, el navegador intentará reproducir <code>pelicula.webm</code>. Si no puede, intentará con <code>pelicula.mp4</code>. Si ninguno de los formatos es soportado o el elemento <code>&lt;video&gt;</code> en sí no es soportado, se mostrará el mensaje de texto alternativo.</p>
         </section>
 
         <hr>

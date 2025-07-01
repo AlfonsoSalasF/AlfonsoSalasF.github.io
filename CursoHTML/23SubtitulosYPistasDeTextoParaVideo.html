@@ -23,44 +23,44 @@
             <h2>23.1. La etiqueta <code>&lt;track&gt;</code>.</h2>
             <p>La etiqueta <code>&lt;track&gt;</code> se utiliza dentro de <code>&lt;audio&gt;</code> o <code>&lt;video&gt;</code> para especificar pistas de texto sincronizadas. Estas pistas pueden incluir subtítulos, leyendas, descripciones, capítulos o metadatos, y se almacenan en archivos WebVTT (.vtt).</p>
             <p><strong>Atributos Clave de <code>&lt;track&gt;</code>:</strong></p>
-            <table>
-                <caption>Atributos de la Etiqueta <code>&lt;track&gt;</code></caption>
-                <thead>
-                    <tr>
-                        <th>Atributo</th>
-                        <th>Descripción</th>
-                        <th>Ejemplo</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><code>src</code></td>
-                        <td>Especifica la URL del archivo de pista de texto (archivo .vtt).</td>
-                        <td><code>src="subtitulos_es.vtt"</code></td>
-                    </tr>
-                    <tr>
-                        <td><code>kind</code></td>
-                        <td>Define el tipo de pista de texto. Es un atributo esencial para indicar la función de la pista. Ver siguiente sección para los valores.</td>
-                        <td><code>kind="subtitles"</code></td>
-                    </tr>
-                    <tr>
-                        <td><code>srclang</code></td>
-                        <td>Especifica el idioma de la pista de texto. Este atributo es obligatorio si <code>kind</code> es "subtitles" o "captions". Se usa un código de idioma (ej. "es" para español, "en" para inglés).</td>
-                        <td><code>srclang="es"</code></td>
-                    </tr>
-                    <tr>
-                        <td><code>label</code></td>
-                        <td>Proporciona un título legible para la pista, que el navegador puede mostrar al usuario (por ejemplo, en un menú de selección de subtítulos).</td>
-                        <td><code>label="Español"</code></td>
-                    </tr>
-                    <tr>
-                        <td><code>default</code></td>
-                        <td>Indica que esta pista de texto debe ser la predeterminada si el usuario no ha especificado una preferencia. Solo puede haber una pista con <code>default</code> por tipo y idioma.</td>
-                        <td><code>default</code></td>
-                    </tr>
-                </tbody>
-            </table>
-            <p><strong>Ejemplo de uso básico:</strong></p>
+            <div class="table-responsive"> <table>
+                    <caption>Atributos de la Etiqueta <code>&lt;track&gt;</code></caption>
+                    <thead>
+                        <tr>
+                            <th>Atributo</th>
+                            <th>Descripción</th>
+                            <th>Ejemplo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>src</code></td>
+                            <td>Especifica la URL del archivo de pista de texto (archivo .vtt).</td>
+                            <td><code>src="subtitulos_es.vtt"</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>kind</code></td>
+                            <td>Define el tipo de pista de texto. Es un atributo esencial para indicar la función de la pista. Ver siguiente sección para los valores.</td>
+                            <td><code>kind="subtitles"</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>srclang</code></td>
+                            <td>Especifica el idioma de la pista de texto. Este atributo es obligatorio si <code>kind</code> es "subtitles" o "captions". Se usa un código de idioma (ej. "es" para español, "en" para inglés).</td>
+                            <td><code>srclang="es"</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>label</code></td>
+                            <td>Proporciona un título legible para la pista, que el navegador puede mostrar al usuario (por ejemplo, en un menú de selección de subtítulos).</td>
+                            <td><code>label="Español"</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>default</code></td>
+                            <td>Indica que esta pista de texto debe ser la predeterminada si el usuario no ha especificado una preferencia. Solo puede haber una pista con <code>default</code> por tipo y idioma.</td>
+                            <td><code>default</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div> <p><strong>Ejemplo de uso básico:</strong></p>
             <pre><code>&lt;video controls width="640" height="360" poster="img/trailer_poster.jpg"&gt;
     &lt;source src="video/trailer.mp4" type="video/mp4"&gt;
     &lt;track kind="subtitles" src="subtitulos/trailer_es.vtt" srclang="es" label="Español" default&gt;
@@ -124,12 +124,12 @@ Esto es un comentario. No se mostrará.
                 <p>Es importante que los archivos .vtt sean servidos con el tipo MIME correcto: <code>text/vtt</code>. Además, si sirves tu página web de forma local (ej. con un servidor de desarrollo), las pistas de texto podrían no cargarse debido a restricciones de seguridad del navegador (CORS). En un servidor real, esto no suele ser un problema.</p>
             </div>
             <p>Aquí tienes un ejemplo de un video con subtítulos en español y en inglés. Puedes seleccionar la pista de subtítulos en los controles del video.</p>
-            <video controls width="640" height="360">
-                <source src="https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4" type="video/mp4">
-                <track kind="subtitles" src="../Multimedia/desc_conejo_esp.vtt" srclang="es" label="Descripción español">
-                Tu navegador no soporta el elemento de video.
-            </video>
-        </section>
+            <div class="video-responsive"> <video controls>
+                    <source src="https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4" type="video/mp4">
+                    <track kind="subtitles" src="../Multimedia/desc_conejo_esp.vtt" srclang="es" label="Descripción español">
+                    Tu navegador no soporta el elemento de video.
+                </video>
+            </div> </section>
 
         <hr>
 
