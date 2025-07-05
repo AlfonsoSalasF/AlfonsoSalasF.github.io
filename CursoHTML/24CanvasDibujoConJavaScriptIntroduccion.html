@@ -7,15 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../CSS/common_styles.css">
     <link rel="stylesheet" href="../CSS/formularios.css">
-    <style>
-        /* Estilos específicos para el canvas en esta clase */
-        canvas {
-            border: 2px solid #333;
-            background-color: #f9f9f9;
-            display: block; /* Para centrarlo si se desea */
-            margin: 20px auto;
-        }
-    </style>
 </head>
 <body>
     <div class="container">
@@ -96,6 +87,19 @@
     });
 &lt;/script&gt;</code></pre>
             <canvas id="canvasRectangulos" width="300" height="100"></canvas>
+            <script>
+                const cnvs_rect=document.getElementById('canvasRectangulos');
+                if (cnvs_rect.getContext('2d')){
+                    const ctx_rect=cnvs_rect.getContext('2d');
+                    ctx_rect.fillStyle ='blue';
+                    ctx_rect.fillRect(10,10,100,50);
+
+                    ctx_rect.strokeStyle ='red';
+                    ctx_rect.lineWidth = 3;
+                    ctx_rect.strokeRect(120,10,100,50);
+                    ctx_rect.clearRect(50,20,30,30);
+                }
+            </script>
 
             <h3>24.4.2. Dibujar Líneas.</h3>
             <p>Para dibujar líneas y formas más complejas, se sigue un patrón general:</p>
@@ -123,8 +127,20 @@
         }
     });
 &lt;/script&gt;</code></pre>
-            <canvas id="canvasLineas" width="150" height="100"></canvas>
+            <canvas id="canvasLineas" width="200" height="100"></canvas>
+            <script>
+                const cnvs_lin = document.getElementById("canvasLineas");
 
+                if (cnvs_lin.getContext('2d')){
+                    const ctx_lin=cnvs_lin.getContext('2d');
+                    ctx_lin.beginPath();
+                    ctx_lin.moveTo(10,10);
+                    ctx_lin.lineTo(100,50);
+                    ctx_lin.lineTo(10,90);
+                    ctx_lin.stroke();
+                }
+
+            </script>
             <div class="note">
                 <p>Este es solo el punto de partida. La API de Canvas es muy extensa y permite dibujar arcos, círculos, texto, imágenes, aplicar transformaciones y mucho más. Estas formas básicas son la base para construcciones más complejas.</p>
             </div>
@@ -136,7 +152,7 @@
             <p>Continúa explorando HTML:</p>
             <ul>
                 <li><a href="Ejercicios24.html">Ejercicios sobre esta lección.</a></li>
-                <li><a href="25ManejoDeTextoEImagenesEnCanvas.html">Clase 25: Manejo de Texto e Imágenes en Canvas (Siguiente)</a></li>
+                <li><a href="25SvgGraficosVectorialesEscalables.html">Clase 25: Svg Gráficos Vectoriales Escalables (Siguiente)</a></li>
                 <li><a href="../CursoHTML.html">Índice del curso</a></li>
                 <li><a href="../index.html">Desarrollo Web</a></li>
             </ul>

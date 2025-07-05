@@ -4,14 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejercicios de Prueba</title>
-     <link rel="stylesheet" href="../CSS/formularios.css">
+    <link rel="stylesheet" href="../CSS/formularios.css">
     <link rel="stylesheet" href="../CSS/common_styles.css">
 </head>
 <body>
-    <br><br><br><br>
-    <video src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" controls loop>
-        Tu navegador no puede reproducir este audio. 
-        <track src="../Multimedia/Reflejos_sub_es.vtt" kind="subtitles" srclang="es" label="español" default></track>
-    </video>
+    <canvas id="ejercicioCanvas" width="300" height="150">Tu navegador no soporta Canvas.</canvas>
+    <script>
+        const lienzo=document.getElementById("ejercicioCanvas");
+        if (lienzo.getContext('2d')){
+            const contextoLienzo = lienzo.getContext('2d');
+
+            contextoLienzo.fillStyle ='green';
+            contextoLienzo.fillRect(20,20,100,50);
+            contextoLienzo.strokeStyle='blue';
+            contextoLienzo.strokeRect(30,30,150,60);
+            contextoLienzo.strokeStyle="red";
+            contextoLienzo.lineWidth=2;
+            contextoLienzo.beginPath();
+            contextoLienzo.moveTo(10,10);
+            contextoLienzo.lineTo(170,170);
+            contextoLienzo.stroke();
+            contextoLienzo.fillStyle='yellow';
+            contextoLienzo.fillRect(50,50,100,80);
+            contextoLienzo.strokeStyle='black';
+            contextoLienzo.lineWidth=3;
+            contextoLienzo.beginPath();
+            contextoLienzo.moveTo(170,10);
+            contextoLienzo.lineTo(10,170);
+            contextoLienzo.stroke();
+        }
+    </script>
+
 </body>
 </html>
