@@ -1,39 +1,42 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicios de Prueba</title>
-    <link rel="stylesheet" href="../CSS/formularios.css">
-    <link rel="stylesheet" href="../CSS/common_styles.css">
-</head>
-<body>
-    <canvas id="ejercicioCanvas" width="300" height="150">Tu navegador no soporta Canvas.</canvas>
-    <script>
-        const lienzo=document.getElementById("ejercicioCanvas");
-        if (lienzo.getContext('2d')){
-            const contextoLienzo = lienzo.getContext('2d');
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>SVG Demo</title>
+    <meta name="viewport" content="width=device-width" />
+    <style>
+      svg{
+        border: 1px solid #97f1e5;
+        background-color: #f4f9fa;
+      }
+      .mycircle {
+        fill: purple;
+        stroke: rgb(30, 121, 133);
+        stroke-width: 2;
+      }
+    </style>
+  </head>
+  <body>
+    <p>Esto es un dibujo de una casa</p>
+    <svg width="100" height="100">
+      <rect x="10" y="30" width="80" height="70" fill="SaddleBrown" stroke="darkblue" stroke-width="2" />
+      <rect x="20" y="40" width="20" height="20" fill="lightblue" stroke="darkblue" stroke-width="2" />
+      <rect x="60" y="40" width="20" height="20" fill="lightblue" stroke="darkblue" stroke-width="2" />
+      <rect x="40" y="70" width="20" height="30" fill="#D3D3D3" stroke="darkblue" stroke-width="2" />
+      <rect x="70" y="10" width="10" height="15" fill="#D3D3D3" stroke="darkblue" stroke-width="2" />
+      <circle cx="45" cy="85" r="2" fill="yellow" stroke="darkblue" stroke-width="1" />
+      <polygon points="10,30 50,10 90,30" fill="red" stroke="darkblue" stroke-width="2" />
+      <line x1="20" y1="50" x2="40" y2="50" stroke="darkblue" />
+      <line x1="60" y1="50" x2="80" y2="50" stroke="darkblue" />
+      <line x1="30" y1="40" x2="30" y2="60" stroke="darkblue" />
+      <line x1="70" y1="40" x2="70" y2="60" stroke="darkblue" />
+    </svg>
+    <svg width="200" height="200">
+      
+      <polygon points="56,11 80,77 55,143 70,143 88,89 105,143 121,143 97,77 122,11 106,11 89,65 73,11 56,11" fill="darkblue" stroke="darkblue" stroke-width="2" />
+      <polygon points="77,25 101,25 98,36 80,36 77,25" fill="darkblue" stroke="darkblue" stroke-width="2" />
+      <polygon points="78,118 97,118 101,129 75,129 78,118" fill="darkblue" stroke="darkblue" stroke-width="2" />
+    </svg>
 
-            contextoLienzo.fillStyle ='green';
-            contextoLienzo.fillRect(20,20,100,50);
-            contextoLienzo.strokeStyle='blue';
-            contextoLienzo.strokeRect(30,30,150,60);
-            contextoLienzo.strokeStyle="red";
-            contextoLienzo.lineWidth=2;
-            contextoLienzo.beginPath();
-            contextoLienzo.moveTo(10,10);
-            contextoLienzo.lineTo(170,170);
-            contextoLienzo.stroke();
-            contextoLienzo.fillStyle='yellow';
-            contextoLienzo.fillRect(50,50,100,80);
-            contextoLienzo.strokeStyle='black';
-            contextoLienzo.lineWidth=3;
-            contextoLienzo.beginPath();
-            contextoLienzo.moveTo(170,10);
-            contextoLienzo.lineTo(10,170);
-            contextoLienzo.stroke();
-        }
-    </script>
-
-</body>
+  </body>
 </html>
